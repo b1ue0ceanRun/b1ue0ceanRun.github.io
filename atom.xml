@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>b1ue0cean&#39;s   blog</title>
+  
+  <subtitle>welcome to my world -- sharing CTF &amp; ML skills</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>1985-10-26T08:15:00.000Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>b1ue0cean</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2022/03/08/hello-world/"/>
+    <id>http://example.com/2022/03/08/hello-world/</id>
+    <published>2022-03-08T10:12:19.197Z</published>
+    <updated>1985-10-26T08:15:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://example.com/2022/03/07/test/"/>
+    <id>http://example.com/2022/03/07/test/</id>
+    <published>2022-03-07T14:58:56.000Z</published>
+    <updated>2022-03-08T14:01:08.459Z</updated>
+    
+    
+    
+    
+    
+    <category term="web" scheme="http://example.com/tags/web/"/>
+    
+  </entry>
+  
+</feed>
