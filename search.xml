@@ -2,28 +2,30 @@
 <search>
   <entry>
     <title>test</title>
-    <url>/2022/03/07/test/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/03/08/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <url>/2022/03/07/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%B0%8F%E5%AD%A6%E4%B9%A0(%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2%E7%94%A8)/</url>
+    <content><![CDATA[<p>﻿## 抄书了</p>
+<h2 id="隐写分析方法"><a href="#隐写分析方法" class="headerlink" title="隐写分析方法"></a>隐写分析方法</h2><ul>
+<li>感官分析</li>
+<li>特征分析</li>
+<li>统计分析</li>
+<li>通用分析</li>
+</ul>
+<h5 id="感官分析"><a href="#感官分析" class="headerlink" title="感官分析"></a>感官分析</h5><p> 优点：简单直观<br> 弱点：自动化程度若，可靠性弱</p>
+<h5 id="特征分析"><a href="#特征分析" class="headerlink" title="特征分析"></a>特征分析</h5><p>基于文件结构的隐写特征<br>1.文件大小异常<br>2.调色板中有像素没有使用的颜色<br>。。。</p>
+<p>软件特征<br>2006年高清晰度DVD视频播放器面世时，使用了强度较高的加密算法。可仅仅六个月之后，系统就被驳接了，问题不是出在算法上，而是算法的实现，攻击者能从内存获取密钥</p>
+<p>隐写软件特征：<br><img src="https://img-blog.csdnimg.cn/20210628222012447.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUzNzU1MjE2,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>隐写软件 TheThirdEye 的隐写标记： <a href="http://www.binary-technologies.com/">www.binary-techNologies.com</a><br><img src="https://img-blog.csdnimg.cn/20210628222134303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUzNzU1MjE2,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>早期F5算法总插入 “<strong>JPEG Encoder Copyright 1998,James R.Weeks and BioElectroMech</strong>“, 而普通图像编辑器几乎不会插入这条信息</p>
+<h5 id="统计分析"><a href="#统计分析" class="headerlink" title="统计分析"></a>统计分析</h5><ul>
+<li>载体感官效果没有发生变化，但统计特征改变</li>
+<li>分析待检测载体的统计特征，可以判断载体是否经过隐写</li>
+<li>典型方法<br>1.卡方，RS检测等<br>2.JPEG检测等</li>
+</ul>
+<h5 id="通用分析"><a href="#通用分析" class="headerlink" title="通用分析"></a>通用分析</h5><p>原理：自然信号与其去噪信号的“距离”，隐写信号与其去噪信号的‘距离’，两者不同<br>提取出对隐写面擀得托干统计特征构成矢量<br>获取待检测信号与其去噪版本的特征矢量<br>判决</p>
 ]]></content>
+      <categories>
+        <category>MISC</category>
+      </categories>
+      <tags>
+        <tag>steganography</tag>
+      </tags>
   </entry>
 </search>
