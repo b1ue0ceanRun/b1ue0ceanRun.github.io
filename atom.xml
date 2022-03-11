@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-11T04:51:03.460Z</updated>
+  <updated>2022-03-11T13:33:22.720Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>learn-1</title>
+    <link href="http://example.com/2022/03/11/learn-1/"/>
+    <id>http://example.com/2022/03/11/learn-1/</id>
+    <published>2022-03-11T13:23:48.000Z</published>
+    <updated>2022-03-11T13:33:22.720Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="learn-day1"><a href="#learn-day1" class="headerlink" title="learn-day1"></a>learn-day1</h1><blockquote><p>本文为learn365第一篇 记录每日学习内容</p></blockquote><h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><p><a href="https://github.com/godrun666/team-learning-rl">godrun666/team-learning-rl (github.com)</a></p><p>datawhale的开源强化学习学习计划</p><p>15day</p><ul><li>今天开始Task1 目前把书读了 明天把code敲一敲</li><li>读了一篇论文的一部分 继续学习 attention</li><li>看一个xss （晚上搞</li></ul><blockquote><h6 id="Task1：强化学习基础（2天）"><a href="#Task1：强化学习基础（2天）" class="headerlink" title="Task1：强化学习基础（2天）"></a>Task1：强化学习基础（2天）</h6><ul><li>了解强化学习的基本概念；</li><li>掌握 Gym 的使用；</li><li>对应教程的第一章。</li></ul></blockquote><p>由于要参加datawhale的15day计划 可能强化学习要拖到三月底到四月初来解决了</p><h2 id="记录一些杂事"><a href="#记录一些杂事" class="headerlink" title="记录一些杂事"></a>记录一些杂事</h2><ul><li>和导师谈了谈 确定了srtp的方向 准备入手了</li><li>明天有UTCTF 看看web题目</li><li>论文读起来很吃力 要想办法解决</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;learn-day1&quot;&gt;&lt;a href=&quot;#learn-day1&quot; class=&quot;headerlink&quot; title=&quot;learn-day1&quot;&gt;&lt;/a&gt;learn-day1&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;本文为learn365第一篇 记录每日学习内容&lt;/</summary>
+      
+    
+    
+    
+    <category term="learn365" scheme="http://example.com/categories/learn365/"/>
+    
+    
+    <category term="learn" scheme="http://example.com/tags/learn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>learn-365</title>
+    <link href="http://example.com/2022/03/11/learn-365/"/>
+    <id>http://example.com/2022/03/11/learn-365/</id>
+    <published>2022-03-11T13:21:13.000Z</published>
+    <updated>2022-03-11T13:21:13.817Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>立个flag -- about sec</title>

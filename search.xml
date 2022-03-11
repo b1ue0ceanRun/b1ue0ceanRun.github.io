@@ -24,34 +24,6 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2022/03/07/test/</url>
-    <content><![CDATA[<p>﻿## 抄书了</p>
-<h2 id="隐写分析方法"><a href="#隐写分析方法" class="headerlink" title="隐写分析方法"></a>隐写分析方法</h2><ul>
-<li>感官分析</li>
-<li>特征分析</li>
-<li>统计分析</li>
-<li>通用分析</li>
-</ul>
-<h5 id="感官分析"><a href="#感官分析" class="headerlink" title="感官分析"></a>感官分析</h5><p> 优点：简单直观<br> 弱点：自动化程度若，可靠性弱</p>
-<h5 id="特征分析"><a href="#特征分析" class="headerlink" title="特征分析"></a>特征分析</h5><p>基于文件结构的隐写特征<br>1.文件大小异常<br>2.调色板中有像素没有使用的颜色<br>。。。</p>
-<p>软件特征<br>2006年高清晰度DVD视频播放器面世时，使用了强度较高的加密算法。可仅仅六个月之后，系统就被驳接了，问题不是出在算法上，而是算法的实现，攻击者能从内存获取密钥</p>
-<p>隐写软件特征：<br><img src="https://img-blog.csdnimg.cn/20210628222012447.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUzNzU1MjE2,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>隐写软件 TheThirdEye 的隐写标记： <a href="http://www.binary-technologies.com/">www.binary-techNologies.com</a><br><img src="https://img-blog.csdnimg.cn/20210628222134303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUzNzU1MjE2,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>早期F5算法总插入 “<strong>JPEG Encoder Copyright 1998,James R.Weeks and BioElectroMech</strong>“, 而普通图像编辑器几乎不会插入这条信息</p>
-<h5 id="统计分析"><a href="#统计分析" class="headerlink" title="统计分析"></a>统计分析</h5><ul>
-<li>载体感官效果没有发生变化，但统计特征改变</li>
-<li>分析待检测载体的统计特征，可以判断载体是否经过隐写</li>
-<li>典型方法<br>1.卡方，RS检测等<br>2.JPEG检测等</li>
-</ul>
-<h5 id="通用分析"><a href="#通用分析" class="headerlink" title="通用分析"></a>通用分析</h5><p>原理：自然信号与其去噪信号的“距离”，隐写信号与其去噪信号的‘距离’，两者不同<br>提取出对隐写面擀得托干统计特征构成矢量<br>获取待检测信号与其去噪版本的特征矢量<br>判决</p>
-]]></content>
-      <categories>
-        <category>MISC</category>
-      </categories>
-      <tags>
-        <tag>steganography</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>立个flag -- about sec</title>
     <url>/2022/03/11/flag-sec/</url>
     <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
@@ -77,6 +49,74 @@
       </categories>
       <tags>
         <tag>goal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>learn-1</title>
+    <url>/2022/03/11/learn-1/</url>
+    <content><![CDATA[<h1 id="learn-day1"><a href="#learn-day1" class="headerlink" title="learn-day1"></a>learn-day1</h1><blockquote>
+<p>本文为learn365第一篇 记录每日学习内容</p>
+</blockquote>
+<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><p><a href="https://github.com/godrun666/team-learning-rl">godrun666/team-learning-rl (github.com)</a></p>
+<p>datawhale的开源强化学习学习计划</p>
+<p>15day</p>
+<ul>
+<li>今天开始Task1 目前把书读了 明天把code敲一敲</li>
+<li>读了一篇论文的一部分 继续学习 attention</li>
+<li>看一个xss （晚上搞</li>
+</ul>
+<blockquote>
+<h6 id="Task1：强化学习基础（2天）"><a href="#Task1：强化学习基础（2天）" class="headerlink" title="Task1：强化学习基础（2天）"></a>Task1：强化学习基础（2天）</h6><ul>
+<li>了解强化学习的基本概念；</li>
+<li>掌握 Gym 的使用；</li>
+<li>对应教程的第一章。</li>
+</ul>
+</blockquote>
+<p>由于要参加datawhale的15day计划 可能强化学习要拖到三月底到四月初来解决了</p>
+<h2 id="记录一些杂事"><a href="#记录一些杂事" class="headerlink" title="记录一些杂事"></a>记录一些杂事</h2><ul>
+<li>和导师谈了谈 确定了srtp的方向 准备入手了</li>
+<li>明天有UTCTF 看看web题目</li>
+<li>论文读起来很吃力 要想办法解决</li>
+</ul>
+]]></content>
+      <categories>
+        <category>learn365</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>learn-365</title>
+    <url>/2022/03/11/learn-365/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2022/03/07/test/</url>
+    <content><![CDATA[<p>﻿## 抄书了</p>
+<h2 id="隐写分析方法"><a href="#隐写分析方法" class="headerlink" title="隐写分析方法"></a>隐写分析方法</h2><ul>
+<li>感官分析</li>
+<li>特征分析</li>
+<li>统计分析</li>
+<li>通用分析</li>
+</ul>
+<h5 id="感官分析"><a href="#感官分析" class="headerlink" title="感官分析"></a>感官分析</h5><p> 优点：简单直观<br> 弱点：自动化程度若，可靠性弱</p>
+<h5 id="特征分析"><a href="#特征分析" class="headerlink" title="特征分析"></a>特征分析</h5><p>基于文件结构的隐写特征<br>1.文件大小异常<br>2.调色板中有像素没有使用的颜色<br>。。。</p>
+<p>软件特征<br>2006年高清晰度DVD视频播放器面世时，使用了强度较高的加密算法。可仅仅六个月之后，系统就被驳接了，问题不是出在算法上，而是算法的实现，攻击者能从内存获取密钥</p>
+<p>隐写软件特征：<br><img src="https://img-blog.csdnimg.cn/20210628222012447.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUzNzU1MjE2,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>隐写软件 TheThirdEye 的隐写标记： <a href="http://www.binary-technologies.com/">www.binary-techNologies.com</a><br><img src="https://img-blog.csdnimg.cn/20210628222134303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUzNzU1MjE2,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>早期F5算法总插入 “<strong>JPEG Encoder Copyright 1998,James R.Weeks and BioElectroMech</strong>“, 而普通图像编辑器几乎不会插入这条信息</p>
+<h5 id="统计分析"><a href="#统计分析" class="headerlink" title="统计分析"></a>统计分析</h5><ul>
+<li>载体感官效果没有发生变化，但统计特征改变</li>
+<li>分析待检测载体的统计特征，可以判断载体是否经过隐写</li>
+<li>典型方法<br>1.卡方，RS检测等<br>2.JPEG检测等</li>
+</ul>
+<h5 id="通用分析"><a href="#通用分析" class="headerlink" title="通用分析"></a>通用分析</h5><p>原理：自然信号与其去噪信号的“距离”，隐写信号与其去噪信号的‘距离’，两者不同<br>提取出对隐写面擀得托干统计特征构成矢量<br>获取待检测信号与其去噪版本的特征矢量<br>判决</p>
+]]></content>
+      <categories>
+        <category>MISC</category>
+      </categories>
+      <tags>
+        <tag>steganography</tag>
       </tags>
   </entry>
 </search>
