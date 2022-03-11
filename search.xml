@@ -24,34 +24,6 @@
       </tags>
   </entry>
   <entry>
-    <title>立个flag -- about sec</title>
-    <url>/2022/03/11/flag-sec/</url>
-    <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
-<p><a href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
-<p>看了他关于新的一年的总结 十分有感触</p>
-<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
-<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
-<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
-<p>我决定在这学期内采纳一些他的学习路线</p>
-<ul>
-<li>solve every xss challenge on  <a href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
-<li>read every blog <a href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
-</ul>
-<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
-<p>希望可以走的更远</p>
-<p>最后一个flag</p>
-<ul>
-<li>be the full member of r3kapig</li>
-</ul>
-]]></content>
-      <categories>
-        <category>plan</category>
-      </categories>
-      <tags>
-        <tag>goal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>test</title>
     <url>/2022/03/07/test/</url>
     <content><![CDATA[<p>﻿## 抄书了</p>
@@ -77,6 +49,34 @@
       </categories>
       <tags>
         <tag>steganography</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>立个flag -- about sec</title>
+    <url>/2022/03/11/flag-sec/</url>
+    <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
+<p><a href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
+<p>看了他关于新的一年的总结 十分有感触</p>
+<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
+<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
+<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
+<p>我决定在这学期内采纳一些他的学习路线</p>
+<ul>
+<li>solve every xss challenge on  <a href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
+<li>read every blog <a href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
+</ul>
+<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
+<p>希望可以走的更远</p>
+<p>最后一个flag</p>
+<ul>
+<li>be the full member of r3kapig</li>
+</ul>
+]]></content>
+      <categories>
+        <category>plan</category>
+      </categories>
+      <tags>
+        <tag>goal</tag>
       </tags>
   </entry>
 </search>
