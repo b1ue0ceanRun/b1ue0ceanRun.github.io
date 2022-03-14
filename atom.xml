@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-14T03:14:49.593Z</updated>
+  <updated>2022-03-14T15:46:43.963Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>learn4</title>
+    <link href="http://example.com/2022/03/14/learn4/"/>
+    <id>http://example.com/2022/03/14/learn4/</id>
+    <published>2022-03-14T15:44:06.000Z</published>
+    <updated>2022-03-14T15:46:43.963Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="learn4"><a href="#learn4" class="headerlink" title="learn4"></a>learn4</h1><p>学习了 GNN 的基本原理</p><p>发现宝藏网站</p><p><a href="https://distill.pub/">Distill — Latest articles about machine learning</a></p><p>好视频</p><p><a href="https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0">如何读论文【论文精读】_哔哩哔哩_bilibili</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;learn4&quot;&gt;&lt;a href=&quot;#learn4&quot; class=&quot;headerlink&quot; title=&quot;learn4&quot;&gt;&lt;/a&gt;learn4&lt;/h1&gt;&lt;p&gt;学习了 GNN 的基本原理&lt;/p&gt;
+&lt;p&gt;发现宝藏网站&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://di</summary>
+      
+    
+    
+    
+    <category term="ML" scheme="http://example.com/categories/ML/"/>
+    
+    
+    <category term="learn365" scheme="http://example.com/tags/learn365/"/>
+    
+  </entry>
   
   <entry>
     <title>learn2&amp;3</title>
