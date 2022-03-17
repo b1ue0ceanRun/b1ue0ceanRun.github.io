@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Attention Model</title>
+    <url>/2022/03/09/attention/</url>
+    <content><![CDATA[<h1 id="注意力机制学习"><a href="#注意力机制学习" class="headerlink" title="注意力机制学习"></a>注意力机制学习</h1><p>带我的学长发了篇论文给我 让我学一下 Multi-attention 开始动工了~~</p>
+<h2 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h2><ul>
+<li><a href="https://www.bilibili.com/video/BV1Wv411h7kN?p=41">李宏毅机器学习 self-attention</a></li>
+<li>读论文 attention is all you need</li>
+<li><a href="https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer">https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer</a></li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>​        深度学习里的Attention model其实模拟的是人脑的注意力模型，举个例子来说，当我们观赏一幅画时，虽然我们可以看到整幅画的全貌，但是在我们深入仔细地观察时，其实眼睛聚焦的就只有很小的一块，这个时候人的大脑主要关注在这一小块图案上，也就是说这个时候人脑对整幅图的关注并不是均衡的，是有一定的权重区分的。这就是深度学习里的Attention Model的核心思想。</p>
+<p>　　人脑的注意力模型，说到底是一种资源分配模型，在某个特定时刻，你的注意力总是集中在画面中的某个焦点部分，而对其它部分视而不见。</p>
+<p>​        注意力模型最近几年在深度学习各个领域被广泛使用，无论是图像处理、语音识别还是<a href="https://so.csdn.net/so/search?q=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&spm=1001.2101.3001.7020">自然语言处理</a>的各种不同类型的任务中，都很容易遇到注意力模型的身影。所以，了解注意力机制的工作原理对于关注深度学习技术发展的技术人员来说有很大的必要。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/qq_40027052/article/details/78421155">(32条消息) 深度学习中的注意力机制_CSDN人工智能-CSDN博客_机器学习 注意力机制</a></p>
+]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>AM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>UTCTF2022</title>
     <url>/2022/03/14/UTCTF/</url>
     <content><![CDATA[<h1 id="UTCTF"><a href="#UTCTF" class="headerlink" title="UTCTF"></a>UTCTF</h1><p>我承认我这周摸鱼了 因为俄罗斯的游戏免费 2333  周一复现一下</p>
@@ -66,26 +89,31 @@
       </tags>
   </entry>
   <entry>
-    <title>Attention Model</title>
-    <url>/2022/03/09/attention/</url>
-    <content><![CDATA[<h1 id="注意力机制学习"><a href="#注意力机制学习" class="headerlink" title="注意力机制学习"></a>注意力机制学习</h1><p>带我的学长发了篇论文给我 让我学一下 Multi-attention 开始动工了~~</p>
-<h2 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h2><ul>
-<li><a href="https://www.bilibili.com/video/BV1Wv411h7kN?p=41">李宏毅机器学习 self-attention</a></li>
-<li>读论文 attention is all you need</li>
-<li><a href="https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer">https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer</a></li>
+    <title>立个flag -- about sec</title>
+    <url>/2022/03/11/flag-sec/</url>
+    <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
+<p><a href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
+<p>看了他关于新的一年的总结 十分有感触</p>
+<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
+<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
+<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
+<p>我决定在这学期内采纳一些他的学习路线</p>
+<ul>
+<li>solve every xss challenge on  <a href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
+<li>read every blog <a href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
 </ul>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>​        深度学习里的Attention model其实模拟的是人脑的注意力模型，举个例子来说，当我们观赏一幅画时，虽然我们可以看到整幅画的全貌，但是在我们深入仔细地观察时，其实眼睛聚焦的就只有很小的一块，这个时候人的大脑主要关注在这一小块图案上，也就是说这个时候人脑对整幅图的关注并不是均衡的，是有一定的权重区分的。这就是深度学习里的Attention Model的核心思想。</p>
-<p>　　人脑的注意力模型，说到底是一种资源分配模型，在某个特定时刻，你的注意力总是集中在画面中的某个焦点部分，而对其它部分视而不见。</p>
-<p>​        注意力模型最近几年在深度学习各个领域被广泛使用，无论是图像处理、语音识别还是<a href="https://so.csdn.net/so/search?q=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&spm=1001.2101.3001.7020">自然语言处理</a>的各种不同类型的任务中，都很容易遇到注意力模型的身影。所以，了解注意力机制的工作原理对于关注深度学习技术发展的技术人员来说有很大的必要。</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/qq_40027052/article/details/78421155">(32条消息) 深度学习中的注意力机制_CSDN人工智能-CSDN博客_机器学习 注意力机制</a></p>
+<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
+<p>希望可以走的更远</p>
+<p>最后一个flag</p>
+<ul>
+<li>be the full member of r3kapig</li>
+</ul>
 ]]></content>
       <categories>
-        <category>ML</category>
+        <category>plan</category>
       </categories>
       <tags>
-        <tag>AM</tag>
+        <tag>goal</tag>
       </tags>
   </entry>
   <entry>
@@ -125,34 +153,6 @@
       </tags>
   </entry>
   <entry>
-    <title>立个flag -- about sec</title>
-    <url>/2022/03/11/flag-sec/</url>
-    <content><![CDATA[<h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
-<p><a href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
-<p>看了他关于新的一年的总结 十分有感触</p>
-<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
-<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
-<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
-<p>我决定在这学期内采纳一些他的学习路线</p>
-<ul>
-<li>solve every xss challenge on  <a href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
-<li>read every blog <a href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
-</ul>
-<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
-<p>希望可以走的更远</p>
-<p>最后一个flag</p>
-<ul>
-<li>be the full member of r3kapig</li>
-</ul>
-]]></content>
-      <categories>
-        <category>plan</category>
-      </categories>
-      <tags>
-        <tag>goal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>learn2&amp;3</title>
     <url>/2022/03/14/learn2-3/</url>
     <content><![CDATA[<h1 id="learn2-amp-3"><a href="#learn2-amp-3" class="headerlink" title="learn2&amp;3"></a>learn2&amp;3</h1><p>周末没干啥大事 新到了手柄沉迷了一下 (鬼泣5真香)  看了看UTCTF的web</p>
@@ -176,6 +176,30 @@
 ]]></content>
       <categories>
         <category>ML</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>learn6~8</title>
+    <url>/2022/03/17/learn5&amp;6/</url>
+    <content><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
+<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
+<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul>
+<li><p>实践了一丢丢xss</p>
+</li>
+<li><p>看了部分动手学深度学习</p>
+</li>
+<li><p>读了点论文</p>
+</li>
+</ul>
+<h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>
+<h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩python misc</p>
+<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
+]]></content>
+      <categories>
+        <category>learn365</category>
       </categories>
       <tags>
         <tag>learn</tag>
@@ -256,30 +280,6 @@
       </categories>
       <tags>
         <tag>steganography</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn6~8</title>
-    <url>/2022/03/17/learn5&amp;6/</url>
-    <content><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
-<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
-<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul>
-<li><p>实践了一丢丢xss</p>
-</li>
-<li><p>看了部分动手学深度学习</p>
-</li>
-<li><p>读了点论文</p>
-</li>
-</ul>
-<h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>
-<h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩python misc</p>
-<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
       </tags>
   </entry>
 </search>
