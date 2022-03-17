@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-17T12:33:51.387Z</updated>
+  <updated>2022-03-17T12:46:24.702Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成学习</title>
+    <link href="http://example.com/2022/03/17/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2022/03/17/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-03-17T12:44:47.000Z</published>
+    <updated>2022-03-17T12:46:24.702Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h1><p>不多bb 直接开学好吧 卷起来</p><p><a href="https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click</a></p><p><a href="https://github.com/datawhalechina/ML-FTTI">https://github.com/datawhalechina/ML-FTTI</a></p><p><a href="https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1">https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;路线&quot;&gt;&lt;a href=&quot;#路线&quot; class=&quot;headerlink&quot; title=&quot;路线&quot;&gt;&lt;/a&gt;路线&lt;/h1&gt;&lt;p&gt;不多bb 直接开学好吧 卷起来&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1wF41</summary>
+      
+    
+    
+    
+    <category term="ML" scheme="http://example.com/categories/ML/"/>
+    
+    
+    <category term="集成学习" scheme="http://example.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>learn6~8</title>
