@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-17T12:22:10.097Z</updated>
+  <updated>2022-03-17T12:35:45.115Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,33 @@
     <link href="http://example.com/2022/03/17/learn6-8/"/>
     <id>http://example.com/2022/03/17/learn6-8/</id>
     <published>2022-03-17T12:18:36.000Z</published>
-    <updated>2022-03-17T12:22:10.097Z</updated>
+    <updated>2022-03-17T12:35:45.115Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p><p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p><h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul><li><p>实践了一丢丢xss</p></li><li><p>看了部分动手学深度学习</p></li><li><p>读了点论文</p></li></ul><h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p><p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p><h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul><li><p>学会了 auto AI 2333</p></li><li><p>实践了一丢丢xss</p></li><li><p>看了部分动手学深度学习</p></li><li><p>读了点论文</p></li></ul><h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p><h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩misc </p><p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p><p>集成学习 实践一下</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;learn5-7&quot;&gt;&lt;a href=&quot;#learn5-7&quot; class=&quot;headerlink&quot; title=&quot;learn5~7&quot;&gt;&lt;/a&gt;learn5~7&lt;/h1&gt;&lt;h2 id=&quot;source&quot;&gt;&lt;a href=&quot;#source&quot; class=&quot;headerli</summary>
+      
+    
+    
+    
+    <category term="learn365" scheme="http://example.com/categories/learn365/"/>
+    
+    
+    <category term="learn" scheme="http://example.com/tags/learn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>learn6~8</title>
+    <link href="http://example.com/2022/03/17/learn5&amp;6/"/>
+    <id>http://example.com/2022/03/17/learn5&amp;6/</id>
+    <published>2022-03-17T12:18:36.000Z</published>
+    <updated>2022-03-17T12:33:51.387Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p><p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p><h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul><li><p>实践了一丢丢xss</p></li><li><p>看了部分动手学深度学习</p></li><li><p>读了点论文</p></li></ul><h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p><h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩python misc</p><p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>]]></content>
     
     
       
