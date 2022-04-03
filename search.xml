@@ -182,6 +182,22 @@
       </tags>
   </entry>
   <entry>
+    <title>learn4</title>
+    <url>/2022/03/14/learn4/</url>
+    <content><![CDATA[<h1 id="learn4"><a href="#learn4" class="headerlink" title="learn4"></a>learn4</h1><p>学习了 GNN 的基本原理</p>
+<p>发现宝藏网站</p>
+<p><a href="https://distill.pub/">Distill — Latest articles about machine learning</a></p>
+<p>好视频</p>
+<p><a href="https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0">如何读论文【论文精读】_哔哩哔哩_bilibili</a></p>
+]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>learn？(忘了)</title>
     <url>/2022/04/02/learn4-2/</url>
     <content><![CDATA[<h1 id="很久没记录了"><a href="#很久没记录了" class="headerlink" title="很久没记录了"></a>很久没记录了</h1><p>最近比较开心的是被nus的 summer workshop 录取了</p>
@@ -199,16 +215,27 @@
       </tags>
   </entry>
   <entry>
-    <title>learn4</title>
-    <url>/2022/03/14/learn4/</url>
-    <content><![CDATA[<h1 id="learn4"><a href="#learn4" class="headerlink" title="learn4"></a>learn4</h1><p>学习了 GNN 的基本原理</p>
-<p>发现宝藏网站</p>
-<p><a href="https://distill.pub/">Distill — Latest articles about machine learning</a></p>
-<p>好视频</p>
-<p><a href="https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0">如何读论文【论文精读】_哔哩哔哩_bilibili</a></p>
+    <title>learn6~8</title>
+    <url>/2022/03/17/learn6-8/</url>
+    <content><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
+<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
+<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul>
+<li><p>学会了 auto AI 2333</p>
+</li>
+<li><p>实践了一丢丢xss</p>
+</li>
+<li><p>看了部分动手学深度学习</p>
+</li>
+<li><p>读了点论文</p>
+</li>
+</ul>
+<h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>
+<h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩misc </p>
+<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
+<p>集成学习 实践一下</p>
 ]]></content>
       <categories>
-        <category>ML</category>
+        <category>learn365</category>
       </categories>
       <tags>
         <tag>learn</tag>
@@ -261,30 +288,18 @@
       </tags>
   </entry>
   <entry>
-    <title>learn6~8</title>
-    <url>/2022/03/17/learn6-8/</url>
-    <content><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
-<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
-<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul>
-<li><p>学会了 auto AI 2333</p>
-</li>
-<li><p>实践了一丢丢xss</p>
-</li>
-<li><p>看了部分动手学深度学习</p>
-</li>
-<li><p>读了点论文</p>
-</li>
-</ul>
-<h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>
-<h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩misc </p>
-<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
-<p>集成学习 实践一下</p>
+    <title>集成学习</title>
+    <url>/2022/03/17/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h1><p>不多bb 直接开学好吧 卷起来</p>
+<p><a href="https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click</a></p>
+<p><a href="https://github.com/datawhalechina/ML-FTTI">https://github.com/datawhalechina/ML-FTTI</a></p>
+<p><a href="https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1">https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1</a></p>
 ]]></content>
       <categories>
-        <category>learn365</category>
+        <category>ML</category>
       </categories>
       <tags>
-        <tag>learn</tag>
+        <tag>集成学习</tag>
       </tags>
   </entry>
   <entry>
@@ -313,21 +328,6 @@
       </categories>
       <tags>
         <tag>steganography</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>集成学习</title>
-    <url>/2022/03/17/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h1><p>不多bb 直接开学好吧 卷起来</p>
-<p><a href="https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click</a></p>
-<p><a href="https://github.com/datawhalechina/ML-FTTI">https://github.com/datawhalechina/ML-FTTI</a></p>
-<p><a href="https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1">https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1</a></p>
-]]></content>
-      <categories>
-        <category>ML</category>
-      </categories>
-      <tags>
-        <tag>集成学习</tag>
       </tags>
   </entry>
 </search>
