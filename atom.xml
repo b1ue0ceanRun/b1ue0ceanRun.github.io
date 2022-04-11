@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-03T07:35:41.879Z</updated>
+  <updated>2022-04-11T02:40:32.559Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“learn31”</title>
+    <link href="http://example.com/2022/04/11/learn31/"/>
+    <id>http://example.com/2022/04/11/learn31/</id>
+    <published>2022-04-11T02:34:40.000Z</published>
+    <updated>2022-04-11T02:40:32.559Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="learn31"><a href="#learn31" class="headerlink" title="learn31"></a>learn31</h1><p>小总结一下</p><p>最近上网课 实在是懈怠了 不知不觉 learn系列已经来到了31   每天坚持记录真的很难 </p><p>从现在开始   必须坚持每两天记录一次(at least)</p><h3 id="总结一下-4-10-4-11-周末"><a href="#总结一下-4-10-4-11-周末" class="headerlink" title="总结一下 4.10 ~ 4.11 周末"></a>总结一下 4.10 ~ 4.11 周末</h3><ul><li>看了PlaidCTF 没输出（ 周一 也就是今天 要复现一下 写成blog</li><li>srtp申请 仍在进行中</li><li>完成了几个作业</li></ul><h3 id="goals-4-11"><a href="#goals-4-11" class="headerlink" title="goals 4.11"></a>goals 4.11</h3><ul><li>开始学习 cs107e</li><li>复现PlaidCTF</li><li>数值分析作业 + 计组实验预习</li><li>听一节汇编的课</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;learn31&quot;&gt;&lt;a href=&quot;#learn31&quot; class=&quot;headerlink&quot; title=&quot;learn31&quot;&gt;&lt;/a&gt;learn31&lt;/h1&gt;&lt;p&gt;小总结一下&lt;/p&gt;
+&lt;p&gt;最近上网课 实在是懈怠了 不知不觉 learn系列已经来到了31   每天</summary>
+      
+    
+    
+    
+    <category term="learn365" scheme="http://example.com/categories/learn365/"/>
+    
+    
+    <category term="learn" scheme="http://example.com/tags/learn/"/>
+    
+  </entry>
   
   <entry>
     <title>learn23</title>
