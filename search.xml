@@ -117,155 +117,6 @@
       </tags>
   </entry>
   <entry>
-    <title>learn-1</title>
-    <url>/2022/03/11/learn-1/</url>
-    <content><![CDATA[<h1 id="learn-day1"><a href="#learn-day1" class="headerlink" title="learn-day1"></a>learn-day1</h1><blockquote>
-<p>本文为learn365第一篇 记录每日学习内容</p>
-</blockquote>
-<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><p><a href="https://github.com/godrun666/team-learning-rl">godrun666/team-learning-rl (github.com)</a></p>
-<p>datawhale的开源强化学习学习计划</p>
-<p>15day</p>
-<ul>
-<li>今天开始Task1 目前把书读了 明天把code敲一敲</li>
-<li>读了一篇论文的一部分 继续学习 attention</li>
-<li>看一个xss （晚上搞   –<a href="https://terjanq.medium.com/how-to-solve-a-challenge-from-intigrity-in-under-60-minutes-6843ba9b9552">How to solve an XSS challenge from Intigriti in under 60 minutes | by terjanq | Medium</a></li>
-<li>雅思单词+ted*1</li>
-</ul>
-<blockquote>
-<h6 id="Task1：强化学习基础（2天）"><a href="#Task1：强化学习基础（2天）" class="headerlink" title="Task1：强化学习基础（2天）"></a>Task1：强化学习基础（2天）</h6><ul>
-<li>了解强化学习的基本概念；</li>
-<li>掌握 Gym 的使用；</li>
-<li>对应教程的第一章。</li>
-</ul>
-</blockquote>
-<p>由于要参加datawhale的15day计划 可能强化学习要拖到三月底到四月初来解决了</p>
-<h2 id="记录一些杂事"><a href="#记录一些杂事" class="headerlink" title="记录一些杂事"></a>记录一些杂事</h2><ul>
-<li>和导师谈了谈 确定了srtp的方向 准备入手了</li>
-<li>明天有UTCTF 看看web题目</li>
-<li>论文读起来很吃力 要想办法解决</li>
-</ul>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn2&amp;3</title>
-    <url>/2022/03/14/learn2-3/</url>
-    <content><![CDATA[<h1 id="learn2-amp-3"><a href="#learn2-amp-3" class="headerlink" title="learn2&amp;3"></a>learn2&amp;3</h1><p>周末没干啥大事 新到了手柄沉迷了一下 (鬼泣5真香)  看了看UTCTF的web</p>
-<p>摸鱼 0.0</p>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn23</title>
-    <url>/2022/04/03/learn23/</url>
-    <content><![CDATA[<h1 id="记录一下周末的学习"><a href="#记录一下周末的学习" class="headerlink" title="记录一下周末的学习"></a>记录一下周末的学习</h1><h2 id="midsunctf"><a href="#midsunctf" class="headerlink" title="midsunctf"></a>midsunctf</h2><p>看了一题web 没做出来（失败的我 可恶啊</p>
-<h2 id="srtp"><a href="#srtp" class="headerlink" title="srtp"></a>srtp</h2><p>正在立项 讨论ing 希望不会挂</p>
-<h2 id="LSTM学习"><a href="#LSTM学习" class="headerlink" title="LSTM学习"></a>LSTM学习</h2><p><a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a></p>
-<h2 id="kaggle竞赛事件-——-计划下周日前完成学习"><a href="#kaggle竞赛事件-——-计划下周日前完成学习" class="headerlink" title="kaggle竞赛事件  ——  计划下周日前完成学习"></a>kaggle竞赛事件  ——  计划下周日前完成学习</h2><p><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting">https://www.kaggle.com/c/web-traffic-time-series-forecasting</a></p>
-<h2 id="找找英文课听"><a href="#找找英文课听" class="headerlink" title="找找英文课听"></a>找找英文课听</h2><p>为了summer workshop 不会在语言关上被 ko  555 ~</p>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn4</title>
-    <url>/2022/03/14/learn4/</url>
-    <content><![CDATA[<h1 id="learn4"><a href="#learn4" class="headerlink" title="learn4"></a>learn4</h1><p>学习了 GNN 的基本原理</p>
-<p>发现宝藏网站</p>
-<p><a href="https://distill.pub/">Distill — Latest articles about machine learning</a></p>
-<p>好视频</p>
-<p><a href="https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0">如何读论文【论文精读】_哔哩哔哩_bilibili</a></p>
-]]></content>
-      <categories>
-        <category>ML</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn？(忘了)</title>
-    <url>/2022/04/02/learn4-2/</url>
-    <content><![CDATA[<h1 id="很久没记录了"><a href="#很久没记录了" class="headerlink" title="很久没记录了"></a>很久没记录了</h1><p>最近比较开心的是被nus的 summer workshop 录取了</p>
-<p>记录一手周末的学习记录</p>
-<h2 id="work1"><a href="#work1" class="headerlink" title="work1"></a>work1</h2><p>先学一手datawhale的异常检测 </p>
-<p><a href="https://www.bilibili.com/video/BV1tV411b7Ck">https://www.bilibili.com/video/BV1tV411b7Ck</a></p>
-<h3 id="COPOD方法"><a href="#COPOD方法" class="headerlink" title="COPOD方法"></a>COPOD方法</h3><p><a href="https://zhuanlan.zhihu.com/p/338189299">https://zhuanlan.zhihu.com/p/338189299</a></p>
-<h2 id="work2"><a href="#work2" class="headerlink" title="work2"></a>work2</h2><p>李宏毅的异常检测部分</p>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn6~8</title>
-    <url>/2022/03/17/learn6-8/</url>
-    <content><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
-<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
-<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul>
-<li><p>学会了 auto AI 2333</p>
-</li>
-<li><p>实践了一丢丢xss</p>
-</li>
-<li><p>看了部分动手学深度学习</p>
-</li>
-<li><p>读了点论文</p>
-</li>
-</ul>
-<h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>
-<h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩misc </p>
-<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
-<p>集成学习 实践一下</p>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>learn6~8</title>
-    <url>/2022/03/17/learn5&amp;6/</url>
-    <content><![CDATA[<h1 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h1><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
-<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
-<h2 id="done"><a href="#done" class="headerlink" title="done"></a>done</h2><ul>
-<li><p>实践了一丢丢xss</p>
-</li>
-<li><p>看了部分动手学深度学习</p>
-</li>
-<li><p>读了点论文</p>
-</li>
-</ul>
-<h2 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h2><p>AST injection 没完全搞明白 。。。失败</p>
-<h2 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h2><p>复现俩python misc</p>
-<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>one-xss-challenge</title>
     <url>/2022/03/11/one-xss-challenge/</url>
     <content><![CDATA[<h1 id="一个xss挑战"><a href="#一个xss挑战" class="headerlink" title="一个xss挑战"></a>一个xss挑战</h1><h3 id="source-code"><a href="#source-code" class="headerlink" title="source code"></a>source code</h3><p>直接访问 ./passenge  看下源码</p>
@@ -331,31 +182,6 @@
       </tags>
   </entry>
   <entry>
-    <title>learn31</title>
-    <url>/2022/04/11/learn31/</url>
-    <content><![CDATA[<h1 id="learn31"><a href="#learn31" class="headerlink" title="learn31"></a>learn31</h1><p>小总结一下</p>
-<p>最近上网课 实在是懈怠了 不知不觉 learn系列已经来到了31   每天坚持记录真的很难 </p>
-<p>从现在开始   必须坚持每两天记录一次(at least)</p>
-<h3 id="总结一下-4-10-4-11-周末"><a href="#总结一下-4-10-4-11-周末" class="headerlink" title="总结一下 4.10 ~ 4.11 周末"></a>总结一下 4.10 ~ 4.11 周末</h3><ul>
-<li>看了PlaidCTF 没输出（ 周一 也就是今天 要复现一下 写成blog</li>
-<li>srtp申请 仍在进行中</li>
-<li>完成了几个作业</li>
-</ul>
-<h3 id="goals-4-11"><a href="#goals-4-11" class="headerlink" title="goals 4.11"></a>goals 4.11</h3><ul>
-<li>开始学习 cs107e</li>
-<li>复现PlaidCTF</li>
-<li>数值分析作业 + 计组实验预习</li>
-<li>听一节汇编的课</li>
-</ul>
-]]></content>
-      <categories>
-        <category>learn365</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MidnightCTF2022</title>
     <url>/2022/04/11/MidnightCTF2022/</url>
     <content><![CDATA[<h1 id="MidSunCTF"><a href="#MidSunCTF" class="headerlink" title="MidSunCTF"></a>MidSunCTF</h1><p>啥都没做出来  感觉这学期水平没啥长进  主要是精力有点分散了  不过路还很长 加油~</p>
@@ -405,6 +231,101 @@
       </categories>
       <tags>
         <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>learn-1</title>
+    <url>/2022/03/11/learn-month1/</url>
+    <content><![CDATA[<h1 id="learn-month1"><a href="#learn-month1" class="headerlink" title="learn-month1"></a>learn-month1</h1><h2 id="learn-day1"><a href="#learn-day1" class="headerlink" title="learn-day1"></a>learn-day1</h2><blockquote>
+<p>本文为learn365第一篇 记录每日学习内容</p>
+</blockquote>
+<h3 id="done"><a href="#done" class="headerlink" title="done"></a>done</h3><p><a href="https://github.com/godrun666/team-learning-rl">godrun666/team-learning-rl (github.com)</a></p>
+<p>datawhale的开源强化学习学习计划</p>
+<p>15day</p>
+<ul>
+<li>今天开始Task1 目前把书读了 明天把code敲一敲</li>
+<li>读了一篇论文的一部分 继续学习 attention</li>
+<li>看一个xss （晚上搞   –<a href="https://terjanq.medium.com/how-to-solve-a-challenge-from-intigrity-in-under-60-minutes-6843ba9b9552">How to solve an XSS challenge from Intigriti in under 60 minutes | by terjanq | Medium</a></li>
+<li>雅思单词+ted*1</li>
+</ul>
+<blockquote>
+<h6 id="Task1：强化学习基础（2天）"><a href="#Task1：强化学习基础（2天）" class="headerlink" title="Task1：强化学习基础（2天）"></a>Task1：强化学习基础（2天）</h6><ul>
+<li>了解强化学习的基本概念；</li>
+<li>掌握 Gym 的使用；</li>
+<li>对应教程的第一章。</li>
+</ul>
+</blockquote>
+<p>由于要参加datawhale的15day计划 可能强化学习要拖到三月底到四月初来解决了</p>
+<h3 id="记录一些杂事"><a href="#记录一些杂事" class="headerlink" title="记录一些杂事"></a>记录一些杂事</h3><ul>
+<li>和导师谈了谈 确定了srtp的方向 准备入手了</li>
+<li>明天有UTCTF 看看web题目</li>
+<li>论文读起来很吃力 要想办法解决</li>
+</ul>
+<h2 id="learn2-amp-3"><a href="#learn2-amp-3" class="headerlink" title="learn2&amp;3"></a>learn2&amp;3</h2><p>周末没干啥大事 新到了手柄沉迷了一下 (鬼泣5真香)  看了看UTCTF的web</p>
+<p>摸鱼 0.0</p>
+<h2 id="learn4"><a href="#learn4" class="headerlink" title="learn4"></a>learn4</h2><p>学习了 GNN 的基本原理</p>
+<p>发现宝藏网站</p>
+<p><a href="https://distill.pub/">Distill — Latest articles about machine learning</a></p>
+<p>好视频</p>
+<p><a href="https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0">如何读论文【论文精读】_哔哩哔哩_bilibili</a></p>
+<h2 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h2><h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
+<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
+<h3 id="done-1"><a href="#done-1" class="headerlink" title="done"></a>done</h3><ul>
+<li><p>实践了一丢丢xss</p>
+</li>
+<li><p>看了部分动手学深度学习</p>
+</li>
+<li><p>读了点论文</p>
+</li>
+</ul>
+<h3 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h3><p>AST injection 没完全搞明白 。。。失败</p>
+<h2 id="learn6-8"><a href="#learn6-8" class="headerlink" title="learn6~8"></a>learn6~8</h2><h3 id="source-1"><a href="#source-1" class="headerlink" title="source"></a>source</h3><p><a href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
+<p><a href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
+<h3 id="done-2"><a href="#done-2" class="headerlink" title="done"></a>done</h3><ul>
+<li><p>学会了 auto AI 2333</p>
+</li>
+<li><p>实践了一丢丢xss</p>
+</li>
+<li><p>看了部分动手学深度学习</p>
+</li>
+<li><p>读了点论文</p>
+</li>
+</ul>
+<h3 id="fail-to-do-1"><a href="#fail-to-do-1" class="headerlink" title="fail to do"></a>fail to do</h3><p>AST injection 没完全搞明白 。。。失败</p>
+<h3 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h3><p>复现俩misc </p>
+<p><a href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
+<p>集成学习 实践一下</p>
+<h2 id="很久没记录了-4-2"><a href="#很久没记录了-4-2" class="headerlink" title="很久没记录了 4.2"></a>很久没记录了 4.2</h2><p>最近比较开心的是被nus的 summer workshop 录取了</p>
+<p>记录一手周末的学习记录</p>
+<h2 id="work1"><a href="#work1" class="headerlink" title="work1"></a>work1</h2><p>先学一手datawhale的异常检测 </p>
+<p><a href="https://www.bilibili.com/video/BV1tV411b7Ck">https://www.bilibili.com/video/BV1tV411b7Ck</a></p>
+<h3 id="COPOD方法"><a href="#COPOD方法" class="headerlink" title="COPOD方法"></a>COPOD方法</h3><p><a href="https://zhuanlan.zhihu.com/p/338189299">https://zhuanlan.zhihu.com/p/338189299</a></p>
+<h2 id="work2"><a href="#work2" class="headerlink" title="work2"></a>work2</h2><p>李宏毅的异常检测部分</p>
+<h2 id="learn23-记录一下周末的学习"><a href="#learn23-记录一下周末的学习" class="headerlink" title="learn23-记录一下周末的学习"></a>learn23-记录一下周末的学习</h2><h3 id="midsunctf"><a href="#midsunctf" class="headerlink" title="midsunctf"></a>midsunctf</h3><p>看了一题web 没做出来（失败的我 可恶啊</p>
+<h3 id="srtp"><a href="#srtp" class="headerlink" title="srtp"></a>srtp</h3><p>正在立项 讨论ing 希望不会挂</p>
+<h3 id="LSTM学习"><a href="#LSTM学习" class="headerlink" title="LSTM学习"></a>LSTM学习</h3><p><a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a></p>
+<h3 id="kaggle竞赛事件-——-计划下周日前完成学习"><a href="#kaggle竞赛事件-——-计划下周日前完成学习" class="headerlink" title="kaggle竞赛事件  ——  计划下周日前完成学习"></a>kaggle竞赛事件  ——  计划下周日前完成学习</h3><p><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting">https://www.kaggle.com/c/web-traffic-time-series-forecasting</a></p>
+<h3 id="找找英文课听"><a href="#找找英文课听" class="headerlink" title="找找英文课听"></a>找找英文课听</h3><p>为了summer workshop 不会在语言关上被 ko  555 ~</p>
+<h2 id="learn31"><a href="#learn31" class="headerlink" title="learn31"></a>learn31</h2><p>小总结一下</p>
+<p>最近上网课 实在是懈怠了 不知不觉 learn系列已经来到了31   每天坚持记录真的很难 </p>
+<p>从现在开始   必须坚持每两天记录一次(at least)</p>
+<h3 id="总结一下-4-10-4-11-周末"><a href="#总结一下-4-10-4-11-周末" class="headerlink" title="总结一下 4.10 ~ 4.11 周末"></a>总结一下 4.10 ~ 4.11 周末</h3><ul>
+<li>看了PlaidCTF 没输出（ 周一 也就是今天 要复现一下 写成blog</li>
+<li>srtp申请 仍在进行中</li>
+<li>完成了几个作业</li>
+</ul>
+<h3 id="goals-4-11"><a href="#goals-4-11" class="headerlink" title="goals 4.11"></a>goals 4.11</h3><ul>
+<li>开始学习 cs107e</li>
+<li>复现PlaidCTF</li>
+<li>数值分析作业 + 计组实验预习</li>
+<li>听一节汇编的课</li>
+</ul>
+]]></content>
+      <categories>
+        <category>learn365</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
       </tags>
   </entry>
 </search>
