@@ -20,16 +20,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本文总结了两种常见的 xsleak 手法">
+    <meta name="description" content="本文总结了两种常见的 xsleak 手法 （ 还没写完">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xsleak中的两种利用方式 -- HTTP cache &amp; object">
 <meta property="og:url" content="http://example.com/2022/04/14/two-HIT-way-of-xsleak/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="本文总结了两种常见的 xsleak 手法">
+<meta property="og:description" content="本文总结了两种常见的 xsleak 手法 （ 还没写完">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/307ef05cffb44b4a935cd53108ff92ef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAYjF1ZTBjZWFu,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="article:published_time" content="2022-04-14T08:27:48.000Z">
-<meta property="article:modified_time" content="2022-04-14T09:46:33.015Z">
+<meta property="article:modified_time" content="2022-04-14T09:55:12.060Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="xss">
 <meta name="twitter:card" content="summary">
@@ -93,9 +93,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">9</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">10</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">14</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -178,7 +178,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -264,7 +264,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-04-14 16:27:48 / Modified: 17:46:33" itemprop="dateCreated datePublished" datetime="2022-04-14T16:27:48+08:00">2022-04-14</time>
+      <time title="Created: 2022-04-14 16:27:48 / Modified: 17:55:12" itemprop="dateCreated datePublished" datetime="2022-04-14T16:27:48+08:00">2022-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,7 +286,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>本文总结了两种常见的 xsleak 手法</p>
+        <p>本文总结了两种常见的 xsleak 手法 （ 还没写完 </p>
 <span id="more"></span>
 
 <h1 id="HTTP-cache-in-xsleak"><a href="#HTTP-cache-in-xsleak" class="headerlink" title="HTTP cache in xsleak"></a>HTTP cache in xsleak</h1><p>在之前的LINECTF2022 题目  <a target="_blank" rel="noopener" href="https://godrun666.github.io/2022/04/12/LINECTF2022/">title todo</a>  中利用了 nginx 的 cache 来进行 xsleak</p>

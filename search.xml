@@ -394,11 +394,11 @@
 </tr>
 <tr>
 <td>xsleak写一篇文章</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>pwn.college 第二course 拓展阅读</td>
-<td></td>
+<td>Y</td>
 </tr>
 </tbody></table>
 <h2 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h2><table>
@@ -569,7 +569,7 @@
   <entry>
     <title>xsleak中的两种利用方式 -- HTTP cache &amp; object</title>
     <url>/2022/04/14/two-HIT-way-of-xsleak/</url>
-    <content><![CDATA[<p>本文总结了两种常见的 xsleak 手法</p>
+    <content><![CDATA[<p>本文总结了两种常见的 xsleak 手法 （ 还没写完 </p>
 <span id="more"></span>
 
 <h1 id="HTTP-cache-in-xsleak"><a href="#HTTP-cache-in-xsleak" class="headerlink" title="HTTP cache in xsleak"></a>HTTP cache in xsleak</h1><p>在之前的LINECTF2022 题目  <a href="https://godrun666.github.io/2022/04/12/LINECTF2022/">title todo</a>  中利用了 nginx 的 cache 来进行 xsleak</p>
@@ -636,6 +636,20 @@
       </categories>
       <tags>
         <tag>xss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端tricks</title>
+    <url>/2022/04/14/%E5%89%8D%E7%AB%AFtricks/</url>
+    <content><![CDATA[<p>发现一些值得研究的知识 先开个坑</p>
+<p><a href="https://blog.huli.tw/2022/04/14/javascript-string-regexp-magic/">https://blog.huli.tw/2022/04/14/javascript-string-regexp-magic/</a></p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>Front-end</tag>
       </tags>
   </entry>
 </search>
