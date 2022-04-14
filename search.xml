@@ -226,7 +226,7 @@
       </tags>
   </entry>
   <entry>
-    <title>learn-1</title>
+    <title>learn-month1</title>
     <url>/2022/03/11/learn-month1/</url>
     <content><![CDATA[<h1 id="learn-month1"><a href="#learn-month1" class="headerlink" title="learn-month1"></a>learn-month1</h1><p>第一月的学习记录  整合过来</p>
 <span id="more"></span>
@@ -419,6 +419,16 @@
 <td>4.18之前</td>
 <td></td>
 </tr>
+<tr>
+<td align="left">kaggle流量预测</td>
+<td>五一之前</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td></td>
+</tr>
 </tbody></table>
 ]]></content>
       <categories>
@@ -554,6 +564,78 @@
       </categories>
       <tags>
         <tag>xsleak</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xsleak中的两种利用方式 -- HTTP cache &amp; object</title>
+    <url>/2022/04/14/two-HIT-way-of-xsleak/</url>
+    <content><![CDATA[<p>本文总结了两种常见的 xsleak 手法</p>
+<span id="more"></span>
+
+<h1 id="HTTP-cache-in-xsleak"><a href="#HTTP-cache-in-xsleak" class="headerlink" title="HTTP cache in xsleak"></a>HTTP cache in xsleak</h1><p>在之前的LINECTF2022 题目  <a href="https://godrun666.github.io/2022/04/12/LINECTF2022/">title todo</a>  中利用了 nginx 的 cache 来进行 xsleak</p>
+<p>关于 cache 在 timing 上的攻击 我曾在去年UIUCTF2021遇到过 虽然是非预期</p>
+<p>今天我们来深入探讨一下这类方法</p>
+<p>但我们知道基于 timing 的攻击是不稳定的 在实际场景中很少时候是可行的</p>
+<p>我们谈到另一种攻击 <a href="https://github.com/xsleaks/xsleaks/wiki/Browser-Side-Channels#cache-and-error-events">Browser Side Channels · xsleaks/xsleaks Wiki (github.com)</a></p>
+<p>这种利用方式需要三个条件</p>
+<blockquote>
+<ol>
+<li>Delete the cache for a specific resource (or list of resources).</li>
+<li>Force the browser to render a website (navigation, or <a href="https://developers.google.com/web/updates/2018/07/nostate-prefetch">prerender</a>).</li>
+<li>Check if the browser cached the resource deleted at (1)</li>
+</ol>
+</blockquote>
+<p>(可以先了解一下prirender <a href="https://zhuanlan.zhihu.com/p/56576382">Prerender（JavaScript 网站静态化） - 知乎 (zhihu.com)</a></p>
+<blockquote>
+<p>想实现这个trick你需要做两件事</p>
+<ol>
+<li>Delete the HTTP Cache for a specific resource or URL</li>
+<li>Query the HTTP Cache to see if the browser cached it</li>
+</ol>
+</blockquote>
+<p>关于如何删除 cache</p>
+<p><a href="https://www.mnot.net/blog/2006/02/18/invalidation">Invalidating Caches with POST (mnot.net)</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/cache">Request.cache - Web APIs | MDN (mozilla.org)</a> 中的 “reload” 来制造一个错误 （ 看下面的 Error Events</p>
+<img src="https://img-blog.csdnimg.cn/307ef05cffb44b4a935cd53108ff92ef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAYjF1ZTBjZWFu,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" style="zoom: 67%;" />
+
+<h2 id="Cache-Probing"><a href="#Cache-Probing" class="headerlink" title="Cache Probing"></a>Cache Probing</h2><p><a href="https://xsleaks.dev/docs/attacks/cache-probing/#cache-probing-with-error-events">Cache Probing | XS-Leaks Wiki (xsleaks.dev)</a></p>
+<p>cache probing 旨在探测是否有特定的 resource （image, script, stylesheet, etc）被缓存在浏览器中。</p>
+<h3 id="Error-Events"><a href="#Error-Events" class="headerlink" title="Error Events"></a>Error Events</h3><p>demo</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">probeError</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.<span class="property">src</span> = url;</span><br><span class="line">  script.<span class="property">onload</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Onload event triggered&#x27;</span>);</span><br><span class="line">  script.<span class="property">onerror</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Error event triggered&#x27;</span>);</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">appendChild</span>(script);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// because google.com/404 returns HTTP 404, the script triggers error event</span></span><br><span class="line"><span class="title function_">probeError</span>(<span class="string">&#x27;https://google.com/404&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// because google.com returns HTTP 200, the script triggers onload event</span></span><br><span class="line"><span class="title function_">probeError</span>(<span class="string">&#x27;https://google.com/&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>use overlong http</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;iframe id=f&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">(async ()=&gt;&#123;</span><br><span class="line">  let url = &#x27;https://otherwebsite.com/logo.jpg&#x27;;</span><br><span class="line">  // Evict this from the cache (force an error).</span><br><span class="line">  history.replaceState(1,1,Array(16e3));</span><br><span class="line">  await fetch(url, &#123;cache: &#x27;reload&#x27;, mode: &#x27;no-cors&#x27;&#125;);</span><br><span class="line">  // Load the other page (you can also use &lt;link rel=prerender&gt;)</span><br><span class="line">  // Note that index.html must have &lt;img src=logo.jpg&gt;</span><br><span class="line">  history.replaceState(1,1,&#x27;/&#x27;);</span><br><span class="line">  f.src = &#x27;http://otherwebsite.com/index.html&#x27;;</span><br><span class="line">  await new Promise(r=&gt;&#123;f.onload=r;&#125;);</span><br><span class="line">  // Check if the image was loaded.</span><br><span class="line">  // For better accuracy, use a service worker with &#123;cache: &#x27;force-cache&#x27;&#125;</span><br><span class="line">  history.replaceState(1,1,Array(16e3));</span><br><span class="line">  let img = new Image();</span><br><span class="line">  img.src = url;</span><br><span class="line">  try &#123;</span><br><span class="line">    await new Promise((r, e)=&gt;&#123;img.onerror=e;img.onload=r;&#125;);</span><br><span class="line">    alert(&#x27;Resource was cached&#x27;); // Otherwise it would have errored out</span><br><span class="line">  &#125; catch(e) &#123;</span><br><span class="line">    alert(&#x27;Resource was not cached&#x27;); // Otherwise it would have loaded</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="defend"><a href="#defend" class="headerlink" title="defend"></a>defend</h2><blockquote>
+<ul>
+<li>You can just disable HTTP cache. This has some bandwidth and performance consequences, though, so maybe don’t do that.</li>
+<li>You can add CSRF tokens to everything. This breaks all bookmarks that your users might have set, so maybe don’t do that.</li>
+<li>You can use <a href="https://www.owasp.org/index.php/SameSite">SameSite=strict</a> cookies to authenticate users. This is actually quite surprisingly <a href="https://caniuse.com/#feat=same-site-cookie-attribute">very well supported across browsers</a>, and doesn’t break bookmarks. Note, however, that there are some known bypasses (eg, if the site has some types of open redirects, as well as browser implementation bugs).</li>
+<li>You can use <a href="https://github.com/whatwg/html/issues/3740">COOP</a> to slow down attackers (so every attack requires a click). Note however that it is only implemented in Firefox, and even in Firefox is behind a pref (browser.tabs.remote.useCrossOriginOpenerPolicy), so test it out and send feedback to Firefox =).</li>
+<li>You can do all the crazy things that Facebook apparently tries to do to protect against this! Or take a look at <a href="https://github.com/xsleaks/xsleaks/wiki/Defenses">this page</a> with some more ideas.</li>
+</ul>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[sirdarckcat: <a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html">🌐💧💥] HTTP Cache Cross-Site Leaks</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>xss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>window.open 相关知识</title>
+    <url>/2022/04/14/window-open/</url>
+    <content><![CDATA[<p>先开个天坑 过几天补上</p>
+<p>收获大佬博客 +1</p>
+<p><a href="https://blog.huli.tw/2022/04/07/iframe-and-window-open/">https://blog.huli.tw/2022/04/07/iframe-and-window-open/</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>xss</tag>
       </tags>
   </entry>
 </search>
