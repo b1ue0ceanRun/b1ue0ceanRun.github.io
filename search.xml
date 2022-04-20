@@ -382,15 +382,15 @@
 </thead>
 <tbody><tr>
 <td>结束汇编寄存器学习</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>datawhale数据结构</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>预习计组实验</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>xsleak写一篇文章</td>
@@ -401,7 +401,7 @@
 <td>Y</td>
 </tr>
 </tbody></table>
-<h2 id="day56-4-154-16"><a href="#day56-4-154-16" class="headerlink" title="day56  4.154.16"></a>day5<del>6  4.15</del>4.16</h2><table>
+<h2 id="day56-4-164-17"><a href="#day56-4-164-17" class="headerlink" title="day56  4.164.17"></a>day5<del>6  4.16</del>4.17</h2><table>
 <thead>
 <tr>
 <th>mission</th>
@@ -417,7 +417,7 @@
 <td>Y</td>
 </tr>
 </tbody></table>
-<h2 id="day7-4-17"><a href="#day7-4-17" class="headerlink" title="day7 4.17"></a>day7 4.17</h2><table>
+<h2 id="day7-4-18"><a href="#day7-4-18" class="headerlink" title="day7 4.18"></a>day7 4.18</h2><table>
 <thead>
 <tr>
 <th>mission</th>
@@ -431,6 +431,47 @@
 <tr>
 <td>听一节pwn课</td>
 <td>Y</td>
+</tr>
+</tbody></table>
+<h2 id="day8-4-19"><a href="#day8-4-19" class="headerlink" title="day8 4.19"></a>day8 4.19</h2><p>最近压力有点大 不能玩了 55555</p>
+<table>
+<thead>
+<tr>
+<th>mission</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>听一节星盟的pwn课</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>听完pwn college的二部分所有的课</td>
+<td>N</td>
+</tr>
+<tr>
+<td>复现比赛</td>
+<td>N</td>
+</tr>
+</tbody></table>
+<h2 id="day9-4-20"><a href="#day9-4-20" class="headerlink" title="day9 4.20"></a>day9 4.20</h2><table>
+<thead>
+<tr>
+<th>misssion</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>听一节星盟的pwn课</td>
+<td></td>
+</tr>
+<tr>
+<td>听完pwn college的二部分所有的课</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h2><table>
@@ -457,8 +498,18 @@
 <td></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td align="left">cs107E</td>
+<td>放假之前</td>
 <td></td>
+</tr>
+<tr>
+<td align="left">星盟pwn教程</td>
+<td>放假之前</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">pwn.college</td>
+<td>暑假</td>
 <td></td>
 </tr>
 </tbody></table>
