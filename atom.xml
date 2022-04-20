@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-18T15:44:24.174Z</updated>
+  <updated>2022-04-20T16:06:59.039Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SOME-attack</title>
+    <link href="http://example.com/2022/04/20/SOME-attack/"/>
+    <id>http://example.com/2022/04/20/SOME-attack/</id>
+    <published>2022-04-20T15:36:27.000Z</published>
+    <updated>2022-04-20T16:06:59.039Z</updated>
+    
+    <content type="html"><![CDATA[<p>先开一个天坑</p><span id="more"></span><p><a href="https://lightless.me/archives/same-origin-method-exection.html#_label0">https://lightless.me/archives/same-origin-method-exection.html#_label0</a></p><p><a href="https://xz.aliyun.com/t/8075">https://xz.aliyun.com/t/8075</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;先开一个天坑&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>starCTF2022</title>
