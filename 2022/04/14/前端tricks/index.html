@@ -28,7 +28,7 @@
 <meta property="og:description" content="发现一些值得研究的知识 先开个坑 https:&#x2F;&#x2F;blog.huli.tw&#x2F;2022&#x2F;04&#x2F;14&#x2F;javascript-string-regexp-magic&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-14T12:57:32.000Z">
-<meta property="article:modified_time" content="2022-04-14T12:58:28.053Z">
+<meta property="article:modified_time" content="2022-04-20T14:42:29.792Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="Front-end">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -150,6 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%981"><span class="nav-number">1.</span> <span class="nav-text">挑战1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%982"><span class="nav-number">2.</span> <span class="nav-text">挑战2</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -259,9 +260,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-04-14 20:57:32 / Modified: 20:58:28" itemprop="dateCreated datePublished" datetime="2022-04-14T20:57:32+08:00">2022-04-14</time>
+      <time title="Created: 2022-04-14 20:57:32" itemprop="dateCreated datePublished" datetime="2022-04-14T20:57:32+08:00">2022-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-04-20 22:42:29" itemprop="dateModified" datetime="2022-04-20T22:42:29+08:00">2022-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,6 +293,33 @@
         <p>发现一些值得研究的知识 先开个坑</p>
 <p><a target="_blank" rel="noopener" href="https://blog.huli.tw/2022/04/14/javascript-string-regexp-magic/">https://blog.huli.tw/2022/04/14/javascript-string-regexp-magic/</a></p>
 <span id="more"></span>
+
+<h2 id="挑战1"><a href="#挑战1" class="headerlink" title="挑战1"></a>挑战1</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regexp = <span class="regexp">/huli/g</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;blog.huli.tw&#x27;</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&#x27;example.huli.tw&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(regexp.<span class="title function_">test</span>(str)) <span class="comment">// ???</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(regexp.<span class="title function_">test</span>(str2)) <span class="comment">// ???</span></span><br></pre></td></tr></table></figure>
+
+<p><code>test()</code>方法执行一个检索，用来查看正则表达式与指定的字符串是否匹配。返回<code>true</code>或<code>false</code>。</p>
+<p>看上去会完全一样的 结果却大跌眼镜</p>
+<p>不看答案先思考一下为什么</p>
+<p>感觉可能要看一下源码？</p>
+<p>看一下文档</p>
+<blockquote>
+<p>JavaScript <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"><code>RegExp</code></a> objects are <strong>stateful</strong> when they have the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/global"><code>global</code></a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/sticky"><code>sticky</code></a> flags set (e.g. <code>/foo/g</code> or <code>/foo/y</code>). They store a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex"><code>lastIndex</code></a> from the previous match. Using this internally, <code>test()</code> can be used to iterate over multiple matches in a string of text (with capture groups).</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;table football&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> regex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&#x27;foo*&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> globalRegex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&#x27;foo*&#x27;</span>, <span class="string">&#x27;g&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(regex.<span class="title function_">test</span>(str));</span><br><span class="line"><span class="comment">// expected output: true</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(globalRegex.<span class="property">lastIndex</span>);</span><br><span class="line"><span class="comment">// expected output: 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(globalRegex.<span class="title function_">test</span>(str));</span><br><span class="line"><span class="comment">// expected output: true</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(globalRegex.<span class="property">lastIndex</span>);</span><br><span class="line"><span class="comment">// expected output: 9</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(globalRegex.<span class="title function_">test</span>(str));  <span class="comment">//从第九个位置开始找 所以找不到 emm</span></span><br><span class="line"><span class="comment">// expected output: false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">true</span></span><br><span class="line">&gt; <span class="number">0</span></span><br><span class="line">&gt; <span class="literal">true</span></span><br><span class="line">&gt; <span class="number">9</span></span><br><span class="line">&gt; <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>interesting！</p>
+<h2 id="挑战2"><a href="#挑战2" class="headerlink" title="挑战2"></a>挑战2</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> password = <span class="title function_">prompt</span>(<span class="string">&#x27;input password&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> (!<span class="regexp">/^[a-zA-Z0-9]+$/</span>.<span class="title function_">test</span>(password)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;invalid password&#x27;</span>)</span><br><span class="line">    password = <span class="title function_">prompt</span>(<span class="string">&#x27;input password&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">password = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="comment">// 如果可以在底下動態執行程式碼，拿得到 password 嗎？</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="title function_">prompt</span>(<span class="string">&#x27;try to get password&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>利用挑战1的stateful特性有可能吗？</p>
+<p>怎么利用？用来爆破？差太多条件</p>
+<p>要利用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/input">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/input</a></p>
+<p><code>Regex.input</code> 函数</p>
+<p>作者的答案 555 没好好打dicectf</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/hello/.<span class="title function_">test</span>(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">RegExp</span>.<span class="property">input</span>) <span class="comment">// hello world</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">RegExp</span>.<span class="property">$_</span>) <span class="comment">// 同上</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
