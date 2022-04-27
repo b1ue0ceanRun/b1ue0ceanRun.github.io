@@ -20,25 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="我就是我，人间不一样的烟火">
-<meta property="og:type" content="website">
-<meta property="og:title" content="b1ue0cean&#39;s   blog">
-<meta property="og:url" content="http://example.com/archives/2022/04/index.html">
+    <meta name="description" content="SSTI相关知识总结第一次遇到 SSTi 的题目是在去年安恒三月赛中 那也是我第一次打CTF比赛？不知不觉一年已经过去了 不同时期学习知识当然要有不同的体悟 现在重新总结一下ssti 相关知识 希望可以得到新的体悟 原理啥的这里我就不讨论了 网上介绍的一大堆 重点关注一下 payload 和 绕过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSTI总结">
+<meta property="og:url" content="http://example.com/2022/04/25/SSTI-learn/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="我就是我，人间不一样的烟火">
+<meta property="og:description" content="SSTI相关知识总结第一次遇到 SSTi 的题目是在去年安恒三月赛中 那也是我第一次打CTF比赛？不知不觉一年已经过去了 不同时期学习知识当然要有不同的体悟 现在重新总结一下ssti 相关知识 希望可以得到新的体悟 原理啥的这里我就不讨论了 网上介绍的一大堆 重点关注一下 payload 和 绕过">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-25T02:01:06.000Z">
+<meta property="article:modified_time" content="2022-04-25T02:13:13.642Z">
 <meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="SSTI">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/2022/04/">
+<link rel="canonical" href="http://example.com/2022/04/25/SSTI-learn/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/2022/04/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/04/25/SSTI-learn/","path":"2022/04/25/SSTI-learn/","title":"SSTI总结"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | b1ue0cean's   blog</title>
+<title>SSTI总结 | b1ue0cean's   blog</title>
   
 
 
@@ -69,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">b1ue0cean's   blog</h1>
+      <p class="site-title">b1ue0cean's   blog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
@@ -134,7 +137,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -147,6 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSTI%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">SSTI相关知识总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -217,233 +221,154 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 22 posts in total. Keep on posting.</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/SSTI-learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SSTI总结 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SSTI总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="Created: 2022-04-25 10:01:06 / Modified: 10:13:13" itemprop="dateCreated datePublished" datetime="2022-04-25T10:01:06+08:00">2022-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="SSTI相关知识总结"><a href="#SSTI相关知识总结" class="headerlink" title="SSTI相关知识总结"></a>SSTI相关知识总结</h1><p>第一次遇到 SSTi 的题目是在去年安恒三月赛中 那也是我第一次打CTF比赛？不知不觉一年已经过去了</p>
+<p>不同时期学习知识当然要有不同的体悟</p>
+<p>现在重新总结一下ssti 相关知识 希望可以得到新的体悟</p>
+<p>原理啥的这里我就不讨论了 网上介绍的一大堆</p>
+<p>重点关注一下 payload 和 绕过</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-27T15:25:37+08:00"
-              content="2022-04-27">
-          04-27
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/04/25/SSTI-learn/" title="SSTI总结">http://example.com/2022/04/25/SSTI-learn/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/27/MRCTF2022/" itemprop="url">
-            <span itemprop="name">MRCTF2022</span>
-          </a>
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
       </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-27T15:19:33+08:00"
-              content="2022-04-27">
-          04-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/27/xss-game/" itemprop="url">
-            <span itemprop="name">xss-game</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-25T10:01:06+08:00"
-              content="2022-04-25">
-          04-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/25/SSTI-learn/" itemprop="url">
-            <span itemprop="name">SSTI总结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-22T00:41:00+08:00"
-              content="2022-04-22">
-          04-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/22/iframe-learn/" itemprop="url">
-            <span itemprop="name">iframe相关知识总结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-20T23:36:27+08:00"
-              content="2022-04-20">
-          04-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/20/SOME-attack/" itemprop="url">
-            <span itemprop="name">SOME-attack</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-18T23:44:24+08:00"
-              content="2022-04-18">
-          04-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/18/starCTF2022/" itemprop="url">
-            <span itemprop="name">starCTF2022</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-18T23:44:14+08:00"
-              content="2022-04-18">
-          04-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/18/crewctf2022/" itemprop="url">
-            <span itemprop="name">crewctf2022</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-18T08:40:36+08:00"
-              content="2022-04-18">
-          04-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/18/DCTF2022/" itemprop="url">
-            <span itemprop="name">DCTF2022</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-14T20:57:32+08:00"
-              content="2022-04-14">
-          04-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/14/%E5%89%8D%E7%AB%AFtricks/" itemprop="url">
-            <span itemprop="name">前端tricks</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-04-14T17:52:44+08:00"
-              content="2022-04-14">
-          04-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/04/14/window-open/" itemprop="url">
-            <span itemprop="name">window.open 相关知识</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2022/04/page/2/">2</a><a class="extend next" rel="next" href="/archives/2022/04/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+</div>
 
+          <div class="post-tags">
+              <a href="/tags/SSTI/" rel="tag"># SSTI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/22/iframe-learn/" rel="prev" title="iframe相关知识总结">
+                  <i class="fa fa-chevron-left"></i> iframe相关知识总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/27/xss-game/" rel="next" title="xss-game">
+                  xss-game <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -473,7 +398,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"4640e8fc60b0daa5ab763297dafaad77"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a6d675f56dfd2ba126b7feefc7c4d2f4"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

