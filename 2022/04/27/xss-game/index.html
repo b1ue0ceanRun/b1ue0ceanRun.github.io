@@ -28,7 +28,7 @@
 <meta property="og:description" content="https:&#x2F;&#x2F;xss.pwnfunction.com&#x2F; 新开一个坑 有空玩玩">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-27T07:19:33.000Z">
-<meta property="article:modified_time" content="2022-04-27T07:22:34.021Z">
+<meta property="article:modified_time" content="2022-04-29T13:47:30.526Z">
 <meta property="article:author" content="b1ue0cean">
 <meta name="twitter:card" content="summary">
 
@@ -136,7 +136,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -149,6 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Area-51"><span class="nav-number">1.</span> <span class="nav-text">Area 51</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#inference"><span class="nav-number">1.1.</span> <span class="nav-text">inference</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -258,9 +259,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-04-27 15:19:33 / Modified: 15:22:34" itemprop="dateCreated datePublished" datetime="2022-04-27T15:19:33+08:00">2022-04-27</time>
+      <time title="Created: 2022-04-27 15:19:33" itemprop="dateCreated datePublished" datetime="2022-04-27T15:19:33+08:00">2022-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-04-29 21:47:30" itemprop="dateModified" datetime="2022-04-29T21:47:30+08:00">2022-04-29</time>
     </span>
 
   
@@ -277,7 +284,19 @@
 <p>新开一个坑 有空玩玩</p>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://blog.zeddyu.info/2020/02/11/xssgame/#introduction">https://blog.zeddyu.info/2020/02/11/xssgame/#introduction</a></p>
+
+
+<h1 id="Area-51"><a href="#Area-51" class="headerlink" title="Area 51"></a>Area 51</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Challenge --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;pwnme&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> input = (<span class="keyword">new</span> <span class="title function_">URL</span>(location).<span class="property">searchParams</span>.<span class="title function_">get</span>(<span class="string">&#x27;debug&#x27;</span>) || <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="regexp">/[\!\-\/\#\&amp;\;\%]/g</span>, <span class="string">&#x27;_&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> template = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;template&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    template.<span class="property">innerHTML</span> = input;</span></span><br><span class="line"><span class="language-javascript">    pwnme.<span class="property">innerHTML</span> = <span class="string">&quot;&lt;!-- &lt;p&gt; DEBUG: &quot;</span> + template.<span class="property">outerHTML</span> + <span class="string">&quot; &lt;/p&gt; --&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>往 ?debug 里塞payload</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;pwnme&quot;</span>&gt;</span><span class="comment">&lt;!-- &lt;p&gt; DE<span class="doctag">BUG:</span> &lt;template&gt;12341234&lt;/template&gt; &lt;/p&gt; --&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>放到了注释里  要想办法 break</p>
+<p>要逃逸出 <code>replace</code>  可以看到几种注释已经被ban了</p>
+<p>就算 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template">template</a> 有操作空间 感觉还是要 先绕过注释</p>
+<p>感觉可以考虑一下dom xss</p>
+<p>trick <a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/debugging-client-side-js">https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/debugging-client-side-js</a> 不知道有啥用</p>
+<h2 id="inference"><a href="#inference" class="headerlink" title="inference"></a>inference</h2><p><a target="_blank" rel="noopener" href="https://blog.zeddyu.info/2020/02/11/xssgame/#introduction">https://blog.zeddyu.info/2020/02/11/xssgame/#introduction</a></p>
 
     </div>
 

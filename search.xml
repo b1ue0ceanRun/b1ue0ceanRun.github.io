@@ -177,7 +177,7 @@
 <p>Check out my homepage in cyber space</p>
 </blockquote>
 <p>尝试一下读文件 (后来想了下 这个想法可能是愚蠢的  或许这种方法只适合在特定的场合中使用)</p>
-<p><img src="D:\MyBlog\b1ue0cean.github.io\source_posts\MidnightCTF2022.assets\image-20220402184941839.png" alt="image-20220402184941839"></p>
+<p><img src="/2022/04/11/MidnightCTF2022/image-20220402184941839.png" alt="image-20220402184941839"></p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;iframe <span class="attribute">src</span>=<span class="string">&quot;./&quot;</span> <span class="attribute">height</span>=<span class="string">&quot;1600px&quot;</span> <span class="attribute">width</span>=<span class="string">&quot;800px&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Apache</span>/<span class="number">2</span>.<span class="number">4</span>.<span class="number">53</span> (Unix)</span><br></pre></td></tr></table></figure>
@@ -255,7 +255,7 @@
     <content><![CDATA[<h1 id="UTCTF"><a href="#UTCTF" class="headerlink" title="UTCTF"></a>UTCTF</h1><p>我承认我这周摸鱼了 因为俄罗斯的游戏免费 2333  周一复现一下</p>
 <span id="more"></span>
 
-<p><img src="./UTCTF.assets/image-20220314110537531.png" alt="image-20220314110537531"></p>
+<p><img src="/2022/03/14/UTCTF/image-20220314110537531.png" alt="image-20220314110537531"></p>
 <h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="Websockets"><a href="#Websockets" class="headerlink" title="Websockets"></a>Websockets</h3><p>看一下这个什么意思</p>
 <blockquote>
 <p>Can you hack my website?</p>
@@ -273,7 +273,7 @@
 <p><em>by mattyp</em></p>
 <p><a href="http://web2.utctf.live:9854/">http://web2.utctf.live:9854</a></p>
 </blockquote>
-<p><img src="%5CUTCTF.assets%5Cimage-20220314104424213.png" alt="image-20220314104424213"></p>
+<p><img src="/2022/03/14/UTCTF/%5CUTCTF%5Cimage-20220314104424213.png" alt="image-20220314104424213"></p>
 <p>打开网站是个这样的页面 点submit后 会直接convert to pdf</p>
 <p>可以用 iframe 直接读文件</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Try Me!<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;/proc/self/cwd/app.py&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1600px&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800px&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1016,7 +1016,19 @@
 <p>新开一个坑 有空玩玩</p>
 <span id="more"></span>
 
-<p><a href="https://blog.zeddyu.info/2020/02/11/xssgame/#introduction">https://blog.zeddyu.info/2020/02/11/xssgame/#introduction</a></p>
+
+
+<h1 id="Area-51"><a href="#Area-51" class="headerlink" title="Area 51"></a>Area 51</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Challenge --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;pwnme&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> input = (<span class="keyword">new</span> <span class="title function_">URL</span>(location).<span class="property">searchParams</span>.<span class="title function_">get</span>(<span class="string">&#x27;debug&#x27;</span>) || <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="regexp">/[\!\-\/\#\&amp;\;\%]/g</span>, <span class="string">&#x27;_&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> template = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;template&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    template.<span class="property">innerHTML</span> = input;</span></span><br><span class="line"><span class="language-javascript">    pwnme.<span class="property">innerHTML</span> = <span class="string">&quot;&lt;!-- &lt;p&gt; DEBUG: &quot;</span> + template.<span class="property">outerHTML</span> + <span class="string">&quot; &lt;/p&gt; --&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>往 ?debug 里塞payload</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;pwnme&quot;</span>&gt;</span><span class="comment">&lt;!-- &lt;p&gt; DE<span class="doctag">BUG:</span> &lt;template&gt;12341234&lt;/template&gt; &lt;/p&gt; --&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>放到了注释里  要想办法 break</p>
+<p>要逃逸出 <code>replace</code>  可以看到几种注释已经被ban了</p>
+<p>就算 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template">template</a> 有操作空间 感觉还是要 先绕过注释</p>
+<p>感觉可以考虑一下dom xss</p>
+<p>trick <a href="https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/debugging-client-side-js">https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/debugging-client-side-js</a> 不知道有啥用</p>
+<h2 id="inference"><a href="#inference" class="headerlink" title="inference"></a>inference</h2><p><a href="https://blog.zeddyu.info/2020/02/11/xssgame/#introduction">https://blog.zeddyu.info/2020/02/11/xssgame/#introduction</a></p>
 ]]></content>
   </entry>
   <entry>
