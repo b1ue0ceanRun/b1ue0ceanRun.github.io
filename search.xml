@@ -1194,7 +1194,7 @@
 <p>第二次环境就不能正常搭建 大无语？不知道是什么神奇的bug</p>
 <p>发现我们更改过文件后仍然储存的是原来的模板</p>
 <p>考虑让模版溢出？</p>
-<p><img src="/2022/05/03/PWNHUB-one-flask/.%5CPWNHUB-one-flask%5Cimage-20220505222209998.png" alt="image-20220505222209998"></p>
+<p><img src="/2022/05/03/PWNHUB-one-flask/image-20220505222209998.png" alt="image-20220505222209998"></p>
 <p>果然 重新渲染了  可以直接ssti 咯</p>
 <p>改一下html文件里的payload就ok</p>
 ]]></content>
