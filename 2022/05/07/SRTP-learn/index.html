@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SRTP-learn">
+<meta property="og:url" content="http://example.com/2022/05/07/SRTP-learn/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-07T12:44:41.000Z">
+<meta property="article:modified_time" content="2022-05-07T12:45:50.403Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="learn">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/05/07/SRTP-learn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/05/07/SRTP-learn/","path":"2022/05/07/SRTP-learn/","title":"SRTP-learn"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SRTP-learn | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">16</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">36</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/07/SRTP-learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SRTP-learn | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SRTP-learn
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-05-07 20:44:41 / Modified: 20:45:50" itemprop="dateCreated datePublished" datetime="2022-05-07T20:44:41+08:00">2022-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SRTP/" itemprop="url" rel="index"><span itemprop="name">SRTP</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="1859de9faba1f58fb2e292ecc34441cefa4a1ade7f87ceae21c570ee67121fef">d3886370470bf77ec6e7f879db1157f689dc8d9777d1d6058fc0b547ba6896252125ad0c9a535d514cfdf92de4f28320783ebb4abb122048c382c83e9a2f7af68831bba275aea05c1b7cc7fddd76e9e1eba94134a9cf6c9690ee4fee298b1a46909d9d44e8bcf924b84c861f32739b8af79dbbe4934d9f8912328f54d41c09853a48107a2cbc7cfc9cd13588d57291e5ad755644439d799dab564fde66019b8c82964efcc8dcf27588190dbfa95ff1324448f86dc40461994fe9c0d787cdb7e110ede4d2cfaf38d221b0bbb510775136d3c5ba1852e3a35ae0bf5bc188b96f371b6d47e1c6781bcd8f86f5f2dce1cf794eae4de34c2079d10dc726043c09fc795a88d2133676f778c25011ffef72c78915fcd35992b3099c4c5767e24c08f9f2c3f2aa468f93de2d625ff5b1e6992423d841300f111d0c169e80eb47956e64d10725114d2c48b854b752a9f42f1cf9a8bdf553060097d8fa66f2b9e14f7efd4ff3afa5c85f3ebb7afd545654a5a2952d29b0b046be3ff22cd231c3cbff54211f38a4bc4943ea1500a5012d993c08fdafe32e9f7b9cab86295907b254d029ac05c7e025966a9faae71f7e8530586a02f7351d10825b7cfca2eeee92eecc03df6335605c288b4493df8e06316dec4e2abdef2132c3081e4ca70900401f836d12fe1cea2f38fac52774c1b47e923e8ed3c787a0204078563c4ff6072ae296351a1e091977ebf7c939c8819859b04a9b4657ac712adbf54fe2105ca7a4ecd997a3cfd7678475307d310e19414b2cebd9470f273861a8ff7f43dcc947da9a16801c70a3bf164bea1f8231eb46f846fa3054e57c7d9d36f82600bd281f9e52193200fcb6ad1c7a96c0fddeeb73d9f1ea0b1ef411d0f33d5c2dec7aa1e532b99b5c07c4c9378f36c5fa16e62a97bf3742ea2c20042e1575a69a850811c2e27251a6bb38a87b060d05230f109cc44f8f4b0a98707f877bb005f4fd975580c1234204b08bf65887578b4f17ff53bf8bda64b0a25c1356804a0e3337f0fd34e88117f2a04c6f5447c3ec3cc04358967783a948bd56328b9b3c01c30aec3b0d4cab81d398e152014f9916cf68d53efa04d7889af1f2729383476929f4b01bb9b585ddf91c49ed373cafedb26065823fa2c38a1b18c0cf115e43adcaaae3dd74d88ce0831fa0e553c464772ba02c1ec7da85465bd07470ef4cf5558d1f71223b4b690d347c7beb3ce131857b0a2b4c3093b519dea678592ec429e27fc2689f7b84fbb9b7c5bd6053393a467d92d1caab1e6594b392dd7f3feb22d5a4595c5623d5f15dc2e203046a99e0e7ff7416e188aba47abf7c590e18ff92fd4b309af5eea2c92beb0ef12a532a6fee6281194de1a0c7782d1c832b072862b05029018bf1916330d5d3e8df944fd2ee0df1be1717966a1555f0753ce899378b16c8363c418cc62f3cf7b53cee93afe30796bdf54aebd35ae1c42982fd7e302bc71979eaa19f5af3f5ed5735cd73d5719ab324b1ba4d325c3aacfaf116f018e7c97dbaf30f56a36e59095c5460ecfc80a13ab21528ca6fe958703f12dc0b37f7eba254aac556e957894ab91b7d3b6d9f97cae292238ccdbb5e4333a5da90cc01850858d2f294c4b4b597e42cfdc5e33617e8a25c3bd1c710ebac4d0d11cf7b7f9c7eb53f8274b90dad01e1da3f2d62127311d95d0d9068b9c15171ddeb497626cfcda19139598b16de7a27f0ac239db3b8be6a00c028d58fe3b6baf1444edfc423424594d7d359be164a225228836fdfabe3ba5d4773e76e3dec8c6259d5a615258ea2d5530cf71bca10507a307182f613610fde71ebaf9d9aebdfa8b47d770c71b9c775ab38e032443715f80333012d3e148f317e2229b12ed86ceef2465b149cc3aaea4d94d35be1114355768a9012f75ec561e4b0bcd5adfb467063626411f0343a5fb7e2633e185045fbb73112bb3625e97e7b5b25bd7799ba336f4cc88433edd442178e3bb4bac857af8227cb33285a0a6543581d737d5ab27afcb433be4be16d593d06a22ad89d85fd5e47f293d864835d1e14c2145ca8c43725d9873a227c7c2664c8a0d85d20eac77086c2bbe3175bc1446b4bceb9ab35bb153ea799ecc38287c8e364802128b1b758bec2f4cf999e2a4f7787428057071ee23b73b0fb2b355d973a80706124aee0e720a503f4dc6abdf7214892132a024ef625b77b70c26d7f98ffb075b1c478a330af701180e8493a23ed0d3ede97d3ecc30639671d6ee1b7d7e0d7af988e14ac76b16e7c8ef0696f28d664df2022930c8b032a13802e383f45e228f5e348acac0ea1c339db1afd3eec6c563af7bd49636aaedcf0dd9c8eecdc80513706b61cc103e2eed4685d0619c525a03c600180aacf783530e770c14215c4882839d060157fea2246acc6c392f0db40af4e550e1f82a232f2cfae5fdc9e5bbabede739995abc6bc9e63be80859e722a0b98b4dc2041ffddaab97d2a2212d8a25b0b461065b8006f2c00221b5d81c3142ab713d880fe68c10493b4b287c974c64a52f030da3a8fbdfc8b0a49355de3d310b9684e85b35f13613cef6ee3c784ef249059dce0f3133d009a606b0329ca25d5252ab86f03b98d6cd4f8ef2c4937610ae4fb6f8c20399655d193bb036e5d615f1583e79b8c1a04c33e4aba17bf8d74335fd9ba8b60b7819714a01424b535742bb65230a725ca68ba6f87ba76871af3048b35196a04a55bdb4a9db19d7be564b9bb0731d4497943ca9757f3bc1d86b72d11193176af959cf5a63af691981c89d57fc275ad7979e1dcf6ad367d7f7c8a15f36db3d1c617cb2d5787dc1c8d7f3da5a8ce64d6c18c387407ad2d5209318991e1ad5a6c0e6f643ab48e9e6aff5eb892e039c1754119f58cc0da9444558f066b5eed71e5e689dcdd34b9f74986b2b04cd01fc9259f9623a72eb4929360bc84620c52858e1451aad7ef00b2718f725c47c1387dc6c77ff92194caca9cfa983ec2a60e77b706b294450db84bc9f696837968a1c719b969be394fdaf121b9e8f5d58143b6c865450ea84cf851fcc968cfd31c95333d6b7ebe9c54bebe6313f1de0e55f827368d37eec1bb5e3fab54c64b913cac728258fed5b7660f13f8bb093e2d6ff4867d40ef79a67c68e59f0b6f9d9324f40e8dc3fbf094bcae154194b6a95ce203e1957659e282de4902ab62684fce42cf76477308b9fd2b5030945f3bae90e7d433db565093288d662ee594a584d8fb1265c700e8a498a4ab05fa49272c6ed754c75ac820201c823b265659657d38bc4a94f6dd2cbee3568eafcb3bb145838f1297d63980fa745b20961e5e15453420dd12bed2747dbaa05b3a25c1bf6bc5c46f628bedce4cfd14f728606f2c2061ffed3f14485460fe237ee37c1caeb9256f9d3c1831c80b0e9a7c459534b8292e380b838f9b992c9ee3ef9ce334d48ee2296127777ab2bc61ab61b15873dc8272fe4fd61539701b18b1e9d346892f5c7fc554166cf41ef5d359bdbff855c97acca662d2bb52f2061e0c31d7dc4311510a09239b3c4068a20b4fcf7d2776224c26278c9fdb708214b6e950530b3372908b1b574428aff12dc052fcd6acf62989664de2c17e0767a87b1810f4be6de61a246f0a52d86c183ad1b74849ee75859a70a81b225095667e0e883d209739f3918c5ba23146f45a9344911e6db9b6df52a5052c960d4e87eaa9fd28495e23c0073bae796a2224d9c1883d345d8fb51681f2294aaa2d69abb5a96189ff6afcc84bfc4d6d64fcc885b0a9973bb2e344ce56cf9d78ad01b8db2be4b77f1ed8af1fae89ced0fd8f7dfc0a59babbaefac7cc7e7b4a4f98d1477fef540e8eef339bec58b13d1c0f4989677e865b4a5e7082eec657c5727f9a7ee58153c344cb5a06f267343c70ed55d2cc74528d1f25493c107d56add6b5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/05/07/SRTP-learn/" title="SRTP-learn">http://example.com/2022/05/07/SRTP-learn/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/learn/" rel="tag"># learn</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/06/Bug-Bounty/" rel="prev" title="Bug-Bounty">
+                  <i class="fa fa-chevron-left"></i> Bug-Bounty
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"d51ab78ad05b9180c39c0391a2fc7e9b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
