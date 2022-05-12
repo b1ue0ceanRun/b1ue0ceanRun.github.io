@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="buu-pwnrip人生第一道pwn题 栈溢出 今天听了星盟的pwn课 感觉这题应该有戏   gets 可以来制造栈溢出 然后点击去 参数s 可以看到   我们可以看得到 我们要搞到 return 的话 要填 F + 8 个位置才行 然后看一下后门函数的地址   可以看到后门函数 fun 的地址为 0x401186  然后我们可以来编写脚本了   出了点小状况 emmm 估计要decode 一下">
+    <meta name="description" content="人生第一道pwn题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="buu-pwn">
 <meta property="og:url" content="http://example.com/2022/05/12/buu-pwn/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="buu-pwnrip人生第一道pwn题 栈溢出 今天听了星盟的pwn课 感觉这题应该有戏   gets 可以来制造栈溢出 然后点击去 参数s 可以看到   我们可以看得到 我们要搞到 return 的话 要填 F + 8 个位置才行 然后看一下后门函数的地址   可以看到后门函数 fun 的地址为 0x401186  然后我们可以来编写脚本了   出了点小状况 emmm 估计要decode 一下">
+<meta property="og:description" content="人生第一道pwn题">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/05/12/buu-pwn/image-20220512205608665.png">
 <meta property="og:image" content="http://example.com/2022/05/12/buu-pwn/image-20220512205801890.png">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/2022/05/12/buu-pwn/image-20220512211107057.png">
 <meta property="og:image" content="http://example.com/2022/05/12/buu-pwn/image-20220512213545030.png">
 <meta property="article:published_time" content="2022-05-12T12:52:42.000Z">
-<meta property="article:modified_time" content="2022-05-12T14:02:03.571Z">
+<meta property="article:modified_time" content="2022-05-12T14:40:30.485Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="PWN">
 <meta name="twitter:card" content="summary">
@@ -99,7 +99,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">19</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">10</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">40</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">39</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -171,7 +171,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -268,7 +268,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-05-12 20:52:42 / Modified: 22:02:03" itemprop="dateCreated datePublished" datetime="2022-05-12T20:52:42+08:00">2022-05-12</time>
+      <time title="Created: 2022-05-12 20:52:42 / Modified: 22:40:30" itemprop="dateCreated datePublished" datetime="2022-05-12T20:52:42+08:00">2022-05-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -290,8 +290,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="buu-pwn"><a href="#buu-pwn" class="headerlink" title="buu-pwn"></a>buu-pwn</h1><h2 id="rip"><a href="#rip" class="headerlink" title="rip"></a>rip</h2><p>人生第一道pwn题</p>
-<p>栈溢出</p>
+        <p>人生第一道pwn题</p>
+<span id="more"></span>
+
+<h1 id="buu-pwn"><a href="#buu-pwn" class="headerlink" title="buu-pwn"></a>buu-pwn</h1><h2 id="rip"><a href="#rip" class="headerlink" title="rip"></a>rip</h2><p>栈溢出</p>
 <p>今天听了星盟的pwn课 感觉这题应该有戏</p>
 <img src="/2022/05/12/buu-pwn/image-20220512205608665.png" alt="image-20220512205608665" style="zoom: 67%;">
 
@@ -391,8 +393,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/05/12/xss-direct/" rel="prev" title="xss-direct">
-                  <i class="fa fa-chevron-left"></i> xss-direct
+                <a href="/2022/05/11/Securinets-CTF-Final-2022/" rel="prev" title="Securinets-CTF-Final-2022">
+                  <i class="fa fa-chevron-left"></i> Securinets-CTF-Final-2022
                 </a>
             </div>
             <div class="post-nav-item">
