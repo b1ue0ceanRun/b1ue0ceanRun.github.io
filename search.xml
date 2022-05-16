@@ -1572,4 +1572,34 @@
         <tag>pwn</tag>
       </tags>
   </entry>
+  <entry>
+    <title>learn-month3</title>
+    <url>/2022/05/16/learn-month3/</url>
+    <content><![CDATA[<p>卷</p>
+<span id="more"></span>
+
+<h1 id="PLAN"><a href="#PLAN" class="headerlink" title="PLAN"></a>PLAN</h1><h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><table>
+<thead>
+<tr>
+<th>mission</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>复现比赛</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>跑代码（被学长diss了 要抓紧了）</td>
+<td>N</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>learn</category>
+      </categories>
+      <tags>
+        <tag>learn365</tag>
+      </tags>
+  </entry>
 </search>
