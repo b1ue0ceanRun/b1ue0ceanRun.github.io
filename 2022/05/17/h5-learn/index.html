@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="起因学长发给我的h5文件不会处理 直接寄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇文章带你读懂h5文件格式">
+<meta property="og:url" content="http://example.com/2022/05/17/h5-learn/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="起因学长发给我的h5文件不会处理 直接寄">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/05/17/h5-learn/image-20220517195807386.png">
+<meta property="og:image" content="http://example.com/2022/05/17/h5-learn/image-20220517200723762.png">
+<meta property="og:image" content="http://example.com/2022/05/17/h5-learn/image-20220517202814541.png">
+<meta property="og:image" content="http://example.com/2022/05/17/h5-learn/image-20220517202325081.png">
+<meta property="article:published_time" content="2022-05-17T11:54:38.000Z">
+<meta property="article:modified_time" content="2022-05-17T12:34:51.631Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="ML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/17/h5-learn/image-20220517195807386.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/17/h5-learn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/05/17/h5-learn/","path":"2022/05/17/h5-learn/","title":"一篇文章带你读懂h5文件格式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一篇文章带你读懂h5文件格式 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">44</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-h5"><span class="nav-number">2.</span> <span class="nav-text">what is h5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-write-read-form-a-h5-file"><span class="nav-number">3.</span> <span class="nav-text">how to write&#x2F;read form a h5 file</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#write"><span class="nav-number">3.1.</span> <span class="nav-text">write</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read"><span class="nav-number">3.2.</span> <span class="nav-text">read</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/17/h5-learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一篇文章带你读懂h5文件格式 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一篇文章带你读懂h5文件格式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-05-17 19:54:38 / Modified: 20:34:51" itemprop="dateCreated datePublished" datetime="2022-05-17T19:54:38+08:00">2022-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ML/" itemprop="url" rel="index"><span itemprop="name">ML</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>学长发给我的h5文件不会处理 直接寄</p>
+<span id="more"></span>
+
+<h2 id="what-is-h5"><a href="#what-is-h5" class="headerlink" title="what is h5"></a>what is h5</h2><p>H5⽂件是层次数据格式第5代的版本（Hierarchical Data Format，HDF5），它是⽤于存储科学数据的⼀种⽂件格式和库⽂件。由美国超级<br>计算中⼼与应⽤中⼼研发的⽂件格式,⽤以存储和组织⼤规模数据。</p>
+<p>h5⽂件为⼀个存放数据的容器，包括group名称和datasets，group名称为key，datasets为value，⽂件结构如下图：</p>
+<img src="/2022/05/17/h5-learn/image-20220517195807386.png" alt="image-20220517195807386" style="zoom: 67%;">
+
+<h2 id="how-to-write-read-form-a-h5-file"><a href="#how-to-write-read-form-a-h5-file" class="headerlink" title="how to write/read form a h5 file"></a>how to write/read form a h5 file</h2><p><code>pandas</code>中的<code>HDFStore()</code>用于生成管理HDF5文件IO操作的对象，其主要参数如下：</p>
+<ul>
+<li><p><code>path</code>：字符型输入，用于指定h5文件的名称（不在当前工作目录时需要带上完整路径信息）</p>
+</li>
+<li><p><code>mode</code>：用于指定IO操作的模式，与Python内建的open()中的参数一致，默认为’a’，即当指定文件已存在时不影响原有数据写入，指定文件不存在时则新建文件；’r’，只读模式；’w’，创建新文件（会覆盖同名旧文件）；’r+’，与’a’作用相似，但要求文件必须已经存在；</p>
+</li>
+<li><p><code>complevel</code>：int型，用于控制h5文件的压缩水平，取值范围在0-9之间，越大则文件的压缩程度越大，占用的空间越小，但相对应的在读取文件时需要付出更多解压缩的时间成本，默认为0，代表不压缩</p>
+</li>
+</ul>
+<h3 id="write"><a href="#write" class="headerlink" title="write"></a>write</h3><p>下面我们创建一个HDF5 IO对象store：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">store = pd.HDFStore(<span class="string">&#x27;demo.h5&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;查看store类型&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(store)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Closing remaining open files:demo.h5...done</span><br><span class="line">&lt;class <span class="string">&#x27;pandas.io.pytables.HDFStore&#x27;</span>&gt;</span><br><span class="line">File path: demo.h5</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以看到<code>store</code>对象属于<code>pandas</code>的<code>io</code>类，通过上面的语句我们已经成功的初始化名为<code>demo.h5</code>的的文件，本地也相应的出现了如下的文件：</p>
+<img src="/2022/05/17/h5-learn/image-20220517200723762.png" alt="image-20220517200723762">
+
+<p>接下来我们创建<code>pandas</code>中不同的两种对象，并将它们共同保存到<code>store</code>中，首先创建<code>series</code>对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas  <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment">#创建一个series对象</span></span><br><span class="line">s = pd.Series(np.random.randn(<span class="number">5</span>), index=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a    1.524228</span><br><span class="line">b   -1.909646</span><br><span class="line">c   -0.408305</span><br><span class="line">d   -1.426960</span><br><span class="line">e    0.074508</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+
+<p>接着我们创建一个<code>dataframe</code>对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个dataframe对象</span></span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">8</span>, <span class="number">3</span>),</span><br><span class="line">                 columns=[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">          A         B         C</span><br><span class="line">0 -0.736821  1.260558 -0.488464</span><br><span class="line">1  1.684255  0.210597  0.210070</span><br><span class="line">2 -1.640647  0.779703  0.191109</span><br><span class="line">3  0.868605 -0.036337 -2.000597</span><br><span class="line">4  0.161616  0.450955 -0.111758</span><br><span class="line">5 -0.910792  0.514466  1.036666</span><br><span class="line">6 -0.408943 -1.324511 -0.543415</span><br><span class="line">7  1.249088 -1.155877  0.457727</span><br></pre></td></tr></table></figure>
+
+<p>第一种方式利用键值对将不同的数据存入store对象中 这里为了代码简洁使用了元组赋值法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store[<span class="string">&#x27;s&#x27;</span>],store[<span class="string">&#x27;df&#x27;</span>] = s,df</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第二种方式利用<code>store</code>对象的<code>put()</code>方法，其主要参数如下：</p>
+<p><code>key</code>：指定h5文件中待写入数据的key</p>
+<p><code>value</code>：指定与key对应的待写入的数据</p>
+<p><code>format</code>：字符型输入，用于指定写出的模式，’fixed’对应的模式速度快，但是不支持追加也不支持检索；’table’对应的模式以表格的模式写出，速度稍慢，但是支持直接通过store对象进行追加和表格查询操作</p>
+<p>使用<code>put()</code>方法将数据存入<code>store</code>对象中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.put(key=<span class="string">&#x27;s&#x27;</span>,value=s);store.put(key=<span class="string">&#x27;df&#x27;</span>,value=df)</span><br></pre></td></tr></table></figure>
+
+<p>既然是键值对的格式，那么可以查看store的items属性（注意这里store对象只有items和keys属性，没有values属性）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.items()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.keys()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/05/17/h5-learn/image-20220517202814541.png" alt="image-20220517202814541"></p>
+<p>调用store对象中的数据直接用对应的键名来索引即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store[<span class="string">&#x27;df&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/05/17/h5-learn/image-20220517202325081.png" alt="image-20220517202325081" style="zoom: 67%;">
+
+<p>删除store对象中指定数据的方法有两种，一是使用remove()方法，传入要删除数据对应的键：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">store.remove(<span class="string">&#x27;s&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(store.keys())</span><br></pre></td></tr></table></figure>
+
+<p>二是使用Python中的关键词del来删除指定数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> store[<span class="string">&#x27;s&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(store.keys())</span><br></pre></td></tr></table></figure>
+
+<p>这时若想将当前的store对象持久化到本地，只需要利用close()方法关闭store对象即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store.close()</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;查看store连接状况，False则代表已关闭&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">store.is_open</span><br></pre></td></tr></table></figure>
+
+<p>这时本地的h5文件也相应的存储进store对象关闭前包含的文件</p>
+<p>除了通过定义一个确切的store对象的方式，还可以从pandas中的数据结构直接导出到本地h5文件中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建新的数据框</span></span><br><span class="line">df_ = pd.DataFrame(np.random.randn(<span class="number">5</span>,<span class="number">5</span>))</span><br><span class="line"><span class="comment">#导出到已存在的h5文件中，这里需要指定key</span></span><br><span class="line">df_.to_hdf(path_or_buf=<span class="string">&#x27;demo.h5&#x27;</span>,key=<span class="string">&#x27;df_&#x27;</span>)</span><br><span class="line"><span class="comment">#创建于本地demo.h5进行IO连接的store对象</span></span><br><span class="line">store = pd.HDFStore(<span class="string">&#x27;demo.h5&#x27;</span>)</span><br><span class="line"><span class="comment">#查看指定h5对象中的所有键</span></span><br><span class="line"><span class="built_in">print</span>(store.keys())</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="read"><a href="#read" class="headerlink" title="read"></a>read</h3><p>在pandas中读入HDF5文件的方式主要有两种，一是通过上一节中类似的方式创建与本地h5文件连接的IO对象，接着使用键索引或者store对象的get()方法传入要提取数据的key来读入指定数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">store = pd.HDFStore(<span class="string">&#x27;demo.h5&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;方式1&#x27;&#x27;&#x27;</span></span><br><span class="line">df1 = store[<span class="string">&#x27;df&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;方式2&#x27;&#x27;&#x27;</span></span><br><span class="line">df2 = store.get(<span class="string">&#x27;df&#x27;</span>)</span><br><span class="line">df1 == df2</span><br></pre></td></tr></table></figure>
+
+<p>这两种方式都能顺利读取键对应的数据。</p>
+<p>第二种读入h5格式文件中数据的方法是<code>pandas</code>中的<code>read_hdf()</code>，其主要参数如下：</p>
+<p>　　<code>path_or_buf</code>：传入指定h5文件的名称</p>
+<p>　　<code>key</code>：要提取数据的键</p>
+<p>需要注意的是利用<code>read_hdf()</code>读取h5文件时对应文件不可以同时存在其他未关闭的IO对象，否则会报错</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/05/17/h5-learn/" title="一篇文章带你读懂h5文件格式">http://example.com/2022/05/17/h5-learn/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ML/" rel="tag"># ML</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/17/CUDA-torch-gpu-install/" rel="prev" title="CUDA+CUDNN+PYTORCH-GPU环境安装">
+                  <i class="fa fa-chevron-left"></i> CUDA+CUDNN+PYTORCH-GPU环境安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"1fc2a6c9a4352bc8c99bc026407d3d28"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
