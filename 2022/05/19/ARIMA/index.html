@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="learn learn~~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARIMA">
+<meta property="og:url" content="http://example.com/2022/05/19/ARIMA/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="learn learn~~">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520120922114.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520120547301.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520120852730.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520121643408.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520122324677.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520122905060.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520123101024.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520123635421.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520123950209.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520124724627.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520125414144.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520131212749.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/111.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/image-20220520131454425.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/222.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/333.png">
+<meta property="og:image" content="http://example.com/2022/05/19/ARIMA/555.png">
+<meta property="article:published_time" content="2022-05-19T11:36:20.000Z">
+<meta property="article:modified_time" content="2022-05-20T13:14:38.383Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="时间序列">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/19/ARIMA/image-20220520120922114.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/19/ARIMA/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/05/19/ARIMA/","path":"2022/05/19/ARIMA/","title":"ARIMA"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ARIMA | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">46</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Page"><span class="nav-number">1.</span> <span class="nav-text">Page</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stationarity-and-differencing"><span class="nav-number">1.1.</span> <span class="nav-text">Stationarity and differencing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-does-the-p-d-and-q-in-ARIMA-model-mean"><span class="nav-number">1.2.</span> <span class="nav-text">What does the p, d and q in ARIMA model mean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-are-AR-and-MA-models"><span class="nav-number">1.3.</span> <span class="nav-text">What are AR and MA models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AR"><span class="nav-number">1.3.1.</span> <span class="nav-text">AR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MA"><span class="nav-number">1.3.2.</span> <span class="nav-text">MA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AR-MA"><span class="nav-number">1.3.3.</span> <span class="nav-text">AR+MA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARIMA"><span class="nav-number">1.3.4.</span> <span class="nav-text">ARIMA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-ACF-and-PACF"><span class="nav-number">1.4.</span> <span class="nav-text">what is ACF and PACF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACF"><span class="nav-number">1.4.1.</span> <span class="nav-text">ACF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PACF"><span class="nav-number">1.4.2.</span> <span class="nav-text">PACF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-find-the-order-of-the-MA-term-p-q-d"><span class="nav-number">1.5.</span> <span class="nav-text">How to find the order of the MA term (p,q,d)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-find-the-order-of-differencing-d-in-ARIMA-model"><span class="nav-number">1.5.1.</span> <span class="nav-text">How to find the order of differencing (d) in ARIMA model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-find-the-order-of-the-AR-term-p"><span class="nav-number">1.5.2.</span> <span class="nav-text">How to find the order of the AR term (p)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-find-the-order-of-the-MA-term-q"><span class="nav-number">1.5.3.</span> <span class="nav-text">How to find the order of the MA term (q)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-build-the-ARIMA-Model"><span class="nav-number">1.6.</span> <span class="nav-text">How to build the ARIMA Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-do-find-the-optimal-ARIMA-model-manually-using-Out-of-Time-Cross-validation"><span class="nav-number">1.7.</span> <span class="nav-text">How to do find the optimal ARIMA model manually using Out-of-Time Cross validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accuracy-Metrics-for-Time-Series-Forecast"><span class="nav-number">1.8.</span> <span class="nav-text">Accuracy Metrics for Time Series Forecast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-do-Auto-Arima-Forecast-in-Python"><span class="nav-number">1.9.</span> <span class="nav-text">How to do Auto Arima Forecast in Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-build-SARIMAX-Model-with-exogenous-variable"><span class="nav-number">1.10.</span> <span class="nav-text">How to build SARIMAX Model with exogenous variable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bug"><span class="nav-number">1.11.</span> <span class="nav-text">bug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.12.</span> <span class="nav-text">reference</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/19/ARIMA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ARIMA | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ARIMA
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-05-19 19:36:20" itemprop="dateCreated datePublished" datetime="2022-05-19T19:36:20+08:00">2022-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-05-20 21:14:38" itemprop="dateModified" datetime="2022-05-20T21:14:38+08:00">2022-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ML/" itemprop="url" rel="index"><span itemprop="name">ML</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>learn learn~~</p>
+<span id="more"></span>
+
+<h1 id="Page"><a href="#Page" class="headerlink" title="Page"></a>Page</h1><h2 id="Stationarity-and-differencing"><a href="#Stationarity-and-differencing" class="headerlink" title="Stationarity and differencing"></a>Stationarity and differencing</h2><p> A <em>stationary</em> time series is one whose statistical properties such as mean, variance, autocorrelation, etc. are all constant over time. Most statistical forecasting methods are based on the assumption that the time series can be rendered approximately stationary (i.e., “stationarized”) through the use of mathematical transformations. A stationarized series is relatively easy to predict: you simply predict that its statistical properties will be the same in the future as they have been in the past!  (Recall our <a target="_blank" rel="noopener" href="https://people.duke.edu/~rnau/411quote.htm">famous forecasting quotes</a>.) The predictions for the stationarized series can then be “untransformed,” by reversing whatever mathematical transformations were previously used, to obtain predictions for the original series. (The details are normally taken care of by your software.) Thus, finding the sequence of transformations needed to stationarize a time series often provides important clues in the search for an appropriate forecasting model. Stationarizing a time series through differencing (where needed) is an important part of the process of fitting an <strong>ARIMA model</strong>, as discussed in the <a target="_blank" rel="noopener" href="https://people.duke.edu/~rnau/411arim.htm">ARIMA pages</a> of these notes.</p>
+<p><img src="/2022/05/19/ARIMA/image-20220520120922114.png" alt="image-20220520120922114"></p>
+<p><img src="/2022/05/19/ARIMA/image-20220520120547301.png" alt="image-20220520120547301"></p>
+<p>基本都是若平稳 严平稳不太现实</p>
+<p><img src="/2022/05/19/ARIMA/image-20220520120852730.png" alt="image-20220520120852730"></p>
+<p>差分法可以使得数据变得更加平稳</p>
+<h2 id="What-does-the-p-d-and-q-in-ARIMA-model-mean"><a href="#What-does-the-p-d-and-q-in-ARIMA-model-mean" class="headerlink" title="What does the p, d and q in ARIMA model mean"></a>What does the p, d and q in ARIMA model mean</h2><p>the value of<code> d</code>, therefore, is the minimum number of differencing needed to make the series stationary. And if the time series is already stationary, then <code>d = 0</code>.</p>
+<p><code>p</code> is the order of the ‘Auto Regressive’ (AR) term. It refers to the number of lags of Y to be used as predictors. And <code>q</code> is the order of the ‘Moving Average’ (MA) term. It refers to the number of lagged forecast errors that should go into the ARIMA Model.</p>
+<p>you can understand more clearly by reading next chapter</p>
+<h2 id="What-are-AR-and-MA-models"><a href="#What-are-AR-and-MA-models" class="headerlink" title="What are AR and MA models"></a>What are AR and MA models</h2><h3 id="AR"><a href="#AR" class="headerlink" title="AR"></a><strong>AR</strong></h3><p><img src="/2022/05/19/ARIMA/image-20220520121643408.png" alt="image-20220520121643408"></p>
+<p><strong>限制</strong></p>
+<p><img src="/2022/05/19/ARIMA/image-20220520122324677.png" alt="image-20220520122324677"></p>
+<h3 id="MA"><a href="#MA" class="headerlink" title="MA"></a>MA</h3><p><img src="/2022/05/19/ARIMA/image-20220520122905060.png" alt="image-20220520122905060"></p>
+<h3 id="AR-MA"><a href="#AR-MA" class="headerlink" title="AR+MA"></a><strong>AR+MA</strong></h3><p><img src="/2022/05/19/ARIMA/image-20220520123101024.png" alt="image-20220520123101024"></p>
+<h3 id="ARIMA"><a href="#ARIMA" class="headerlink" title="ARIMA"></a>ARIMA</h3><p><img src="/2022/05/19/ARIMA/image-20220520123635421.png" alt="image-20220520123635421"></p>
+<h2 id="what-is-ACF-and-PACF"><a href="#what-is-ACF-and-PACF" class="headerlink" title="what is ACF and PACF"></a>what is ACF and PACF</h2><h3 id="ACF"><a href="#ACF" class="headerlink" title="ACF"></a>ACF</h3><p><img src="/2022/05/19/ARIMA/image-20220520123950209.png" alt="image-20220520123950209"></p>
+<h3 id="PACF"><a href="#PACF" class="headerlink" title="PACF"></a>PACF</h3><p>单纯地考虑 <code>x(t)</code> 和 <code>x(t-k)</code> 的关系</p>
+<p><img src="/2022/05/19/ARIMA/image-20220520124724627.png" alt="image-20220520124724627"></p>
+<p><a target="_blank" rel="noopener" href="https://timeseriesreasoning.com/contents/partial-auto-correlation/">https://timeseriesreasoning.com/contents/partial-auto-correlation/</a></p>
+<p><a target="_blank" rel="noopener" href="https://online.stat.psu.edu/stat510/lesson/2/2.2">https://online.stat.psu.edu/stat510/lesson/2/2.2</a></p>
+<h2 id="How-to-find-the-order-of-the-MA-term-p-q-d"><a href="#How-to-find-the-order-of-the-MA-term-p-q-d" class="headerlink" title="How to find the order of the MA term (p,q,d)"></a>How to find the order of the MA term (p,q,d)</h2><p><img src="/2022/05/19/ARIMA/image-20220520125414144.png" alt="image-20220520125414144"></p>
+<p><img src="/2022/05/19/ARIMA/image-20220520131212749.png" alt="image-20220520131212749"></p>
+<h3 id="How-to-find-the-order-of-differencing-d-in-ARIMA-model"><a href="#How-to-find-the-order-of-differencing-d-in-ARIMA-model" class="headerlink" title="How to find the order of differencing (d) in ARIMA model"></a>How to find the order of differencing (d) in ARIMA model</h3><p>The purpose of differencing it to make the time series stationary.</p>
+<p>But you need to be careful to not over-difference the series. Because, an over differenced series may still be stationary, which in turn will affect the model parameters.</p>
+<p>The right order of differencing is the minimum differencing required to get a near-stationary series which roams around a defined mean and the ACF plot reaches to zero fairly quick.</p>
+<p>If the autocorrelations are positive for many number of lags (10 or more), then the series needs further differencing. On the other hand, if the lag 1 autocorrelation itself is too negative, then the series is probably over-differenced.</p>
+<p>In the event, you can’t really decide between two orders of differencing, then go with the order that gives the least standard deviation in the differenced series.</p>
+<p>check if the series is stationary using the <a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/time-series/augmented-dickey-fuller-test/">Augmented Dickey Fuller test </a>(<code>adfuller()</code>), from the statsmodels package.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np, pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> statsmodels.graphics.tsaplots <span class="keyword">import</span> plot_acf, plot_pacf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams.update(&#123;<span class="string">&#x27;figure.figsize&#x27;</span>:(<span class="number">9</span>,<span class="number">7</span>), <span class="string">&#x27;figure.dpi&#x27;</span>:<span class="number">120</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Import data</span></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv&#x27;</span>, names=[<span class="string">&#x27;value&#x27;</span>], header=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># Original Series</span></span><br><span class="line">fig, axes = plt.subplots(<span class="number">3</span>, <span class="number">2</span>, sharex=<span class="literal">True</span>)</span><br><span class="line">axes[<span class="number">0</span>, <span class="number">0</span>].plot(df.value); axes[<span class="number">0</span>, <span class="number">0</span>].set_title(<span class="string">&#x27;Original Series&#x27;</span>)</span><br><span class="line">plot_acf(df.value, ax=axes[<span class="number">0</span>, <span class="number">1</span>] ,lags=np.arange(<span class="built_in">len</span>(df) ))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1st Differencing</span></span><br><span class="line">axes[<span class="number">1</span>, <span class="number">0</span>].plot(df.value.diff()); axes[<span class="number">1</span>, <span class="number">0</span>].set_title(<span class="string">&#x27;1st Order Differencing&#x27;</span>)</span><br><span class="line">plot_acf(df.value.diff().dropna(), ax=axes[<span class="number">1</span>, <span class="number">1</span>], lags=np.arange(<span class="built_in">len</span>(df) - <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2nd Differencing</span></span><br><span class="line">axes[<span class="number">2</span>, <span class="number">0</span>].plot(df.value.diff().diff()); axes[<span class="number">2</span>, <span class="number">0</span>].set_title(<span class="string">&#x27;2nd Order Differencing&#x27;</span>)</span><br><span class="line">plot_acf(df.value.diff().diff().dropna(), ax=axes[<span class="number">2</span>, <span class="number">1</span>],lags=np.arange(<span class="built_in">len</span>(df) - <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/05/19/ARIMA/111.png" alt="111" style="zoom:150%;">
+
+<p>​                                                                    (*)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> adfuller</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> log</span><br><span class="line">result = adfuller(df.value.dropna())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;ADF Statistic: %f&#x27;</span> % result[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p-value: %f&#x27;</span> % result[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p>we got</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ADF</span> Statistic: -<span class="number">2</span>.<span class="number">464240</span></span><br><span class="line"><span class="attribute">p</span>-value: <span class="number">0</span>.<span class="number">124419</span></span><br></pre></td></tr></table></figure>
+
+<p>if P Value &gt; 0.05 we go ahead with finding the order of differencing.</p>
+<p>Since P-value is greater than the significance level, we difference the series. please look at picture (*).</p>
+<p>For the above series, the time series reaches stationarity with two orders of differencing. But on looking at the autocorrelation plot for the 2nd differencing the lag goes into the far negative zone fairly quick, which indicates, the series might have been over differenced.</p>
+<p>So, I am going to tentatively fix the order of differencing as 1 even though the series is not perfectly stationary (weak stationarity).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pmdarima.arima.utils <span class="keyword">import</span> ndiffs</span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv&#x27;</span>, names=[<span class="string">&#x27;value&#x27;</span>], header=<span class="number">0</span>)</span><br><span class="line">y = df.value</span><br><span class="line"></span><br><span class="line"><span class="comment">## Adf Test</span></span><br><span class="line"><span class="built_in">print</span>(ndiffs(y, test=<span class="string">&#x27;adf&#x27;</span>))  <span class="comment"># 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># KPSS test</span></span><br><span class="line"><span class="built_in">print</span>(ndiffs(y, test=<span class="string">&#x27;kpss&#x27;</span>))  <span class="comment"># 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PP test:</span></span><br><span class="line"><span class="built_in">print</span>(ndiffs(y, test=<span class="string">&#x27;pp&#x27;</span>))  <span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.ndiffs.html">ndiffs的文档–Number of differences required for a stationary series</a></p>
+<h3 id="How-to-find-the-order-of-the-AR-term-p"><a href="#How-to-find-the-order-of-the-AR-term-p" class="headerlink" title="How to find the order of the AR term (p)"></a>How to find the order of the AR term (p)</h3><h3 id="How-to-find-the-order-of-the-MA-term-q"><a href="#How-to-find-the-order-of-the-MA-term-q" class="headerlink" title="How to find the order of the MA term (q)"></a>How to find the order of the MA term (q)</h3><p>（1）ACF和PACF 利用拖尾和截尾来确定(这里还是有点没太完全清楚，，，感觉我的判断和网上说的有点区别。。。反正代码可以自动找。。。)</p>
+<p>（2）信息准则定阶（AIC、BIC、HQIC）</p>
+<h2 id="How-to-build-the-ARIMA-Model"><a href="#How-to-build-the-ARIMA-Model" class="headerlink" title="How to build the ARIMA Model"></a>How to build the ARIMA Model</h2><p><img src="/2022/05/19/ARIMA/image-20220520131454425.png" alt="image-20220520131454425"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np, pandas <span class="keyword">as</span> pd  </span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># importing data  </span></span><br><span class="line"><span class="comment">#https://raw.githubusercontent.com/selva86/datasets/master/austa.csv</span></span><br><span class="line"><span class="comment">#https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv</span></span><br><span class="line">mydata = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv&#x27;</span>, names = [<span class="string">&#x27;value&#x27;</span>], header = <span class="number">0</span>)  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># Creating ARIMA model  </span></span><br><span class="line">mymodel = ARIMA(mydata.value, order = (<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>))  </span><br><span class="line">modelfit = mymodel.fit(disp = <span class="number">0</span>)  </span><br><span class="line"><span class="built_in">print</span>(modelfit.summary())  </span><br></pre></td></tr></table></figure>
+
+<p>result:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">    ARIMA Model Results                              </span></span><br><span class="line"><span class="section">==============================================================================</span></span><br><span class="line">Dep. Variable:                D.value   No. Observations:                   99</span><br><span class="line">Model:                 ARIMA(1, 1, 2)   Log Likelihood                -253.790</span><br><span class="line">Method:                       css-mle   S.D. of innovations              3.119</span><br><span class="line">Date:                Fri, 20 May 2022   AIC                            517.579</span><br><span class="line">Time:                        11:59:24   BIC                            530.555</span><br><span class="line">Sample:                             1   HQIC                           522.829</span><br><span class="line"><span class="section">                                                                              </span></span><br><span class="line"><span class="section">=================================================================================</span></span><br><span class="line"><span class="code">                    coef    std err          z      P&gt;|z|      [0.025      0.975]</span></span><br><span class="line"><span class="code">---------------------------------------------------------------------------------</span></span><br><span class="line"><span class="code">const             1.1202      1.290      0.868      0.387      -1.409       3.649</span></span><br><span class="line"><span class="code">ar.L1.D.value     0.6351      0.257      2.469      0.015       0.131       1.139</span></span><br><span class="line"><span class="code">ma.L1.D.value     0.5287      0.355      1.489      0.140      -0.167       1.224</span></span><br><span class="line"><span class="code">ma.L2.D.value    -0.0010      0.321     -0.003      0.998      -0.631       0.629</span></span><br><span class="line"><span class="code">                                    Roots                                    </span></span><br><span class="line"><span class="code">=============================================================================</span></span><br><span class="line"><span class="code">                  Real          Imaginary           Modulus         Frequency</span></span><br><span class="line"><span class="code">-----------------------------------------------------------------------------</span></span><br><span class="line">AR.1            1.5746           +0.0000j            1.5746            0.0000</span><br><span class="line">MA.1           -1.8850           +0.0000j            1.8850            0.5000</span><br><span class="line"><span class="section">MA.2          545.0568           +0.0000j          545.0568            0.0000</span></span><br><span class="line"><span class="section">-----------------------------------------------------------------------------</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>The model summary reveals a lot of information. The table in the middle is the coefficients table where the values under ‘coef’ are the weights of the respective terms.</p>
+<p>Notice here the coefficient of the MA2 term is close to zero and the P-Value in ‘P&gt;|z|’ column is highly insignificant. It should ideally be less than 0.05 for the respective X to be significant.</p>
+<p>So, let’s rebuild the model without the MA2 term.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1,1,1 ARIMA Model</span></span><br><span class="line">model = ARIMA(df.value, order=(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">model_fit = model.fit(disp=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(model_fit.summary())</span><br></pre></td></tr></table></figure>
+
+<p>result</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">    ARIMA Model Results                              </span></span><br><span class="line"><span class="section">==============================================================================</span></span><br><span class="line">Dep. Variable:                D.value   No. Observations:                   99</span><br><span class="line">Model:                 ARIMA(1, 1, 1)   Log Likelihood                -253.790</span><br><span class="line">Method:                       css-mle   S.D. of innovations              3.119</span><br><span class="line">Date:                Fri, 20 May 2022   AIC                            515.579</span><br><span class="line">Time:                        12:07:06   BIC                            525.960</span><br><span class="line">Sample:                             1   HQIC                           519.779</span><br><span class="line"><span class="section">                                                                              </span></span><br><span class="line"><span class="section">=================================================================================</span></span><br><span class="line"><span class="code">                    coef    std err          z      P&gt;|z|      [0.025      0.975]</span></span><br><span class="line"><span class="code">---------------------------------------------------------------------------------</span></span><br><span class="line"><span class="code">const             1.1205      1.286      0.871      0.386      -1.400       3.641</span></span><br><span class="line"><span class="code">ar.L1.D.value     0.6344      0.087      7.317      0.000       0.464       0.804</span></span><br><span class="line"><span class="code">ma.L1.D.value     0.5297      0.089      5.932      0.000       0.355       0.705</span></span><br><span class="line"><span class="code">                                    Roots                                    </span></span><br><span class="line"><span class="code">=============================================================================</span></span><br><span class="line"><span class="code">                  Real          Imaginary           Modulus         Frequency</span></span><br><span class="line"><span class="code">-----------------------------------------------------------------------------</span></span><br><span class="line">AR.1            1.5764           +0.0000j            1.5764            0.0000</span><br><span class="line"><span class="section">MA.1           -1.8879           +0.0000j            1.8879            0.5000</span></span><br><span class="line"><span class="section">-----------------------------------------------------------------------------</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>The model AIC has reduced, which is good. The P Values of the AR1 and MA1 terms have improved and are highly significant (&lt;&lt; 0.05).</p>
+<p>Let’s plot the residuals to ensure there are no patterns (that is, look for constant mean and variance).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residuals = pd.DataFrame(model_fit.resid)</span><br><span class="line">fig, ax = plt.subplots(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">residuals.plot(title=<span class="string">&quot;Residuals&quot;</span>, ax=ax[<span class="number">0</span>])</span><br><span class="line">residuals.plot(kind=<span class="string">&#x27;kde&#x27;</span>, title=<span class="string">&#x27;Density&#x27;</span>, ax=ax[<span class="number">1</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/19/ARIMA/222.png" alt="222"></p>
+<p>The residual errors seem fine with near zero mean and uniform variance. Let’s plot the actuals against the fitted values using <code>plot_predict()</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Actual vs Fitted</span></span><br><span class="line">model_fit.plot_predict(dynamic=<span class="literal">False</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/19/ARIMA/333.png" alt="333"></p>
+<p>When you set <code>dynamic=False</code> the in-sample lagged values are used for prediction.</p>
+<p>That is, the model gets trained up until the previous value to make the next prediction. This can make the fitted forecast and actuals look artificially good.</p>
+<p>So, we seem to have a decent ARIMA model. But is that the best?</p>
+<p>Can’t say that at this point because we haven’t actually forecasted into the future and compared the forecast with the actual performance.</p>
+<p>So, the real validation you need now is the Out-of-Time cross-validation.</p>
+<h2 id="How-to-do-find-the-optimal-ARIMA-model-manually-using-Out-of-Time-Cross-validation"><a href="#How-to-do-find-the-optimal-ARIMA-model-manually-using-Out-of-Time-Cross-validation" class="headerlink" title="How to do find the optimal ARIMA model manually using Out-of-Time Cross validation"></a>How to do find the optimal ARIMA model manually using Out-of-Time Cross validation</h2><p>In Out-of-Time cross-validation, you take few steps back in time and forecast into the future to as many steps you took back. Then you compare the forecast against the actuals.</p>
+<p>To do out-of-time cross-validation, you need to create the training and testing dataset by splitting the time series into 2 contiguous parts in approximately 75:25 ratio or a reasonable proportion based on time frequency of series.</p>
+<p>Why am I not sampling the training data randomly you ask?</p>
+<p>That’s because the order sequence of the time series should be intact in order to use it for forecasting.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> acf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Training and Test</span></span><br><span class="line">train = df.value[:<span class="number">85</span>]</span><br><span class="line">test = df.value[<span class="number">85</span>:]</span><br></pre></td></tr></table></figure>
+
+<p>we can now build the ARIMA model on training dataset, forecast and plot it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Build Model</span></span><br><span class="line"><span class="comment"># model = ARIMA(train, order=(3,2,1))  </span></span><br><span class="line">model = ARIMA(train, order=(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>))  </span><br><span class="line">fitted = model.fit(disp=-<span class="number">1</span>)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Forecast</span></span><br><span class="line">fc, se, conf = fitted.forecast(<span class="number">15</span>, alpha=<span class="number">0.05</span>)  <span class="comment"># 95% conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Make as pandas series</span></span><br><span class="line">fc_series = pd.Series(fc, index=test.index)</span><br><span class="line">lower_series = pd.Series(conf[:, <span class="number">0</span>], index=test.index)</span><br><span class="line">upper_series = pd.Series(conf[:, <span class="number">1</span>], index=test.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot</span></span><br><span class="line">plt.figure(figsize=(<span class="number">12</span>,<span class="number">5</span>), dpi=<span class="number">100</span>)</span><br><span class="line">plt.plot(train, label=<span class="string">&#x27;training&#x27;</span>)</span><br><span class="line">plt.plot(test, label=<span class="string">&#x27;actual&#x27;</span>)</span><br><span class="line">plt.plot(fc_series, label=<span class="string">&#x27;forecast&#x27;</span>)</span><br><span class="line">plt.fill_between(lower_series.index, lower_series, upper_series, </span><br><span class="line">                 color=<span class="string">&#x27;k&#x27;</span>, alpha=<span class="number">.15</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Forecast vs Actuals&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper left&#x27;</span>, fontsize=<span class="number">8</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/19/ARIMA/555.png" alt="555"></p>
+<p>From the chart, the ARIMA(1,1,1) model seems to give a directionally correct forecast. And the actual observed values lie within the 95% confidence band. That seems fine.</p>
+<p>But each of the predicted forecasts is consistently below the actuals. That means, by adding a small constant to our forecast, the accuracy will certainly improve. So, there is definitely scope for improvement.</p>
+<p>So, what I am going to do is to increase the order of differencing to two, that is set <code>d=2</code> and iteratively increase p to up to 5 and then q up to 5 to see which model gives least AIC and also look for a chart that gives closer actuals and forecasts.</p>
+<p>While doing this, I keep an eye on the P values of the AR and MA terms in the model summary. They should be as close to zero, ideally, less than 0.05.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Build Model</span></span><br><span class="line">model = ARIMA(train, order=(<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>))  </span><br><span class="line">fitted = model.fit(disp=-<span class="number">1</span>)  </span><br><span class="line"><span class="built_in">print</span>(fitted.summary())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Forecast</span></span><br><span class="line">fc, se, conf = fitted.forecast(<span class="number">15</span>, alpha=<span class="number">0.05</span>)  <span class="comment"># 95% conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Make as pandas series</span></span><br><span class="line">fc_series = pd.Series(fc, index=test.index)</span><br><span class="line">lower_series = pd.Series(conf[:, <span class="number">0</span>], index=test.index)</span><br><span class="line">upper_series = pd.Series(conf[:, <span class="number">1</span>], index=test.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot</span></span><br><span class="line">plt.figure(figsize=(<span class="number">12</span>,<span class="number">5</span>), dpi=<span class="number">100</span>)</span><br><span class="line">plt.plot(train, label=<span class="string">&#x27;training&#x27;</span>)</span><br><span class="line">plt.plot(test, label=<span class="string">&#x27;actual&#x27;</span>)</span><br><span class="line">plt.plot(fc_series, label=<span class="string">&#x27;forecast&#x27;</span>)</span><br><span class="line">plt.fill_between(lower_series.index, lower_series, upper_series, </span><br><span class="line">                 color=<span class="string">&#x27;k&#x27;</span>, alpha=<span class="number">.15</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Forecast vs Actuals&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper left&#x27;</span>, fontsize=<span class="number">8</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">         ARIMA Model Results                              </span></span><br><span class="line"><span class="section">==============================================================================</span></span><br><span class="line">Dep. Variable:               D2.value   No. Observations:                   83</span><br><span class="line">Model:                 ARIMA(3, 2, 1)   Log Likelihood                -214.248</span><br><span class="line">Method:                       css-mle   S.D. of innovations              3.153</span><br><span class="line">Date:                Fri, 20 May 2022   AIC                            440.497</span><br><span class="line">Time:                        12:22:22   BIC                            455.010</span><br><span class="line">Sample:                             2   HQIC                           446.327</span><br><span class="line"><span class="section">                                                                              </span></span><br><span class="line"><span class="section">==================================================================================</span></span><br><span class="line"><span class="code">                     coef    std err          z      P&gt;|z|      [0.025      0.975]</span></span><br><span class="line"><span class="code">----------------------------------------------------------------------------------</span></span><br><span class="line"><span class="code">const              0.0483      0.084      0.577      0.565      -0.116       0.212</span></span><br><span class="line"><span class="code">ar.L1.D2.value     1.1386      0.109     10.399      0.000       0.924       1.353</span></span><br><span class="line"><span class="code">ar.L2.D2.value    -0.5923      0.155     -3.827      0.000      -0.896      -0.289</span></span><br><span class="line"><span class="code">ar.L3.D2.value     0.3079      0.111      2.778      0.007       0.091       0.525</span></span><br><span class="line"><span class="code">ma.L1.D2.value    -1.0000      0.035    -28.799      0.000      -1.068      -0.932</span></span><br><span class="line"><span class="code">                                    Roots                                    </span></span><br><span class="line"><span class="code">=============================================================================</span></span><br><span class="line"><span class="code">                  Real          Imaginary           Modulus         Frequency</span></span><br><span class="line"><span class="code">-----------------------------------------------------------------------------</span></span><br><span class="line">AR.1            1.1557           -0.0000j            1.1557           -0.0000</span><br><span class="line">AR.2            0.3839           -1.6318j            1.6763           -0.2132</span><br><span class="line">AR.3            0.3839           +1.6318j            1.6763            0.2132</span><br><span class="line"><span class="section">MA.1            1.0000           +0.0000j            1.0000            0.0000</span></span><br><span class="line"><span class="section">-----------------------------------------------------------------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>The AIC has reduced to 440 from 515. Good. The P-values of the X terms are less the &lt; 0.05, which is great.</p>
+<p>So overall it’s much better.</p>
+<p>Ideally, you should go back multiple points in time, like, go back 1, 2, 3 and 4 quarters and see how your forecasts are performing at various points in the year.</p>
+<p>Here’s a great practice exercise: Try to go back 27, 30, 33, 36 data points and see how the forcasts performs. The forecast performance can be judged using various accuracy metrics discussed next.</p>
+<h2 id="Accuracy-Metrics-for-Time-Series-Forecast"><a href="#Accuracy-Metrics-for-Time-Series-Forecast" class="headerlink" title="Accuracy Metrics for Time Series Forecast"></a>Accuracy Metrics for Time Series Forecast</h2><p>The commonly used accuracy metrics to judge forecasts are:</p>
+<ol>
+<li>Mean Absolute Percentage Error (MAPE)</li>
+<li>Mean Error (ME)</li>
+<li>Mean Absolute Error (MAE)</li>
+<li>Mean Percentage Error (MPE)</li>
+<li>Root Mean Squared Error (RMSE)</li>
+<li>Lag 1 Autocorrelation of Error (ACF1)</li>
+<li>Correlation between the Actual and the Forecast (corr)</li>
+<li>Min-Max Error (minmax)</li>
+</ol>
+<p>Typically, if you are comparing forecasts of two different series, the MAPE, Correlation and Min-Max Error can be used.</p>
+<p>Why not use the other metrics?</p>
+<p>Because only the above three are percentage errors that vary between 0 and 1. That way, you can judge how good is the forecast irrespective of the scale of the series.</p>
+<p>The other error metrics are quantities. That implies, an RMSE of 100 for a series whose mean is in 1000’s is better than an RMSE of 5 for series in 10’s. So, you can’t really use them to compare the forecasts of two different scaled time series.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Accuracy metrics</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">forecast_accuracy</span>(<span class="params">forecast, actual</span>):</span><br><span class="line">    mape = np.mean(np.<span class="built_in">abs</span>(forecast - actual)/np.<span class="built_in">abs</span>(actual))  <span class="comment"># MAPE</span></span><br><span class="line">    me = np.mean(forecast - actual)             <span class="comment"># ME</span></span><br><span class="line">    mae = np.mean(np.<span class="built_in">abs</span>(forecast - actual))    <span class="comment"># MAE</span></span><br><span class="line">    mpe = np.mean((forecast - actual)/actual)   <span class="comment"># MPE</span></span><br><span class="line">    rmse = np.mean((forecast - actual)**<span class="number">2</span>)**<span class="number">.5</span>  <span class="comment"># RMSE</span></span><br><span class="line">    corr = np.corrcoef(forecast, actual)[<span class="number">0</span>,<span class="number">1</span>]   <span class="comment"># corr</span></span><br><span class="line">    mins = np.amin(np.hstack([forecast[:,<span class="literal">None</span>], </span><br><span class="line">                              actual[:,<span class="literal">None</span>]]), axis=<span class="number">1</span>)</span><br><span class="line">    maxs = np.amax(np.hstack([forecast[:,<span class="literal">None</span>], </span><br><span class="line">                              actual[:,<span class="literal">None</span>]]), axis=<span class="number">1</span>)</span><br><span class="line">    minmax = <span class="number">1</span> - np.mean(mins/maxs)             <span class="comment"># minmax</span></span><br><span class="line">    acf1 = acf(fc-test)[<span class="number">1</span>]                      <span class="comment"># ACF1</span></span><br><span class="line">    <span class="keyword">return</span>(&#123;<span class="string">&#x27;mape&#x27;</span>:mape, <span class="string">&#x27;me&#x27;</span>:me, <span class="string">&#x27;mae&#x27;</span>: mae, </span><br><span class="line">            <span class="string">&#x27;mpe&#x27;</span>: mpe, <span class="string">&#x27;rmse&#x27;</span>:rmse, <span class="string">&#x27;acf1&#x27;</span>:acf1, </span><br><span class="line">            <span class="string">&#x27;corr&#x27;</span>:corr, <span class="string">&#x27;minmax&#x27;</span>:minmax&#125;)</span><br><span class="line"></span><br><span class="line">forecast_accuracy(fc, test.values)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&gt; &#123;&#x27;mape&#x27;: 0.02250131357314834,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;me&#x27;: 3.230783108990054,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;mae&#x27;: 4.548322194530069,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;mpe&#x27;: 0.016421001932706705,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;rmse&#x27;: 6.373238534601827,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;acf1&#x27;: 0.5105506325288692,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;corr&#x27;: 0.9674576513924394,</span></span><br><span class="line"><span class="comment">#&gt;  &#x27;minmax&#x27;: 0.02163154777672227&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Around 2.2% MAPE implies the model is about 97.8% accurate in predicting the next 15 observations.</p>
+<p>Now you know how to build an ARIMA model manually.</p>
+<p>But in industrial situations, you will be given a lot of time series to be forecasted and the forecasting exercise be repeated regularly.</p>
+<p>So we need a way to automate the best model selection process.</p>
+<h2 id="How-to-do-Auto-Arima-Forecast-in-Python"><a href="#How-to-do-Auto-Arima-Forecast-in-Python" class="headerlink" title="How to do Auto Arima Forecast in Python"></a>How to do Auto Arima Forecast in Python</h2><p>Like R’s popular <code>auto.arima()</code> function, the <code>pmdarima</code> package provides <code>auto_arima()</code> with similar functionality.</p>
+<p><code>auto_arima()</code> uses a stepwise approach to search multiple combinations of p,d,q parameters and chooses the best model that has the least AIC.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA</span><br><span class="line"><span class="keyword">import</span> pmdarima <span class="keyword">as</span> pm</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv&#x27;</span>, names=[<span class="string">&#x27;value&#x27;</span>], header=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">model = pm.auto_arima(df.value, start_p=<span class="number">1</span>, start_q=<span class="number">1</span>,</span><br><span class="line">                      test=<span class="string">&#x27;adf&#x27;</span>,       <span class="comment"># use adftest to find optimal &#x27;d&#x27;</span></span><br><span class="line">                      max_p=<span class="number">3</span>, max_q=<span class="number">3</span>, <span class="comment"># maximum p and q</span></span><br><span class="line">                      m=<span class="number">1</span>,              <span class="comment"># frequency of series</span></span><br><span class="line">                      d=<span class="literal">None</span>,           <span class="comment"># let model determine &#x27;d&#x27;</span></span><br><span class="line">                      seasonal=<span class="literal">False</span>,   <span class="comment"># No Seasonality</span></span><br><span class="line">                      start_P=<span class="number">0</span>, </span><br><span class="line">                      D=<span class="number">0</span>, </span><br><span class="line">                      trace=<span class="literal">True</span>,</span><br><span class="line">                      error_action=<span class="string">&#x27;ignore&#x27;</span>,  </span><br><span class="line">                      suppress_warnings=<span class="literal">True</span>, </span><br><span class="line">                      stepwise=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(model.summary())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Performing stepwise search <span class="keyword">to</span> minimize aic</span><br><span class="line"> ARIMA(1,2,1)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=525.587, <span class="attribute">Time</span>=0.21 sec</span><br><span class="line"> ARIMA(0,2,0)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=533.474, <span class="attribute">Time</span>=0.01 sec</span><br><span class="line"> ARIMA(1,2,0)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=532.437, <span class="attribute">Time</span>=0.04 sec</span><br><span class="line"> ARIMA(0,2,1)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=525.893, <span class="attribute">Time</span>=0.09 sec</span><br><span class="line"> ARIMA(0,2,0)(0,0,0)[0]             : <span class="attribute">AIC</span>=531.477, <span class="attribute">Time</span>=0.03 sec</span><br><span class="line"> ARIMA(2,2,1)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=515.248, <span class="attribute">Time</span>=0.20 sec</span><br><span class="line"> ARIMA(2,2,0)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=513.459, <span class="attribute">Time</span>=0.18 sec</span><br><span class="line"> ARIMA(3,2,0)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=515.284, <span class="attribute">Time</span>=0.16 sec</span><br><span class="line"> ARIMA(3,2,1)(0,0,0)[0] intercept   : <span class="attribute">AIC</span>=inf, <span class="attribute">Time</span>=1.25 sec</span><br><span class="line"> ARIMA(2,2,0)(0,0,0)[0]             : <span class="attribute">AIC</span>=511.465, <span class="attribute">Time</span>=0.14 sec</span><br><span class="line"> ARIMA(1,2,0)(0,0,0)[0]             : <span class="attribute">AIC</span>=530.444, <span class="attribute">Time</span>=0.09 sec</span><br><span class="line"> ARIMA(3,2,0)(0,0,0)[0]             : <span class="attribute">AIC</span>=513.291, <span class="attribute">Time</span>=0.32 sec</span><br><span class="line"> ARIMA(2,2,1)(0,0,0)[0]             : <span class="attribute">AIC</span>=513.256, <span class="attribute">Time</span>=0.33 sec</span><br><span class="line"> ARIMA(1,2,1)(0,0,0)[0]             : <span class="attribute">AIC</span>=523.592, <span class="attribute">Time</span>=0.19 sec</span><br><span class="line"> ARIMA(3,2,1)(0,0,0)[0]             : <span class="attribute">AIC</span>=inf, <span class="attribute">Time</span>=1.68 sec</span><br><span class="line"></span><br><span class="line">Best model:  ARIMA(2,2,0)(0,0,0)[0]          </span><br><span class="line">Total fit time: 4.991 seconds</span><br><span class="line">                               SARIMAX Results                                </span><br><span class="line">==============================================================================</span><br><span class="line">Dep. Variable:                      y   <span class="literal">No</span>. Observations:                  100</span><br><span class="line">Model:               SARIMAX(2, 2, 0)   Log Likelihood                -252.732</span><br><span class="line">Date:                Fri, 20 May 2022   AIC                            511.465</span><br><span class="line">Time:                        12:29:31   BIC                            519.220</span><br><span class="line">Sample:                             0   HQIC                           514.601</span><br><span class="line">                                - 100                                         </span><br><span class="line">Covariance Type:                  opg                                         </span><br><span class="line">==============================================================================</span><br><span class="line">                 coef    std err          z      P&gt;|z|      [0.025      0.975]</span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line">ar.L1          0.2579      0.103      2.510      0.012       0.056       0.459</span><br><span class="line">ar.L2         -0.4407      0.087     -5.093      0.000      -0.610      -0.271</span><br><span class="line">sigma2        10.1268      1.519      6.668      0.000       7.150      13.103</span><br><span class="line">===================================================================================</span><br><span class="line">Ljung-Box (L1) (Q):                   0.05   Jarque-Bera (JB):                 0.10</span><br><span class="line">Prob(Q):                              0.82   Prob(JB):                         0.95</span><br><span class="line">Heteroskedasticity (H):               0.49   Skew:                            -0.07</span><br><span class="line">Prob(H) (two-sided):                  0.05   Kurtosis:                         2.92</span><br><span class="line">===================================================================================</span><br><span class="line"></span><br><span class="line">Warnings:</span><br><span class="line">[1] Covariance matrix calculated using the outer product of gradients (complex-step).</span><br></pre></td></tr></table></figure>
+
+<p>I met a bug here</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ARIMA</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>] intercept   : AIC=inf, Time=<span class="number">1</span>.<span class="number">25</span> sec</span><br><span class="line"><span class="attribute">ARIMA</span>(<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>]             : AIC=<span class="number">511</span>.<span class="number">465</span>, Time=<span class="number">0</span>.<span class="number">14</span> sec</span><br><span class="line"><span class="attribute">ARIMA</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>]             : AIC=<span class="number">530</span>.<span class="number">444</span>, Time=<span class="number">0</span>.<span class="number">09</span> sec</span><br><span class="line"><span class="attribute">ARIMA</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>]             : AIC=<span class="number">513</span>.<span class="number">291</span>, Time=<span class="number">0</span>.<span class="number">32</span> sec</span><br><span class="line"><span class="attribute">ARIMA</span>(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>]             : AIC=<span class="number">513</span>.<span class="number">256</span>, Time=<span class="number">0</span>.<span class="number">33</span> sec</span><br><span class="line"><span class="attribute">ARIMA</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>]             : AIC=<span class="number">523</span>.<span class="number">592</span>, Time=<span class="number">0</span>.<span class="number">19</span> sec</span><br><span class="line"><span class="attribute">ARIMA</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>)(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">0</span>]             : AIC=inf, Time=<span class="number">1</span>.<span class="number">68</span> sec</span><br></pre></td></tr></table></figure>
+
+<p>why AIC == inf ?</p>
+<h2 id="How-to-build-SARIMAX-Model-with-exogenous-variable"><a href="#How-to-build-SARIMAX-Model-with-exogenous-variable" class="headerlink" title="How to build SARIMAX Model with exogenous variable"></a>How to build SARIMAX Model with exogenous variable</h2><p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/selva86/datasets/master/a10.csv">https://raw.githubusercontent.com/selva86/datasets/master/a10.csv</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import Data</span></span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/selva86/datasets/master/a10.csv&#x27;</span>, parse_dates=[<span class="string">&#x27;date&#x27;</span>], index_col=<span class="string">&#x27;date&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Compute Seasonal Index</span></span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.seasonal <span class="keyword">import</span> seasonal_decompose</span><br><span class="line"><span class="keyword">from</span> dateutil.parser <span class="keyword">import</span> parse</span><br><span class="line"></span><br><span class="line"><span class="comment"># multiplicative seasonal component</span></span><br><span class="line">result_mul = seasonal_decompose(data[<span class="string">&#x27;value&#x27;</span>][-<span class="number">36</span>:],   <span class="comment"># 3 years</span></span><br><span class="line">                                model=<span class="string">&#x27;multiplicative&#x27;</span>, </span><br><span class="line">                                extrapolate_trend=<span class="string">&#x27;freq&#x27;</span>)</span><br><span class="line"></span><br><span class="line">seasonal_index = result_mul.seasonal[-<span class="number">12</span>:].to_frame()</span><br><span class="line">seasonal_index[<span class="string">&#x27;month&#x27;</span>] = pd.to_datetime(seasonal_index.index).month</span><br><span class="line"></span><br><span class="line"><span class="comment"># merge with the base data</span></span><br><span class="line">data[<span class="string">&#x27;month&#x27;</span>] = data.index.month</span><br><span class="line">df = pd.merge(data, seasonal_index, how=<span class="string">&#x27;left&#x27;</span>, on=<span class="string">&#x27;month&#x27;</span>)</span><br><span class="line">df.columns = [<span class="string">&#x27;value&#x27;</span>, <span class="string">&#x27;month&#x27;</span>, <span class="string">&#x27;seasonal_index&#x27;</span>]</span><br><span class="line">df.index = data.index  <span class="comment"># reassign the index.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pmdarima <span class="keyword">as</span> pm</span><br><span class="line"></span><br><span class="line"><span class="comment"># SARIMAX Model</span></span><br><span class="line">sxmodel = pm.auto_arima(df[[<span class="string">&#x27;value&#x27;</span>]], exogenous=df[[<span class="string">&#x27;seasonal_index&#x27;</span>]],</span><br><span class="line">                           start_p=<span class="number">1</span>, start_q=<span class="number">1</span>,</span><br><span class="line">                           test=<span class="string">&#x27;adf&#x27;</span>,</span><br><span class="line">                           max_p=<span class="number">3</span>, max_q=<span class="number">3</span>, m=<span class="number">12</span>,</span><br><span class="line">                           start_P=<span class="number">0</span>, seasonal=<span class="literal">True</span>,</span><br><span class="line">                           d=<span class="literal">None</span>, D=<span class="number">1</span>, trace=<span class="literal">True</span>,</span><br><span class="line">                           error_action=<span class="string">&#x27;ignore&#x27;</span>,  </span><br><span class="line">                           suppress_warnings=<span class="literal">True</span>, </span><br><span class="line">                           stepwise=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">sxmodel.summary()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/questions/160612/auto-arima-doesnt-calculate-aic-values-for-the-majority-of-models">https://stats.stackexchange.com/questions/160612/auto-arima-doesnt-calculate-aic-values-for-the-majority-of-models</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://otexts.com/fpp2/stationarity.html">https://otexts.com/fpp2/stationarity.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://people.duke.edu/~rnau/411home.htm">https://people.duke.edu/~rnau/411home.htm</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/">https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ikkOBWQj9X8">https://www.youtube.com/watch?v=ikkOBWQj9X8</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/time-series/augmented-dickey-fuller-test/">https://www.machinelearningplus.com/time-series/augmented-dickey-fuller-test/</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/05/19/ARIMA/" title="ARIMA">http://example.com/2022/05/19/ARIMA/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97/" rel="tag"># 时间序列</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/17/Promise-ctf/" rel="prev" title="浅谈Promise在ctf中的应用">
+                  <i class="fa fa-chevron-left"></i> 浅谈Promise在ctf中的应用
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"19007fd40b506a368af069a5fb58a911"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
