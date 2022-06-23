@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="大作业翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能代数基础大作业">
+<meta property="og:url" content="http://example.com/2022/06/23/AIdaishujichuHw/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="大作业翻译">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623104525064.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623105636858.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623110516505.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623114647717.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623115627381.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623140424495.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623140514869.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623131349380.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623133353702.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623142522970.png">
+<meta property="og:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623133600003.png">
+<meta property="article:published_time" content="2022-06-23T02:43:28.000Z">
+<meta property="article:modified_time" content="2022-06-23T06:44:44.107Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="HW">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/06/23/AIdaishujichuHw/image-20220623104525064.png">
+
+
+<link rel="canonical" href="http://example.com/2022/06/23/AIdaishujichuHw/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/06/23/AIdaishujichuHw/","path":"2022/06/23/AIdaishujichuHw/","title":"人工智能代数基础大作业"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>人工智能代数基础大作业 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">65</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E7%BF%BB%E8%AF%91"><span class="nav-number">1.</span> <span class="nav-text">核心内容翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E7%9F%A9%E9%98%B5-The-Incidence-Matrix"><span class="nav-number">1.1.</span> <span class="nav-text">关联矩阵(The Incidence Matrix)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Voltages-and-Currents-and-A-T-Ax-f"><span class="nav-number">1.2.</span> <span class="nav-text">Voltages and Currents and A^T Ax &#x3D; f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Networks-and-transport-A-CA"><span class="nav-number">1.3.</span> <span class="nav-text">Networks and transport(A)CA</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/23/AIdaishujichuHw/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="人工智能代数基础大作业 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能代数基础大作业
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-06-23 10:43:28 / Modified: 14:44:44" itemprop="dateCreated datePublished" datetime="2022-06-23T10:43:28+08:00">2022-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-basic/" itemprop="url" rel="index"><span itemprop="name">AI-basic</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>大作业翻译</p>
+<span id="more"></span>
+
+<h2 id="核心内容翻译"><a href="#核心内容翻译" class="headerlink" title="核心内容翻译"></a>核心内容翻译</h2><h3 id="关联矩阵-The-Incidence-Matrix"><a href="#关联矩阵-The-Incidence-Matrix" class="headerlink" title="关联矩阵(The Incidence Matrix)"></a>关联矩阵(The Incidence Matrix)</h3><p>图1展示了一个边数m=6和节点n=4的图。从6乘4的矩阵A中我们可以得知哪些节点是由哪些边连接的。第一行<code>-1, 1, 0, 0</code>表示第一条边从node①指向node②（-1表示节点1，因为箭头向外，+1表示节点2，箭头向内）。<br>A中的行号是边的编号，列号1、2、3、4是节点编号!</p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623104525064.png" alt="image-20220623104525064"></p>
+<p>​                                                                    图1</p>
+<p>可以通过看图来写出他的关联矩阵。第二张图有四个node但只有三条边，他的关联矩阵为3x4</p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623105636858.png" alt="image-20220623105636858"></p>
+<p>​                                                                     图2</p>
+<p>这是两个极端的情况。边缘的最大数量是½n(n - 1) = 6，保持连接的最小数量是n - l = 3。 消除法将每个图都减少为一棵树。循环在A中产生依赖行，在梯形图U和R中产生零行。看看第一个图中边1、2、3的大循环，它导致U中的零行。</p>
+<p>第一张图每一个节点都有边相连接，第二张图是一个树状图没有闭环。这是两种极端的情况。边缘的最大数量是½n(n - 1) = 6 , 保持连接的最小数量是n - l = 3。</p>
+<p>用消去法可以将任何一张图变成树状图。环状结构导致A中行相关，可以转化为行阶梯矩阵。看看第一个图中边1、2、3的大闭环，它导致出现零行。</p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623110516505.png" alt="image-20220623110516505"></p>
+<p>这些是很典型的步骤，当edge① 和edge②都通过node① 时，消去法产生了没有通过节点①的 “shortcut edge”（此时指edge3）。如果图已经存在”shortcut edge” 并形成了一个闭环，使用消去法将得到零行。最终我们得到一个树状图。</p>
+<blockquote>
+<p>一个想法自然而然地出现了：当边形成一个循环时，行是依赖性的。</p>
+</blockquote>
+<p>一个小例子：当x1, x2, x3, x4为节点的电压时，Ax给出电压差: </p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623114647717.png" alt="image-20220623114647717"></p>
+<ol>
+<li>零空间包含了所有 Ax = 0 的解。如果所有的六个电压差都是零，这意味着所有的四个电压都是相等的。零空间中的每一个x都是一个常数向量：x=（c，c，c，c）。A的零空间是R n-its 维空间中的一条线，其维度为n - r = l。第二个关联矩阵B也有同样的零空间，它包含（1，1，1，1）。</li>
+</ol>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623115627381.png" alt="image-20220623115627381"></p>
+<p>我们可以对所有电压提高或降低相同的电压c，而使得结果并没有发生改变。电压中存在一个 “任意常数”。我们可以通过C来提高或降低一个函数，而不改变其导数。</p>
+<p> 微积分在不确定的积分上加上 “+C”。向量x加上了( c, c, c, c) ，线性代数在Ax=b的一个特定解中加入了零空间中的任何向量Xn。</p>
+<p> 同样地，当我们固定x4=0时，零空间也消失了。未知的x4被移除，A和B的第四列也被移除（这些列乘以x4）。电气工程师会说，节点4已经被 “接地 “了。</p>
+<p>2.行空间包含六行的所有组合形式，它的维数当然不是六。 等式 r + (n - r) = n 为 3+1=4。矩阵的秩 r = 3, 同我们从消去法中得到的相同。三条边之后，我们将形成闭环，新的(多出的)行是非相关的。 我们如何判断 v = (v1, v2, v3, v4) 是不是在行空间内？比较慢的方法是合并矩阵的行，比较快的方法是通过正交：</p>
+<blockquote>
+<p>v is in the row space if and only if it is perpendicular to ( 1, 1, 1, 1) in the nullspace</p>
+<p>v 在行空间内当且仅当它垂直于零空间中的( 1, 1, 1, 1)</p>
+</blockquote>
+<p>The vector v = (0, 1, 2, 3) fails this test-its components add to 6. The vector (-6, 1, 2, 3)  is in the row space: -6+ 1 + 2+3 = 0. That vector equals 6(row 1) +5(row 3) +3(row 6).  Each row of A adds to zero. This must be true for every vector in the row space. </p>
+<p>3.列空间包含四列的所有组合。我们期望有三个非相关的列，因为有三个非相关的行。A的前三列是非相关的（任选三列也是如此）。但是这四列加起来就是零向量，这又说明（1，1，1，1）是在零空间内。我们如何判断一个特定的向量b是否在关联矩阵的列空间中？</p>
+<p>回答一：尝试解决Ax=b，这就错过了所有的洞察力。和以前一样，正交性给出了一个更好的答案。我们现在正在研究基尔霍夫的两个著名的电路理论定律理论–电压定律和电流定律（KVL和KCL）。这些都是自然的表达线性代数的 “定律”。看到左零空间的起到关键作用，特别令人高兴。</p>
+<p>回答二：Ax是电压差Xi - Xj的矢量。如果我们围绕着图形中的一个闭环添加差值，它们会被抵消，留下零。在边1,3,-2 (the arrow goes backward on edge 2)形成的大三角形差值抵消了。</p>
+<p><strong>Sum of differences is 0</strong> <img src="/2022/06/23/AIdaishujichuHw/image-20220623140424495.png" alt="image-20220623140424495" style="zoom:50%;"></p>
+<blockquote>
+<p>Kirchhoff’s Voltage Law: The components of Ax = b add to zero around every loop.</p>
+</blockquote>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623140514869.png" alt="image-20220623140514869"></p>
+<p>通过测试每个环，电压法决定b是否在列空间中。Ax = b 可以被精确地解出当b的组件满足所有与A的行相同的依赖关系时。那么消除法会得出0=0，Ax=b是一致的。</p>
+<p>4.左零空间包含A^T y = 0的解，其维度为m - r = 6 - 3。</p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623131349380.png" alt="image-20220623131349380"></p>
+<p>真正的方程数是r=3而不是n=4。理由:四个方程相加为 0=0。第四个方程是由前三个方程自动产生的。这些方程是什么意思？第一个方程说，-y1-Y2-y4=0。进入节点1的净流量为零。第四个方程说，y4 + y5 + Y6 = 0。节点4的流量减去流出的流量为零。方程A^T y = 0是著名的和基本的。</p>
+<blockquote>
+<p>Kirchhoff’s Current Law: A^t y = 0 Flow in equals flow out at each node. </p>
+</blockquote>
+<p>This law deserves first place among the equations of applied mathematics. It expresses  “conservation” and “continuity” and “balance.” Nothing is lost, nothing is gained. When  currents or forces are balanced, the equation to solve is A T y = 0. Notice the beautiful fact  that the matrix in this balance equation is the transpose of the incidence matrix A</p>
+<p>这一定律在应用数学的方程中应占首位。它表达了 “保存”、”连续 “和 “平衡”。没有失去什么，也没有得到什么。当 当电流或力量平衡时，要解决的方程是A^T y = 0。注意一个美丽的事实–这个平衡方程中的矩阵是关联矩阵A的转置。</p>
+<p>A^T y = 0的实际解是什么？电流必须自行平衡。最简单的方法是绕着一个圈流动。如果一个单位的电流绕过大三角形 (1和3边向前走，2边向后走），六个电流为y=（l, -1, 1, 0, 0, 0）。这就满足了ATy=0。每个环形电流都是电流定律的解。流入 等于每个节点的流出量。一个较小的循环在边1上前进，在5上前进，在4上后退。在4上。那么y = (1, 0, 0, -1, 1, 0)也是在左边的空域。我们期待三个独立的y’s: m-r=6-3=3。图中的三个小循环是独立的。大三角形似乎给出了第四个 y，但这个流量是小环的流量之和。围绕小环的流量之和。围绕3个小环的流动是左边零空间的一个基。</p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623133353702.png" alt="image-20220623133353702"></p>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623142522970.png" alt="image-20220623142522970"></p>
+<p>对于平面内的每一个图形，线性代数都会产生欧拉公式。拓扑学中的定理1! </p>
+<blockquote>
+<p>(number of nodes) - (number of edges) + (number of small loops) = 1. </p>
+</blockquote>
+<p>这就是（n）-（m）+（m-n+1）=1。我们例子中的图形有4 - 6 + 3 = 1。</p>
+<p>一个的三角形有（3个节点）-（3条边）+（I个循环）。在一个有9条边的10个节点的树上(没有闭环)，欧拉的计算为 10 - 9 + 0 。所有的平面图都可以得出答案为1。</p>
+<p>下图是一个有电流源的网络。基尔霍夫电流定律的变化 从A^T y = 0到A^T y = f，以平衡来自外部的源f。流入每个节点的电流仍然等于流出的电流。六条边会有电导率c1, …. ，c6，而电流 源进入节点1。源从节点4出来，以保持整体平衡 (in= out)。问题是：找到六条边上的电流y1, –, y6。现在网络中的流动使我们从关联矩阵A到拉普拉斯矩阵A^T A。</p>
+<h3 id="Voltages-and-Currents-and-A-T-Ax-f"><a href="#Voltages-and-Currents-and-A-T-Ax-f" class="headerlink" title="Voltages and Currents and A^T Ax = f"></a>Voltages and Currents and A^T Ax = f</h3><p>我们从节点上的电压x = ( x1, … , Xn ) 开始。到目前为止，我们用Ax来沿着边寻找电压差<code>Xi - Xj</code>。 我们有电流法A^T y = 0来寻找边的电流y = (y1, … Ym)–如果网络中的所有电阻都是1，欧姆定律将与之匹配 y = Ax。那么A^T y = A^T Ax = 0。我们已经很接近了，但还没有达到目的。如果没有任何来源，A^T Ax = 0的解决方案将没有流动：x = 0和y = 0。<br>我可以看到有三种方法可以产生x!=0和y!=0。</p>
+<ol>
+<li>给一个或多个节点分配固定电压Xi。</li>
+<li>在一个或多个边上添加电池（电压源）。</li>
+<li>添加进入一个或多个节点的电流源 See Figure 10.2 </li>
+</ol>
+<p><img src="/2022/06/23/AIdaishujichuHw/image-20220623133600003.png" alt="image-20220623133600003"></p>
+<p>Figure 10.2: The currents y1 to Y6 in a network with a source S from node 4 to node 1.</p>
+<h3 id="Networks-and-transport-A-CA"><a href="#Networks-and-transport-A-CA" class="headerlink" title="Networks and transport(A)CA"></a>Networks and transport(A)CA</h3><p>在一个真实的网络中，沿着一条边的电流y是两个数字的乘积。一个数字是边缘两端的电位x之差。这个电压差 是Ax，它驱动电流。另一个数字c是 “电导率”–它衡量流量通过的容易程度–衡量流量通过的容易程度。在物理学和工程学中，c的值是由材料决定的。对于电流来说，金属的c值相对是高的，而塑料则相对较低。对于超导体来说，c几乎是无限大的。如果我们 考虑到弹性拉伸，金属的c可能很低，塑料的c可能更高。</p>
+<p>在经济学上，可以用c来衡量一条边的容量或其成本。总而言之，图可由它的关联矩阵A得知。这告诉我们结点与结点之间的联系。</p>
+<p>一个网络更进一步，给每个边分配一个电导率c。这些数字c1, … Cm进入 “电导矩阵 “C–它是对角矩阵。对于电阻网络来说，电导率是c = 1 / （电阻）。除了用于整个电流系统的基尔霍夫定律外，我们还有用于每个电流的欧姆定律。欧姆定律将边1上的电流y1与电压差x2 - x1联系起来。</p>
+<blockquote>
+<p>Ohm’s Law: Current along edge = conductance times voltage difference. </p>
+</blockquote>
+<p>所有m电流的欧姆定律是y = -CAx。矢量Ax给出电位差，C乘以电导率。将欧姆定律与基尔霍夫定律相结合.</p>
+<p>电流法AT y = 0，我们得到AT C Ax = 0。这几乎是网络流的核心方程。唯一错误的是右边的零! 网络需要来自外部的电源 从外部–一个电压源或一个电流源–使一些事情发生。<br>关于符号的注意 在电路理论中，我们把Ax改为-Ax。流量是从高电位到低电位。势到低势。当xi - x2为正时，有（正）电流从节点1到节点2。是正的，而Ax的构造是产生x2 - xi。物理学和电气工程中的减号 在物理学和电气工程中的减号在机械工程和经济学中是一个加号。Ax与 -Ax是一个普遍的头痛问题，但不可避免的。关于应用数学的说明 每个新的应用都有自己的欧姆定律的形式。对于弹簧，它是胡克定律。应力y是（弹性C）乘以（拉伸Ax）。对于热传导，Ax是一个温度梯度。对于油流来说，它是一个压力梯度。对于统计学中的最小二乘回归（第12章），c-i是协方差矩阵。我的教科书《应用数学导论》和《计算科学与工程》（Wellesley-Cambridge）。(Wellesley-Cambridge Press)实际上是建立在AT CA上的。这就是 矩阵方程和微分方程中的平衡的关键。应用数学 比它看起来更有条理! 在新的问题中，我已经学会了观察AT C A。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/06/23/AIdaishujichuHw/" title="人工智能代数基础大作业">http://example.com/2022/06/23/AIdaishujichuHw/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HW/" rel="tag"># HW</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/22/zhinengkongzhiyuanli-HW/" rel="prev" title="智能控制原理实践">
+                  <i class="fa fa-chevron-left"></i> 智能控制原理实践
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b0b4feb30a1202cf3ef758fbac9467b1"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
