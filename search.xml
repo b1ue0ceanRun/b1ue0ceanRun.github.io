@@ -3351,7 +3351,7 @@
 <li>将各进程中的临界区代码段用P(Si)和V(Si)括起来，即可完成进程互斥<img src="/2022/06/24/ComputerSystemReview/image-20220624144507975.png" alt="image-20220624144507975"></li>
 </ol>
 <p>mutex即为信号量</p>
-<p><img src="/2022/06/24/ComputerSystemReview/image-20220624143956455.png" alt="image-20220624143956455"></p>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624173741835.png" alt="image-20220624173741835"></p>
 <h3 id="进程同步概念"><a href="#进程同步概念" class="headerlink" title="进程同步概念"></a>进程同步概念</h3><p>指系统中多个进程中发生的事件存在某种时序关系，需要相互合作，共同完成一项任务。 具体说，<strong>一个进程运行到某一点时要求另 一伙伴进程为它提供消息，在未获得消息之 前，该进程处于等待状态，获得消息后被唤醒进入就绪态</strong>。</p>
 <h3 id="用PV操作实现进程同步"><a href="#用PV操作实现进程同步" class="headerlink" title="用PV操作实现进程同步"></a>用PV操作实现进程同步</h3><p>具体步骤分为三步： </p>
 <p>① 为各并发进程设置各自的私用信号量</p>
