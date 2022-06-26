@@ -20,32 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="学习一下GCN 具体可参考https:&#x2F;&#x2F;distill.pub&#x2F;2021&#x2F;understanding-gnns&#x2F;">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Understanding Convolutions on Graphs">
+<meta property="og:title" content="Understanding Convolutions on Graphs 翻译加一些思考">
 <meta property="og:url" content="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="学习一下GCN 具体可参考https:&#x2F;&#x2F;distill.pub&#x2F;2021&#x2F;understanding-gnns&#x2F;">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog/b1ue0cean.github.io/source/_posts/Understanding-Convolutions-on-Graphs/image-20220609133025298.png">
-<meta property="og:image" content="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog/b1ue0cean.github.io/source/_posts/Understanding-Convolutions-on-Graphs/image-20220609133747761.png">
-<meta property="og:image" content="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog/b1ue0cean.github.io/source_posts/Understanding-Convolutions-on-Graphs/image-20220609171310312.png">
 <meta property="article:published_time" content="2022-06-09T05:18:31.000Z">
-<meta property="article:modified_time" content="2022-06-09T09:21:43.997Z">
+<meta property="article:modified_time" content="2022-06-25T11:29:12.750Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="GCN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog/b1ue0cean.github.io/source/_posts/Understanding-Convolutions-on-Graphs/image-20220609133025298.png">
 
 
 <link rel="canonical" href="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/","path":"2022/06/09/Understanding-Convolutions-on-Graphs/","title":"Understanding Convolutions on Graphs"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/","path":"2022/06/09/Understanding-Convolutions-on-Graphs/","title":"Understanding Convolutions on Graphs 翻译加一些思考"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Understanding Convolutions on Graphs | b1ue0cean's   blog</title>
+<title>Understanding Convolutions on Graphs 翻译加一些思考 | b1ue0cean's   blog</title>
   
 
 
@@ -95,9 +91,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">47</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">25</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">69</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">26</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">70</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -141,7 +137,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -154,7 +150,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">由一个问题引发的血案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%8D%E6%9D%A5%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">再来一个问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -169,18 +164,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -249,12 +244,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Understanding Convolutions on Graphs | b1ue0cean's   blog">
+      <meta itemprop="name" content="Understanding Convolutions on Graphs 翻译加一些思考 | b1ue0cean's   blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Understanding Convolutions on Graphs
+          Understanding Convolutions on Graphs 翻译加一些思考
         </h1>
 
         <div class="post-meta-container">
@@ -264,9 +259,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-06-09 13:18:31 / Modified: 17:21:43" itemprop="dateCreated datePublished" datetime="2022-06-09T13:18:31+08:00">2022-06-09</time>
+      <time title="Created: 2022-06-09 13:18:31" itemprop="dateCreated datePublished" datetime="2022-06-09T13:18:31+08:00">2022-06-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-06-25 19:29:12" itemprop="dateModified" datetime="2022-06-25T19:29:12+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,28 +289,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>学习一下GCN</p>
-<p>具体可参考<a target="_blank" rel="noopener" href="https://distill.pub/2021/understanding-gnns/">https://distill.pub/2021/understanding-gnns/</a></p>
-<span id="more"></span>
-
-<h2 id="由一个问题引发的血案"><a href="#由一个问题引发的血案" class="headerlink" title="由一个问题引发的血案"></a>由一个问题引发的血案</h2><p>先来看一个最最最最重要的问题  – <strong>如何将图结构转换为神经网络</strong>？</p>
-<p>简单说一个我在实际中遇到的问题</p>
-<p>车流量 12个node   如何转化为 seq2seq 的数据形式？</p>
-<p>来看两张直观的图片</p>
-<img src="/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog\b1ue0cean.github.io\source\_posts\Understanding-Convolutions-on-Graphs\image-20220609133025298.png" alt="image-20220609133025298" style="zoom: 67%;">
-
-<img src="/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog\b1ue0cean.github.io\source\_posts\Understanding-Convolutions-on-Graphs\image-20220609133747761.png" alt="image-20220609133747761" style="zoom: 67%;">
-
-
-
-<p>最简单去想到的就是取 12*12 的一个数据格式 然后里面可以存参数来表示不同node之间的联系</p>
-<p>但是一个会够吗？实际上实验中使用了 12 x 12 x 2  的数据格式   也就是说 不同节点之间的关系可以用多维数据来表示</p>
-<p>（我怎么这么死脑筋 ~~</p>
-<h2 id="再来一个问题"><a href="#再来一个问题" class="headerlink" title="再来一个问题"></a>再来一个问题</h2><p>图结构如何来卷积？</p>
-<p>​                                                                                                                      正常的卷积</p>
-<p><img src="/2022/06/09/Understanding-Convolutions-on-Graphs/MyBlog\b1ue0cean.github.io\source_posts\Understanding-Convolutions-on-Graphs\image-20220609171310312.png" alt="image-20220609171310312"></p>
-<p>图结构的卷积</p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="52be77dccee4e739986f790457f1f703d07b149bab0a9ba74b6cb0f7284585ec">fd988cba8748bf0be2afeca1bdc9c8f088a10d7af1f961c9e1666c5f75bb5ee2e4c57321e6fc95d07cf729375c368f699955fddc8be5476323d7f4502d01d8132f547225273368b1fab873aa5ad7ef51f41b21c2aab90a19fcf2c8e9ce6b1c5a0246dd82d51905520186b64fa6a5075ad985897e84d1e8b57a32e01ff05a00e7b1592dfe6531f892e0184ddb070d740e7265aa49533a9b6eee6e60fe6f16d2e304bb1e0448cde2e2cb911ea8290aa65c0170e122c843c7ca80c66540c73bf66a2ffb2a4400c41718c52f8105e802154a4ca308aaf570110823868d0cfdea3737dfebb6bdbe75bef6995df8ca4ddd1749d790f4409b4765be5443b50588e3363fcdb00668c8581db18b8e39227f56b5f6bd4ea1de1a502507832758b5f1c67483343b8353cec921a2592ead02d1acdc0b52b615231dbb674e4785d49760770df9e664cfc8eb11b15c699b805f8e11c8c17a62e1fb21a655db5a04b995204b9958181229ac13ede49212ae081ee24001001017738cb0696cc3be671f01ed5a891b53c71856a2f5ac2d391e29a8cca7c56f4d7a534415da62398a4cbe070b99737ad39cb59641f4d1133c01cfe18f4bc2f1ad4d56d59dc893439a49de8de8b3dc790b8bc2128257b5de7efd0a21e41fa5480615b4800d371417346d9d6f66946ad594aa0042a141a95f6c9d26fc060a297bbb36d471ad7be733de3719acde7f5f7b66429006f8f7c0b7ae9e6467029e5656665b50dc36c5b8907f5d7096ab2d59056d3b213fd32480a0c11b5a178f55d1a3eeb6be4a918a6f0089ac242191733dfa97dc6eb408f60e01cbc89dc761841bbce3eb1076ca702be22e135cbcc3ebcb5406e737ba8687cea5ed8645c8445fca0e608f75c47e6fbef9b11ad734a72636adaf3d09b345b73977be2a2b20e66f89e01153f6eadd091bb53c7be384bbe1fca07b6812daecda43d13c3fa2168fd32d5c4ee7ee642259ff71a4a2ede62cbd35b0030db1c3cee965501afb9a9ed1e6debec8972ccc04228fd6f3f0cd201873049d7ef5a9f934c7aea833a208e5acb7428173932efb43b87d92fbbfab8bf1fba4fb39af6eb5550e544bb29520814c19cfb3f5ee1321399d9477f15596be3f484b2fde408add22a7d9ea673fd1fdb251e6f8a094c51c13edcb1a97598ec20c84c5f30123446d5c9277a9fa5cf138097b2e2201d247c22d42571e6431efff71312a9034c45f887da9d8a684e1c3b588488668a2039b09f11f9109be72345c28a835913595765528fcfac56087e86d47863154d959e5ae1a1b366e110b4ff8c884b45fc5e87793a4c8ca8ab8a0f43e9935f2fa09b2b1af516e7a7c122e8aac498aeef2d225d9d51a062f22a737585529561765a181a2666df7cfeeefe11879ce3fb9b409960d0d04bb1d531cab1ba72835aaf5d24091c74692f073b497634962e7d1b060d67369a6316bb0d68eb8cbc8fe4f7a63a5086f67a8fa50734b6af926646a26508aa74f50b0bb03a669ed54006e6d63f86b045bf633aeda265274e1a429e0a971b6bbc10bc27e7bca37a737d0e443a2027e673e24839702da6ad712aad1ab8f475507a5536705c8eab35de1c699c3e6275058383364f8c5cc94fa73334d45bab66b97fb88085cda77b8551c7aa8250d3568497d25dcbcff1418bdbd9c2af2c369c9df1082032385cf373da9336ca6eb5ef5a40c615c506d4b8966fc572e609c7339109fabac972d47900b072983a72a06e1f7ea5cfdcf017f2c733d70f2e0da4bead899abdfb5a0e233b12eda05f15a20f2e3b38ad49f9c170592683a84597ec651caf390cb25bacb79351ed385f336183717ece3b535c892ea878a2881cc2501fbc9fe547330e281c3b0c60a1c2d260d0cc1e58abc38b38f19b734852d8064e2ddced2f5cf93408371c1c0833f1b18d5306069420b63d0776d4bbb36aa2374cdda43835c26d006f3b362c329cb1674c3cae45d92d20400e3c43c0abcf30209fb86825d0359fbd2ee688e9dc178b4508d0fbdbc1335c9b552f8bb6f45a3647602a6c11f2715b3d5ce398e91a9319cc616db4bf4908d7e111c94f01d71af71e0eece7aeefe16a7894eacf1752c87250d90703cab7423f31cb6f3257d3f89aa8cac35d4baf807b0c1f79838a03539f0fc514755db62239f73483db19359b16d23cf7a3113090133a74fcd00570dc5aec51b8b895752d2b4502f936d4feb4807aba81bcf666fe9d7d22bd78e7992e2eebc3897fef5b4bdd497ba72efc327f0e20abce157a42f50fefa24e087193bdf7a56662ac7d74e2a81abe2ca50290577dc333971befc6270a5e321e6a9cc5213f0cba50acab3f40605c636c51fab56da9ed3ccb03512cba3c8af4002df307a86fd9a08078c7530471742887e1d9e3c8b9236dae21a345d4716d07c7f4b4c8bd2e86530c1ca85739cff417d1754ecd45ccef8d26b798c9ab978cf4af9a1fdc421d9ef1a215c99f055608b4c0241d950b015dc80ed0f8db8c2fdd5429cf87ccd9e7b5049b894889f81b334ed88e679123d4e8e5c65b0cee6f7c11d2ade345428651fbb5204244a9dd5d29aaa01b348cc588c984bf41eb6fe5373ba48e5e602a28527ed5825bffedadf7b3414fd837b3c91a362b6e82bd6f4bf10353d1818dffa3f48ea6923825284c710c466b9bb279e9ccb0604d88c207427c93e20f833ad91b6b964de9a8e6c7a90da3fa01d73ef4d278b6d53d4d821a23a05ece90febb70af1f3128cc1bd0b0550d1be0cc71d63d1cb60baad74f20316859cf153e4ddd1b8ccd237311b30d499853e58b2a5b4496477b060f12a9e82690309793539d12b1bb71c5942a649beda5df66b8091edcc4a72b11b1d82e5d7ede17d90d4da5928e8fbff576816dd193334fedcbdb7cee5f596855a6646335ac75b0cc2d5cd6345776dcbb3c5696c9d02897e9cef8e1dc8997f09e0b1fa9f23954c121a383af304c4ab28ceb46dbccfe83a50ddabdc63df8893d5a28929275bd88d0c4a17e2125e88db1d5d1e0b66775754491677cf55849c892476bbd2a2a08a86e39fcd5452acde4657f865b77fffd0093089167dbdd0d55f673043dae7c4854d1d3b804a8d5b2b92fc5dbe071ce0eb7428ca17c835729b842c4c4a0035714285c32b98582582b6ea61d258c2092b2bfee63f9b11cc79762f0b577b13d6734f649cbff1c7f65fb07d31ec36806b2e7e8df819932a9bd34c765a83719a59bcd92057e0c95874f17386206c70fadef1faf97d7e40fbca149072fc2c62d0ef99d2fb3e3940ee98f40d3fa754a5684a979b7efca3046e480d6bc73be62c98cc8cc497efbcee27939b2a41ad38c515aaeaf49cef5119463cf5c27ac24e012ee1b90e366ebe85b330b73b73ac0d8b86193746cf1948f3bada45f03e42f3d5e9c0d0d23c80c5d13e83fd8e494f5f841094144c76a66005c416284f42c5d75137805266e30f1a55cc8ba15d88d9f089105ada3b753921b3ab2ebe33e2b84297eebd56eb9528e7517904b30e0685695c88ab3a30ac44ceefdd18f28226f44058258ede192f456fe255fd3efefb80d5e2f41861838098398da2dbce6d0a4b9c601ad3275aad51a93d738e27d8d1495bffcbfa787fc3e241e51a47da9ee544483ee12094a561e760b0d57462823a9ef99e2cbffab56fa92818778d36f1f6e34636f8f745942491205a8a3860692ff884d9828dbc7dc4fdb0094ba8930d546447a22e9150764842dd696d3203830522dfe4d0856270afda0f168ab6752bb43136f20121d5ec68c14c34fd7ab93d192c70c3985cf02eadeebc7dabbd3b49d791592c60e8afd537677bd12ad519612b733a000f3b5d4d17d8b4de7ed571658e791149598099006c6adda966556a118f272612ad0ba26d05b60a2e71efa78be14eb1e39e99dd75ff3e476d67837ee1baa50b47c1c343a99fff76b461dd83b5c0dadd815be987842d40c9c87bdd797812041d</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -326,7 +317,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/" title="Understanding Convolutions on Graphs">http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/</a>
+      <a href="http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/" title="Understanding Convolutions on Graphs 翻译加一些思考">http://example.com/2022/06/09/Understanding-Convolutions-on-Graphs/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
