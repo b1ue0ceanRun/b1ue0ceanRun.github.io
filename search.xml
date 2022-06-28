@@ -3175,9 +3175,6 @@
     <content><![CDATA[<p>期末复习 小总结一下  看到有人把这门课学/搞成一门背书的课 是真的sb</p>
 <span id="more"></span>
 
-<p>素质</p>
-<img src="/2022/06/24/ComputerSystemReview/image-20220626234351470.png" alt="image-20220626234351470" style="zoom:200%;">
-
 <h2 id="OS-基本类型及主要特点"><a href="#OS-基本类型及主要特点" class="headerlink" title="OS 基本类型及主要特点"></a>OS 基本类型及主要特点</h2><h3 id="批处理操作系统"><a href="#批处理操作系统" class="headerlink" title="批处理操作系统"></a>批处理操作系统</h3><p><strong>主要特征</strong>： </p>
 <ol>
 <li>用户脱机使用计算机。 </li>
@@ -3282,6 +3279,85 @@
 <p>其思想是将就绪进程分为多级，较高优先级的队列分配时间片较短。 调度先从高一级就绪队列中选择，同 一队列中按FCFS原则； 若不存在高优先级进程，则从较低一级的就绪队列中选择。</p>
 <p>时间片用完而未完成的进程加入低一级就绪队列，但时间片加长。</p>
 <h3 id="优先级法"><a href="#优先级法" class="headerlink" title="优先级法"></a>优先级法</h3><p>优先级法可用作作业/进程调度策略。 系统或用户按某种原则为作业或进程指定一个优先级，表示其优先权。 该算法的核心是确定进程或作业的优先级。确定优先级的方法可分为<strong>静态法和动态法</strong>。</p>
+<h2 id="同步与互斥的概念，以及生产者-消费者模型的并发控制程序设计"><a href="#同步与互斥的概念，以及生产者-消费者模型的并发控制程序设计" class="headerlink" title="同步与互斥的概念，以及生产者-消费者模型的并发控制程序设计"></a>同步与互斥的概念，以及生产者-消费者模型的并发控制程序设计</h2><h3 id="临界资源与临界区"><a href="#临界资源与临界区" class="headerlink" title="临界资源与临界区"></a>临界资源与临界区</h3><p>临界资源：系统中同时只允许1个进程访问的资源称为临界资源或互斥资源。 </p>
+<p>临界区：进程中涉及到临界资源的程序段称为临界区（critical region），即不允许多个并发进程交叉执行的一段程序。</p>
+<h3 id="进程互斥"><a href="#进程互斥" class="headerlink" title="进程互斥"></a><strong>进程互斥</strong></h3><p>临界区的执行原则 </p>
+<p>有空则进：当无进程执行临界区时，任何进程均可执行自己的临界区； </p>
+<p>无空等待：不允许两个以上的进程同时执行临界区；其他进程必须等待； </p>
+<p>有限等待：任何执行临界区代码的请求应在有限的时间内得到满足。</p>
+<h3 id="P、V操作"><a href="#P、V操作" class="headerlink" title="P、V操作"></a>P、V操作</h3><blockquote>
+<p>Dijkstra 发明了信号量和P、V 操作</p>
+<p>使用一个整型变量来累计唤醒次数，称作信号量（semphore）</p>
+<p>荷兰语中 尝试（Proberen）和增加或升高 （Verhogen）。 </p>
+<p>利用信号量和P、V 操作既可以解决并发进程的竞争问题，又可以解决并发进程的协作问题。</p>
+<p>P –down(sleep)  V – Up(wakeup)</p>
+</blockquote>
+<p>对一个信号量执行P操作，检查其值是否大于0。若该值大于0，则将其值减一(即用掉一个保存的唤醒信号)并继续；若该值为0，则进程将sleep，此时P操作并未结束。检查数值，修改变量值以及可能发生的睡眠操作均为一个单一的、不可分割的原子操作完成。<strong>保证一旦一个信号量操作开始，则在该操作完成或阻塞前，其他进程均不允许访问该信号量</strong>。这种原子性的操作对于解决同步问题和避免竞争条件是绝对必要的。</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">P(s)</span><br><span class="line">&#123;</span><br><span class="line">	s.value <span class="operator">=</span> s.value --<span class="comment">;</span></span><br><span class="line">	if (s.value &lt; <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			改当前进程状态为等待状态；</span><br><span class="line">			将其PCB插入相应等待队列末尾s.queue<span class="comment">;</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>V操作对信号量的值增1。如果一个或多个进程在该信号量上睡眠，无法完成一个先前的V操作，则由系统选择一个（如随机挑选）并允许该进程完成他的V操作。</p>
+<figure class="highlight wren"><table><tr><td class="code"><pre><span class="line"><span class="title function_">V</span>(<span class="params">s</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="variable">s</span>.<span class="property">value</span> <span class="operator">=</span> <span class="variable">s</span>.<span class="property">value</span> <span class="operator">+</span><span class="operator">+</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">s</span>.<span class="property">value</span> <span class="operator">&lt;</span> <span class="operator">=</span> <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			唤醒等待队列<span class="variable">s</span>.<span class="property">queue</span>中的<span class="number">1</span>个进程；</span><br><span class="line">			改被唤醒进程的状态为就绪态；</span><br><span class="line">			并将其插入就绪队列；</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用信号量解决生产者-消费者问题"><a href="#用信号量解决生产者-消费者问题" class="headerlink" title="用信号量解决生产者-消费者问题"></a>用信号量解决生产者-消费者问题</h3><p>为了确保信号量能正确工作，最重要的是要采用一种不可分割的方式来实现它。通常是将P，V操作作为系统调用实现。</p>
+<ol>
+<li>用PV 实现进程互斥步骤如下： </li>
+<li>每个互斥资源设1个互斥变量Si信号量变量赋初始值Si=1</li>
+<li>将各进程中的临界区代码段用P(Si)和V(Si)括起来，即可完成进程互斥<img src="/2022/06/24/ComputerSystemReview/image-20220624144507975.png" alt="image-20220624144507975"></li>
+</ol>
+<p>mutex即为信号量</p>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624173741835.png" alt="image-20220624173741835"></p>
+<h3 id="进程同步概念"><a href="#进程同步概念" class="headerlink" title="进程同步概念"></a>进程同步概念</h3><p>指系统中多个进程中发生的事件存在某种时序关系，需要相互合作，共同完成一项任务。 具体说，<strong>一个进程运行到某一点时要求另 一伙伴进程为它提供消息，在未获得消息之 前，该进程处于等待状态，获得消息后被唤醒进入就绪态</strong>。</p>
+<h3 id="用PV操作实现进程同步"><a href="#用PV操作实现进程同步" class="headerlink" title="用PV操作实现进程同步"></a>用PV操作实现进程同步</h3><p>具体步骤分为三步： </p>
+<p>① 为各并发进程设置各自的私用信号量</p>
+<p>② 信号量变量赋初值 </p>
+<p>③ 利用ＰＶ原语和信号量规定各进程的<strong>执行顺序</strong></p>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624144803020.png" alt="image-20220624144803020"></p>
+<p><strong>用full和empty来保证某种事件的发生顺序或不发生</strong>来实现同步 来看一个例题</p>
+<p>某银行提供一个服务窗口和10个供顾客等待的座位。顾客到达银行时，若有空座位，则到取号机上领取一个号，等待叫号。取号机每次仅允许一个顾客使用。当营业员空闲时，通过叫号选取一位顾客，并为其服务。顾客及营业员的活动描述如下：</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">cobegin</span><br><span class="line">&#123; </span><br><span class="line">process 顾客</span><br><span class="line">&#123;</span><br><span class="line">	从取号机获取一个号码；</span><br><span class="line">	等待叫号；</span><br><span class="line">	获得服务；</span><br><span class="line">&#125;</span><br><span class="line">process 营业员</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>（TRUE）</span><br><span class="line">		&#123;</span><br><span class="line">			叫号；</span><br><span class="line">			为顾客服务；</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;coend</span><br></pre></td></tr></table></figure>
+
+<p>请添加必要的信号量和P、V（或wait（）、signal（））操作，实现上述过程中的互斥与同步。要求写出完整的过程，说明信号量的含义并赋初值。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">semaphore mutex=<span class="number">1</span>;   <span class="comment">//互斥使用取号机 互斥锁 实现取号的互斥问题</span></span><br><span class="line">semaphore empty=<span class="number">10</span>;     <span class="comment">//空座位的数量	</span></span><br><span class="line">semaphore full=<span class="number">0</span>;     <span class="comment">//已占座位的数量，必须大于0营业员才可以开始服务</span></span><br><span class="line">semaphore service=<span class="number">0</span>;        <span class="comment">//等待叫号</span></span><br><span class="line">cobegin</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">process 顾客i&#123;</span><br><span class="line">	<span class="constructor">P(<span class="params">empty</span>)</span>;	<span class="comment">//申请座位 成功则将空座位减一</span></span><br><span class="line">    <span class="constructor">P(<span class="params">mutex</span>)</span>;    <span class="comment">//进入临界区 准备取号</span></span><br><span class="line">	从取号机获得一个号;</span><br><span class="line">	<span class="constructor">V(<span class="params">mutex</span>)</span>;   <span class="comment">//离开临界区 取完了号</span></span><br><span class="line">	<span class="constructor">V(<span class="params">full</span>)</span>;     <span class="comment">//将空座位加1</span></span><br><span class="line">	<span class="constructor">P(<span class="params">service</span>)</span>;           <span class="comment">// 等待叫号</span></span><br><span class="line">	等待叫号；</span><br><span class="line">&#125;</span><br><span class="line">process 营业员&#123;</span><br><span class="line"><span class="keyword">while</span>(TRUE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="constructor">P(<span class="params">full</span>)</span>; <span class="comment">//营业员面前没人就P</span></span><br><span class="line">		叫号； </span><br><span class="line">		<span class="constructor">V(<span class="params">empty</span>)</span>; <span class="comment">// 叫完号才能开放一个空位  </span></span><br><span class="line">		为顾客服务;		  	   		 </span><br><span class="line">		<span class="constructor">V(<span class="params">service</span>)</span>;          <span class="comment">//叫下一个号</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">coend</span><br></pre></td></tr></table></figure>
+
+<p>看了网上很多 感觉都不太对 自己写了一个 也不知道对不对。。。应该对一点点</p>
+<h2 id="存储管理中重定位的概念及其方式"><a href="#存储管理中重定位的概念及其方式" class="headerlink" title="存储管理中重定位的概念及其方式"></a>存储管理中重定位的概念及其方式</h2><h3 id="逻辑地址（虚拟地址）"><a href="#逻辑地址（虚拟地址）" class="headerlink" title="逻辑地址（虚拟地址）"></a>逻辑地址（虚拟地址）</h3><p>目标程序中的地址是<strong>一个从0开始的地址</strong>， 并不是内存的实际地址。 把用户目标程序使用的地址称为逻辑地址 （虚拟地址）。 一个用户作业的目标程序的逻辑地址集合称为该作业的逻辑地址空间。</p>
+<p>程序的逻辑地址空间<strong>可以是一维的</strong>，这时逻辑地址即为从0 开始顺序递增的一个地址序列。 逻辑地址<strong>也可以是二维（多维）的</strong>，即程序中的地址是不连续的。</p>
+<h3 id="物理地址（绝对地址）"><a href="#物理地址（绝对地址）" class="headerlink" title="物理地址（绝对地址）"></a>物理地址（绝对地址）</h3><p>我们把主存中的实际存储单元称为物理地址（绝对地址），物理地址的总体相应构成了用户程序实际运行的物理地址空间。 操作系统将内存分为<strong>系统区和用户区</strong>两个部分。</p>
+<h3 id="逻辑地址与物理地址的关系"><a href="#逻辑地址与物理地址的关系" class="headerlink" title="逻辑地址与物理地址的关系"></a>逻辑地址与物理地址的关系</h3><p>某个当程序运行时，操作系统则分配一些 地址空间，此时程序和数据的实际地址与原来程序中的逻辑地址并非是一致的。 CPU访问地址的只能是物理地址，因此， 逻辑地址必须转换成正确的物理地址！ </p>
+<p>一句话</p>
+<blockquote>
+<p>物理地址=逻辑地址+分区起始地址</p>
+</blockquote>
+<h3 id="地址变换"><a href="#地址变换" class="headerlink" title="地址变换"></a>地址变换</h3><p>memory map 把程序中逻辑地址转换为物理地址的工作 称为地址转换或<strong>地址重定位、地址映射</strong>。 </p>
+<p>静态重定位：发生在作业执行前一次完成，多由软件独立完成</p>
+<p>动态重定位：发生在程序执行过程中，通常借助于地址转换机构硬件与软件共同实现。</p>
+<p>就一个简单的偏移关系 啥都没有</p>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624155406128.png" alt="image-20220624155406128"></p>
+<h2 id="请求页式管理的地址重定位过程（计算）未总结完"><a href="#请求页式管理的地址重定位过程（计算）未总结完" class="headerlink" title="请求页式管理的地址重定位过程（计算）未总结完"></a>请求页式管理的地址重定位过程（计算）未总结完</h2><h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><p>基本思想：</p>
+<p>每个程序拥有自己的地址空间，这个空间被分割成很多块，每一块称作一页或页面。每一页拥有自己的地址空间。</p>
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>大部分虚拟内存系统中都使用一种成为分页（paging）的技术。在使用虚拟内存的情况下，虚拟地址不是直接送到内存总线上，而是被送到内存管理元（MMU），MMU把虚拟地址映射为物理内存地址。</p>
+<h3 id="页框"><a href="#页框" class="headerlink" title="页框"></a>页框</h3><p>把虚拟地址空间按照固定大小大小划分成被称为页面的若干单元，在<strong>物理内存中对应的单元成为页框</strong>。</p>
+<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><p>虚拟地址到物理地址的映射可以概括如下：虚拟地址被分为<strong>虚拟页号</strong>（高位部分）和<strong>偏移量</strong>（低位部分）两部分。</p>
+<p>虚拟页号可用作页表的索引，以找到该虚拟页面对应的页表项。有页表项可以找到页框号（如果有的话）。然后把页框号拼接到偏移量的高位端，以替换掉虚拟页号，形成送往内存的物理地址。</p>
+<p>页表的目的是把虚拟页面映射成页框。从数学角度说，也表示一个函数，它的参数是虚拟页号，结果是物理页号。</p>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><p>虽然不觉得这种计算有任何的意义</p>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624162641093.png" alt="image-20220624162641093"></p>
+<p>存储页框表：</p>
+<p>即物理内存分配情况，包括空闲页框位置、空闲页框总数等，整个系统1张存储页框表。 实现形式有位示图和空闲链表。 </p>
+<p>位示图：包含若干个字，每个字包含若干位，每位对应1个页框。1分配，0空闲。</p>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624162912940.png" alt="image-20220624162912940"></p>
+<p>这里应该是打错了 应该是<strong>页框号</strong></p>
+<p>地址变换</p>
+<blockquote>
+<p>物理地址=页框号*页大小+页内地址</p>
+</blockquote>
+<p><img src="/2022/06/24/ComputerSystemReview/image-20220624163532078.png" alt="image-20220624163532078"></p>
+<p>PS:这里应该叫虚拟地址空间</p>
+<p><img src="/2022/06/24/ComputerSystemReview/format,png-16560607633459.png" alt="内存映射"></p>
 <h3 id="虚拟-请求-页式管理"><a href="#虚拟-请求-页式管理" class="headerlink" title="虚拟(请求)页式管理"></a>虚拟(请求)页式管理</h3><p><strong>引入原因</strong> </p>
 <ul>
 <li><p>程序大于内存</p>
