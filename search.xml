@@ -2956,15 +2956,15 @@
 </thead>
 <tbody><tr>
 <td>复习计组</td>
-<td></td>
+<td>1</td>
 </tr>
 <tr>
 <td>复习操作系统</td>
-<td></td>
+<td>1</td>
 </tr>
 <tr>
 <td>复习智能控制原理</td>
-<td></td>
+<td>1</td>
 </tr>
 </tbody></table>
 <h2 id="十天内任务"><a href="#十天内任务" class="headerlink" title="十天内任务"></a>十天内任务</h2><table>
@@ -2975,8 +2975,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>人工智能代数基础作业</td>
-<td>1/2</td>
+<td>人工智能代数基础作业1</td>
+<td>1</td>
 </tr>
 <tr>
 <td>面试的论文</td>
@@ -2984,26 +2984,56 @@
 </tr>
 <tr>
 <td>智能控制原理实践</td>
-<td>2/3</td>
+<td>1</td>
 </tr>
 <tr>
 <td>复习智能控制原理</td>
-<td></td>
+<td>1</td>
 </tr>
 <tr>
 <td>复习计组&amp;操作系统</td>
-<td></td>
+<td>1</td>
 </tr>
 <tr>
 <td>改论文</td>
-<td></td>
+<td>1</td>
 </tr>
 <tr>
 <td>ACTF</td>
-<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>考英语</td>
+<td>1</td>
 </tr>
 </tbody></table>
 <p>我真的哭死</p>
+<h2 id="day13-7-4-小总结"><a href="#day13-7-4-小总结" class="headerlink" title="day13 7.4 小总结"></a>day13 7.4 小总结</h2><p>一眨眼十天过去了。。。</p>
+<p>小总结一下</p>
+<p>一直在准备考试 考了三门。。。炸了三门</p>
+<p>考完英语放松了一天又要继续去复习人工智能代数基础</p>
+<p>ctf一点没碰 科研一点没碰 。。。</p>
+<p>马上暑假就要来了。。。</p>
+<p>r3那边还没转正 再不转正就没机会了。。。要去准备留学了。。。555</p>
+<p>不知道什么时候可以转正，好难，，，</p>
+<p>我好菜。。。难受</p>
+<p>科研一点没做。。。我是fw  </p>
+<p>考tmd试</p>
+<p>什么都干不了 真是服了</p>
+<p>暑假准备干点什么呢？</p>
+<ol>
+<li>nus的暑期项目</li>
+<li>交大的实习不知道还有没有机会。。。考完试再问问</li>
+<li>学校实验室这边的任务。。。希望还有时间去搞。。。</li>
+<li>打CTF 我是个caibi 还没转正</li>
+<li>雅思雅思雅思GREGREGRE！！！</li>
+<li>还有时间去恰烂钱吗？？？我不知道</li>
+</ol>
+<p>呃呃呃 这个 安排 我真的是 服了</p>
+<p>这比国家总理还忙吧？？？</p>
+<p>但凡有一项完不成就寄了  </p>
+<p>害 人生啊~~</p>
+<p>整理一下 到暑期学习计划里了</p>
 ]]></content>
       <categories>
         <category>learn</category>
@@ -3542,32 +3572,6 @@
       </tags>
   </entry>
   <entry>
-    <title>与智能控制有关的一些算法</title>
-    <url>/2022/06/24/AIControl-HW/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="376403ce32b684734a833406340d7ee53de00eea8960898fae323301aa84cb11">d4c615bc014904fce1c4d5a6707203924ebb90d73ab2058cc4e6c8a09aea76ab0e07340a90a65e1831416535aad3bd90d7f6d55dae3e6de9c8ca404b3818652dcbc16164c3e39731261de56b51e665e3267639438f26796c776a1c3db94104960c0fe42e9fd4007dc152ed815eae32cb8ca48d268f0c25617462650d4654e14838b15b43276179cd0278c6a6debe8c5798bb45f2dd90fd7e8b70a001e8fa7674c0d8535c69a44d5290f00d3bdc3158bec0741101d696e2673b7ef720dc6e4659629a75f7fa8b3f92fb429262246e3648acc6586e376ac971f0ce9cb4915c64ad5531ecfc0c70973c8a7ea1b8a1fcc6ff1e059368c98ba68b32c4644a0d75b40b584f78c9d031a4696caaee9a8e9ed23248715a4e14c7af4097f3a7044ffbf9ef14df793bf214b58349d104314d61766c5d28ce65179770371478b88a47f4789a87b7a3b22a50b83a4d95876463747a619c65e9dd875fd6c2c38b6c781cd7ad1aadab35f620e76b35fe24cf3e188102b2ab35419d5caa4d47673d247f946336ee7981f6766e439bca30f66970be821b9835842d85e81e047ebc1c48fc737363890ca88c4fc47e48e72ecf57675f342db8fa34eca72946c52e4445d08b69e1f9421311ae1ff6888d929ce63cd2d1c9868f2f07e7e22cf4f1438836b7cad728a334df05a8cc6e5323a7cd8a58924d584a30d198455df7e4a2edf9f00ed7ae7bc77b8d1b7a2b8d377b0acbd587ba5e929bea57a0125643332544ff104dd0edc1014d</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>大作业</category>
-        <category>复习</category>
-      </categories>
-      <tags>
-        <tag>智能控制</tag>
-        <tag>复习</tag>
-        <tag>算法</tag>
-        <tag>粒子群算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Race Condition</title>
     <url>/2022/06/24/RaceCondition/</url>
     <content><![CDATA[<p>这几天复习操作系统来谈谈竞争在安全中的应用</p>
@@ -3617,6 +3621,56 @@
         <tag>web</tag>
         <tag>pwn</tag>
         <tag>Race Condition</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>暑期计划执行记录表</title>
+    <url>/2022/07/04/summerPlan/</url>
+    <content><![CDATA[<p>暑期计划 （作死计划</p>
+<p>learn4没结束 直接开始暑假特别篇</p>
+<p>美好的暑假从作死开始</p>
+<p>不知道这个暑假能不能扛过去。。。</p>
+<p>希望人没事</p>
+<span id="more"></span>
+
+<h1 id="总"><a href="#总" class="headerlink" title="总"></a>总</h1><table>
+<thead>
+<tr>
+<th>mission</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nus的暑期项目</td>
+<td></td>
+</tr>
+<tr>
+<td>交大的实习(不知道还有没有机会。。。考完试再问问</td>
+<td></td>
+</tr>
+<tr>
+<td>学校实验室这边的任务</td>
+<td></td>
+</tr>
+<tr>
+<td>打CTF NONONO 转正</td>
+<td></td>
+</tr>
+<tr>
+<td>雅思雅思雅思GREGREGRE！！！</td>
+<td></td>
+</tr>
+<tr>
+<td>恰烂钱（估计没时间。。。</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>plan</category>
+      </categories>
+      <tags>
+        <tag>plan</tag>
       </tags>
   </entry>
 </search>
