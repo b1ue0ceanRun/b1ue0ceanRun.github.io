@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="做个windows靶机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB Sizzle">
+<meta property="og:url" content="http://example.com/2022/08/08/HTB-Sizzle/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="做个windows靶机">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/08/HTB-Sizzle/1542693908_5bf3a41472c12.png">
+<meta property="og:image" content="http://example.com/2022/08/08/HTB-Sizzle/image-20220808144129131.png">
+<meta property="og:image" content="http://example.com/2022/08/08/HTB-Sizzle/image-20220808150417942.png">
+<meta property="article:published_time" content="2022-08-08T04:57:58.000Z">
+<meta property="article:modified_time" content="2022-08-08T09:53:54.858Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="HTB">
+<meta property="article:tag" content="渗透测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/08/HTB-Sizzle/1542693908_5bf3a41472c12.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/08/HTB-Sizzle/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/08/HTB-Sizzle/","path":"2022/08/08/HTB-Sizzle/","title":"HTB Sizzle"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB Sizzle | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">65</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">48</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">96</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">端口测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-80"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP 80</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP-21-tcp"><span class="nav-number">2.2.</span> <span class="nav-text">FTP 21&#x2F;tcp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDAP-389-tcp"><span class="nav-number">2.3.</span> <span class="nav-text">LDAP 389&#x2F;tcp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81LDAP%E7%AE%80%E4%BB%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">一、LDAP简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81LDAP%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.2.</span> <span class="nav-text">二、LDAP目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81LDAP%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.3.</span> <span class="nav-text">三、LDAP注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMB"><span class="nav-number">2.4.</span> <span class="nav-text">SMB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFSMB%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.4.1.</span> <span class="nav-text">一、什么是SMB协议:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81SMB%E7%9A%84%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.4.2.</span> <span class="nav-text">二、SMB的利用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87NTLM%E8%AE%A4%E8%AF%81%E8%BF%9B%E8%A1%8CSMB%E6%94%BB%E5%87%BB"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">1.通过NTLM认证进行SMB攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-SMB%E4%BC%9A%E8%AF%9D%E5%85%B1%E4%BA%AB%E5%8A%A0%E7%88%86%E7%A0%B4"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">2.SMB会话共享加爆破</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/08/HTB-Sizzle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB Sizzle | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB Sizzle
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-08 12:57:58 / Modified: 17:53:54" itemprop="dateCreated datePublished" datetime="2022-08-08T12:57:58+08:00">2022-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTB/" itemprop="url" rel="index"><span itemprop="name">HTB</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTB/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>做个windows靶机</p>
+<span id="more"></span>
+
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ nmap -sV -sT -sC -o nmapinitial <span class="number">10.10</span><span class="number">.10</span><span class="number">.103</span></span><br><span class="line">Starting Nmap <span class="number">7.92</span> ( https://nmap.org ) <span class="built_in">at</span> <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span> <span class="number">00</span>:<span class="number">57</span> EDT</span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">10.10</span><span class="number">.10</span><span class="number">.103</span></span><br><span class="line">Host is up (<span class="number">0.29</span>s latency).</span><br><span class="line">Not shown: <span class="number">976</span> filtered tcp ports (no-response), <span class="number">11</span> filtered tcp ports (host-unreach)</span><br><span class="line">PORT     STATE SERVICE       VERSION</span><br><span class="line"><span class="number">21</span>/tcp   open  ftp           Microsoft ftpd</span><br><span class="line">|<span class="type">_ftp</span>-bounce: bounce working!</span><br><span class="line">|<span class="type">_ftp</span>-anon: Anonymous FTP login allowed (FTP code <span class="number">230</span>)</span><br><span class="line">| <span class="type">ftp</span>-syst: </span><br><span class="line">|<span class="type">_</span>  SYST: Windows_NT</span><br><span class="line"><span class="number">53</span>/tcp   open  domain        Simple DNS Plus</span><br><span class="line"><span class="number">80</span>/tcp   open  http          Microsoft IIS httpd <span class="number">10.0</span></span><br><span class="line">|<span class="type">_http</span>-server-header: Microsoft-IIS/<span class="number">10.0</span></span><br><span class="line">| <span class="type">http</span>-methods: </span><br><span class="line">|<span class="type">_</span>  Potentially risky methods: TRACE</span><br><span class="line">|<span class="type">_http</span>-title: Site doesn&#x27;t have a title (text/html).</span><br><span class="line"><span class="number">135</span>/tcp  open  msrpc         Microsoft Windows RPC</span><br><span class="line"><span class="number">139</span>/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn</span><br><span class="line"><span class="number">389</span>/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: HTB.LOCAL, Site: Default-First-Site-Name)</span><br><span class="line">| <span class="type">ssl</span>-cert: Subject: commonName=sizzle.htb.local</span><br><span class="line">| <span class="type">Not</span> valid <span class="built_in">before</span>: <span class="number">2018</span><span class="number">-07</span><span class="number">-03</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_Not</span> valid <span class="built_in">after</span>:  <span class="number">2020</span><span class="number">-07</span><span class="number">-02</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_ssl</span>-date: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T05:<span class="number">03</span>:<span class="number">56</span>+<span class="number">00</span>:<span class="number">00</span>; <span class="number">-1</span>s from scanner <span class="built_in">time</span>.</span><br><span class="line"><span class="number">443</span>/tcp  open  ssl/http      Microsoft IIS httpd <span class="number">10.0</span></span><br><span class="line">|<span class="type">_http</span>-title: Site doesn&#x27;t have a title (text/html).</span><br><span class="line">| <span class="type">ssl</span>-cert: Subject: commonName=sizzle.htb.local</span><br><span class="line">| <span class="type">Not</span> valid <span class="built_in">before</span>: <span class="number">2018</span><span class="number">-07</span><span class="number">-03</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_Not</span> valid <span class="built_in">after</span>:  <span class="number">2020</span><span class="number">-07</span><span class="number">-02</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_ssl</span>-date: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T05:<span class="number">03</span>:<span class="number">54</span>+<span class="number">00</span>:<span class="number">00</span>; <span class="number">-1</span>s from scanner <span class="built_in">time</span>.</span><br><span class="line">| <span class="type">tls</span>-alpn: </span><br><span class="line">|   <span class="type">h2</span></span><br><span class="line">|<span class="type">_</span>  http/<span class="number">1.1</span></span><br><span class="line">|<span class="type">_http</span>-server-header: Microsoft-IIS/<span class="number">10.0</span></span><br><span class="line"><span class="number">445</span>/tcp  open  microsoft-ds?</span><br><span class="line"><span class="number">464</span>/tcp  open  kpasswd5?</span><br><span class="line"><span class="number">593</span>/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP <span class="number">1.0</span></span><br><span class="line"><span class="number">636</span>/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: HTB.LOCAL, Site: Default-First-Site-Name)</span><br><span class="line">| <span class="type">ssl</span>-cert: Subject: commonName=sizzle.htb.local</span><br><span class="line">| <span class="type">Not</span> valid <span class="built_in">before</span>: <span class="number">2018</span><span class="number">-07</span><span class="number">-03</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_Not</span> valid <span class="built_in">after</span>:  <span class="number">2020</span><span class="number">-07</span><span class="number">-02</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_ssl</span>-date: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T05:<span class="number">03</span>:<span class="number">54</span>+<span class="number">00</span>:<span class="number">00</span>; <span class="number">-1</span>s from scanner <span class="built_in">time</span>.</span><br><span class="line"><span class="number">3268</span>/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: HTB.LOCAL, Site: Default-First-Site-Name)</span><br><span class="line">|<span class="type">_ssl</span>-date: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T05:<span class="number">03</span>:<span class="number">54</span>+<span class="number">00</span>:<span class="number">00</span>; <span class="number">-1</span>s from scanner <span class="built_in">time</span>.</span><br><span class="line">| <span class="type">ssl</span>-cert: Subject: commonName=sizzle.htb.local</span><br><span class="line">| <span class="type">Not</span> valid <span class="built_in">before</span>: <span class="number">2018</span><span class="number">-07</span><span class="number">-03</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_Not</span> valid <span class="built_in">after</span>:  <span class="number">2020</span><span class="number">-07</span><span class="number">-02</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line"><span class="number">3269</span>/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: HTB.LOCAL, Site: Default-First-Site-Name)</span><br><span class="line">|<span class="type">_ssl</span>-date: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T05:<span class="number">03</span>:<span class="number">53</span>+<span class="number">00</span>:<span class="number">00</span>; <span class="number">-1</span>s from scanner <span class="built_in">time</span>.</span><br><span class="line">| <span class="type">ssl</span>-cert: Subject: commonName=sizzle.htb.local</span><br><span class="line">| <span class="type">Not</span> valid <span class="built_in">before</span>: <span class="number">2018</span><span class="number">-07</span><span class="number">-03</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">|<span class="type">_Not</span> valid <span class="built_in">after</span>:  <span class="number">2020</span><span class="number">-07</span><span class="number">-02</span>T17:<span class="number">58</span>:<span class="number">55</span></span><br><span class="line">Service <span class="keyword">Info</span>: Host: SIZZLE; OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">| <span class="type">smb2</span>-<span class="built_in">time</span>: </span><br><span class="line">|   <span class="type">date</span>: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T05:<span class="number">03</span>:<span class="number">10</span></span><br><span class="line">|<span class="type">_</span>  start_date: <span class="number">2022</span><span class="number">-08</span><span class="number">-08</span>T04:<span class="number">55</span>:<span class="number">46</span></span><br><span class="line">|<span class="type">_clock</span>-skew: mean: <span class="number">-1</span>s, deviation: <span class="number">0</span>s, median: <span class="number">-1</span>s</span><br><span class="line">| <span class="type">smb2</span>-security-mode: </span><br><span class="line">|   <span class="type">3</span><span class="number">.1</span><span class="number">.1</span>: </span><br><span class="line">|<span class="type">_</span>    Message signing enabled and required</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results <span class="built_in">at</span> https://nmap.org/submit/ .</span><br><span class="line">Nmap done: <span class="number">1</span> IP address (<span class="number">1</span> host up) scanned <span class="built_in">in</span> <span class="number">422.88</span> seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到 21 端口有一个任意登陆</p>
+<h1 id="端口测试"><a href="#端口测试" class="headerlink" title="端口测试"></a>端口测试</h1><h2 id="HTTP-80"><a href="#HTTP-80" class="headerlink" title="HTTP 80"></a>HTTP 80</h2><h2 id="FTP-21-tcp"><a href="#FTP-21-tcp" class="headerlink" title="FTP 21/tcp"></a>FTP 21/tcp</h2><p>ftp咋打？</p>
+<figure class="highlight mercury"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ ftp <span class="number">10.10</span>.<span class="number">10.103</span></span><br><span class="line">Connected to <span class="number">10.10</span>.<span class="number">10.103</span>.</span><br><span class="line"><span class="number">220</span> Microsoft FTP Service</span><br><span class="line">Name (<span class="number">10.10</span>.<span class="number">10.103</span>:kali): anonymous</span><br><span class="line"><span class="number">331</span> Anonymous access allowed, send identity (e-mail name) as password.</span><br><span class="line">Password: </span><br><span class="line"><span class="number">230</span> User logged in.</span><br><span class="line">Remote system <span class="keyword">type</span> <span class="keyword">is</span> Windows_NT.</span><br><span class="line">ftp&gt; dir</span><br><span class="line"><span class="number">229</span> Entering Extended Passive Mode (|||<span class="number">62993</span>|)</span><br><span class="line"><span class="number">125</span> Data connection already open; Transfer starting.</span><br><span class="line"><span class="number">226</span> Transfer complete.</span><br></pre></td></tr></table></figure>
+
+<p>以前还真没搞过 直接 <code>Name:anonymous</code>  然后不用输入密码就可以登录</p>
+<p>但好像是空的</p>
+<h2 id="LDAP-389-tcp"><a href="#LDAP-389-tcp" class="headerlink" title="LDAP 389/tcp"></a>LDAP 389/tcp</h2><p>这块也没遇到过 （ 我真的好小白啊啊啊</p>
+<h3 id="一、LDAP简介"><a href="#一、LDAP简介" class="headerlink" title="一、LDAP简介"></a><strong>一、LDAP简介</strong></h3><p>LDAP(Lightweight Directory Access Protocol)是轻量级目录访问协议。以信息目录的形式存在，在该目录中可只定义一次用户和组，而在多台机器和多个应用程序间共享它们。LDAP与数据库最大区别在于，数据库以“表格-字段-值”的形是来存储数据，而LDAP以树状形方式访问存储在LDAP目录中的信息。</p>
+<h3 id="二、LDAP目录结构"><a href="#二、LDAP目录结构" class="headerlink" title="二、LDAP目录结构"></a><strong>二、LDAP目录结构</strong></h3><p>LDAP目录以树状的层次结构来存储数据。其结果如下图所示：</p>
+<p><img src="/2022/08/08/HTB-Sizzle/1542693908_5bf3a41472c12.png" alt="QQ截图20181119154533.png"></p>
+<p>dn标志一条记录，描述一条数据的详细路径（比如：人、组织、IP地址等）</p>
+<p>dc表示一条记录所属区域，相当于数据库（比如：中国、美国、韩国等）</p>
+<p>ou表示一条记录所属组织（比如：省份、部门、行业等）</p>
+<p>cn表示一条记录的名字，相当于数据库中的主键即需要查找的目标</p>
+<h3 id="三、LDAP注入"><a href="#三、LDAP注入" class="headerlink" title="三、LDAP注入"></a><strong>三、LDAP注入</strong></h3><p>LDAP具有特定的查询结构，并具有特定的语法，来对特定目录进行遍历，LDAP注入攻击和SQL注入攻击类似，利用用户引入的参数生成LDAP查询，由于部分参数没有适当的过滤，因此攻击者可以注入恶意代码以造城恶意攻击。其常见操作符有<code>=</code>（等于）、<code>＆</code>（逻辑和）、<code>|</code>（逻辑或）、<code>！</code>（逻辑否）、<code>*</code>（通配符）。</p>
+<h2 id="SMB"><a href="#SMB" class="headerlink" title="SMB"></a>SMB</h2><p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/318970.html">内网渗透之SMB的利用 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/291348.html">利用SCF文件攻击进行渗透实战 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1514901">渗透测试中SMB服务漏洞检查checklist - 腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h3 id="一、什么是SMB协议"><a href="#一、什么是SMB协议" class="headerlink" title="一、什么是SMB协议:"></a>一、什么是SMB协议:</h3><p>SMB（全称是Server Message Block）是一个协议服务器信息块，它是一种客户机/服务器、请求/响应协议，通过SMB协议可以在计算机间共享文件、打印机、命名管道等资源，电脑上的网上邻居就是靠SMB实现的；SMB协议工作在应用层和会话层，可以用在TCP/IP协议之上，SMB使用TCP139端口和TCP445端口</p>
+<p>内网渗透中smb服务(139,445端口)的利用方式</p>
+<h3 id="二、SMB的利用方式"><a href="#二、SMB的利用方式" class="headerlink" title="二、SMB的利用方式"></a>二、SMB的利用方式</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ smbmap -H <span class="number">10.10.10.103</span></span><br><span class="line">[+] IP: <span class="number">10.10.10.103</span>:<span class="number">445</span>        Name: <span class="number">10.10.10.103</span> </span><br></pre></td></tr></table></figure>
+
+<p>好像没啥用</p>
+<h4 id="1-通过NTLM认证进行SMB攻击"><a href="#1-通过NTLM认证进行SMB攻击" class="headerlink" title="1.通过NTLM认证进行SMB攻击"></a>1.通过NTLM认证进行SMB攻击</h4><p>LM和NTLM都是windows中对密码进行hash加密的两种不同的方式。只不过个人系统在windows vista后，服务器在windows server2003之后都采用ntlm hash的方式。使用mimikatz抓取到ntlm hash.</p>
+<p>漏洞利用思路:</p>
+<p>(1)首先需要生成一个.scf的恶意文件(SCF文件是”WINDOWS资源管理器命令”文件,它也是一种可执行文件);</p>
+<p>(2)上传恶意文件让受害者试图访问我们的共享文件，这时responder会作出反应:其提供给我NTLM哈希并且访问资源responder就受到受害者的hash</p>
+<h4 id="2-SMB会话共享加爆破"><a href="#2-SMB会话共享加爆破" class="headerlink" title="2.SMB会话共享加爆破"></a>2.SMB会话共享加爆破</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用smb枚举列出共享的文件: smbclient -L \\xx<span class="selector-class">.xx</span><span class="selector-class">.xx</span>.xx</span><br></pre></td></tr></table></figure>
+
+<p>实践一下</p>
+<p><code>smbclient -L \\10.10.10.103 </code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ smbclient -L \\10.10.10.103</span><br><span class="line">Password <span class="keyword">for</span> [WORKGROUP\kali]:</span><br><span class="line"></span><br><span class="line">        Sharename       Type      Comment</span><br><span class="line">        ---------       ----      -------</span><br><span class="line">        ADMIN$          Disk      Remote Admin</span><br><span class="line">        C$              Disk      Default share</span><br><span class="line">        CertEnroll      Disk      Active Directory Certificate Services share</span><br><span class="line">        Department Shares Disk      </span><br><span class="line">        IPC$            IPC       Remote IPC</span><br><span class="line">        NETLOGON        Disk      Logon server share </span><br><span class="line">        Operations      Disk      </span><br><span class="line">        SYSVOL          Disk      Logon server share </span><br><span class="line">Reconnecting with SMB1 <span class="keyword">for</span> workgroup listing.</span><br><span class="line">do_connect: Connection to 10.10.10.103 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)</span><br><span class="line">Unable to connect with SMB1 -- no workgroup available</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用smb枚举列出共享的文件: smbclient -L \\xx<span class="selector-class">.xx</span><span class="selector-class">.xx</span>.xx</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/08/08/HTB-Sizzle/image-20220808144129131.png" alt="image-20220808144129131" style="zoom:50%;">
+
+<p>咱也不知道这有没有连上去 反正密码我空着了 。。。</p>
+<p>看了眼 国外大哥的wp</p>
+<p>不得不称赞一句 nb！</p>
+<p>首先一个网站 <a target="_blank" rel="noopener" href="https://regex101.com/r/Z7fLRL/2">regex101: build, test, and debug regex</a></p>
+<p><img src="/2022/08/08/HTB-Sizzle/image-20220808150417942.png" alt="image-20220808150417942"></p>
+<p>真的是佩服这老哥 这老哥对linux命令行玩的是真的明白</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ smbclient -N -L \\\\10.10.10.103 | grep Disk | sed &#x27;s/^\s*\(.*\)\s*Disk.*/\1/&#x27; | while read share; do echo &quot;======$&#123;share&#125;======&quot;; smbclient -N &quot;//10.10.10.103/$&#123;share&#125;&quot; -c dir; echo; done</span><br><span class="line">do_connect: Connection to 10.10.10.103 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)</span><br><span class="line">======ADMIN$======</span><br><span class="line">tree connect failed: NT_STATUS_ACCESS_DENIED</span><br><span class="line"></span><br><span class="line">======C$======</span><br><span class="line">tree connect failed: NT_STATUS_ACCESS_DENIED</span><br><span class="line"></span><br><span class="line">======CertEnroll======</span><br><span class="line">NT_STATUS_ACCESS_DENIED listing \*</span><br><span class="line"></span><br><span class="line">======Department Shares======</span><br><span class="line">  .                                   D       <span class="number"> 0 </span> Tue Jul <span class="number"> 3 </span>11:22:32 2018</span><br><span class="line">  ..                                  D       <span class="number"> 0 </span> Tue Jul <span class="number"> 3 </span>11:22:32 2018</span><br><span class="line">  Accounting                          D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:21:43 2018</span><br><span class="line">  Audit                               D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:14:28 2018</span><br><span class="line">  Banking                             D       <span class="number"> 0 </span> Tue Jul <span class="number"> 3 </span>11:22:39 2018</span><br><span class="line">  CEO_protected                       D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:15:01 2018</span><br><span class="line">  Devops                              D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:19:33 2018</span><br><span class="line">  Finance                             D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:11:57 2018</span><br><span class="line">  HR                                  D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:16:11 2018</span><br><span class="line">  Infosec                             D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:14:24 2018</span><br><span class="line">  Infrastructure                      D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:13:59 2018</span><br><span class="line">  IT                                  D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:12:04 2018</span><br><span class="line">  Legal                               D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:12:09 2018</span><br><span class="line">  M&amp;A                                 D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:15:25 2018</span><br><span class="line">  Marketing                           D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:14:43 2018</span><br><span class="line">  R&amp;D                                 D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:11:47 2018</span><br><span class="line">  Sales                               D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:14:37 2018</span><br><span class="line">  Security                            D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:21:47 2018</span><br><span class="line">  Tax                                 D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:16:54 2018</span><br><span class="line">  Users                               D       <span class="number"> 0 </span> Tue Jul<span class="number"> 10 </span>17:39:32 2018</span><br><span class="line">  ZZ_ARCHIVE                          D       <span class="number"> 0 </span> Mon Jul <span class="number"> 2 </span>15:32:58 2018</span><br><span class="line"></span><br><span class="line">               <span class="number"> 7779839 </span>blocks of size 4096.<span class="number"> 3590132 </span>blocks available</span><br><span class="line"></span><br><span class="line">======NETLOGON======</span><br><span class="line">NT_STATUS_ACCESS_DENIED listing \*</span><br><span class="line"></span><br><span class="line">======Operations======</span><br><span class="line">NT_STATUS_ACCESS_DENIED listing \*</span><br><span class="line"></span><br><span class="line">======SYSVOL======</span><br><span class="line">NT_STATUS_ACCESS_DENIED listing \*</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a target="_blank" rel="noopener" href="https://0xdf.gitlab.io/2019/06/01/htb-sizzle.html#smb---tcp-445">HTB: Sizzle | 0xdf hacks stuff</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/08/HTB-Sizzle/" title="HTB Sizzle">http://example.com/2022/08/08/HTB-Sizzle/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTB/" rel="tag"># HTB</a>
+              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/07/HTB-Helpline/" rel="prev" title="HTB-Helpline">
+                  <i class="fa fa-chevron-left"></i> HTB-Helpline
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/08/JNDI-LDAP/" rel="next" title="JNDI-LDAP">
+                  JNDI-LDAP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"f49f737532dc63dcf836731d068a55b6"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

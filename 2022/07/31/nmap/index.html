@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="NMAP参数详解 - FreeBuf网络安全行业门户 记录一下nmap技巧和小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nmap">
+<meta property="og:url" content="http://example.com/2022/07/31/nmap/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="NMAP参数详解 - FreeBuf网络安全行业门户 记录一下nmap技巧和小知识">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-31T10:21:40.000Z">
+<meta property="article:modified_time" content="2022-07-31T10:36:17.893Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="渗透测试">
+<meta property="article:tag" content="nmap">
+<meta property="article:tag" content="工具使用">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/07/31/nmap/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/31/nmap/","path":"2022/07/31/nmap/","title":"nmap"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>nmap | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">65</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">48</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">96</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8B%BF%E8%BF%87%E6%9D%A5%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">直接拿过来的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E9%80%89%E6%8B%A9"><span class="nav-number">2.0.1.</span> <span class="nav-text">目标选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E9%80%89%E6%8B%A9"><span class="nav-number">2.0.2.</span> <span class="nav-text">端口选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%9C%8D%E5%8A%A1%E6%A3%80%E6%B5%8B"><span class="nav-number">2.0.3.</span> <span class="nav-text">操作系统和服务检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nmap%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.0.4.</span> <span class="nav-text">nmap输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8NSE%E8%84%9A%E6%9C%AC%E6%B7%B1%E5%85%A5%E6%8C%96%E6%8E%98"><span class="nav-number">2.0.5.</span> <span class="nav-text">用NSE脚本深入挖掘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E6%9C%8D%E5%8A%A1%E4%BF%A1%E6%81%AF"><span class="nav-number">2.0.6.</span> <span class="nav-text">HTTP服务信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8BSSL%E6%BC%8F%E6%B4%9E%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%BB%E6%9C%BA"><span class="nav-number">2.0.7.</span> <span class="nav-text">检测SSL漏洞问题的主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.8.</span> <span class="nav-text">设备扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89VNC%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.9.</span> <span class="nav-text">按VNC扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89SMB%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.10.</span> <span class="nav-text">按SMB扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89Mssql%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.11.</span> <span class="nav-text">按Mssql扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89Mysql%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.12.</span> <span class="nav-text">按Mysql扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89Oracle%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.13.</span> <span class="nav-text">按Oracle扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E6%89%AB%E6%8F%8F"><span class="nav-number">2.0.14.</span> <span class="nav-text">信息收集扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%84%9A%E6%9C%AC"><span class="nav-number">2.0.15.</span> <span class="nav-text">其他脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7-1"><span class="nav-number">2.0.16.</span> <span class="nav-text">技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E7%8A%B6%E6%80%81"><span class="nav-number">2.0.17.</span> <span class="nav-text">端口状态</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/31/nmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="nmap | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          nmap
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-07-31 18:21:40 / Modified: 18:36:17" itemprop="dateCreated datePublished" datetime="2022-07-31T18:21:40+08:00">2022-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/nmap/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/nmap/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/264941.html">NMAP参数详解 - FreeBuf网络安全行业门户</a></p>
+<p>记录一下nmap技巧和小知识</p>
+<span id="more"></span>
+
+<h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><h1 id="直接拿过来的"><a href="#直接拿过来的" class="headerlink" title="直接拿过来的"></a>直接拿过来的</h1><h3 id="目标选择"><a href="#目标选择" class="headerlink" title="目标选择"></a>目标选择</h3><p>单个扫描：nmap ip</p>
+<p>扫描主机：nmap <a target="_blank" rel="noopener" href="http://www.xxxx.com/">www.XXXX.com</a></p>
+<p>扫描一系列IP：nmap 192.168.1.1-20</p>
+<p>扫描子网：nmap 192.168.1.1/20</p>
+<p>从文本文件获得扫描目标：nmap -iL list-of-ips.txt</p>
+<p>无ping扫描:常用于防火墙禁止ping的情况：nmap -P0 ip</p>
+<h3 id="端口选择"><a href="#端口选择" class="headerlink" title="端口选择"></a>端口选择</h3><p>扫描单个端口：nmap -p 端口 ip</p>
+<p>扫描一系列端口：nmap -p 1-100 192.168.1.1</p>
+<p>扫描100个最常见的端口（快速）：nmap -F ip</p>
+<p>扫描所有65535端口：nmap -p- ip</p>
+<p>扫描指定端口：nmap -p 80,22,3306 ip</p>
+<h3 id="操作系统和服务检测"><a href="#操作系统和服务检测" class="headerlink" title="操作系统和服务检测"></a>操作系统和服务检测</h3><p>检测操作系统和服务：nmap -A ip</p>
+<p>标准服务检测：nmap -sV ip </p>
+<p>激进的服务检测：nmap -sV –version-intensity 5 ip</p>
+<p>轻量Banner抓取检测：nmap -sV –version-intensity 0 ip</p>
+<h3 id="nmap输出格式"><a href="#nmap输出格式" class="headerlink" title="nmap输出格式"></a>nmap输出格式</h3><p>将默认输出保存到文件：nmap -oN outputfile.txt ip</p>
+<p>将结果保存为XML：nmap -oX outputfile.xml ip</p>
+<p>为方便grep来保存格式：nmap -oG outputfile.txt ip</p>
+<p>保存所有格式：nmap -oA outputfile ip</p>
+<h3 id="用NSE脚本深入挖掘"><a href="#用NSE脚本深入挖掘" class="headerlink" title="用NSE脚本深入挖掘"></a>用NSE脚本深入挖掘</h3><p>使用默认安全脚本扫描：nmap -sV -sC ip</p>
+<p>获取脚本的帮助：nmap –script-help=ssl-heartbleed</p>
+<p>使用特定的NSE脚本进行扫描：nmap -sV -p 443 –script=ssl-heartbleed.nse ip</p>
+<p>用一组脚本进行扫描：nmap -sV –script=smb* ip</p>
+<p>使用全部NSE脚本进行扫描：nmap -sV -p- –script=all ip</p>
+<h3 id="HTTP服务信息"><a href="#HTTP服务信息" class="headerlink" title="HTTP服务信息"></a>HTTP服务信息</h3><p>从HTTP服务收集页面标题：nmap –script=http-title 192.168.1.0/24</p>
+<p>获取Web服务的HTTP头：nmap –script=http-headers 192.168.1.0/24</p>
+<p>从已知路径查找网络应用程序：nmap –script=http-enum 192.168.1.0/24</p>
+<h3 id="检测SSL漏洞问题的主机"><a href="#检测SSL漏洞问题的主机" class="headerlink" title="检测SSL漏洞问题的主机"></a>检测SSL漏洞问题的主机</h3><p>Heartbleed测试：nmap -sV -p 443 –script=ssl-heartbleed 192.168.1.0/24</p>
+<h3 id="设备扫描"><a href="#设备扫描" class="headerlink" title="设备扫描"></a>设备扫描</h3><p>获取ip：host 网址<br>      host 域名<br>      dig 域名</p>
+<p>是否存活：ping ip<br>        nmap -sP –script discovery ip</p>
+<p>扫描在线主机：nmap -sP 192.168.1.*</p>
+<p>探测IP协议：nmap -PO ip</p>
+<p>获取系统概况：（暴力形式，很容易被发现）nmap -A ip</p>
+<p>探测是否有【】防火墙：nmap -PN ip</p>
+<p>探测防火墙规则：nmap -sA ip</p>
+<p>TCP Window扫描：nmap -sw ip</p>
+<p>禁止反向域名解析：nmap -n -sL 192.168.1.1/24</p>
+<p>FIN扫描：（FIN扫描方式用于识别端口是否关闭，收到RST回复说明该端口关闭，否则说明是open或filtered状态）nmap -sF ip</p>
+<p>TCP扫描：nmap -sT -p 1-65535 -Pn ip<br>        nmap -sT -p 1-65535 -Pn 192.168.1.1-254<br>        nmap -sL 192.168.1.0/24</p>
+<p>ARP Ping扫描：nmap -PR ip</p>
+<p>SYN扫描：nmap -sS -p- Pn ip</p>
+<p>TCP SYN Ping扫描：nmap -PS -v <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>UDP扫描：（UDP扫描费时，所以去掉-p-，默认扫描）nmap -sU ip</p>
+<p>Xmas扫描：nmap -sX -p1-65535 -Pn ip</p>
+<p>Null扫描：nmap -sN -p 1-65535 -Pn ip</p>
+<p>扫描所选端口 - 忽略发现：nmap -Pn -F ip</p>
+<p>绕开鉴权：nmap –script=auth 192.168.56.*</p>
+<p>探测操作系统：nmap -O ip</p>
+<p>探测软件版本：nmap -V ip<br>            nmap -sTV -p- -Pn ip</p>
+<p>设置扫描强度强度在0～9之间，默认强度为7：nmap -V ip<br>                                     nmap -sTV -p- -Pn ip</p>
+<p>轻量级扫描：nmap -sV –version-light <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>重量级扫描：nmap -sV –version-all <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>版本探测：nmap -sV -A <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>对指定的目标进行系统探测：Nmap -osscan-limit <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>推测系统识别：Nmap -osscan-guess/–fuzzy <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>获取详细版本信息：nmap -sV –version-trace <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>全端口版本探测：nmap -allports -A <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>RPC扫描：Nmap -sR <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>调整并行扫描组的大小(默认为5-1024)最小的组：nmap –min-hostgroup 30 172.20.62.1/24</p>
+<p>调整并行扫描组的大小(默认为5-1024)最大的组：nmap –max-hostgroup 50 172.20.62.1/24</p>
+<p>探查局域网内更多服务：nmap -n –script=broadcast ip</p>
+<p>碎片化：nmap -f ip<br>       nmap –mtu 16 ip</p>
+<p>诱饵：nmap –D RND:10 TARGET<br>     nmap –D decoy1,decoy2,decoy3 target</p>
+<p>MAC地址欺骗：nmap -sT -PN –spoof-mac aa:bb:cc:dd:ee:ff target<br>            nmap -spoof-mac Scisio ip<br>            -spoof-mac 可以根据厂商名字伪造不同mac地址</p>
+<p>发送间隔时间控制：nmap -scan_delay 5ms ip</p>
+<p>发送错误校验：nmap –badsum target</p>
+<p>Http方法：nmap -p80,443 –script http-methods scanme.nmap.org</p>
+<p>发现文件：nmap -sV –script http-enum ip</p>
+<p>判断是否使用默认端口：nmap -sV -script=smtp-strangeport ip</p>
+<p>利用第三方数据库：nmap –script external ip</p>
+<p>获得PHP版本信息：nmap -sV -script=http-php-version ip</p>
+<p>如果想对一个基于WordPress的web站点进行渗透测试，可以使用这个脚本：</p>
+<p>nmap -sV -script=http-php-version ip<br>1.http-wordpress-plugins<br>2.http-wordpress-enum<br>3.http-wordpress-brute</p>
+<p>用户发现IP地址黑名单：nmap -sn ip –script dns-blacklist</p>
+<p>简单暴力猜解：nmap –script=brute 192.168.56.*</p>
+<p>检查是否存在漏洞：nmap –script=vuln 192.168.56.*</p>
+<p>路由跟踪：nmap –traceroute -sP ip</p>
+<p>SCTP INIT Ping扫描：nmap -PY -v ip</p>
+<h3 id="按VNC扫描"><a href="#按VNC扫描" class="headerlink" title="按VNC扫描"></a>按VNC扫描</h3><p>检查vnc bypass：nmap  –script=realvnc-auth-bypass ip</p>
+<p>检查vnc认证方式：nmap  –script=vnc-auth  ip</p>
+<p>获取vnc信息：nmap  –script=vnc-info  ip</p>
+<h3 id="按SMB扫描"><a href="#按SMB扫描" class="headerlink" title="按SMB扫描"></a>按SMB扫描</h3><p>smb破解：nmap  –script=smb-brute.nse ip </p>
+<p>smb字典破解：nmap –script=smb-brute.nse –script-args=userdb=/var/passwd,passdb=/var/passwd ip</p>
+<p>smb已知几个严重漏洞：nmap  –script=smb-check-vulns.nse –script-args=unsafe=1 ip</p>
+<p>查看共享目录：nmap -p 445  –script smb-ls –script-args ‘share=e$,path=,smbuser=test,smbpass=test’ ip</p>
+<p>查询主机一些敏感信息：nmap -p 445 -n –script=smb-psexec –script-args= smbuser=test,smbpass=test ip</p>
+<p>查看会话：nmap -n -p445 –script=smb-enum-sessions.nse –script-args=smbuser=test,smbpass=test ip</p>
+<p>系统信息：nmap -n -p445 –script=smb-os-discovery.nse –script-args=smbuser=test,smbpass=test ip</p>
+<h3 id="按Mssql扫描"><a href="#按Mssql扫描" class="headerlink" title="按Mssql扫描"></a>按Mssql扫描</h3><p>猜解mssql用户名和密码：</p>
+<p>nmap -p1433 –script=ms-sql-brute –script-args=userdb=/var/passwd,passdb=/var/passwd ip</p>
+<p>xp_cmdshell 执行命令：</p>
+<p>nmap -p 1433 –script ms-sql-xp-cmdshell –script-args mssql.username=sa,mssql.password=sa,ms-sql-xp-cmdshell.cmd=”net user” ip</p>
+<p>dumphash值：</p>
+<p>nmap -p 1433 –script ms-sql-dump-hashes.nse –script-args mssql.username=sa,mssql.password=sa  ip</p>
+<h3 id="按Mysql扫描"><a href="#按Mysql扫描" class="headerlink" title="按Mysql扫描"></a>按Mysql扫描</h3><p>扫描root空口令：nmap -p3306 –script=mysql-empty-password.nse ip</p>
+<p>列出所有mysql用户：nmap -p3306 –script=mysql-users.nse –script-args=mysqluser=root ip</p>
+<p>支持同一应用的所有脚本扫描：nmap –script=mysql-* ip</p>
+<h3 id="按Oracle扫描"><a href="#按Oracle扫描" class="headerlink" title="按Oracle扫描"></a>按Oracle扫描</h3><p>oracle sid扫描：nmap –script=oracle-sid-brute -p 1521-1560 ip</p>
+<p>oracle弱口令破解：</p>
+<p>nmap –script oracle-brute -p 1521 –script-args oracle-brute.sid=ORCL,userdb=/var/passwd,passdb=/var/passwd ip</p>
+<h3 id="信息收集扫描"><a href="#信息收集扫描" class="headerlink" title="信息收集扫描"></a>信息收集扫描</h3><p>ip信息搜集：nmap –script ip-geolocation-* <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>获得IP地址的信息：nmap –script=asn-query,whois,ip-geolocation-maxmind 192.168.1.0/24</p>
+<p>whois查询：nmap –script whois <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>ip反查：nmap -sn –script hostmap-ip2hosts <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>信息搜集：nmap –script dns-brute <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>列举dns服务器的主机名：nmap –script dns-brute –script-args dns-brute.domain=xxx.com</p>
+<p>检索系统信息：nmap -p 445 ip –script membase-http-info</p>
+<p>后台打印机服务漏洞：nmap –script smb-security-mode.nse -p 445 ip</p>
+<p>smb漏洞扫描：nmap –script smb-check-vulns.nse -p 445 ip//未验证命令</p>
+<p>通过snmp列举windows服务：nmap -sU -p 161 –script=snmp-win32-services ip</p>
+<p>通过snmp列举windows账户：nmap -sU -p 161 –script=snmp-win32-users ip</p>
+<p>http信息搜集,对http版本进行探测：nmap -sV -p 80 <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>http头信息探测：nmap -p 80 –script=http-headers <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>http目录结构探测：nmap -p 80 –script=http-sitemap-generator <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>枚举ssl密钥ssl-enum-ciphers,SSL(Secure Sockets Layer,安全套接层,TLS(Transport Layer Security,传输层安全)：nmap -p 443 –script=ssl-enum-ciphers <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<p>服务器支持的密钥算法SSH服务密钥信息探测：</p>
+<p>nmap -p 22 –script ssh-hostkey –script-args ssh_hostkey=full 127.0.0.1</p>
+<h3 id="其他脚本"><a href="#其他脚本" class="headerlink" title="其他脚本"></a>其他脚本</h3><p>发现网关:Nmap –script=broadcast-netbios-master-browser ip</p>
+<p>telnet破解:nmap -sV –script=telnet-brute ip</p>
+<p>dos攻击:nmap –script http-slowloris –max-parallelism 400 ip</p>
+<p>破解rsync：nmap -p 873 –script rsync-brute –script-args ‘rsync-brute.module=www’ ip</p>
+<p>informix数据库破解：nmap –script informix-brute -p 9088 ip</p>
+<p>pgsql破解：nmap -p 5432 –script pgsql-brute ip</p>
+<p>snmp破解：nmap -sU –script snmp-brute ip</p>
+<p>检查http方法：nmap –script=http-methods.nse ip</p>
+<p>查看本地路由与接口：nmap -iflist</p>
+<p>指定网口与ip地址：nmap -e eth0 ip</p>
+<p>产生随机ip地址:</p>
+<p>nmap -iR 1200000 -sL -n | grep “not scanned” | awk ‘{print $2}’ | sort -n | uniq &gt;! tp; head -25000000 tp &gt;! tcp-allports-1M-IPs; rm tp</p>
+<p>扫描思科路由器：思科路由器会在上述端口中运行了常见的服务。列举出上述端口开放的主机，可以定位到路由器设备可能的IP地址及端口状态。</p>
+<p>nmap -p1-25,80,512-515,2001,4001,6001,9001 10.20.0.1/16</p>
+<p>扫描路由器TFTP：大多数的路由器都支持TFTP协议（简单文件传输协议），该协议常用于备份和恢复路由器的配置文件，运行在UDP 69端口上。使用上述命令可以探测出路由器是否开放TFTP。</p>
+<p>nmap –sU –p69 –nvv target</p>
+<p>扫描路由器操作系统：与通用PC扫描方式类似，使用-O选项扫描路由器的操作系统。-F用于快速扫描最可能开放的100个端口，并根据端口扫描结果进一步做OS的指纹分析。</p>
+<p>nmap -O -F -n 192.168.1.1</p>
+<p>显示网络上共有多少台 Linux 及 Win 设备:</p>
+<p>nmap -F -O 192.168.1.1-255 | grep “Running: “ &gt; /tmp/os; echo “$(cat /tmp/os | grep Linux | wc -l) Linux device(s)”; echo “$(cat /tmp/os | grep Windows | wc -l) Window(s) devices”</p>
+<h3 id="技巧-1"><a href="#技巧-1" class="headerlink" title="技巧"></a>技巧</h3><p>发送以太网数据包：nmap –send-eth ip</p>
+<p>网络层发送：nmap –send-ip ip</p>
+<p>假定拥有所有权：nmap –privileged ip</p>
+<p>设置调试级别：nmap -d 1 ip</p>
+<p>级别范围1-9，9为最高级，产生的数据最多，跟踪发送接受的报文:(-p指定端口范围，减少产生的报文)：nmap –packet-trace -p 20-30 ip</p>
+<p>列举接口和路由:（多用于调试路由）：nmap -iflist ip</p>
+<p>指定网络接口：指定从en0发送数据：nmap -e en0 ip</p>
+<p>探测防火墙：nmap –script=firewalk –traceroute ip</p>
+<h3 id="端口状态"><a href="#端口状态" class="headerlink" title="端口状态"></a>端口状态</h3><p>开放：Open</p>
+<p>关闭：Closed</p>
+<p>可能被过滤，可能网络阻塞：Filtered</p>
+<p>可以访问，但未知端口处于开放还是关闭状态：Unfiltered</p>
+<p>能确定端口事开放被过滤：Open|Filtered</p>
+<p>不能确定端口事关闭还说被过滤：Closed|Filtered</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/07/31/nmap/" title="nmap">http://example.com/2022/07/31/nmap/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
+              <a href="/tags/nmap/" rel="tag"># nmap</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/30/sqlmap/" rel="prev" title="sqlmap">
+                  <i class="fa fa-chevron-left"></i> sqlmap
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/31/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="next" title="信息收集">
+                  信息收集 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"241072dfa654b109e9142e12639758e8"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

