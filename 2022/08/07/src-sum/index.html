@@ -20,23 +20,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="玩了一星期 开始干活了 这里收录我看到的比较有用的文章 然后根据文章去实践的记录">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="src挖掘学习记录">
 <meta property="og:url" content="http://example.com/2022/08/07/src-sum/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="玩了一星期 开始干活了 这里收录我看到的比较有用的文章 然后根据文章去实践的记录">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/08/07/src-sum/image-20220807015626772.png">
-<meta property="og:image" content="http://example.com/2022/08/07/src-sum/image-20220807015714769.png">
-<meta property="og:image" content="http://example.com/2022/08/07/src-sum/image-20220807015904432.png">
 <meta property="article:published_time" content="2022-08-06T17:46:11.000Z">
-<meta property="article:modified_time" content="2022-08-06T19:24:09.036Z">
+<meta property="article:modified_time" content="2022-08-08T11:58:21.524Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="渗透测试">
 <meta property="article:tag" content="src">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/08/07/src-sum/image-20220807015626772.png">
 
 
 <link rel="canonical" href="http://example.com/2022/08/07/src-sum/">
@@ -142,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -155,7 +151,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql%E6%8C%96%E6%8E%98%E5%AE%9E%E6%93%8D"><span class="nav-number">1.</span> <span class="nav-text">sql挖掘实操</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E6%B3%A8%E5%86%8C%E5%AE%9E%E6%93%8D"><span class="nav-number">2.</span> <span class="nav-text">任意注册实操</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,9 +260,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-08-07 01:46:11 / Modified: 03:24:09" itemprop="dateCreated datePublished" datetime="2022-08-07T01:46:11+08:00">2022-08-07</time>
+      <time title="Created: 2022-08-07 01:46:11" itemprop="dateCreated datePublished" datetime="2022-08-07T01:46:11+08:00">2022-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-08 19:58:21" itemprop="dateModified" datetime="2022-08-08T19:58:21+08:00">2022-08-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -293,30 +294,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>玩了一星期 开始干活了</p>
-<p>这里收录我看到的比较有用的文章 然后根据文章去实践的记录</p>
-<span id="more"></span>
-
-<p>挖掘的重点应该放在 <code>sql注入、弱口令、cms通杀</code></p>
-<h2 id="sql挖掘实操"><a href="#sql挖掘实操" class="headerlink" title="sql挖掘实操"></a>sql挖掘实操</h2><p><code>inurl:.php?id=</code>、<code>inurl:asp?id=</code>、<code>inurl:Show.asp?Id=</code>等</p>
-<img src="/2022/08/07/src-sum/image-20220807015626772.png" alt="image-20220807015626772" style="zoom: 200%;">
-
-<img src="/2022/08/07/src-sum/image-20220807015714769.png" alt="image-20220807015714769" style="zoom:50%;">
-
-<img src="/2022/08/07/src-sum/image-20220807015904432.png" alt="image-20220807015904432">
-
-
-
-<h2 id="任意注册实操"><a href="#任意注册实操" class="headerlink" title="任意注册实操"></a>任意注册实操</h2><blockquote>
-<p>首先先了解什么是任意注册，任意注册是一种程序设计的缺陷，顾名思义就是随便注册，注册处无任何验证。Google语法关键词：地区/行业inurl:”register”地区/行业inurl:”regp.asp”regsave.asp、Reg.asp、userreg.asp、reg1.asp等任意注册算是低危漏洞，不过也有两分。任意注册或许没有那么多人挖，可以尝试去挖掘可以去漏洞盒子提交漏洞的时候，有一个可以选择漏洞类型的，可以尝试去看看，你认为那些漏洞比较冷门没人挖而=而且普遍存在的下手</p>
-</blockquote>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/265782.html">来自榜一的公益SRC挖掘思路分享 - FreeBuf网络安全行业门户</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/271678.html">实战|从零开始的SRC挖掘——如何一洞百分 - FreeBuf网络安全行业门户</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/158882.html">批量挖SRC漏洞的一种打开方式 - FreeBuf网络安全行业门户</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/225770.html">逻辑漏洞小结之SRC篇 - FreeBuf网络安全行业门户</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/280826.html">网络安全SRC漏洞挖掘经验总结V1.0 - FreeBuf网络安全行业门户</a></p>
-<p><a target="_blank" rel="noopener" href="https://wiki.bylibrary.cn/">首页 - 白阁文库 (bylibrary.cn)</a></p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e32ff721b8ca35df2f2330f426f1b107f783b701a801f8a779d4c3f665168e04">991ab7d2bd03f4d5f10ea7e59fdd190b8797041e48aa704804cb085fe4a795b0fa8d880cb64d2213adf73d0269f65f842c8326f6ae149e2daf03fda3c4415222f9cecb2b644e84e284f2f0aa634cc074596d9b330649f683adface361c5e9e7f92372923808ed55eb9fdf007b062777a87cb7fcf1fbf866fab7350a005cedd3d25def499e4cee71766de245d502b9b9699f0f47c9e0175eabf79a5224083f649116cb22af13e7a4e2f0c8a3a22a94ebc6f63059574233306ba191f1be8ad6d508456b3ec5e56631cce33997164077cfef4cdf81b41d7ecb77b3c819b0a66b61365530d98b3e291527d2cecc3018cd6dbea58df7b940de28eca498dc492461b4fcbad6cde825fa878af14b4259ad34282ce310cdd78ca88bdeed88d74f0f7458f59bd3cecd67e66f7f9b42ba034c3bcdcb273d37cfce00f539d0bab9a5f3c5bcc831c52072df1a639d20da8aef3f9f961b7a26cf08c634a20d3c1ccb51e578669e604c496de83fccb65fb166d6a5e4017f4fcc2d82e23a788cddc4ed397ff914deb6b7908c5b54c62ee5ef8c094810a9bb1a3990ab285a686c0d4ebefc63554e89e7580997bc35d9af8a23225c7ffb1f25f223a75be593684df097317aab0fe1492554adf57d0b1b5ed71fac040d3fd30620929c6faaaf69fc9b319701f752b368765bd90328166c90d6e6adcd72f152ae439b1397c94a716ce7adc0dbf68615e8c4f300319e8bcc598a2af05cd7b36f6507180c9313f96a0460bbe303de7ffd0c6695820bbf6077b1c01248f3d64bb6c13fe78adbbd42363eac1cd9e44ec967ae5871622bf75ddcee6a72d17d6cd6f58e75f8e6603734502d9fcb0454e920b870ea89fc0f60b5aed88418be0c3e29359bf7c65c0c4e40fc7a300dd162d1218102343952d628ebe3de96b386be2c33ddafb3ad6f17301eaa647aca5691c32d2d15dd1a092630d68a1fc24a26cc1b59438853942932efb56e42e8529b509d4ae3b5f7b3484f248cae8f4051cfa2ba13266cb077d5d49fee659307731baafc4d542c2df3cc953678a4ad5af8ca4190abd87b14a72bf4de5806fbedf98d2afae0bd364e81e1621ad3465da78855d76ece1492bac76dac19702dfde056ca7f500d5be9c3cd73f09a0fa9ec16322e3424a833c672fc43e577c56dfe64520f66c95bef8472864d03fea388a58b51b393ea8ee109ae5757208afaa5abbded16e7fc4428a55c43e0b116d17a1265955cfdcdbdaaac5f4b38c624f42439f6ff240a93e5c8c5ca00919b727fc10b01272f68159ede142aae7d654170cf6286adc7925b06539cac0f3b0866e5dcf52d8ac1280ffc4a7b624538c8e714518276b059860219f6f2661da4c1db7a6001f0489da2d7bf1bc7b27e2c65527f4194a3e2e5b6fedc054cddfcd99726bd82a7012ca69b7a3e5cfdd4356937f147b582d37d277eba25c9c738e2fef924144233a9692cd0c0157a912174e2723eee54bd49f86e8db8c8a87462bd6ef6af88f88cf89f6502207ca38c2651427c2e6965ef247d61e93929cf1d53fc3d9e955a80a6147aebd18e60a9bd03c06832f76ab22d7c5074e89c5e610dd199919e95775b9e97dcf3ceeeeeae7caa8687fe1f84abd020f3979d085a0862bf49f75ec41f94bcee52c46b3c196277282ed29f23afb1ea8352d35f15a4a8edd8b54d78ffd89fb146b82b607b8f210ad70a63428c144f47f4a15146c5ea67ca05d9eb79197fd93851f41a844bd911ab52aa6632a40dd837ca50e879089593433ea624dda89844aca5a4949d4d69eb0c01c4bed9da17a0f3c0d5d538252b255bf1432a35a54f7a36d00bcb00ed9e5085b5ff48e2ddb0b14853cb9f2d67b8170bd190504f96641e6b14f21c89229491cf5aaa852def942b062ebf2d19af1afe70ed04bf8040742d33637a5f5b571aab0ab20994e2d0da9652a8a28c4ceaff1116c53ed5365251ffb7e12c982c62f360546c1282c71dab903c7b1b5311954bd804422a4908c8bb0af05c81508edf85284bcf9ad4e51b6b8e146c3a7028039a1eabb2705f5d39c521ef55f0c65bfeab693c3f2ea015ae38449b2eb1384a3817c30467fc21d251b9d855827f27d751eb8260973a996657ca77b9b4f5ac3068dfe10fd8c99ebdc876b1436ebfb0311163e48ed4d1907d86a109355ccfb469d6ffde0a260e8cef1163ceab702a4c77e1772106f5fd19199f0dc076c8e0369c556d6ae46bbf87bda8a08c0ed67a049784be3925e5c9a7d68625897a7ec9934682b87a3e13cd5dc876157eda76342b1c4d9d25b1be7155f2d124311f1e804fb3130d9fa1af4b46bcb041821bfd436a9dae119a0251e50a4f8f60036174e1cb5c5b454b235bbca4a3f7399d63dea95ee564dc701f8c43b9a23c10701b839b4efc69e89cd1e2792e2f2694bd359f54f3a961c52efc6c662bd6c9df4707c782cb1a1d618cb7e6527f845fbfc97843b80f8739d74c7c98217b49b9155092e8c2e7a85e6026f3db8f4d187313b725076b5f70c7d6473737e11fa3e8800463355325d08b227b51b7ab3e6d5de1514f6dcb860b7e1f8a987843148ae676cbe08437ae41ac731c645764070cc952b9e358020721af455ba32d9286efb66841c8ddcd06439a2d98673e81a798d01989ef44a56ad19d59bbd6e2639a633076b276dadedaec31fbdc2041fc3c07ad2f2c1c748e9418703c17fc7247a1314a73f172cc011c431ae064f51469fee087c9f5c1ac6eca553f753de589420d0d8d37255a07cf91fad6d93d2eee6d978bda425dd725ccf206fd12f2e5576d449859169f3abfe7ed0d0e762e27efab249ef451c2de2e3467fc4c54700bc58e65aee4c5875d9d72d8b56cb947d8ab8d28d51e0197b84093992ef766d23acde6c3731aaf41ff55b78021a88b7832c2842bfa097415577ceabec52c43ca935637e80c81c5597269b27cb96f70daeed6bc15947960558b5a52e2817d579aa542a504af99105bf31fb0ff2002682cb06bae7ae24aa60c44aac7de49322a33b741b9bbe612678b1f89666b90908af22674f91443d9284b90c1c30be0722bbdf5e112b56ddb397448400d4e58d068497b2091c6533d33b441802327bb19a9788385df672978f13d48fa210d15efb8f596c3880ea1f3898006a220f7d9fd86d6bdff2bdbb5e77eaaa495fac25ffc22ad02f5472e9e86faf33336bd1f6cac959c21d389101011a4309386f18f748d0b314b214fd0e307068420137632c896146280a35ef64e20b688b80b5c443725d6e87b709b038e3f50c020ee5052ee9e469c5e78c4221f3a54a67224ab20d294bd437b3ca159a294a1595ce4e5968c22b54c742fbd3ec8d2ef6ff0ded724fc99e226167a2bef19a0bb90ffe5eb4627b06b3ef7be71e96d3aa1e8170badb28b0ee97f636dd576c7b2d6bc18f54dda71e93fb9b79b81f818c529cdc9b76fd472fd81901b8615c895d20bd3a9061253a2203c28c</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
