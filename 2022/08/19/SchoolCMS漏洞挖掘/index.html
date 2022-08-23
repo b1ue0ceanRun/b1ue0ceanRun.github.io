@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="开挖开挖！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SchoolCMS漏洞挖掘">
+<meta property="og:url" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="开挖开挖！！！">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220819222453710.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220819225905186.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220819232551729.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source/_posts/SchoolCMS漏洞挖掘/image-20220820000814156.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820002421222.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820011535237.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source/_posts/SchoolCMS漏洞挖掘/image-20220820015600605.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820015944174.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820020048808.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220819230206526.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820023628894.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820025435857.png">
+<meta property="og:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220820025359956.png">
+<meta property="article:published_time" content="2022-08-19T14:21:18.000Z">
+<meta property="article:modified_time" content="2022-08-19T19:10:54.876Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="代码审计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog/b1ue0cean.github.io/source_posts/SchoolCMS漏洞挖掘/image-20220819222453710.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/","path":"2022/08/19/SchoolCMS漏洞挖掘/","title":"SchoolCMS漏洞挖掘"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SchoolCMS漏洞挖掘 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-%E4%BB%A3%E7%A0%81%E9%80%9A%E8%AF%BB%E4%B8%8E%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">0x01 代码通读与逻辑梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">1.1.</span> <span class="nav-text">文件上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="nav-number">1.2.</span> <span class="nav-text">sql注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">缓存漏洞是否能实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assign%E5%AF%BC%E8%87%B4%E7%9A%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-number">1.4.</span> <span class="nav-text">assign导致的命令执行</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SchoolCMS漏洞挖掘 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SchoolCMS漏洞挖掘
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-19 22:21:18" itemprop="dateCreated datePublished" datetime="2022-08-19T22:21:18+08:00">2022-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-20 03:10:54" itemprop="dateModified" datetime="2022-08-20T03:10:54+08:00">2022-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">代码审计</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>开挖开挖！！！</p>
+<span id="more"></span>
+
+<p>今天看了P神的一篇文章 很有启发 我以后也要这样挖洞 虽然我挖的都是垃圾洞</p>
+<h1 id="0x01-代码通读与逻辑梳理"><a href="#0x01-代码通读与逻辑梳理" class="headerlink" title="0x01 代码通读与逻辑梳理"></a>0x01 代码通读与逻辑梳理</h1><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">schoolcms</span><br><span class="line">├─core.php        入口公共文件</span><br><span class="line">├─<span class="keyword">index</span>.php       前台入口文件</span><br><span class="line">├─<span class="keyword">admin</span>.php       后台入口文件</span><br><span class="line">├─README.md       README文件</span><br><span class="line">├─robots.txt      爬虫规则定义文件</span><br><span class="line">├─composer.json   Composer定义文件</span><br><span class="line">├─changelog.txt   更新日志</span><br><span class="line">├─Application     应用目录</span><br><span class="line">│  ├─<span class="keyword">Admin</span>        后台目录</span><br><span class="line">│  │  ├─Common       应用函数目录</span><br><span class="line">│  │  ├─Conf         应用配置目录</span><br><span class="line">│  │  ├─Lang         应用语言包目录</span><br><span class="line">│  │  ├─Controller   应用控制器目录</span><br><span class="line">│  │  ├─Model        应用模型目录</span><br><span class="line">│  │  └─<span class="keyword">View</span>         应用视图目录</span><br><span class="line">│  │     └─<span class="keyword">Default</span>       默认模板目录</span><br><span class="line">│  ├─Home         前台目录</span><br><span class="line">│  │  ├─Common       应用函数目录</span><br><span class="line">│  │  ├─Conf         应用配置目录</span><br><span class="line">│  │  ├─Lang         应用语言包目录</span><br><span class="line">│  │  ├─Controller   应用控制器目录</span><br><span class="line">│  │  ├─Model        应用模型目录</span><br><span class="line">│  │  └─<span class="keyword">View</span>         应用视图目录</span><br><span class="line">│  │     └─<span class="keyword">Default</span>       默认模板目录</span><br><span class="line">│  ├─Common       公共函数配置目录</span><br><span class="line">│  │  ├─Common       公共方法目录</span><br><span class="line">│  │  └─Conf         公共配置目录</span><br><span class="line">│  └─Runtime      临时文件目录</span><br><span class="line">├─<span class="built_in">Public</span>          资源文件目录</span><br><span class="line">│  ├─<span class="keyword">Admin</span>        后台静态资源目录</span><br><span class="line">│  │  └─<span class="keyword">Default</span>       默认模板目录</span><br><span class="line">│  ├─Home         前台静态资源目录</span><br><span class="line">│  │  └─<span class="keyword">Default</span>       默认模板目录</span><br><span class="line">│  ├─Common       公共静态资源目录</span><br><span class="line">│  └─Upload       用户上传附件资源目录</span><br><span class="line">├─Install         安装引导目录</span><br><span class="line">└─ThinkPHP        框架目录</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220819222453710.png" alt="image-20220819222453710"></p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220819225905186.png" alt="image-20220819225905186"></p>
+<p>现代PHP项目想要getshell，常见的方法有下面几个：</p>
+<ul>
+<li>文件上传漏洞</li>
+<li>路由错误导致的函数执行漏洞，比如ThinkPHP 5的两个RCE</li>
+<li>模板注入漏洞，比如Cachet这个<a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/cachet-from-laravel-sqli-to-bug-bounty.html">后台getshell</a></li>
+<li>反序列化漏洞</li>
+</ul>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>上传点1 主题</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220819232551729.png" alt="image-20220819232551729"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$type</span> = <span class="keyword">array</span>(<span class="string">&#x27;application/zip&#x27;</span>, <span class="string">&#x27;application/octet-stream&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>文件类型必须是这两种 改一下就可以绕过了</p>
+<img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source\_posts\SchoolCMS漏洞挖掘\image-20220820000814156.png" alt="image-20220820000814156" style="zoom:50%;">
+
+<p>然后我们来看一下 进行写入的条件</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820002421222.png" alt="image-20220820002421222"></p>
+<p>直接构造就好 很容易绕过 。。。 但是被交了 。。。 服了 </p>
+<p>上传点2 logo 这里也被交了。。。</p>
+<p><a target="_blank" rel="noopener" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-201902-949">国家信息安全漏洞库 (cnnvd.org.cn)</a></p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820011535237.png" alt="image-20220820011535237"></p>
+<p>可惜参数不可控 看了几个 都是后台的sql注入 我也不屑于去挖了</p>
+<p>把关注点放在普通用户的注入上</p>
+<p>来分析一下 thinkphp3 sql注入形成的原因？okk</p>
+<p>先来看<code>find</code>函数</p>
+<p>然后调用 <code>select</code></p>
+<img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source\_posts\SchoolCMS漏洞挖掘\image-20220820015600605.png" alt="image-20220820015600605" style="zoom:50%;">
+
+<p>跟过去</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820015944174.png" alt="image-20220820015944174"></p>
+<p><code>$this-&gt;buildSelectSql()</code></p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820020048808.png" alt="image-20220820020048808"></p>
+<p><a target="_blank" rel="noopener" href="http://www.hackdig.com/02/hack-596623.htm">http://www.hackdig.com/02/hack-596623.htm</a></p>
+<h2 id="缓存漏洞是否能实现"><a href="#缓存漏洞是否能实现" class="headerlink" title="缓存漏洞是否能实现"></a>缓存漏洞是否能实现</h2><p>看了眼生成的缓存文件 发现都这样</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220819230206526.png" alt="image-20220819230206526"></p>
+<p>说明 已经被过滤啦</p>
+<p>还是去跟一下 看看是怎么被过滤的</p>
+<h2 id="assign导致的命令执行"><a href="#assign导致的命令执行" class="headerlink" title="assign导致的命令执行"></a>assign导致的命令执行</h2><p>好不容易找到一个可控的assign 结果可控的是第二个参数 吐了。。。</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820023628894.png" alt="image-20220820023628894"></p>
+<p>我们可以输入一个数组进去 试试看</p>
+<p>没有找到第一个参数可控的。。。失败</p>
+<p>首先要写入攻击代码到日志中，错误请求系统报错</p>
+<p>他这里给他urlencode 十分恶心。。不知道后面能不能解析回来。。。</p>
+<p>这里是<code>controller.class</code>中的 assign 又调用了 <code>view.class</code>中的 assign</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820025435857.png" alt="image-20220820025435857"></p>
+<p>可控变量进入assign方法赋值给$this→tVar变量</p>
+<p><img src="/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/MyBlog\b1ue0cean.github.io\source_posts\SchoolCMS漏洞挖掘\image-20220820025359956.png" alt="image-20220820025359956"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/19/SchoolCMS%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/" title="SchoolCMS漏洞挖掘">http://example.com/2022/08/19/SchoolCMS漏洞挖掘/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag"># 代码审计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/18/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%9B%9E%E6%98%BE%E7%A0%94%E7%A9%B6/" rel="prev" title="命令执行回显研究">
+                  <i class="fa fa-chevron-left"></i> 命令执行回显研究
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/20/%E5%9B%BD%E5%BE%AEschool/" rel="next" title="国微school">
+                  国微school <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"718d98e770e11d4a4647b806b2c7813d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

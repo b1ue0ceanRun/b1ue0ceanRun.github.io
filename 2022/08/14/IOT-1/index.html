@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="去年写10月份的一篇文章 在这里挂一下 接下来会继续写几篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="真正入坑IOT的第一次">
+<meta property="og:url" content="http://example.com/2022/08/14/IOT-1/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="去年写10月份的一篇文章 在这里挂一下 接下来会继续写几篇">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/14/IOT-1/image-20211006172438209-16335122812341.png">
+<meta property="og:image" content="http://example.com/2022/08/14/IOT-1/image-20211006173503346-16335129095382.png">
+<meta property="og:image" content="http://example.com/2022/08/14/IOT-1/image-20211006173956585.png">
+<meta property="og:image" content="http://example.com/2022/08/14/IOT-1/image-20211006181205612.png">
+<meta property="article:published_time" content="2022-08-14T14:27:15.000Z">
+<meta property="article:modified_time" content="2022-08-14T14:28:46.427Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="IOT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/14/IOT-1/image-20211006172438209-16335122812341.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/14/IOT-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/14/IOT-1/","path":"2022/08/14/IOT-1/","title":"真正入坑IOT的第一次"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>真正入坑IOT的第一次 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9C%9F%E6%AD%A3%E5%85%A5%E5%9D%91IOT%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1"><span class="nav-number">1.</span> <span class="nav-text">真正入坑IOT的第一次</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-LINK-DWR-932%E5%9B%BA%E4%BB%B6%E6%8F%90%E5%8F%96"><span class="nav-number">1.2.</span> <span class="nav-text">D-LINK DWR 932固件提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">下载固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%9B%BA%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">解压固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binwalk%E6%8F%90%E5%8F%96%E5%9B%BA%E4%BB%B6"><span class="nav-number">1.2.3.</span> <span class="nav-text">Binwalk提取固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.4.</span> <span class="nav-text">分析文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">查找所有配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">查看配置文件的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BF%A1%E6%81%AF%E6%90%9C%E7%B4%A2-firmwalker"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">自动化信息搜索-firmwalker</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98"><span class="nav-number">1.3.</span> <span class="nav-text">漏洞挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="nav-number">1.3.1.</span> <span class="nav-text">密码泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">自启动脚本文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4admin%E8%B4%A6%E5%8F%B7"><span class="nav-number">1.3.3.</span> <span class="nav-text">默认admin账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%95%99%E4%B8%8B%E7%9A%84%E5%90%8E%E9%97%A8"><span class="nav-number">1.3.4.</span> <span class="nav-text">开发人员留下的后门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2WPS-PIN%E7%A0%81"><span class="nav-number">1.3.5.</span> <span class="nav-text">泄露WPS PIN码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fotad-%E5%88%86%E6%9E%90"><span class="nav-number">1.3.6.</span> <span class="nav-text">fotad 分析</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/14/IOT-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="真正入坑IOT的第一次 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          真正入坑IOT的第一次
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-14 22:27:15 / Modified: 22:28:46" itemprop="dateCreated datePublished" datetime="2022-08-14T22:27:15+08:00">2022-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOT/" itemprop="url" rel="index"><span itemprop="name">IOT</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>去年写10月份的一篇文章 在这里挂一下 接下来会继续写几篇</p>
+<span id="more"></span>
+
+<h1 id="真正入坑IOT的第一次"><a href="#真正入坑IOT的第一次" class="headerlink" title="真正入坑IOT的第一次"></a>真正入坑IOT的第一次</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>暑假里参加了xman和华为的HWS夏令营 只能说当时太划水 导致实操一点都没跟上 现在开始真正入坑IOT了  希望以后能在IOT技术上有所成就</p>
+<h2 id="D-LINK-DWR-932固件提取"><a href="#D-LINK-DWR-932固件提取" class="headerlink" title="D-LINK DWR 932固件提取"></a>D-LINK DWR 932固件提取</h2><h3 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h3><p>直接谷歌就可以搜得到资源</p>
+<h3 id="解压固件"><a href="#解压固件" class="headerlink" title="解压固件"></a>解压固件</h3><p>会发现 zip 文件有加密 拿个爆破工具直接爆破就好  （ 我直接搜到了密码 怪我咯</p>
+<h3 id="Binwalk提取固件"><a href="#Binwalk提取固件" class="headerlink" title="Binwalk提取固件"></a>Binwalk提取固件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">da39a3ee5e6b4b0d3255bfef95601890afd80709  <span class="number">02.02</span>EU</span><br><span class="line">dcee0a4028a5a9acaf012532b4c8ad454ae0dcd8  <span class="number">2</span>K-mdm-image-boot-mdm9625<span class="selector-class">.img</span></span><br><span class="line"><span class="number">362</span>a9ba52ec960850118f959c35acef7a9a43613  <span class="number">2</span>K-mdm-image-mdm9625<span class="selector-class">.yaffs2</span></span><br><span class="line"><span class="number">7</span>b2ebcae636f12d94f1ddea1cf108b02df0c0c32  <span class="number">2</span>K-mdm-recovery-image-boot-mdm9625<span class="selector-class">.img</span></span><br><span class="line"><span class="number">19</span>e59adb303206cd5b234a36848f37e7774680c8  <span class="number">2</span>K-mdm-recovery-image-mdm9625<span class="selector-class">.yaffs2</span></span><br><span class="line">c58b219f2f30509ff616876b3974e8e4250c54d1  <span class="number">2</span>K-mdm9625-usr-image<span class="selector-class">.usrfs</span><span class="selector-class">.yaffs2</span></span><br><span class="line"><span class="number">9</span>b0f2fce3c932bc3ba1f1f929a198f3d10a457be  appsboot<span class="selector-class">.mbn</span></span><br><span class="line">a1fabcd1d98090dbcb778288b45fcf75dbe9e474  mba<span class="selector-class">.mbn</span></span><br><span class="line">d8a5eb2ee3ea47214f6a30838c45485921ec686d  qdsp6sw<span class="selector-class">.mbn</span></span><br><span class="line"><span class="number">75</span>ee33b48c2f3b80e3f476c80099ae2694ce54e3  rpm<span class="selector-class">.mbn</span></span><br><span class="line"><span class="number">94317</span>de508e9f0007b2c8d0e108c23bde286f839  sbl1<span class="selector-class">.mbn</span></span><br><span class="line">a5fd3f79d497dbf38a87d6db7ae9bc63bc3635dc  tz<span class="selector-class">.mbn</span></span><br><span class="line"><span class="number">264</span>c0ef78a11700e1c030f312322a51ff190a066  wdt.mbn</span><br></pre></td></tr></table></figure>
+
+<p>好家伙 文件都在这了</p>
+<p>我们可以看到有一些 yaffs2 文件 我们可以 binwalk 一把梭 或者用针对 yaffs2 格式的工具直接开搞</p>
+<p>这里我直接binwalk 2333</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk -Me 2K-mdm-image-mdm9625.yaffs2</span><br></pre></td></tr></table></figure>
+
+<p>然后得到了一个tar包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">┌──(godrun㉿kali)-[~/IOT/dlink-dwr932b/DWR-932_B1_FW v.02.02EU/_2K-mdm-image-mdm9625.yaffs2.extracted]</span><br><span class="line">└─$ <span class="built_in">ls</span></span><br><span class="line">0.yaffs  8B8C0B.tar</span><br></pre></td></tr></table></figure>
+
+<p>看一下是不是我们想要的 tar包</p>
+<p>显示这个tar格式损坏 emmmm 查了下</p>
+<blockquote>
+<p>Yaffs(Yet Another FlashFile System)文件系统是专门针对NAND闪存设计的嵌入式文件系统，目前有YAFFS和YAFFS2两个版本，两个版本的主要区别之一在于YAFFS2能够更好的支持大容量的NAND FLASH芯片</p>
+</blockquote>
+<p>还是用 unyaffs 吧 害</p>
+<p>搜了半天怎么下 结果试了下 直接 apt (吐了)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install unyaffs</span><br></pre></td></tr></table></figure>
+
+<p>然后搞 yaffs 文件 ( 要在root权限下运行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/…/IOT/dlink-dwr932b/DWR-932_B1_FW v.02.02EU/yaffs2-root]</span><br><span class="line">└─<span class="comment"># ls -la</span></span><br><span class="line">总用量 96</span><br><span class="line">drwxr-xr-x 21 root   root    4096  7月 19  2014 .</span><br><span class="line">drwxr-xr-x  3 godrun godrun  4096 10月  5 15:04 ..</span><br><span class="line">drwxr-xr-x  2 root   root   12288  7月 19  2014 bin</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 boot</span><br><span class="line">-rw-r--r--  1 root   root      38  7月 19  2014 build.prop</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 cache</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 config</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 config2</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 dev</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 disk</span><br><span class="line">drwxr-xr-x 31 root   root    4096  7月 19  2014 etc</span><br><span class="line">drwxr-sr-x  3 root   root    4096  7月 19  2014 home</span><br><span class="line">drwxr-xr-x  4 root   root    4096  7月 19  2014 lib</span><br><span class="line">lrwxrwxrwx  1 root   root      12  7月 19  2014 linuxrc -&gt; /bin/busybox</span><br><span class="line">drwxr-xr-x 10 root   root    4096  7月 19  2014 media</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 mnt</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 proc</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 sbin</span><br><span class="line">lrwxrwxrwx  1 root   root      11  7月 19  2014 sdcard -&gt; /media/card</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 sys</span><br><span class="line">drwxrwxrwt  2 root   root    4096  7月 19  2014 tmp</span><br><span class="line">drwxr-xr-x  2 root   root    4096  7月 19  2014 usr</span><br><span class="line">drwxr-xr-x  7 root   root    4096  7月 19  2014 var</span><br><span class="line">drwxr-xr-x  3 root   root    4096  7月 19  2014 WEBSERVER</span><br><span class="line">lrwxrwxrwx  1 root   root       8  7月 19  2014 www -&gt; /usr/www</span><br></pre></td></tr></table></figure>
+
+<p>所以刚才binwalk没跑动 也是因为不是root？还是不行 555</p>
+<h3 id="分析文件系统"><a href="#分析文件系统" class="headerlink" title="分析文件系统"></a>分析文件系统</h3><p>从这里开始，我们开始遍历文件系统中不同的目录，并从安全视角查找其中可能存在的漏洞的文件</p>
+<h4 id="查找所有配置文件"><a href="#查找所有配置文件" class="headerlink" title="查找所有配置文件"></a>查找所有配置文件</h4><p>我们需要做的第一件事是查找所有配置文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&#x27;*.conf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/…/IOT/dlink-dwr932b/DWR-932_B1_FW v.02.02EU/yaffs2-root]</span><br><span class="line">└─<span class="comment"># find . -name &#x27;*.conf&#x27;   </span></span><br><span class="line">./etc/AR6004_AP1_hostapd.conf</span><br><span class="line">./etc/AR6003_AP1_hostapd.conf</span><br><span class="line">./etc/mdev.conf</span><br><span class="line">./etc/igd/miniupnpd.conf</span><br><span class="line">./etc/AR6003_hostapd.conf</span><br><span class="line">./etc/host.conf</span><br><span class="line">./etc/AR6004_hostapd.confl</span><br><span class="line">./etc/dbus-1/system.conf</span><br><span class="line">./etc/dbus-1/system.d/avahi-dbus.conf</span><br><span class="line">./etc/dbus-1/session.conf</span><br><span class="line">./etc/nsswitch.conf</span><br><span class="line">./etc/inadyn-mt.conf</span><br><span class="line">./etc/wpa_supplicant.conf</span><br><span class="line">./etc/pimd.conf</span><br><span class="line">./etc/avahi/avahi-daemon.conf</span><br><span class="line">./etc/hostapd.conf</span><br><span class="line">./etc/radvd.conf</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看配置文件的内容"><a href="#查看配置文件的内容" class="headerlink" title="查看配置文件的内容"></a>查看配置文件的内容</h4><p>因为配置文件中常常包含一些重要的信息 甚至是后门 （ 见 TCTF Final eeenginx）</p>
+<p>当我们看到  <code>./etc/inadyn-mt.conf</code> 文件时</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--log_file /usr/inadyn_srv.log</span><br><span class="line">--forced_update_period 6000</span><br><span class="line">--username alex_hung</span><br><span class="line">--password 641021</span><br><span class="line">--dyndns_system default@no-ip.com</span><br><span class="line">--alias test.no-ip.com</span><br></pre></td></tr></table></figure>
+
+<p>我TM直接好家伙 username password 整整齐齐</p>
+<p>当然 我们可能会在 .conf 文件之外找到更多的敏感信息</p>
+<h4 id="自动化信息搜索-firmwalker"><a href="#自动化信息搜索-firmwalker" class="headerlink" title="自动化信息搜索-firmwalker"></a>自动化信息搜索-firmwalker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(godrun㉿kali)-[~/CTFtools/firmwalker]</span><br><span class="line">└─$ ./firmwalker.sh /home/godrun/IOT/dlink-dwr932b/DWR-932_B1_FWv.02.02EU/yaffs2-root</span><br></pre></td></tr></table></figure>
+
+<p>直接搞到很多敏感的信息 可以说是十分的爽了</p>
+<h2 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h2><h3 id="密码泄露"><a href="#密码泄露" class="headerlink" title="密码泄露"></a>密码泄露</h3><p>我们从 <code>/etc/shadow</code>下可以得到root 的密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/…/dlink-dwr932b/DWR-932_B1_FWv.02.02EU/yaffs2-root/etc]</span><br><span class="line">└─<span class="comment"># cat ./shadow </span></span><br><span class="line">root:aRDiHrJ0OkehM:16270:0:99999:7:::</span><br><span class="line">daemon:*:16270:0:99999:7:::</span><br><span class="line">bin:*:16270:0:99999:7:::</span><br><span class="line">sys:*:16270:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:16270:0:99999:7:::</span><br><span class="line">games:*:16270:0:99999:7:::</span><br><span class="line">man:*:16270:0:99999:7:::</span><br><span class="line">lp:*:16270:0:99999:7:::</span><br><span class="line">mail:*:16270:0:99999:7:::</span><br><span class="line">news:*:16270:0:99999:7:::</span><br><span class="line">uucp:*:16270:0:99999:7:::</span><br><span class="line">proxy:*:16270:0:99999:7:::</span><br><span class="line">www-data:*:16270:0:99999:7:::</span><br><span class="line">backup:*:16270:0:99999:7:::</span><br><span class="line">list:*:16270:0:99999:7:::</span><br><span class="line">irc:*:16270:0:99999:7:::</span><br><span class="line">gnats:*:16270:0:99999:7:::</span><br><span class="line">diag:*:16270:0:99999:7:::</span><br><span class="line">nobody:*:16270:0:99999:7:::</span><br><span class="line">messagebus:!:16270:0:99999:7:::</span><br><span class="line">avahi:!:16270:0:99999:7:::</span><br></pre></td></tr></table></figure>
+
+<p>然后 复制到 <code>passwd.txt</code> 中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/…/dlink-dwr932b/DWR-932_B1_FWv.02.02EU/yaffs2-root/etc]</span><br><span class="line">└─<span class="comment"># john passwd.txt</span></span><br><span class="line">Created directory: /root/.john</span><br><span class="line">Using default input encoding: UTF-8</span><br><span class="line">Loaded 1 password <span class="built_in">hash</span> (descrypt, traditional crypt(3) [DES 64/64 MMX])</span><br><span class="line">Will run 4 OpenMP threads</span><br><span class="line">Proceeding with single, rules:Single</span><br><span class="line">Press <span class="string">&#x27;q&#x27;</span> or Ctrl-C to abort, almost any other key <span class="keyword">for</span> <span class="built_in">stat</span></span><br><span class="line">Almost <span class="keyword">done</span>: Processing the remaining buffered candidate pa</span><br><span class="line">Warning: Only 86 candidates buffered <span class="keyword">for</span> the current salt, </span><br><span class="line">Proceeding with wordlist:/usr/share/john/password.lst, rule</span><br><span class="line">1234             (root)</span><br><span class="line">1g 0:00:00:00 N/A 50.00g/s 507800p/s 507800c/s 507800C/s 12</span><br><span class="line">Use the <span class="string">&quot;--show&quot;</span> option to display all of the cracked passw</span><br><span class="line">Session completed</span><br></pre></td></tr></table></figure>
+
+<p>一波直接带走</p>
+<h3 id="自启动脚本文件"><a href="#自启动脚本文件" class="headerlink" title="自启动脚本文件"></a>自启动脚本文件</h3><blockquote>
+<p>　　/etc/init.d 是 /etc/rc.d/init.d 的软链接(soft link)。可以通过 ll 命令查看。</p>
+<p>　都是用来放服务脚本的，当Linux启动时，会寻找这些目录中的服务脚本，并根据脚本的run level确定不同的启动级别。</p>
+<p>　　　在制作服务脚本的过程中，使用了Linux的两个版本，CentOS和Ubuntu，需要在两个版本中都可以开机启动服务。但Ubuntu没有 /etc/rc.d/init.d这个目录，所以，为了保持同一种服务在CentOS和Ubuntu使用的统一性，将服务脚本（注：服务脚本在两个不同版本中是不同的）都放在 /etc/init.d 目录下，最终达到的效果是相同的。</p>
+<p>　　　需要说明的是：在CentOS和Ubuntu两个版本中，除了服务脚本放置的目录是相同的，服务脚本的编写及服务配置都是不同的。比如CentOS使用Chkconfig进行配置，而Ubuntu使用sysv-rc-conf进行配置。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liudongdong19/article/details/79774171">https://blog.csdn.net/liudongdong19/article/details/79774171</a> (写linux启动过程的)</p>
+<p>我们进去看一下 发现有许多脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">┌──(godrun㉿kali)-[~/…/DWR-932_B1_FWv.02.02EU/yaffs2-root/etc/init.d]</span><br><span class="line">└─$ <span class="built_in">ls</span> -la </span><br><span class="line">总用量 260</span><br><span class="line">drwxr-xr-x  2 root root  4096  7月 19  2014 .</span><br><span class="line">drwxr-xr-x 31 root root  4096 10月  5 16:47 ..</span><br><span class="line">-rwxr-xr-x  1 root root  2482  7月 19  2014 adbd</span><br><span class="line">-rwxr-xr-x  1 root root   250  7月 19  2014 alignment.sh</span><br><span class="line">-rwxr-xr-x  1 root root  4735  7月 19  2014 avahi-daemon</span><br><span class="line">-rwxr-xr-x  1 root root  4490  7月 19  2014 avahi-dnsconfd</span><br><span class="line">-rwxr-xr-x  1 root root   492  7月 19  2014 banner.sh</span><br><span class="line">-rwxr-xr-x  1 root root  1529  7月 19  2014 bootlogd</span><br><span class="line">-rwxr-xr-x  1 root root  1680  7月 19  2014 bootmisc.sh</span><br><span class="line">-rwxr-xr-x  1 root root   681  7月 19  2014 busybox-cron</span><br><span class="line">-rwxr-xr-x  1 root root  3229  7月 19  2014 checkroot.sh</span><br><span class="line">-rwxr-xr-x  1 root root   151  7月 19  2014 chgrp-diag</span><br><span class="line">-rwxr-xr-x  1 root root  1591  7月 19  2014 data-init</span><br><span class="line">-rwxr-xr-x  1 root root  2781  7月 19  2014 dbus-1</span><br><span class="line">-rwxr-xr-x  1 root root   526  7月 19  2014 devpts.sh</span><br><span class="line">-rwxr-xr-x  1 root root   408  7月 19  2014 diagrebootapp</span><br><span class="line">-rwxr-xr-x  1 root root  2674  7月 19  2014 dropbear</span><br><span class="line">-rw-r--r--  1 root root  1123  7月 19  2014 <span class="built_in">functions</span></span><br><span class="line">-rwxr-xr-x  1 root root   510  7月 19  2014 halt</span><br><span class="line">-rwxr-xr-x  1 root root   270  7月 19  2014 hostname.sh</span><br><span class="line">-rwxr-xr-x  1 root root  2402  7月 19  2014 hwclock.sh</span><br><span class="line">-rwxr-xr-x  1 root root   348  7月 19  2014 keymap.sh</span><br><span class="line">-rwxr-xr-x  1 root root   169  7月 19  2014 mdev</span><br><span class="line">-rwxr-xr-x  1 root root   168  7月 19  2014 modem-shutdown</span><br><span class="line">-rwxr-xr-x  1 root root   878  7月 19  2014 modutils.sh</span><br><span class="line">-rwxr-xr-x  1 root root   859  7月 19  2014 mountall.sh</span><br><span class="line">-rwxr-xr-x  1 root root  1399  7月 19  2014 mountnfs.sh</span><br><span class="line">-rwxr-xr-x  1 root root   783  7月 19  2014 netmgrd</span><br><span class="line">-rwxr-xr-x  1 root root  1463  7月 19  2014 networking</span><br><span class="line">-rwxr-xr-x  1 root root  5114  7月 19  2014 populate-volatile.sh</span><br><span class="line">-rwxr-xr-x  1 root root 10835  7月 19  2014 power_config</span><br><span class="line">-rwxr-xr-x  1 root root  1136  7月 19  2014 qmi_shutdown_modemd</span><br><span class="line">-rwxr-xr-x  1 root root   610  7月 19  2014 qmuxd</span><br><span class="line">-rwxr-xr-x  1 root root   368  7月 19  2014 qrngd</span><br><span class="line">-rwxr-xr-x  1 root root  4346  7月 19  2014 rc</span><br><span class="line">-rwxr-xr-x  1 root root   525  7月 19  2014 rcS</span><br><span class="line">-rwxr-xr-x  1 root root  2015  7月 19  2014 reboot</span><br><span class="line">-rwxr-xr-x  1 root root   159  7月 19  2014 reset_reboot_cookie</span><br><span class="line">-rwxr-xr-x  1 root root   585  7月 19  2014 rmnologin.sh</span><br><span class="line">-rwxr-xr-x  1 root root   609  7月 19  2014 run-postinsts</span><br><span class="line">-rwxr-xr-x  1 root root   321  7月 19  2014 save-rtc.sh</span><br><span class="line">-rwxr-xr-x  1 root root   438  7月 19  2014 sendsigs</span><br><span class="line">-rwxr-xr-x  1 root root   978  7月 19  2014 set-hwver.sh</span><br><span class="line">-rwxr-xr-x  1 root root  1836  7月 19  2014 shutdown</span><br><span class="line">-rwxr-xr-x  1 root root   578  7月 19  2014 single</span><br><span class="line">-rwxr-xr-x  1 root root  2178  7月 19  2014 start_appmgr</span><br><span class="line">-rwxr-xr-x  1 root root  2138  7月 19  2014 start_ipacm_le</span><br><span class="line">-rwxr-xr-x  1 root root   764  7月 19  2014 start_QCMAP_ConnectionManager_le</span><br><span class="line">-rwxr-xr-x  1 root root  1001  7月 19  2014 start_qti_le</span><br><span class="line">lrwxrwxrwx  1 root root     8  7月 19  2014 stop-bootlogd -&gt; bootlogd</span><br><span class="line">-rwxr-xr-x  1 root root   540  7月 19  2014 sysfs.sh</span><br><span class="line">lrwxrwxrwx  1 root root    14  7月 19  2014 syslog -&gt; syslog.busybox</span><br><span class="line">-rwxr-xr-x  1 root root  1559  7月 19  2014 syslog.busybox</span><br><span class="line">-rwxr-xr-x  1 root root   659  7月 19  2014 thermal-engine</span><br><span class="line">-rwxr-xr-x  1 root root   516  7月 19  2014 umountfs</span><br><span class="line">-rwxr-xr-x  1 root root   686  7月 19  2014 umountnfs.sh</span><br><span class="line">-rwxr-xr-x  1 root root  1349  7月 19  2014 urandom</span><br><span class="line">-rwxr-xr-x  1 root root  5005  7月 19  2014 usb</span><br><span class="line">-rwxr-xr-x  1 root root  8116  7月 19  2014 wlan</span><br></pre></td></tr></table></figure>
+
+<p>看到  <code>start_mgr</code>   mgr一般是主控程序的意思 拿来分析一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># appmgr init.d script to start router daemon</span></span><br><span class="line"><span class="built_in">export</span> KERNEL=`<span class="built_in">uname</span> -r`</span><br><span class="line"><span class="built_in">export</span> MODULE_BASE=/lib/modules/<span class="variable">$KERNEL</span>/updates</span><br><span class="line"><span class="built_in">export</span> RETRY_LIMIT=4</span><br><span class="line"><span class="built_in">export</span> SDCC_SLOT=4</span><br><span class="line"><span class="built_in">export</span> SDCC_SLOT3=2</span><br><span class="line"></span><br><span class="line"><span class="comment">#Vince &#123;</span></span><br><span class="line">BOOT_MODE=`<span class="built_in">cat</span> /proc/cmdline | sed -n <span class="string">&#x27;s/.*boot_mode=\(........\) .*/\2/p&#x27;</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;x<span class="variable">$&#123;BOOT_MODE&#125;</span>&quot;</span> == <span class="string">&quot;xcharging&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">	start-stop-daemon -S -b -a /bin/pfcharging</span><br><span class="line">	<span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">#Vince &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Sandro &#123; for telnetd debug...</span></span><br><span class="line">start-stop-daemon -S -b -a /bin/logmaster</span><br><span class="line"><span class="comment">#if [ -e /config3/telnetd ]; then</span></span><br><span class="line">	start-stop-daemon -S -b -a /sbin/telnetd</span><br><span class="line"><span class="comment">#fi</span></span><br><span class="line"><span class="comment">#Sandro &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Sandro set hw id start</span></span><br><span class="line"><span class="keyword">if</span> [ -e /etc/init.d/set-hwver.sh ]; <span class="keyword">then</span></span><br><span class="line">	/etc/init.d/set-hwver.sh</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">#Sandro set hw id end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -e /etc/versions ]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">if</span> [ -e /usr/etc/versions ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">ln</span> -nsf /usr/etc/versions /etc/versions</span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -e /etc/qrcfg ]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">if</span> [ -d /usr/etc/qrcfg ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">ln</span> -nsf /usr/etc/qrcfg /etc/qrcfg</span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -e /www ]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">if</span> [ -d /usr/www ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">ln</span> -sf /usr/www /www</span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [  -f /sbin/netcfg ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">&quot;chmod 778 netcfg&quot;</span></span><br><span class="line">        <span class="built_in">chmod</span> 778 /sbin/netcfg</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [  -f /bin/QNetCfg ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">&quot;chmod 778 QNetCfg&quot;</span></span><br><span class="line">        <span class="built_in">chmod</span> 778 /bin/QNetCfg</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#if [ ! -e /data ]; then</span></span><br><span class="line"><span class="comment">#        mkdir -p /data</span></span><br><span class="line"><span class="comment">#        mount -t yaffs3 /dev/mtdblock12 /data</span></span><br><span class="line"><span class="comment">#fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the vendor_id, [Generic|Pure]</span></span><br><span class="line">VENDOR_ID=$(grep vendor_id /etc/versions 3&gt;/dev/null | awk -F<span class="string">&quot;=&quot;</span> <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$VENDOR_ID</span>&quot;</span> = <span class="string">&quot;Pure&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> -n <span class="string">&quot;Starting btnd: &quot;</span></span><br><span class="line">            start-stop-daemon -S -b -a /bin/btnd</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;done&quot;</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -n <span class="string">&quot;Starting appmgr: &quot;</span></span><br><span class="line">            start-stop-daemon -S -b -a /bin/appmgr</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;done&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$VENDOR_ID</span>&quot;</span> = <span class="string">&quot;Pure&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> -n <span class="string">&quot;Stopping btnd: &quot;</span></span><br><span class="line">            start-stop-daemon -K -n btnd</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;done&quot;</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -n <span class="string">&quot;Stopping appmgr: &quot;</span></span><br><span class="line">            start-stop-daemon -K -n appmgr</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;done&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br><span class="line">    restart)</span><br><span class="line">        <span class="variable">$1</span> stop</span><br><span class="line">        <span class="variable">$1</span> start</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Usage appmgr &#123; start | stop | restart&#125;&quot;</span> &gt;&amp;3</span><br><span class="line">        <span class="built_in">exit</span> 2</span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 1</span><br></pre></td></tr></table></figure>
+
+<p>然后 <code>start-stop-daemon</code> 是linux中守护进程 <strong>启停</strong> 工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$VENDOR_ID</span>&quot;</span> = <span class="string">&quot;Pure&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> -n <span class="string">&quot;Starting btnd: &quot;</span></span><br><span class="line">            start-stop-daemon -S -b -a /bin/btnd</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;done&quot;</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -n <span class="string">&quot;Starting appmgr: &quot;</span></span><br><span class="line">            start-stop-daemon -S -b -a /bin/appmgr</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;done&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br></pre></td></tr></table></figure>
+
+<p>看看 <code>/bin/appmgr</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌──(godrun㉿kali)-[~/…/dlink-dwr932b/DWR-932_B1_FWv.02.02EU/yaffs2-root/bin]</span><br><span class="line">└─$ <span class="built_in">ls</span> -la | grep appmgr</span><br><span class="line">-rwxr-xr-x  1 root root  505728  7月 19  2014 appmgr</span><br><span class="line">-rwxr-xr-x  1 root root    7944  7月 19  2014 appmgr_cli</span><br></pre></td></tr></table></figure>
+
+<p>有俩文件 逆一下启动程序</p>
+<h3 id="默认admin账号"><a href="#默认admin账号" class="headerlink" title="默认admin账号"></a>默认admin账号</h3><p><img src="/2022/08/14/IOT-1/image-20211006172438209-16335122812341.png" alt="image-20211006172438209"></p>
+<h3 id="开发人员留下的后门"><a href="#开发人员留下的后门" class="headerlink" title="开发人员留下的后门"></a>开发人员留下的后门</h3><p>意思是 你往39889端口 发一个 <code>HELODBG</code>   可以直接连上 telnet</p>
+<p><img src="/2022/08/14/IOT-1/image-20211006173503346-16335129095382.png" alt="image-20211006173503346"></p>
+<h3 id="泄露WPS-PIN码"><a href="#泄露WPS-PIN码" class="headerlink" title="泄露WPS PIN码"></a>泄露WPS PIN码</h3><p><img src="/2022/08/14/IOT-1/image-20211006173956585.png" alt="image-20211006173956585"></p>
+<h3 id="fotad-分析"><a href="#fotad-分析" class="headerlink" title="fotad 分析"></a>fotad 分析</h3><blockquote>
+<p>FOTA服务器是一个抽象的功能实体，主要功能的升级包上传，存储，缓存和分配机制，以及字节差异文件的生成和管理，下载的并发访问控制。FOTA服务器的实现可以分为几个部分的下载服务器，升级软件包管理服务器，升级服务包存储。</p>
+<p>FOTA解决方案的客户包括以下三大功能实体：</p>
+<p>1设备管理客户端。负责终端内部资源管理，如终端对象树管理。设备管理客户端和客户端下载，通过之间的状态转换消息界面更新客户端。</p>
+<p>2下载客户端。下载过程管理是负责根据下载协议的更新包，关键是要遵循基于OMA-DM V1.1.2┊“替换”命令下载或OMA DL 1.0下载机制。</p>
+<p>3更新客户端。包括交换剂和更新负责存储管理中所涉及到的升级包安装和安装过程中的代理，安装故障恢复，容错。</p>
+<p>系统的实现</p>
+<p>在设备的厂家，有大量的<a target="_blank" rel="noopener" href="http://www.zeeis.cn/firmware-over-the-air/">FOTA</a>解决方案的系统部署的运营环境，客户端和服务器端的接口的标准化是至关重要的。同时，应考虑的实际操作和管理，用户管理，任务管理的需要，和其他必要的函数。实现的过程如下。</p>
+<p>1终端的发现。包括触发终端服务器会话和阅读终端的轮廓信息（包括制造商，终端，和固件版本信息，等等）来初始化一个客户机/服务器（C/S）。触发模式包括：服务器端发起终端管理系统操作员通过门户系统，客户服务人员通过客户服务专线门从服务器端启动；由客户端发起的，最终用户通过自助服务门户系统推出CDMA 1X终端，终端用户开始通过终端自动触发的GPRS终端的菜单</p>
+</blockquote>
+<p><img src="/2022/08/14/IOT-1/image-20211006181205612.png" alt="image-20211006181205612"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/14/IOT-1/" title="真正入坑IOT的第一次">http://example.com/2022/08/14/IOT-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/IOT/" rel="tag"># IOT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/14/weblogic-cve/" rel="prev" title="weblogic漏洞复现">
+                  <i class="fa fa-chevron-left"></i> weblogic漏洞复现
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/14/IOT-2/" rel="next" title="DIR-815漏洞分析与复现">
+                  DIR-815漏洞分析与复现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"647442c22b98158f125cd5b3a56b83f1"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="重新系统的学习一下wireshark的使用 和一些tip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wireshark使用复习与技巧总结">
+<meta property="og:url" content="http://example.com/2022/08/16/wireshark/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="重新系统的学习一下wireshark的使用 和一些tip">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816154145886.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/u=2300501918,2244649802&fm=253&fmt=auto&app=138&f=JPG.jpeg">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816151441233.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/u=3570401071,2147058580&fm=253&fmt=auto&app=138&f=PNG.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816155024805.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/wireshark/src=http%3A%2F%2Fwww.pianshen.com%2Fimages%2F668%2Fcb4ff609101576bd217c96773ace4b34.png&refer=http%3A%2F%2Fwww.pianshen.jpeg">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816161129684.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816174653410.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816175036341.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816175150238.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816184406176.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816184507719.png">
+<meta property="og:image" content="http://example.com/2022/08/16/wireshark/image-20220816184604945.png">
+<meta property="article:published_time" content="2022-08-16T05:23:53.000Z">
+<meta property="article:modified_time" content="2022-08-16T11:29:13.425Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="wireshark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/16/wireshark/image-20220816154145886.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/16/wireshark/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/16/wireshark/","path":"2022/08/16/wireshark/","title":"wireshark使用复习与技巧总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>wireshark使用复习与技巧总结 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tcp%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.</span> <span class="nav-text">tcp协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%8A%93%E5%8C%85%E8%A7%A3%E9%87%8Atcp%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.</span> <span class="nav-text">根据抓包解释tcp协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="nav-number">1.3.</span> <span class="nav-text">TCP连接的建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%87%8A%E6%94%BE"><span class="nav-number">1.4.</span> <span class="nav-text">TCP连接的释放</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMTP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">SMTP协议分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysed-Information"><span class="nav-number">3.</span> <span class="nav-text">Analysed Information</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Expert-Information"><span class="nav-number">3.1.</span> <span class="nav-text">Expert Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resolved-Addresses"><span class="nav-number">3.2.</span> <span class="nav-text">Resolved Addresses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Protocol-Hierarchy"><span class="nav-number">3.3.</span> <span class="nav-text">Protocol Hierarchy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversations"><span class="nav-number">3.4.</span> <span class="nav-text">Conversations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Endpoints"><span class="nav-number">3.5.</span> <span class="nav-text">Endpoints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS-info"><span class="nav-number">3.6.</span> <span class="nav-text">DNS info</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filters"><span class="nav-number">4.</span> <span class="nav-text">Filters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Search"><span class="nav-number">5.</span> <span class="nav-text">Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/16/wireshark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="wireshark使用复习与技巧总结 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          wireshark使用复习与技巧总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-16 13:23:53 / Modified: 19:29:13" itemprop="dateCreated datePublished" datetime="2022-08-16T13:23:53+08:00">2022-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/wireshark/" itemprop="url" rel="index"><span itemprop="name">wireshark</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>重新系统的学习一下wireshark的使用 和一些tip</p>
+<span id="more"></span>
+
+<h2 id="tcp协议"><a href="#tcp协议" class="headerlink" title="tcp协议"></a>tcp协议</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>TCP/IP协议包含了一系列的协议，也叫TCP/IP协议族（TCP/IP Protocol Suite，或TCP/IP<br>Protocols），简称TCP/IP。TCP/IP协议族提供了点对点的连结机制，并且将传输数据帧的封装、寻址、传输、路由以及接收方式，都予以标准化。</p>
+<p>TCP/IP协议的分层模型<br>在展开介绍TCP/IP协议之前，首先介绍一下七层ISO模型。国际标准化组织ISO为了使网络应用更为普及，推出了OSI参考模型，即开放式系统互联（Open System Interconnect）模型，一般都叫OSI参考模型。OSI参考模型是ISO组织在1985年发布的网络互连模型，其含义就是为所有公司使用一个统一的规范来控制网络，这样所有公司遵循相同的通信规范，网络就能互联互通了。</p>
+<p>OSI模型的七层框架<br>OSI模型定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层、应用层），每一层实现各自的功能和协议，并完成与相邻层的接口通信。OSI模型各层的通信协议，大致举例如下表所示：</p>
+<p>表：OSI模型各层的通信协议举例</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td>HTTP、SMTP、SNMP、FTP、Telnet、SIP、SSH、NFS、RTSP、XMPP、Whois、ENRP、等等</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>XDR、ASN.1、SMB、AFP、NCP、等等</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>ASAP、SSH、RPC、NetBIOS、ASP、Winsock、BSD Sockets、等等</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP、UDP、TLS、RTP、SCTP、SPX、ATP、IL、等等</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP、ICMP、IGMP、IPX、BGP、OSPF、RIP、IGRP、EIGRP、ARP、RARP、X.25、等等</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>以太网、令牌环、HDLC、帧中继、ISDN、ATM、IEEE 802.11、FDDI、PPP、等等</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>例如铜缆、网线、光缆、无线电等等</td>
+</tr>
+</tbody></table>
+<p>TCP/IP协议是Internet互联网最基本的协议，其在一定程度上参考了七层ISO模型。OSI模型共有七层，从下到上分别是物理层、数据链路层、网络层、运输层、会话层、表示层和应用层。但是这显然是有些复杂的，所以在TCP/IP协议中，七层被简化为了四个层次。TCP/IP模型中的各种协议，依其功能不同，被分别归属到这四层之中，常被视为是简化过后的七层OSI模型。</p>
+<img src="/2022/08/16/wireshark/image-20220816154145886.png" alt="image-20220816154145886" style="zoom:50%;">
+
+
+
+<h3 id="根据抓包解释tcp协议"><a href="#根据抓包解释tcp协议" class="headerlink" title="根据抓包解释tcp协议"></a>根据抓包解释tcp协议</h3><img src="/2022/08/16/wireshark/u=2300501918,2244649802&fm=253&fmt=auto&app=138&f=JPG.jpeg" alt="img" style="zoom:67%;">
+
+<blockquote>
+<p>源端口号和目的端口号与udp中类似，用于寻找发端和收端应用进程。这两个值加上IP首部中的源端IP地址和目的端IP地址唯一确定一个TCP连接，在网络编程中，一般一个IP地址和一个端口号组合称为一个套接字（socket）。</p>
+<p>序号：用来标识从TCP发端向TCP收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节。在tcp中tcp用序号对每个字节进行计数(这个值与发送的帧数没有关系，而是与发送的数据字节数有关系，后面会有说明）。</p>
+<p>确认序号：包含发送确认的一端所期望收到的下一个序号。因此，确认序号应当是上次已成功收到数据字节序号加 1（不是单纯的序号加1，还包括数据字节数）。<br>首部长度：用于记录tcp数据报首部的长度，一般为20字节，实际值为首部长度除以4。<br>URG： 紧急指针（ urgent pointer）有效。<br>ACK： 确认序号有效。<br>PSH： 接收方应该尽快将这个报文段交给应用层。<br>RST： 重建连接。<br>SYN： 同步序号用来发起一个连接。<br>FIN： 发端完成发送任务。<br>窗口大小：用于流量控制。<br>检验和：检验和覆盖了整个的 TCP报文段： TCP首部和TCP数据，与udp相似需要计算伪首部。</p>
+</blockquote>
+<p><img src="/2022/08/16/wireshark/image-20220816151441233.png" alt="image-20220816151441233"></p>
+<p>来解释一下这个包</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Source port</td>
+<td>端口</td>
+</tr>
+<tr>
+<td>Destination Port</td>
+<td>目标端口</td>
+</tr>
+<tr>
+<td>Sequence Number</td>
+<td>序号</td>
+</tr>
+<tr>
+<td>Ackonwledgment Number</td>
+<td>确认序号</td>
+</tr>
+<tr>
+<td>Header Length</td>
+<td>头部长度</td>
+</tr>
+<tr>
+<td>Flags</td>
+<td>标志位</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>窗口大小</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>校验和</td>
+</tr>
+<tr>
+<td>Urgent Pointer</td>
+<td>紧急指针</td>
+</tr>
+<tr>
+<td>SEQ/ACK nanlysis</td>
+<td>数据</td>
+</tr>
+</tbody></table>
+<h3 id="TCP连接的建立"><a href="#TCP连接的建立" class="headerlink" title="TCP连接的建立"></a>TCP连接的建立</h3><p><img src="/2022/08/16/wireshark/u=3570401071,2147058580&fm=253&fmt=auto&app=138&f=PNG.png" alt="img"></p>
+<p><img src="/2022/08/16/wireshark/image-20220816155024805.png" alt="image-20220816155024805"></p>
+<p>如图所示 为tcp三次握手</p>
+<h3 id="TCP连接的释放"><a href="#TCP连接的释放" class="headerlink" title="TCP连接的释放"></a>TCP连接的释放</h3><p>　　当通信双方完成数据传输，需要进行TCP连接的释放，由于TCP连接是全双工的，因此每个方向都必须单独进行关闭。这个原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。收到一个 FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。因为正常关闭过程需要发送4个TCP帧，因此这个过程也叫作4次挥手。具体过程如下图：<br><img src="wireshark/src=http%3A%2F%2Fwww.pianshen.com%2Fimages%2F668%2Fcb4ff609101576bd217c96773ace4b34.png&refer=http%3A%2F%2Fwww.pianshen.jpeg" alt="img" style="zoom: 150%;"></p>
+<p>图从百度搜的 有点糊</p>
+<p><img src="/2022/08/16/wireshark/image-20220816161129684.png" alt="image-20220816161129684"></p>
+<p>但做的这题中包的顺序似乎不太一致</p>
+<h2 id="SMTP协议分析"><a href="#SMTP协议分析" class="headerlink" title="SMTP协议分析"></a>SMTP协议分析</h2><blockquote>
+<p>SMTP（Simple Mail Transfer Protocol）即简单邮件传输协议,它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。SMTP协议属于TCP/IP协议簇，它帮助每台计算机在发送或中转信件时找到下一个目的地。通过SMTP协议所指定的服务器,就可以把E-mail寄到收信人的服务器上了，整个过程只要几分钟。SMTP服务器则是遵循SMTP协议的发送邮件服务器，用来发送或中转发出的电子邮件。SMTP<br>是一种TCP协议支持的提供可靠且有效电子邮件传输的应用层协议。</p>
+</blockquote>
+<p>没什么太多要分析的  主要是状态码搞明白就很容易看懂了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35644234/article/details/68961603">https://blog.csdn.net/qq_35644234/article/details/68961603</a></p>
+<h2 id="Analysed-Information"><a href="#Analysed-Information" class="headerlink" title="Analysed Information"></a>Analysed Information</h2><h3 id="Expert-Information"><a href="#Expert-Information" class="headerlink" title="Expert Information"></a>Expert Information</h3><p>Clicking on <strong>Analyze</strong> <em>–&gt;</em> <strong>Expert Information</strong> you will have an <strong>overview</strong> of what is happening in the packets <strong>analised</strong>:</p>
+<p><img src="/2022/08/16/wireshark/image-20220816174653410.png" alt="image-20220816174653410"></p>
+<p>可以很直观的审视所有数据包</p>
+<h3 id="Resolved-Addresses"><a href="#Resolved-Addresses" class="headerlink" title="Resolved Addresses"></a>Resolved Addresses</h3><p>Under <strong>Statistics –&gt; Resolved Addresses</strong> you can find several <strong>information</strong> that was “<strong>resolved</strong>“ by wireshark like port/transport to protocol, mac to manufacturer… This is interesting to know what is implicated in the communication.</p>
+<p><img src="/2022/08/16/wireshark/image-20220816175036341.png" alt="image-20220816175036341"></p>
+<h3 id="Protocol-Hierarchy"><a href="#Protocol-Hierarchy" class="headerlink" title="Protocol Hierarchy"></a>Protocol Hierarchy</h3><p>Under <strong>Statistics –&gt; Protocol Hierarchy</strong> you can find the <strong>protocols</strong> <strong>involved</strong> in the communication and data about them.</p>
+<p><img src="/2022/08/16/wireshark/image-20220816175150238.png" alt="image-20220816175150238"></p>
+<h3 id="Conversations"><a href="#Conversations" class="headerlink" title="Conversations"></a>Conversations</h3><p>Under <strong>Statistics –&gt; Conversations</strong> you can find a <strong>summary of the conversations</strong> in the communication and data about them.</p>
+<p><img src="/2022/08/16/wireshark/image-20220816184406176.png" alt="image-20220816184406176"></p>
+<h3 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints"></a>Endpoints</h3><p>Under <strong>Statistics –&gt; Endpoints</strong>you can find a <strong>summary of the endpoints</strong> in the communication and data about each of them.</p>
+<p><img src="/2022/08/16/wireshark/image-20220816184507719.png" alt="image-20220816184507719"></p>
+<h3 id="DNS-info"><a href="#DNS-info" class="headerlink" title="DNS info"></a>DNS info</h3><p>Under <strong>Statistics –&gt; DNS</strong> you can find statistics about the DNS request captured.</p>
+<p><img src="/2022/08/16/wireshark/image-20220816184604945.png" alt="image-20220816184604945"></p>
+<p><strong>I/O Graph</strong></p>
+<p>Under<strong>Statistics –&gt; I/O Graph</strong> you can find a <strong>graph of the communication.</strong></p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>Here you can find wireshark filter depending on the protocol: <a target="_blank" rel="noopener" href="https://www.wireshark.org/docs/dfref/">https://www.wireshark.org/docs/dfref/</a> Other interesting filters:</p>
+<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><p>If you want to <strong>search</strong> for <strong>content</strong> inside the <strong>packets</strong> of the sessions  <em>CTRL+f</em> __You can add new layers to the main information bar <em>(No., Time, Source…)</em> pressing <em>right bottom</em> and Edit Column</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/pcap-inspection/wireshark-tricks">https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/pcap-inspection/wireshark-tricks</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/16/wireshark/" title="wireshark使用复习与技巧总结">http://example.com/2022/08/16/wireshark/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/wireshark/" rel="tag"># wireshark</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/16/codeql/" rel="prev" title="codeql">
+                  <i class="fa fa-chevron-left"></i> codeql
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/17/%E9%9D%A2%E8%AF%95/" rel="next" title="安全面经读后总结">
+                  安全面经读后总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"78dffa479fcb8dc58f22cdce8b57097b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

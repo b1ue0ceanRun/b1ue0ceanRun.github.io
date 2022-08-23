@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全面经读后总结">
+<meta property="og:url" content="http://example.com/2022/08/17/%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-16T20:10:03.000Z">
+<meta property="article:modified_time" content="2022-08-23T19:11:24.389Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/08/17/%E9%9D%A2%E8%AF%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/17/%E9%9D%A2%E8%AF%95/","path":"2022/08/17/面试/","title":"安全面经读后总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安全面经读后总结 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">92</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">128</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安全面经读后总结 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安全面经读后总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-17 04:10:03" itemprop="dateCreated datePublished" datetime="2022-08-17T04:10:03+08:00">2022-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-24 03:11:24" itemprop="dateModified" datetime="2022-08-24T03:11:24+08:00">2022-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="adad6b3d8b7b34e72e91b93f15757b8343be56c5ae656f0fd402d20614b90be1">991ab7d2bd03f4d5f10ea7e59fdd190b55b2e3305de44db18d8923ad9288310ffbdb79449bc0fbe531e6535f4bfb127c51bce34c3d7e70470882c18e9021c7c18e7977bd36ffd7d8d5e45959db7890439721a9c2574d14a58a9fc71a82773b5ce1843cd575ac5b891ead3ec25189fbe09e8169a5cb0cdd2a317dfca88452889c5e8ec389a42a429cf8a55fa447a7871218c144a14bc07905241c752c23190fdc01a902e652ad893a068fc9c6cee7ec6d897469f33f08d6cd3bcda9a3747345a75adc4bbdfd654e90d1d3a5a298bc54347ba62248c5997d1e4cb0087e8a207c8f8203dc4f8b53e00da80c4330b25c1e2c30ab3dd6b1e432d181bdfec7b57b9c74cfc8cc0b08648ad50e4aedf1717edfab7fe1a976bd86b032fdb486c39acb48c7fac2a3613fe8bacb61b873fa4614f38b1a57a5accc54e0c783bccef2c648a935385f52acf7a114d76ed7e549ef19f9a0cfb1be876318263beb590c4743aee593b89840042ad664a00cf1a5e8c7553bef806884bbc08451bbfe22fe5a52d411de58b10b1345e75d63b88accc1cd8f66dc7da29000c7cb22952574017f4b82563f08b22822f6d0936cbfc5200312c69a40f63139c9a7de44ea5a0991e9ec074a8e67f449e905574bcf895856070665efddc4bfe503af87619710ccda85db08e4e288a62c0e176f0638710bd21be5dccd92ba63c79c59992b8cda185d695cf3708f0dc75314205beff86c10814f00b544f9181e80d0b7558e9ff706090821de2746ff48fa1b282600397c5cb258d08f9cdbb6a4aac2459cf3c2bb25fbfd5ef8dcd8b522f07b0cc2a971cf87789de601a414a292a9bb1c775028532f2520280555ea47c8b4fb139d67c9f1ce5c4d43dd23636be6a6c9e9572c8368ef9863c575a8fd5d6ce5649c44bd91f422fc9b39084db923c06e0aea29d64a8f0fee05a1e440db41bce2960b6e6b34b84be5555cb25bd187db51640557c39b2940452a12addd9fa9e10a13fcb6c1f2d7caaa303c3aca4661d8a3d2c7c6d69aebb6a80b7157d93671fb635d78816d5abea302f19b42948a0f1be7237a1db1d52e0e0e755f6973da7746cdcb1cd63be6b1b5be83ded257cb440524fb39a5a550deee734aa280f908ecb7126bab649b4ee715e59a818bac0c34126fbc313c185eb4ebe467039b1d4951c95d87f1f6176138a143aed9f6b207c4ffd88595b80a911fcbfa55f4504813e4f7817ff7a64ca49bd3d9584f078132eb6e5606e2e9ed0fb0270626cc53da06f563a16e288f49bcd5d00c95e49667ee363504ca28606806efd1e927551d8faa37be5dfc357afef75c30b5fc4b68d612ec13f451518ba33b85153640e9e44970848d74f7ca64d1a1054994e22401d45fe0f1a7a2115e5dda9c44c637734f881ef23b94772f270e4594d371666db44da51dc4d602a95f6c4391246cb32943a307d14833227b1ea95f8f254ab427521ba95137c56ccce7dc34fcba1970ebcadaddabe75d080ca8e3f505c6fb15d94f9c957ef5046a4941c7fe00b331e306223d415d0794fbc906c01bf7d7f3c6983e70f340d084d1f812f6d1558a3cbf54f5091624ef39741cc10746315df6e7feb4ff97cc299a3f77f49d821368447d4537a3728e2f0ac87c8ec048ae0367d0b7b835b79542a7f3582f7d046874e7c7bbcf1d88b4c4a9f723097de1a3b76c88dc009fdd738b3845241749336b08e75eb7fac9c16cd866edb1b1206343e0f0485474af0f3e70d5cbc37bc2c1251ffd6656aa5df5d69adbe24c89debc823300dc3e923aac170b64c579a77fdf797bc55bb69657d111c07db9ac45dad4cb10dac1bc1b6a7b2563eb906abe907eddbb77318828dc3058b78fea536fa2071639f33a77f62f9aa2821c6400dd70a08f466c2a73f138b55e119b49dece01fbad6cbf37c09a1fbf4037ba1a18411b05cd3ce28f1519965a1bc0c7e56eb572e9b654f1e22cb44bd0132b5721e6eb7a336861f74340b5c5e47630c4e5dddbf7aaa1a7ec8603c42c6fdf815c74c437ba7f9916eb3cab42613e6998dba14635d1df41bdac4bdee2d2b7df8e52bfa4eb47b3fafff83821f002c58d402900751785175b9524e8390fc17593b31e06d9d29684550031b791d7274b9f2fe4a7009a3dc05bf507da0bd818b47850be3edabccf6c283bd4dcc42626a41bf2790443fcd17aaff31fb51fa3820ddea37f29603fa7ff9c6c504dcaf82c3137402fdd4bc9c967479dcedb395c0e8e68afcc8ac09ba8d28cc03771e5d74f99f29a6b1f566b337a17e53c1051c7dbf1f1e421d314a0e2000c2d583c22e8b2db1f0fe557b78b114500079ec8fc1cadf969d952fd047372a24cf40039dd435881b13816e86fb223597b31912541583ac3f19ca3a0a969f8fa402cff6a9d9db07b19c3b5f6b50887a0bdae3397457175fb948b5d1c05d6dc4b6b8ac74d5b02cb1e2f78bdeca841adae0ea00e7b9f41009f21cb1e231d0cd5a4daf0e04d8ff14d1b30ceb006a00f9e570067bd2365dea9c53f99cb6d1da5f8d5288c8e6ba36d70f8ccd2226d6ef8010cf41a5a00f1af17cd76ea31c8ad6a8c32f8b0ca8a502319e13144e57a078bcd6ceffaa2db3ec5efb7dc5061bd821204cae4f995dff98bf8e2fa42b53b2dc70f7a87297de2a59c2b3e9e6ffe5804e522a4597898dd3c0ccf1e343f4e4769555cd7e3ac33a9a24baf14f045ef94f365c838314c30a3f1974e2ad48f707ce1760492b567f8c1f4184af5ed11885d27cd716e65f876c27b7110a3d4bded653c699992715212814daee41450a5986dd2d39f5c588300ddf449b210a5c8de4a2431d4dc15c657cedee0bd03c09773831aa9b875ff1f00e878aaf1b3e61e49094fcb8fd3884ec8a09959cfd1a6ec123fc88625d44a5caffe0d43d5ab7ad0e1d10c0259869fd825580bf65a317984291005ea611bc8ddd82a944c736a1d6e7d667ff1b98db31fa5e5fcf67260c0dbb2effd40c56bd4fa096168bb2f0ab90038fa68eff46769877fdc56df398d6fc63f4671ecb209950be20a7d1743b5c9b0278b68cd9ae79dcd917e81cc640adb3aff81614e20d1abd76c65d827c50a3c318ea87e45f6fb9ec7c4bf2a9b6e0395bfc056cdefdccb7855fb38820f64a18be4791e05a7061557e1c2f21e14c14d85b5e55141654bb759a1117bbedd04e033c12e8bf27292c907c4f983b068dda1e8ffc2857cdef0991c88ad09b39a0761099f0ca0f1fdb56ae1c0780ff18a27b6fcfbb930c0b5695a97fb59a6ef2bedd68813e477833779fc6dfd482a6641fded21369da87ed603ed685e59502ce02c79bfd89dc8af3442e8cd1733b199b406c8451b4e47af00dcf3a93f8dbeea8b1193fc73c708ba0cfd5f604fe87a8ab1c427ee332404ed81ef0268e6e84147298050628fd8aed3986f4e75c09c16a0b9204f4b68975418844822000e7724209bdde4e9b65cfcf2a0824d60ef471114cc14544f60abb008124b52711c71119a906b15a9ef9989bfb3a837c70ec2c33dd5def1f87f3c077eb155c41ceaa7ccf35c405ef3e2f79dfcb8d830eaa9a570da736013b3ee895ab00928845bb906603445ff83933834c3c3cb4352f7f9222be05f7e0b0d2141da4df838969fcf44ef5c668dac74fc007cdb10c665b280975ed92c6795dcc1c63ec8cc0a5bf88bb948bc18e534</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/08/17/%E9%9D%A2%E8%AF%95/" title="安全面经读后总结">http://example.com/2022/08/17/面试/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/16/wireshark/" rel="prev" title="wireshark使用复习与技巧总结">
+                  <i class="fa fa-chevron-left"></i> wireshark使用复习与技巧总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/17/xmlinjection/" rel="next" title="XML ATTACK ~ XXE / Xpath">
+                  XML ATTACK ~ XXE / Xpath <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b05657b5749f893348716ec18f97cc79"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
