@@ -20,17 +20,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="我就是我，人间不一样的烟火">
+    <meta name="description" content="run哥带你学AI第二期 今天来讲讲k-means算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="run哥带你手撕k-means算法">
 <meta property="og:url" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="我就是我，人间不一样的烟火">
+<meta property="og:description" content="run哥带你学AI第二期 今天来讲讲k-means算法">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909104614234.png">
+<meta property="og:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909114702794.png">
 <meta property="article:published_time" content="2022-09-08T11:35:33.000Z">
-<meta property="article:modified_time" content="2022-09-08T11:35:33.304Z">
+<meta property="article:modified_time" content="2022-09-09T06:15:18.286Z">
 <meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="k-means">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909104614234.png">
 
 
 <link rel="canonical" href="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/">
@@ -90,9 +95,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">95</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">97</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">76</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">136</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">138</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -136,7 +141,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -149,6 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">算法步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1"><span class="nav-number">1.1.</span> <span class="nav-text">step1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2"><span class="nav-number">1.2.</span> <span class="nav-text">step2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3"><span class="nav-number">1.3.</span> <span class="nav-text">step3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4"><span class="nav-number">1.4.</span> <span class="nav-text">step4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%8A%A0%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">附加知识</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -163,7 +169,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">136</span>
+          <span class="site-state-item-count">138</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -174,7 +180,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-count">97</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -261,6 +267,22 @@
 
       <time title="Created: 2022-09-08 19:35:33" itemprop="dateCreated datePublished" datetime="2022-09-08T19:35:33+08:00">2022-09-08</time>
     </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-09 14:15:18" itemprop="dateModified" datetime="2022-09-09T14:15:18+08:00">2022-09-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -272,7 +294,39 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>run哥带你学AI第二期 今天来讲讲k-means算法</p>
+<span id="more"></span>
+
+<p>通过上期的 KNN 算法   我们这学期就可以进展地很快了</p>
+<p>首先来看一下 k-means 算法如何应用</p>
+<h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>确定聚类个数，确定聚类中心，确定距离计算公式</p>
+<ol>
+<li><p>对于K-Means算法，首先要注意的是k值的选择，一般来说，我们会根据对数据的先验经验选择一个合适的k值，如果没有什么先验知识，则可以通过交叉验证选择一个合适的k值。</p>
+</li>
+<li><p>在确定了k的个数后，我们需要选择k个初始化的质心(随机)。由于我们是启发式方法，k个初始化的质心的位置选择对最后的聚类结果和运行时间都有很大的影响，因此需要选择合适的k个质心，最好这些质心不能太近。</p>
+</li>
+</ol>
+<h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p>计算每个点和聚类中心的距离，进行归类</p>
+<h3 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h3><p>计算当前类簇的中心，更新聚类中心的位置（质心法）</p>
+<p><img src="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕k-means算法\image-20220909104614234.png" alt="image-20220909104614234"></p>
+<h3 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h3><p>重复上面 2，3 两步操作，直到达到某个中止条件（迭代次数、最小误差变化等）</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>容易理解，聚类效果不错，虽然是局部最优， 但往往局部最优就够了；</li>
+<li>处理大数据集的时候，该算法可以保证较好的伸缩性；</li>
+<li>当簇近似高斯分布的时候，效果非常不错；</li>
+<li>算法复杂度低。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>K 值需要人为设定，不同 K 值得到的结果不一样；</li>
+<li>对初始的簇中心敏感，不同选取方式会得到不同结果；</li>
+<li>对异常值敏感；</li>
+<li>样本只能归为一类，不适合多分类任务；</li>
+<li>不适合太离散的分类、样本类别不平衡的分类、非凸形状的分类。</li>
+</ul>
+<h2 id="附加知识"><a href="#附加知识" class="headerlink" title="附加知识"></a>附加知识</h2><p>证明这玩意</p>
+<p><img src="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕k-means算法\image-20220909114702794.png" alt="image-20220909114702794"></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@1993jayant/k-means-clustering-as-a-matrix-factorization-problem-ce1de56c6ec6">https://medium.com/@1993jayant/k-means-clustering-as-a-matrix-factorization-problem-ce1de56c6ec6</a></p>
+
     </div>
 
     
@@ -324,6 +378,10 @@
   </div>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+              <a href="/tags/k-means/" rel="tag"># k-means</a>
+          </div>
 
         
 
@@ -334,6 +392,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/09/09/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E8%81%9A%E7%B1%BB/" rel="next" title="run哥带你手撕高斯混合聚类">
+                  run哥带你手撕高斯混合聚类 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

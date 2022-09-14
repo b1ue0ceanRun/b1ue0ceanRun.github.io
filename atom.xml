@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-09-08T11:35:33.304Z</updated>
+  <updated>2022-09-14T10:52:45.929Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,84 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>run哥带你手撕梯度下降</title>
+    <link href="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
+    <id>http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</id>
+    <published>2022-09-14T06:16:28.000Z</published>
+    <updated>2022-09-14T10:52:45.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>为什么会有这篇水文呢？因为这周末就是TCTF2022 突然想到去年TCTF有道机器学习的题目 然后最近在学校里有上机器学习的水课  忍不住想动手实践实践</p><span id="more"></span><h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>先来简单地介绍一下梯度下降  只要你了解过一丢丢的机器学习 你总该会了解到梯度下降 貌似高数也学过</p><blockquote><p> 啥叫梯度下降 说白了就是你在很多山上走路 然后不停往下走 试图走到最低点</p></blockquote><p><strong>在多变量函数中，梯度是一个向量，向量有方向，梯度的方向就指出了函数在给定点的上升/下降最快的方向</strong></p><p>放张我认为讲的很明白的图</p><p><img src="/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕梯度下降\image-20220914153759710.png" alt="image-20220914153759710"></p><p>α是步长</p><p>这里我就不做过多解释了 想refresher的去看吴恩达</p><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>如何在图片中进行梯度下降？由于我平时是做AI网络的 对图像这块也不是很了解</p><p>首先要找到一个误差损失函数，然后对误差损失函数进行梯度下降？</p><p>记录一下几个关键的点</p><ul><li>我们知道目标的 key 且我们可以得到每个照片的 encoding</li><li>我们想要找到一种更改图片的好方法</li><li>想要知道梯度的话就要把拿模型函数来算损失</li></ul><p>我们都知道 图像的每个像素都是由 R,G,B 组成的 我们将图片的每个</p><p><img src="/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕梯度下降\image-20220914185100029.png" alt="image-20220914185100029"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.anquanke.com/post/id/254859#h3-20">TCTF/0CTF final WP by r3kapig - 安全客，安全资讯平台 (anquanke.com)</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;为什么会有这篇水文呢？因为这周末就是TCTF2022 突然想到去年TCTF有道机器学习的题目 然后最近在学校里有上机器学习的水课  忍不住想动手实践实践&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="机器学习" scheme="http://example.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="梯度下降，机器学习" scheme="http://example.com/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>learn month 5</title>
+    <link href="http://example.com/2022/09/14/learn-month5/"/>
+    <id>http://example.com/2022/09/14/learn-month5/</id>
+    <published>2022-09-14T04:04:12.000Z</published>
+    <updated>2022-09-14T10:57:02.674Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下开学后的学习计划 已经颓废了半个月了 要动起来了</p><span id="more"></span><h2 id="大方向"><a href="#大方向" class="headerlink" title="大方向"></a>大方向</h2><ul><li>数据挖掘比赛 + NLP</li><li>CMU课程学习</li><li>渗透测试 + 随便挖挖洞</li><li>Java安全</li></ul><h2 id="第一周计划"><a href="#第一周计划" class="headerlink" title="第一周计划"></a>第一周计划</h2><ul><li>要把论文看了 代码跑了</li><li>数字信号处理要学会</li></ul><h3 id="day1-9-14"><a href="#day1-9-14" class="headerlink" title="day1 9.14"></a>day1 9.14</h3><table><thead><tr><th>mission</th><th>achieved</th></tr></thead><tbody><tr><td>看CMU的课程</td><td>1</td></tr><tr><td>学点java</td><td></td></tr><tr><td>把论文看看(可推)</td><td></td></tr><tr><td>把数字信号处理听听课（可推）</td><td></td></tr><tr><td>雅思</td><td></td></tr><tr><td>NLP打卡</td><td></td></tr></tbody></table><p>CMU课程网站 <a href="https://dlsyscourse.org/lectures/">Lectures (dlsyscourse.org)</a></p><p>NLP 今天把两份学习记录全部要上传到 github 上</p><p>数字信号处理/论文可以推迟 看今天有没有空</p><p>雅思下午学 吃饭回来就学</p><p>java晚上学</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;记录一下开学后的学习计划 已经颓废了半个月了 要动起来了&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="learn365" scheme="http://example.com/categories/learn365/"/>
+    
+    
+    <category term="learn365" scheme="http://example.com/tags/learn365/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>run哥带你手撕高斯混合聚类</title>
+    <link href="http://example.com/2022/09/09/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E8%81%9A%E7%B1%BB/"/>
+    <id>http://example.com/2022/09/09/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E8%81%9A%E7%B1%BB/</id>
+    <published>2022-09-09T06:29:11.000Z</published>
+    <updated>2022-09-09T06:31:05.868Z</updated>
+    
+    <content type="html"><![CDATA[<p>老师上课太无聊 再出一期手撕（写）系列</p><span id="more"></span><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/lotusng/article/details/79990724">(160条消息) 【机器学习笔记】通俗易懂解释高斯混合聚类原理_lotusng的博客-CSDN博客_高斯混合聚类</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;老师上课太无聊 再出一期手撕（写）系列&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>run哥带你手撕k-means算法</title>
     <link href="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/</id>
     <published>2022-09-08T11:35:33.000Z</published>
-    <updated>2022-09-08T11:35:33.304Z</updated>
+    <updated>2022-09-09T06:15:18.286Z</updated>
+    
+    <content type="html"><![CDATA[<p>run哥带你学AI第二期 今天来讲讲k-means算法</p><span id="more"></span><p>通过上期的 KNN 算法   我们这学期就可以进展地很快了</p><p>首先来看一下 k-means 算法如何应用</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>确定聚类个数，确定聚类中心，确定距离计算公式</p><ol><li><p>对于K-Means算法，首先要注意的是k值的选择，一般来说，我们会根据对数据的先验经验选择一个合适的k值，如果没有什么先验知识，则可以通过交叉验证选择一个合适的k值。</p></li><li><p>在确定了k的个数后，我们需要选择k个初始化的质心(随机)。由于我们是启发式方法，k个初始化的质心的位置选择对最后的聚类结果和运行时间都有很大的影响，因此需要选择合适的k个质心，最好这些质心不能太近。</p></li></ol><h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p>计算每个点和聚类中心的距离，进行归类</p><h3 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h3><p>计算当前类簇的中心，更新聚类中心的位置（质心法）</p><p><img src="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕k-means算法\image-20220909104614234.png" alt="image-20220909104614234"></p><h3 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h3><p>重复上面 2，3 两步操作，直到达到某个中止条件（迭代次数、最小误差变化等）</p><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul><li>容易理解，聚类效果不错，虽然是局部最优， 但往往局部最优就够了；</li><li>处理大数据集的时候，该算法可以保证较好的伸缩性；</li><li>当簇近似高斯分布的时候，效果非常不错；</li><li>算法复杂度低。</li></ul><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul><li>K 值需要人为设定，不同 K 值得到的结果不一样；</li><li>对初始的簇中心敏感，不同选取方式会得到不同结果；</li><li>对异常值敏感；</li><li>样本只能归为一类，不适合多分类任务；</li><li>不适合太离散的分类、样本类别不平衡的分类、非凸形状的分类。</li></ul><h2 id="附加知识"><a href="#附加知识" class="headerlink" title="附加知识"></a>附加知识</h2><p>证明这玩意</p><p><img src="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕k-means算法\image-20220909114702794.png" alt="image-20220909114702794"></p><p><a href="https://medium.com/@1993jayant/k-means-clustering-as-a-matrix-factorization-problem-ce1de56c6ec6">https://medium.com/@1993jayant/k-means-clustering-as-a-matrix-factorization-problem-ce1de56c6ec6</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;run哥带你学AI第二期 今天来讲讲k-means算法&lt;/p&gt;</summary>
     
     
     
+    <category term="机器学习" scheme="http://example.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
+    
+    <category term="机器学习" scheme="http://example.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="k-means" scheme="http://example.com/tags/k-means/"/>
     
   </entry>
   
@@ -98,34 +167,6 @@
     
     
     <category term="math" scheme="http://example.com/tags/math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>learn-month5</title>
-    <link href="http://example.com/2022/09/05/learn-month5/"/>
-    <id>http://example.com/2022/09/05/learn-month5/</id>
-    <published>2022-09-05T09:04:12.000Z</published>
-    <updated>2022-09-05T09:12:04.751Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="day1-9-5"><a href="#day1-9-5" class="headerlink" title="day1 9.5"></a>day1 9.5</h2><table><thead><tr><th>mission</th><th>achieved</th></tr></thead><tbody><tr><td>看论文</td><td></td></tr><tr><td>注册cmu课程账号</td><td></td></tr><tr><td>ctf胡乱看看</td><td></td></tr><tr><td>数据挖掘比赛 开始冻手</td><td></td></tr></tbody></table>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;day1-9-5&quot;&gt;&lt;a href=&quot;#day1-9-5&quot; class=&quot;headerlink&quot; title=&quot;day1 9.5&quot;&gt;&lt;/a&gt;day1 9.5&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;mission&lt;/th&gt;
-&lt;th&gt;achieve</summary>
-      
-    
-    
-    
-    <category term="learn365" scheme="http://example.com/categories/learn365/"/>
-    
-    
-    <category term="learn365" scheme="http://example.com/tags/learn365/"/>
     
   </entry>
   
@@ -380,52 +421,6 @@
     
     
     <category term="misc" scheme="http://example.com/tags/misc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>thinkphp5.0.24反序列化漏洞</title>
-    <link href="http://example.com/2022/08/18/thinkphp5-x/"/>
-    <id>http://example.com/2022/08/18/thinkphp5-x/</id>
-    <published>2022-08-18T08:00:15.000Z</published>
-    <updated>2022-08-23T19:11:02.269Z</updated>
-    
-    <content type="html"><![CDATA[<p>开始搞起来（没写完</p><span id="more"></span><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>windows10  phpstudy  php7.3.4</p><p>和平常一样 加上这个 <code>.htaccess</code></p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;IfModule mod_rewrite.c&gt;</span></span><br><span class="line">  <span class="attribute">Options</span> +FollowSymlinks -Multiviews</span><br><span class="line">  <span class="attribute">RewriteEngine</span> <span class="literal">On</span></span><br><span class="line"></span><br><span class="line">  <span class="attribute">RewriteCond</span> <span class="variable">%&#123;REQUEST_FILENAME&#125;</span> !-d</span><br><span class="line">  <span class="attribute">RewriteCond</span> <span class="variable">%&#123;REQUEST_FILENAME&#125;</span> !-f</span><br><span class="line">  <span class="attribute">RewriteRule</span> ^(.*)$ index.php?/$<span class="number">1</span><span class="meta"> [QSA,PT,L]</span></span><br><span class="line"><span class="comment">#    RewriteRule ^(.*)$ index.php?s=$1 [QSA,PT,L]</span></span><br><span class="line"><span class="section">&lt;/IfModule&gt;</span></span><br></pre></td></tr></table></figure><h1 id="反序列化链分析"><a href="#反序列化链分析" class="headerlink" title="反序列化链分析"></a>反序列化链分析</h1><p>别的链子调用这里 以后抽时间看看</p><p><img src="/2022/08/18/thinkphp5-x/MyBlog\b1ue0cean.github.io\source_posts\thinkphp5-x\image-20220818165528934.png" alt="image-20220818165528934"></p><h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><p>跳板</p><p><img src="/2022/08/18/thinkphp5-x/MyBlog\b1ue0cean.github.io\source_posts\thinkphp5-x\image-20220818165846928.png" alt="image-20220818165846928"></p><p>反序列化起点：<code>thinkphp/library/think/process/pipes/Windows.php</code> <code>removeFiles</code>方法</p><p><img src="/2022/08/18/thinkphp5-x/MyBlog\b1ue0cean.github.io\source_posts\thinkphp5-x\image-20220818170051513.png" alt="image-20220818170051513"></p><p>可以调用 <code>removeFiles()</code> 方法</p><p>跟进一下</p><p><img src="/2022/08/18/thinkphp5-x/MyBlog\b1ue0cean.github.io\source_posts\thinkphp5-x\image-20220818170452960.png" alt="image-20220818170452960"></p><p><code>file_exists</code>方法能够触发<code>__toString</code>魔术方法</p><blockquote><p><code>__toString()</code> //把类当作字符串使用时触发</p></blockquote><p><img src="/2022/08/18/thinkphp5-x/MyBlog\b1ue0cean.github.io\source_posts\thinkphp5-x\image-20220818170823882.png" alt="image-20220818170823882"></p><p>然后继续跟进</p><p>跟进<code>toJson</code>方法至<code>toArray</code>方法</p><p>如下图<strong>Model抽象类</strong>的<code>toArray</code>方法，存在三个地方可以执行<code>__call</code></p><img src="/2022/08/18/thinkphp5-x/MyBlog\b1ue0cean.github.io\source\_posts\thinkphp5-x\image-20220818171424647.png" alt="image-20220818171424647" style="zoom:67%;"><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.freebuf.com/articles/web/284091.html">https://www.freebuf.com/articles/web/284091.html</a></p><p><a href="https://zhzhdoai.github.io/2019/10/02/ThinkPHP-5-2%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">ThinkPHP 5.2反序列化 - osword’s blog (zhzhdoai.github.io)</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;开始搞起来（没写完&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="thinkphp5" scheme="http://example.com/categories/thinkphp5/"/>
-    
-    <category term="serialize" scheme="http://example.com/categories/thinkphp5/serialize/"/>
-    
-    
-    <category term="thinkphp5" scheme="http://example.com/tags/thinkphp5/"/>
-    
-    <category term="serialize" scheme="http://example.com/tags/serialize/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>length extension attack</title>
-    <link href="http://example.com/2022/08/18/length-extension/"/>
-    <id>http://example.com/2022/08/18/length-extension/</id>
-    <published>2022-08-18T07:35:46.000Z</published>
-    <updated>2022-08-23T19:10:14.324Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="5fec32657be61d4656f7ce43a7f8a68bf2e3f508542c06bd1c25eca31374da69">991ab7d2bd03f4d5f10ea7e59fdd190b0f69622821c86cbeb6be83be1c1415bf9291b85d19d9e7db052041f00a2d97a7ee25d7f0116cdc80149eb7b77bc29680efc4a0809db881a0dedf41d370602f6ad84bc9d573103bec73e24a9eeca20275f23d04c27e7a532c1e3daa2de4c62a840c27270b04de60e760a2109cbe51507d3182a1e6de8f79fd121a8cd69dc6843304b41df5f812e1053c409d298567323cbe75e1832f74373436c05780093c21667a55337ef187bf1d4cf9a9d2fd306b2f1de985343068d18004923cd169d90ea2d6b5b65871a770e7df6571696f7cd02088c359b58e581a76725197e29253a3b74300a37506bc00f8613e2f55bbe99e0dac56098fd98de3e2e7aea954a86d4b9b3282af17fc3079f9818af2196ebb5873e36326003c58d29e70e1941831fa7611971d370154f614b90556b4857d5317725e82d36f75bef0814eed6db22ef8729d1dc663884c6377e7b41c9b1d724fda2b255d9d86e92023b231c01dfabea0c3646bceb954cee93b9cf2ec1e26e1a43fe853e060e734f5004ea046d29078715516cf5cac1566c0cb7cb25fb8ee66b9ef4d0dbe05a61bc0e41872d3662aa5817ef3328c6f0923ed4a929db9ff8e58c88ed580b424360efd273b80d0a95b2e7738ca64320cec89b1e689467445d8e51da9dcdb147ef4bf8fb84819cf295be79546c4dc9dfc70176935415ccb7e6b20b534bc77b2515389745fce342fa3cd73353accbef3dbead4dbbb71dc9c02ee5d2894fd16becff7f45f42bdf03f2a902aad3320d09579ce951155cd86c198cb3bfb34d19d94b022b6bcd87c5d97e9f478ac954453c13fe23ec9764e91d44b1d3809220d</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
-    
-    
-    
-    <category term="length Extention" scheme="http://example.com/categories/length-Extention/"/>
-    
-    
-    <category term="length Extension" scheme="http://example.com/tags/length-Extension/"/>
     
   </entry>
   
