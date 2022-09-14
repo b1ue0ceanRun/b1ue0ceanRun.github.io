@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
 <meta property="og:description" content="最近在学数字信号处理 老是用到卷积 今天读到一篇文章 很好的解释了卷积的意义  让我有种豁然开朗的感觉 https:&#x2F;&#x2F;blog.csdn.net&#x2F;palet&#x2F;article&#x2F;details&#x2F;88862647 https:&#x2F;&#x2F;blog.csdn.net&#x2F;palet&#x2F;article&#x2F;details&#x2F;88862647">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog/b1ue0cean.github.io/source_posts/卷积的通俗解释/format,png-16625234699706-16625234807978-166252348279110.png">
-<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog/b1ue0cean.github.io/source_posts/卷积的通俗解释/format,png-16625234468123.png">
-<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog/b1ue0cean.github.io/source_posts/卷积的通俗解释/format,png-166252352251515.png">
-<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog/b1ue0cean.github.io/source_posts/卷积的通俗解释/format,png-166252351919612.png">
+<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-16625234699706-16625234807978-166252348279110-16631661497931.png">
+<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-16625234468123-16631661522903.png">
+<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-166252352251515-16631661541325.png">
+<meta property="og:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-166252351919612-16631661553917.png">
 <meta property="article:published_time" content="2022-09-07T01:58:33.000Z">
-<meta property="article:modified_time" content="2022-09-07T04:12:59.132Z">
+<meta property="article:modified_time" content="2022-09-14T14:35:56.598Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog/b1ue0cean.github.io/source_posts/卷积的通俗解释/format,png-16625234699706-16625234807978-166252348279110.png">
+<meta name="twitter:image" content="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-16625234699706-16625234807978-166252348279110-16631661497931.png">
 
 
 <link rel="canonical" href="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/">
@@ -96,9 +96,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">97</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">76</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">138</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">98</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">77</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">139</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -170,18 +170,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">77</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-count">98</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -265,9 +265,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-07 09:58:33 / Modified: 12:12:59" itemprop="dateCreated datePublished" datetime="2022-09-07T09:58:33+08:00">2022-09-07</time>
+      <time title="Created: 2022-09-07 09:58:33" itemprop="dateCreated datePublished" datetime="2022-09-07T09:58:33+08:00">2022-09-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-14 22:35:56" itemprop="dateModified" datetime="2022-09-14T22:35:56+08:00">2022-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -301,11 +307,11 @@
 <h2 id="傅里叶通俗解释"><a href="#傅里叶通俗解释" class="headerlink" title="傅里叶通俗解释"></a>傅里叶通俗解释</h2><blockquote>
 <p>任何周期函数，都可以看作是不同振幅，不同相位正弦波的叠加</p>
 </blockquote>
-<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog\b1ue0cean.github.io\source_posts\卷积的通俗解释\format,png-16625234699706-16625234807978-166252348279110.png" alt="img"></p>
+<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-16625234699706-16625234807978-166252348279110-16631661497931.png" alt="img"></p>
 <p>在这几幅图中，最前面黑色的线就是所有正弦波叠加而成的总和，也就是越来越接近矩形波的那个图形。而后面依不同颜色排列而成的正弦波就是组合为矩形波的各个分量。这些正弦波按照频率从低到高从前向后排列开来，而每一个波的振幅都是不同的。一定有细心的读者发现了，每两个正弦波之间都还有一条直线，那并不是分割线，而是振幅为0的正弦波！也就是说，为了组成特殊的曲线，有些正弦波成分是不需要的。</p>
-<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog\b1ue0cean.github.io\source_posts\卷积的通俗解释\format,png-16625234468123.png" alt="img"></p>
-<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog\b1ue0cean.github.io\source_posts\卷积的通俗解释\format,png-166252352251515.png" alt="img"></p>
-<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/MyBlog\b1ue0cean.github.io\source_posts\卷积的通俗解释\format,png-166252351919612.png" alt="img"></p>
+<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-16625234468123-16631661522903.png" alt="img"></p>
+<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-166252352251515-16631661541325.png" alt="img"></p>
+<p><img src="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/format,png-166252351919612-16631661553917.png" alt="img"></p>
 
     </div>
 

@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
 <meta property="og:description" content="为什么会有这篇水文呢？因为这周末就是TCTF2022 突然想到去年TCTF有道机器学习的题目 然后最近在学校里有上机器学习的水课  忍不住想动手实践实践">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕梯度下降/image-20220914153759710.png">
-<meta property="og:image" content="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕梯度下降/image-20220914185100029.png">
+<meta property="og:image" content="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/image-20220914153759710-16631661343871.png">
+<meta property="og:image" content="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/image-20220914185100029-16631661369753.png">
 <meta property="article:published_time" content="2022-09-14T06:16:28.000Z">
-<meta property="article:modified_time" content="2022-09-14T10:52:45.929Z">
+<meta property="article:modified_time" content="2022-09-14T14:35:39.199Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="梯度下降，机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕梯度下降/image-20220914153759710.png">
+<meta name="twitter:image" content="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/image-20220914153759710-16631661343871.png">
 
 
 <link rel="canonical" href="http://example.com/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
@@ -94,9 +94,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">97</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">76</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">138</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">98</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">77</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">139</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -168,18 +168,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">77</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-count">98</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -265,7 +265,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-14 14:16:28 / Modified: 18:52:45" itemprop="dateCreated datePublished" datetime="2022-09-14T14:16:28+08:00">2022-09-14</time>
+      <time title="Created: 2022-09-14 14:16:28 / Modified: 22:35:39" itemprop="dateCreated datePublished" datetime="2022-09-14T14:16:28+08:00">2022-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
 </blockquote>
 <p><strong>在多变量函数中，梯度是一个向量，向量有方向，梯度的方向就指出了函数在给定点的上升/下降最快的方向</strong></p>
 <p>放张我认为讲的很明白的图</p>
-<p><img src="/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕梯度下降\image-20220914153759710.png" alt="image-20220914153759710"></p>
+<p><img src="/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/image-20220914153759710-16631661343871.png" alt="image-20220914153759710"></p>
 <p>α是步长</p>
 <p>这里我就不做过多解释了 想refresher的去看吴恩达</p>
 <h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>如何在图片中进行梯度下降？由于我平时是做AI网络的 对图像这块也不是很了解</p>
@@ -308,7 +308,7 @@
 <li>想要知道梯度的话就要把拿模型函数来算损失</li>
 </ul>
 <p>我们都知道 图像的每个像素都是由 R,G,B 组成的 我们将图片的每个</p>
-<p><img src="/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕梯度下降\image-20220914185100029.png" alt="image-20220914185100029"></p>
+<p><img src="/2022/09/14/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/image-20220914185100029-16631661369753.png" alt="image-20220914185100029"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/254859#h3-20">TCTF/0CTF final WP by r3kapig - 安全客，安全资讯平台 (anquanke.com)</a></p>
 
     </div>
