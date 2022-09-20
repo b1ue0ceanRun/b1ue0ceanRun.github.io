@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
 <meta property="og:description" content="run哥带你学AI第二期 今天来讲讲k-means算法">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909104614234.png">
+<meta property="og:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909104614234-16631659523161-16631659554033-16631659602735-16631659619017-16631659643869.png">
 <meta property="og:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909114702794.png">
 <meta property="article:published_time" content="2022-09-08T11:35:33.000Z">
-<meta property="article:modified_time" content="2022-09-09T06:15:18.286Z">
+<meta property="article:modified_time" content="2022-09-14T14:51:13.373Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="k-means">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909104614234.png">
+<meta name="twitter:image" content="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog/b1ue0cean.github.io/source_posts/run哥带你手撕k-means算法/image-20220909104614234-16631659523161-16631659554033-16631659602735-16631659619017-16631659643869.png">
 
 
 <link rel="canonical" href="http://example.com/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/">
@@ -95,9 +95,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">98</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">77</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">139</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">102</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">79</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">143</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -169,18 +169,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">102</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -272,7 +272,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-09 14:15:18" itemprop="dateModified" datetime="2022-09-09T14:15:18+08:00">2022-09-09</time>
+      <time title="Modified: 2022-09-14 22:51:13" itemprop="dateModified" datetime="2022-09-14T22:51:13+08:00">2022-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -308,7 +308,7 @@
 </ol>
 <h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p>计算每个点和聚类中心的距离，进行归类</p>
 <h3 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h3><p>计算当前类簇的中心，更新聚类中心的位置（质心法）</p>
-<p><img src="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕k-means算法\image-20220909104614234.png" alt="image-20220909104614234"></p>
+<p><img src="/2022/09/08/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95k-means%E7%AE%97%E6%B3%95/MyBlog\b1ue0cean.github.io\source_posts\run哥带你手撕k-means算法\image-20220909104614234-16631659523161-16631659554033-16631659602735-16631659619017-16631659643869.png" alt="image-20220909104614234"></p>
 <h3 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h3><p>重复上面 2，3 两步操作，直到达到某个中止条件（迭代次数、最小误差变化等）</p>
 <h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>容易理解，聚类效果不错，虽然是局部最优， 但往往局部最优就够了；</li>

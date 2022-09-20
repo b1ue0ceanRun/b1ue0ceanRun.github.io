@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEBshopxo 开搞 试试能不能读他的log 1http:&#x2F;&#x2F;172.35.21.32&#x2F;index.php?s&#x3D;&#x2F;index&#x2F;qrcode&#x2F;download&#x2F;url&#x2F;.&#x2F;..&#x2F;runtime&#x2F;log&#x2F;202209&#x2F;17.log  按理说 从日志能读到密码。。。 但好像不支持 ..&#x2F; 来返回上层。。。 这么才能rce 啊啊啊 草草草 好烦 CNVD-2021-15972 感觉还是打文件上传 Sh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HWCTF-2022WP">
+<meta property="og:url" content="http://example.com/2022/09/17/HWCTF-2022WP/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="WEBshopxo 开搞 试试能不能读他的log 1http:&#x2F;&#x2F;172.35.21.32&#x2F;index.php?s&#x3D;&#x2F;index&#x2F;qrcode&#x2F;download&#x2F;url&#x2F;.&#x2F;..&#x2F;runtime&#x2F;log&#x2F;202209&#x2F;17.log  按理说 从日志能读到密码。。。 但好像不支持 ..&#x2F; 来返回上层。。。 这么才能rce 啊啊啊 草草草 好烦 CNVD-2021-15972 感觉还是打文件上传 Sh">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917101821476.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917184847063.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917192732058.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917193016776.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917193355332.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917193451729.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917193549898.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917193822535.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917194030532.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917194213962.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917205059267.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220918114558499.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220918120314766.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220918120539314.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220918123015749.png">
+<meta property="og:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220918123815832.png">
+<meta property="article:published_time" content="2022-09-17T02:17:29.000Z">
+<meta property="article:modified_time" content="2022-09-18T06:21:01.211Z">
+<meta property="article:author" content="b1ue0cean">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/17/HWCTF-2022WP/image-20220917101821476.png">
+
+
+<link rel="canonical" href="http://example.com/2022/09/17/HWCTF-2022WP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/17/HWCTF-2022WP/","path":"2022/09/17/HWCTF-2022WP/","title":"HWCTF-2022WP"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HWCTF-2022WP | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">102</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">79</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">143</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB"><span class="nav-number">1.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shopxo"><span class="nav-number">1.1.</span> <span class="nav-text">shopxo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZZZCMS"><span class="nav-number">1.2.</span> <span class="nav-text">ZZZCMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wondercms"><span class="nav-number">1.3.</span> <span class="nav-text">wondercms</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/HWCTF-2022WP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HWCTF-2022WP | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HWCTF-2022WP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-17 10:17:29" itemprop="dateCreated datePublished" datetime="2022-09-17T10:17:29+08:00">2022-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-18 14:21:01" itemprop="dateModified" datetime="2022-09-18T14:21:01+08:00">2022-09-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="shopxo"><a href="#shopxo" class="headerlink" title="shopxo"></a>shopxo</h2><p><img src="/2022/09/17/HWCTF-2022WP/image-20220917101821476.png" alt="image-20220917101821476"></p>
+<p>开搞</p>
+<p>试试能不能读他的log</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">172.35</span>.<span class="number">21.32</span><span class="regexp">/index.php?s=/i</span>ndex<span class="regexp">/qrcode/</span>download<span class="regexp">/url/</span>.<span class="regexp">/../</span>runtime<span class="regexp">/log/</span><span class="number">202209</span>/<span class="number">17</span>.log</span><br></pre></td></tr></table></figure>
+
+<p>按理说 从日志能读到密码。。。</p>
+<p>但好像不支持 ../ 来返回上层。。。</p>
+<p>这么才能rce 啊啊啊</p>
+<p>草草草</p>
+<p>好烦</p>
+<p>CNVD-2021-15972</p>
+<p>感觉还是打文件上传</p>
+<p>ShopXO Pa***.php文件存在任意文件删除漏洞 试试 能不能重新安装。。。</p>
+<p>先配一下debug环境。</p>
+<p>感觉应该很好配。</p>
+<p>注册一个账号 test 123456</p>
+<p>试试删文件的方法</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">172.35</span>.<span class="number">21.32</span><span class="regexp">/index.php?s=/i</span>ndex<span class="regexp">/FileUtil/</span>UnlinkFile/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>为什么会出现非法访问？</p>
+<p>emmm 最后一种方法</p>
+<p>该数据库 把tm admin给改回来。。。</p>
+<p>存不存在一种可能 可以爆破出flag文件的名字。。。</p>
+<p>phar 反序列化？没机会</p>
+<p>现在来理理思路</p>
+<ul>
+<li>我们不知道密码  </li>
+<li>后台可以rce</li>
+<li>找一个命令执行的点</li>
+</ul>
+<h2 id="ZZZCMS"><a href="#ZZZCMS" class="headerlink" title="ZZZCMS"></a>ZZZCMS</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.35.21.38:30080/">http://172.35.21.38:30080/</a></p>
+</blockquote>
+<p>看不到版本 头疼，，，</p>
+<img src="/2022/09/17/HWCTF-2022WP/image-20220917184847063.png" alt="image-20220917184847063" style="zoom: 50%;">
+
+<p>ok 就拿最新版搞了 搞搞搞。。。</p>
+<p>首先 前台rce  这个方向要找准。。。</p>
+<p>这个代码量很小 来 肝！</p>
+<p>感觉这个inc很可疑o.o</p>
+<p>随便找一个payload不知道能不能用</p>
+<p>[Vuls/zzzphp V2.1.0 RCE.md at main · metaStor/Vuls (github.com)](<a target="_blank" rel="noopener" href="https://github.com/metaStor/Vuls/blob/main/zzzcms/zzzphp">https://github.com/metaStor/Vuls/blob/main/zzzcms/zzzphp</a> V2.1.0 RCE/zzzphp V2.1.0 RCE.md)</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">GET</span> /zzzcms/?location=search HTTP/<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="attribute">Host</span>: localhost</span><br><span class="line"><span class="attribute">User</span>-Agent: Mozilla/<span class="number">5</span>.<span class="number">0</span> (Windows NT <span class="number">10</span>.<span class="number">0</span>; WOW64; rv:<span class="number">52</span>.<span class="number">0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">52</span>.<span class="number">0</span></span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=<span class="number">0</span>.<span class="number">9</span>,*/*;q=<span class="number">0</span>.<span class="number">8</span></span><br><span class="line"><span class="attribute">Accept</span>-Language: zh-CN,zh;q=<span class="number">0</span>.<span class="number">8</span>,en-US;q=<span class="number">0</span>.<span class="number">5</span>,en;q=<span class="number">0</span>.<span class="number">3</span></span><br><span class="line"><span class="attribute">Accept</span>-Encoding: gzip, deflate</span><br><span class="line"><span class="attribute">Cookies</span>: keys=&#123;if:=`calc`&#125;&#123;end if&#125;</span><br><span class="line"><span class="attribute">DNT</span>: <span class="number">1</span></span><br><span class="line"><span class="attribute">Connection</span>: close</span><br><span class="line"><span class="attribute">Upgrade</span>-Insecure-Requests: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>全局搜索下 <code>eval</code></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917192732058.png" alt="image-20220917192732058"></p>
+<img src="/2022/09/17/HWCTF-2022WP/image-20220917193016776.png" alt="image-20220917193016776" style="zoom: 67%;">
+
+<p>where <code>$zcontent</code> is a global variable:</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193355332.png" alt="image-20220917193355332"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193451729.png" alt="image-20220917193451729"></p>
+<p>没过滤</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193549898.png" alt="image-20220917193549898"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917193822535.png" alt="image-20220917193822535"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917194030532.png" alt="image-20220917194030532"></p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917194213962.png" alt="image-20220917194213962"></p>
+<p>多了一个过滤 还能绕过吗</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安全过滤字符串，仅仅保留 [汉字、数字、字母及=&lt;&gt;,_/]，最长255字符</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safe_key</span>(<span class="params"> <span class="variable">$s</span> , <span class="variable">$len</span>=<span class="number">255</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$s</span> = <span class="title function_ invoke__">decode</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$s</span>) ? @<span class="title function_ invoke__">implode</span>(<span class="string">&quot;,&quot;</span>,<span class="variable">$s</span>) : <span class="variable">$s</span>);      </span><br><span class="line">    <span class="title function_ invoke__">preg_match_all</span>(<span class="string">&#x27;/[\x&#123;4e00&#125;-\x&#123;9fa5&#125;a-zA-Z0-9&lt;&gt;,.:=@?_\-\/\s]/u&#x27;</span>,<span class="variable">$s</span>,<span class="variable">$result</span>);</span><br><span class="line">    <span class="variable">$temp</span> =<span class="title function_ invoke__">join</span>(<span class="string">&#x27;&#x27;</span>,<span class="variable">$result</span>[<span class="number">0</span>]);     </span><br><span class="line">    <span class="variable">$s</span> = <span class="title function_ invoke__">substr</span>( <span class="variable">$temp</span>, <span class="number">0</span>, <span class="variable">$len</span> );</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看来是没啥戏了</p>
+<p>既然这个被ban了 那我就换一个、、</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220917205059267.png" alt="image-20220917205059267"></p>
+<p>多试试</p>
+<p>emmm 现在的两种思路 </p>
+<ul>
+<li>继续绕他的过滤函数</li>
+<li>再找一个rce  找到另一个可以写入zcontent 的地方</li>
+</ul>
+<p>主要是 <code>&#123;&#125;</code> 这玩意没了 匹配不了，，，</p>
+<p>只有<code>zzz_db</code>感觉有机会了 ，，，</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="variable">$k</span>`</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="wondercms"><a href="#wondercms" class="headerlink" title="wondercms"></a>wondercms</h2><blockquote>
+<p>v3.3.2</p>
+</blockquote>
+<p>7ZFxu820</p>
+<p>首先 我们不知道password</p>
+<p>其次 我们要想办法 rce </p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918114558499.png" alt="image-20220918114558499"></p>
+<p>由于代码比较短 所以我们一个一个来审</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918120314766.png" alt="image-20220918120314766"></p>
+<p>这里不知道能不能污染 等下在看</p>
+<p>大致能感觉到思路了 估计是打插件 包含</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918120539314.png" alt="image-20220918120539314"></p>
+<p>具体什么情况 估计还要搞个上传</p>
+<p>。。</p>
+<p>密码可以爆破吗。。。</p>
+<p>密码是八位</p>
+<p>大小写 + 数字 </p>
+<p>来！</p>
+<p>好像不太现实。。。</p>
+<p>password 存在 database.js 里面</p>
+<p>怎么拿出来？</p>
+<p>只有注入了 </p>
+<p>ok 来找一个注入，，， 貌似这里存在注入。。。</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918123015749.png" alt="image-20220918123015749"></p>
+<p>这个password加的盐能解吗</p>
+<p>我只能set 不能读啊啊啊</p>
+<p>而且 我不是admin 根本不村。。。乌鱼子</p>
+<p>还是乖乖审登录逻辑</p>
+<p><img src="/2022/09/17/HWCTF-2022WP/image-20220918123815832.png" alt="image-20220918123815832"></p>
+<p>这玩意好像会把密码改成test。。</p>
+<p>咋调用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">set</span>(<span class="string">&#x27;confg&#x27;</span>, <span class="string">&#x27;lastLogins&#x27;</span>, <span class="title function_ invoke__">array_slice</span>(<span class="variable">$savedIPs</span>, <span class="number">0</span>, <span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">set</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="variable">$args</span> = <span class="title function_ invoke__">func_get_args</span>();</span><br><span class="line"></span><br><span class="line">	<span class="variable">$value</span> = <span class="title function_ invoke__">array_pop</span>(<span class="variable">$args</span>);</span><br><span class="line">	<span class="variable">$lastKey</span> = <span class="title function_ invoke__">array_pop</span>(<span class="variable">$args</span>);</span><br><span class="line">	<span class="variable">$data</span> = <span class="variable language_">$this</span>-&gt;db;</span><br><span class="line">	<span class="keyword">foreach</span> (<span class="variable">$args</span> <span class="keyword">as</span> <span class="variable">$arg</span>) &#123;</span><br><span class="line">		<span class="variable">$data</span> = <span class="variable">$data</span>-&gt;&#123;<span class="variable">$arg</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$data</span>-&gt;&#123;<span class="variable">$lastKey</span>&#125; = <span class="variable">$value</span>;</span><br><span class="line"></span><br><span class="line">	<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">save</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/09/17/HWCTF-2022WP/" title="HWCTF-2022WP">http://example.com/2022/09/17/HWCTF-2022WP/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/15/Javawebshell/" rel="prev" title="Javawebshell相关知识学习">
+                  <i class="fa fa-chevron-left"></i> Javawebshell相关知识学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/17/TCTF-2022/" rel="next" title="TCTF-2022">
+                  TCTF-2022 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"1a4790b32bf00d0eef749f5641bf928a"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
