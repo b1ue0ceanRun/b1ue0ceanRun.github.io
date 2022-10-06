@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/29/GAT-not-GTA-LOL/image-20220929174326447.png">
 <meta property="article:published_time" content="2022-09-29T09:03:29.000Z">
-<meta property="article:modified_time" content="2022-09-29T12:20:27.491Z">
+<meta property="article:modified_time" content="2022-10-06T03:58:31.984Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="GAT">
 <meta property="article:tag" content="GNN">
@@ -94,9 +94,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">126</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">86</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">163</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">132</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">34</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">165</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -168,18 +168,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">165</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">126</span>
+        <span class="site-state-item-count">132</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -263,9 +263,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-29 17:03:29 / Modified: 20:20:27" itemprop="dateCreated datePublished" datetime="2022-09-29T17:03:29+08:00">2022-09-29</time>
+      <time title="Created: 2022-09-29 17:03:29" itemprop="dateCreated datePublished" datetime="2022-09-29T17:03:29+08:00">2022-09-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-06 11:58:31" itemprop="dateModified" datetime="2022-10-06T11:58:31+08:00">2022-10-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -273,7 +279,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/GNN/" itemprop="url" rel="index"><span itemprop="name">GNN</span></a>
+          <a href="/categories/ML/" itemprop="url" rel="index"><span itemprop="name">ML</span></a>
         </span>
     </span>
 
@@ -296,6 +302,23 @@
 <h2 id="GAT"><a href="#GAT" class="headerlink" title="GAT"></a>GAT</h2><p>（咋感觉这块内容这么easy</p>
 <p>就是继续改进聚合的方法</p>
 <p>用一种办法计算出了权重</p>
+<p>把model拉出来看下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">gat_model_generate</span>(<span class="params">x_in, a_in</span>):</span><br><span class="line">    do_1 = Dropout(dropout)(x_in)</span><br><span class="line">    gc_1 = GATConv(<span class="number">8</span>,</span><br><span class="line">                   attn_heads=<span class="number">8</span>,</span><br><span class="line">                   concat_heads=<span class="literal">True</span>,</span><br><span class="line">                   dropout_rate=dropout,</span><br><span class="line">                   activation=<span class="string">&#x27;elu&#x27;</span>,</span><br><span class="line">                   <span class="comment">#return_attn_coef=True,</span></span><br><span class="line">                   kernel_regularizer=l2(l2_reg),</span><br><span class="line">                   attn_kernel_regularizer=l2(l2_reg)</span><br><span class="line">                   )([do_1, a_in])</span><br><span class="line">    gc_1b = GATConv(<span class="number">8</span>,</span><br><span class="line">                   attn_heads=<span class="number">8</span>,</span><br><span class="line">                   concat_heads=<span class="literal">True</span>,</span><br><span class="line">                   dropout_rate=dropout,</span><br><span class="line">                   activation=<span class="string">&#x27;elu&#x27;</span>,</span><br><span class="line">                   <span class="comment">#attn_kernel_initializer=&#x27;zeros&#x27;,</span></span><br><span class="line">                   return_attn_coef=<span class="literal">True</span>,</span><br><span class="line">                   kernel_regularizer=l2(l2_reg),</span><br><span class="line">                   attn_kernel_regularizer=l2(l2_reg)</span><br><span class="line">                   )([do_1, a_in])</span><br><span class="line">    do_2 = Dropout(dropout)(Concatenate(axis=-<span class="number">1</span>)([gc_1,x_in]))</span><br><span class="line">    gc_2 = GATConv(<span class="number">6</span>,</span><br><span class="line">                   attn_heads=<span class="number">8</span>,</span><br><span class="line">                   concat_heads=<span class="literal">True</span>,</span><br><span class="line">                   dropout_rate=dropout,</span><br><span class="line">                   activation=<span class="string">&#x27;elu&#x27;</span>,</span><br><span class="line">                   <span class="comment">#return_attn_coef=True,</span></span><br><span class="line">                   kernel_regularizer=l2(l2_reg),</span><br><span class="line">                   attn_kernel_regularizer=l2(l2_reg)</span><br><span class="line">                   )([do_2, a_in])    </span><br><span class="line">    do_3 = Dropout(dropout)(Concatenate(axis=-<span class="number">1</span>)([gc_2,gc_1]))</span><br><span class="line">    gc_3 = GATConv(<span class="number">4</span>,</span><br><span class="line">                   attn_heads=<span class="number">8</span>,</span><br><span class="line">                   concat_heads=<span class="literal">True</span>,</span><br><span class="line">                   dropout_rate=dropout,</span><br><span class="line">                   activation=<span class="string">&#x27;elu&#x27;</span>,</span><br><span class="line">                   <span class="comment">#return_attn_coef=True,</span></span><br><span class="line">                   kernel_regularizer=l2(l2_reg),</span><br><span class="line">                   attn_kernel_regularizer=l2(l2_reg)</span><br><span class="line">                   )([do_3, a_in]) </span><br><span class="line">    do_4 = Dropout(dropout)(Concatenate(axis=-<span class="number">1</span>)([gc_3,gc_2]))               </span><br><span class="line">    out = Dense(<span class="number">1</span>,</span><br><span class="line">                   activation=<span class="string">&#x27;sigmoid&#x27;</span>,</span><br><span class="line">                   kernel_regularizer=l2(l2_reg),</span><br><span class="line">                   )(do_4)</span><br><span class="line">    model = Model(inputs=[x_in, a_in], outputs=out)</span><br><span class="line">    model_vis = Model(inputs=[x_in, a_in], outputs=gc_1b)</span><br><span class="line">    <span class="keyword">return</span> model, model_vis</span><br></pre></td></tr></table></figure>
+
+<p><strong>model.compile()方法用于在配置训练方法时，告知训练时用的优化器、损失函数和准确率评测标准</strong></p>
+<p>Adam，名字来自：<strong>Adaptive Moment Estimation</strong>，自适应<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%9F%A9%E4%BC%B0%E8%AE%A1&spm=1001.2101.3001.7020">矩估计</a>。是2014年提出的一种万金油式的优化器，使用起来非常方便，梯度下降速度快，但是容易在最优值附近震荡。竞赛中性能会略逊于SGD，毕竟最简单的才是最有效的。但是超强的易用性使得Adam被广泛使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = Adam(learning_rate=learning_rate)</span><br><span class="line">m = AUC(curve=<span class="string">&#x27;PR&#x27;</span>)</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=optimizer,</span><br><span class="line">              loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>,</span><br><span class="line">              weighted_metrics=[<span class="string">&#x27;acc&#x27;</span>,m])</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339087706">GAT详解 - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/336195862">GraphSAGE详解 - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/PetarV-/GAT">PetarV-/GAT: Graph Attention Networks (https://arxiv.org/abs/1710.10903) (github.com)</a></p>
@@ -360,8 +383,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/29/run%E5%93%A5%E5%B8%A6%E4%BD%A0%E6%89%8B%E6%92%95SVM/" rel="prev" title="run哥带你手撕SVM">
-                  <i class="fa fa-chevron-left"></i> run哥带你手撕SVM
+                <a href="/2022/09/29/gat_networkprediction_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="prev" title="Generalizable and Interpretable Deep Learning for Network Congestion Prediction 论文阅读笔记">
+                  <i class="fa fa-chevron-left"></i> Generalizable and Interpretable Deep Learning for Network Congestion Prediction 论文阅读笔记
                 </a>
             </div>
             <div class="post-nav-item">
