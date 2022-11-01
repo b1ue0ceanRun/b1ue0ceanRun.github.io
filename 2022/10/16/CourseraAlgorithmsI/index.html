@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="learn algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera Algorithms I &amp; II 学习笔记">
+<meta property="og:url" content="http://example.com/2022/10/16/CourseraAlgorithmsI/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="learn algorithm">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018144352678.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018144254213.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018145111296.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018145458506.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018150047592.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018150416503.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018152134449.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018153710329.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018153740653.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018135548373.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018155330351.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018155426432.png">
+<meta property="og:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221019190739154.png">
+<meta property="article:published_time" content="2022-10-16T04:17:42.000Z">
+<meta property="article:modified_time" content="2022-10-21T07:58:20.119Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/16/CourseraAlgorithmsI/image-20221018144352678.png">
+
+
+<link rel="canonical" href="http://example.com/2022/10/16/CourseraAlgorithmsI/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/16/CourseraAlgorithmsI/","path":"2022/10/16/CourseraAlgorithmsI/","title":"Coursera Algorithms I & II 学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Coursera Algorithms I & II 学习笔记 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">146</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">180</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm1"><span class="nav-number">1.</span> <span class="nav-text">Algorithm1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#week1"><span class="nav-number">1.1.</span> <span class="nav-text">week1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Course"><span class="nav-number">1.1.1.</span> <span class="nav-text">Course</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dynamic-connectivity"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">dynamic connectivity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#quick-find"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">quick find</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#quick-union"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">quick union</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#improvements-1-weighting"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">improvements  1: weighting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Improvement-2-path-compression"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">Improvement 2: path compression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HW"><span class="nav-number">1.1.2.</span> <span class="nav-text">HW</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week2"><span class="nav-number">1.2.</span> <span class="nav-text">week2</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/CourseraAlgorithmsI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Coursera Algorithms I & II 学习笔记 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Coursera Algorithms I & II 学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-16 12:17:42" itemprop="dateCreated datePublished" datetime="2022-10-16T12:17:42+08:00">2022-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-21 15:58:20" itemprop="dateModified" datetime="2022-10-21T15:58:20+08:00">2022-10-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>learn algorithm</p>
+<span id="more"></span>
+
+<blockquote>
+<ul>
+<li>课程网站：<a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part1">Algorithm I</a>, <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part2">Algorithm II</a></li>
+<li>课程视频：详见课程网站</li>
+<li>课程教材：<a target="_blank" rel="noopener" href="https://algs4.cs.princeton.edu/home/">https://algs4.cs.princeton.edu/home/</a></li>
+<li>课程作业：10个Project，具体要求详见课程网站</li>
+</ul>
+</blockquote>
+<h1 id="Algorithm1"><a href="#Algorithm1" class="headerlink" title="Algorithm1"></a>Algorithm1</h1><h2 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h2><p>主要讲了 Union-find 算法</p>
+<p>这里复习一下并且把作业给写了</p>
+<h3 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h3><h4 id="dynamic-connectivity"><a href="#dynamic-connectivity" class="headerlink" title="dynamic connectivity"></a>dynamic connectivity</h4><p>看了HW怎么感觉啥都没学 呜呜呜</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdIn;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.UF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">eg1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> StdIn.readInt();</span><br><span class="line">        <span class="type">UF</span> <span class="variable">uf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UF</span>(N);</span><br><span class="line">        <span class="keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> StdIn.readInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">q</span> <span class="operator">=</span> StdIn.readInt();</span><br><span class="line">            <span class="keyword">if</span> (!uf.connected(p, q)) &#123;</span><br><span class="line">                uf.union(p, q);</span><br><span class="line">                StdOut.println(p + <span class="string">&quot; &quot;</span> + q);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>啥也不是 就讲了 UF 类的一些操作 和 StdIn StdOut 怎么用</p>
+<h4 id="quick-find"><a href="#quick-find" class="headerlink" title="quick find"></a>quick find</h4><p>因为我们的目的是找到那几部分是连接起来的 所以我们可以采取这种方法</p>
+<p>先建一个如下的数组</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018144352678.png" alt="image-20221018144352678"></p>
+<p>看下面这张图</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018144254213.png" alt="image-20221018144254213"></p>
+<p>如果我们 union(3,4) 就把 3,4 都改成3 或都改成4（但我们图中都改成第二个参数的值 即4）</p>
+<p>接下来我们 来连 4,9 的时候 就也向之前那样 于是位置3,4,9都变成了 9</p>
+<p>之后再连上 8  于是 3,4,8,9 位置的值都变成了 8</p>
+<p>最终 我们得到的值只有 1,8  也就是得到了两部分</p>
+<p>code</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QuickFindUF</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] id;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//建立一个数组 id 与 值 相对应</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">QuickFindUF</span><span class="params">(<span class="type">int</span> N)</span> &#123;</span><br><span class="line">        id = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">            id[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 判断两点是否连接 的方法就是这两点的值是否相等</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">connected</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id[p] == id[q];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 改之前已经连起来的值  但这里复杂度为N方</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">union</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pid</span> <span class="operator">=</span> id[p];</span><br><span class="line">        <span class="type">int</span> <span class="variable">qid</span> <span class="operator">=</span> id[q];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; id.length; i++)</span><br><span class="line">            <span class="keyword">if</span> (id[i] == pid) id[i] = qid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>缺点 太慢 需要 N方的复杂度来执行</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018145111296.png" alt="image-20221018145111296"></p>
+<h4 id="quick-union"><a href="#quick-union" class="headerlink" title="quick union"></a>quick union</h4><p>来看看 quick-union 这样做的好处是 设置两点union的时候不用把之前串起来的全改一遍</p>
+<p>只需要改动一次 那这样union的复杂度就下降到了N  但是貌似查起来就费力一点 </p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018145458506.png" alt="image-20221018145458506"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QuickUnionUF</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] id;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">QuickUnionUF</span><span class="params">(<span class="type">int</span> N)</span></span><br><span class="line">    &#123;</span><br><span class="line">        id = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) id[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">root</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (i != id[i]) i = id[i];</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">connected</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> root(p) == root(q);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">union</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> root(p);</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> root(q);</span><br><span class="line">        id[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断相不相等就是找root是不是一样 那如何找root呢？我们可以轻松地发现 root点 的index和值总是相等的 所以判断一个点的最终root是谁 只需要按他的值网上去找 直到<code>index==index.data</code> 即可</p>
+<p>ok 让我们现在再来看一看复杂度！很好 我们的 union 只需要在 长度为N的数组上做N次了！</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018150047592.png" alt="image-20221018150047592"></p>
+<p>接下来让我们来看看这两种方法分别的优缺点</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018150416503.png" alt="image-20221018150416503"></p>
+<p>ok 我们接下来要处理 trees 太深的缺点</p>
+<h4 id="improvements-1-weighting"><a href="#improvements-1-weighting" class="headerlink" title="improvements  1: weighting"></a>improvements  1: weighting</h4><p>争取能用我自己的语言描述清楚 总的来说就是一句话</p>
+<blockquote>
+<p>小树 -&gt; 放到大树下面  （如果相同就随意放</p>
+</blockquote>
+<p>这里的小和大指的是树的deep</p>
+<p>所以要实现这种算法 免不了</p>
+<ul>
+<li>计算树的深度</li>
+<li>找 root 节点</li>
+<li>比较树的深度</li>
+</ul>
+<p>code</p>
+<p>Find. Identical to quick-union. </p>
+<p>还是判断他们最高的root想不想同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> root(p) == root(q);</span><br></pre></td></tr></table></figure>
+
+<p>union</p>
+<p>如果俩点已经在一个root下的树中 说明他们已经是相连的了</p>
+<p>否则 将小树总root改为大树的总root 然后将记录其高度的值改为和大树一样</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> root(p);</span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> root(q);</span><br><span class="line"><span class="keyword">if</span> (i == j) <span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">if</span> (sz[i] &lt; sz[j]) &#123; id[i] = j; sz[j] += sz[i]; &#125;</span><br><span class="line"><span class="keyword">else</span> &#123; id[j] = i; sz[i] += sz[j]; &#125; </span><br></pre></td></tr></table></figure>
+
+<p>想想为啥都变 lg N 了呢？以为有部分已经自动连上了 但这里我也说不太清楚</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018152134449.png" alt="image-20221018152134449"></p>
+<h4 id="Improvement-2-path-compression"><a href="#Improvement-2-path-compression" class="headerlink" title="Improvement 2: path compression"></a>Improvement 2: path compression</h4><p>啥意思 看图就明白了</p>
+<img src="/2022/10/16/CourseraAlgorithmsI/image-20221018153710329.png" alt="image-20221018153710329" style="zoom:50%;">
+
+<p>也就是把树给他展开 直连root</p>
+<img src="/2022/10/16/CourseraAlgorithmsI/image-20221018153740653.png" alt="image-20221018153740653" style="zoom:33%;">
+
+<p>而实现这个只需要加一行代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">root</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span> (i != id[i])</span><br><span class="line"> 	&#123;</span><br><span class="line"> 		id[i] = id[id[i]];</span><br><span class="line"> 		i = id[i];</span><br><span class="line"> 	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>奶思！</p>
+<p>然后prof说这个两种可能在应用中一样好 至于如何证明 超出了本课程的范围</p>
+<h3 id="HW"><a href="#HW" class="headerlink" title="HW"></a>HW</h3><p><a target="_blank" rel="noopener" href="https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php">HW1</a></p>
+<blockquote>
+<p>Write a program to estimate the value of the <em>percolation threshold</em> via Monte Carlo simulation.</p>
+</blockquote>
+<p>简单来说就是看看你能不能想办法来写个 算法来判断上下部能不能连通？</p>
+<p><del>好像有点小难</del></p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018135548373.png" alt="image-20221018135548373"></p>
+<p>总的解决方案：</p>
+<ul>
+<li>先做这样一个标记 对应每个点</li>
+</ul>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018155330351.png" alt="image-20221018155330351"></p>
+<ul>
+<li>在上下端虚拟出一个点 然后用我们之前学的并查集方法判断他们是否连通！</li>
+</ul>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221018155426432.png" alt="image-20221018155426432"></p>
+<p>要实现这些接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Percolation</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// creates n-by-n grid, with all sites initially blocked</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Percolation</span><span class="params">(<span class="type">int</span> n)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// opens the site (row, col) if it is not open already</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">open</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// is the site (row, col) open?</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isOpen</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// is the site (row, col) full?</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isFull</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// returns the number of open sites</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numberOfOpenSites</span><span class="params">()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// does the system percolate?</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">percolates</span><span class="params">()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// test client (optional)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>整理完有点累了 今天不一定能写完，，，</p>
+<p>之前的方法都是包装好的直接调用就行o.o</p>
+<p><img src="/2022/10/16/CourseraAlgorithmsI/image-20221019190739154.png" alt="image-20221019190739154"></p>
+<h2 id="week2"><a href="#week2" class="headerlink" title="week2"></a>week2</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/10/16/CourseraAlgorithmsI/" title="Coursera Algorithms I &amp; II 学习笔记">http://example.com/2022/10/16/CourseraAlgorithmsI/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/15/MIT6S081/" rel="prev" title="MIT6S081">
+                  <i class="fa fa-chevron-left"></i> MIT6S081
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/16/%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E7%9A%84%E6%80%9D%E8%80%83/" rel="next" title="最近看S12LOL全球总决赛一些简单的思考">
+                  最近看S12LOL全球总决赛一些简单的思考 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"2acc4fd3ce4a5df4843d2521e9f75291"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
