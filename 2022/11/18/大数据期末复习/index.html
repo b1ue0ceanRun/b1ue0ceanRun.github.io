@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录考点 突击考试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据期末复习">
+<meta property="og:url" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="记录考点 突击考试">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118105509707.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118105922646.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118111516474.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118111705410.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118111739106.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118113053580.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119110207804.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119110842365.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119111543987.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119111802809.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119113129710.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119113212355.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119113925636.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119114006392.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119115729908.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119153614875.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119165721164.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119170155867.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119170224154.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119160521500.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119161825596.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119162321849.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119162559853.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119163230179.png">
+<meta property="og:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119163337967.png">
+<meta property="article:published_time" content="2022-11-18T02:51:00.000Z">
+<meta property="article:modified_time" content="2022-11-20T11:04:04.729Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="考试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118105509707.png">
+
+
+<link rel="canonical" href="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/","path":"2022/11/18/大数据期末复习/","title":"大数据期末复习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>大数据期末复习 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">149</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">47</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">187</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%BA%91%E8%AE%A1%E7%AE%97%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">第1章 大数据与云计算概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">第2章 大数据处理架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9FHDFS"><span class="nav-number">3.</span> <span class="nav-text">第3章 分布式文件系统HDFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96%E7%AD%96%E7%95%A5"><span class="nav-number">3.1.</span> <span class="nav-text">数据存取策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%94%99%E8%AF%AF%E4%B8%8E%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE%E9%94%99%E8%AF%AF%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="nav-number">3.2.</span> <span class="nav-text">数据错误与恢复数据错误与恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E8%BF%87%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">HDFS数据读写过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93HBase"><span class="nav-number">4.</span> <span class="nav-text">第4章 分布式数据库HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase%E7%AE%80%E4%BB%8B"><span class="nav-number">4.1.</span> <span class="nav-text">HBase简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">HBase数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase%E5%8A%9F%E8%83%BD%E7%BB%84%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">HBase功能组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">5.</span> <span class="nav-text">第5章 NoSQL数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC6%E7%AB%A0-%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.</span> <span class="nav-text">第6章 云数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UMP%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">6.1.</span> <span class="nav-text">UMP系统架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC10%E7%AB%A0-Spark"><span class="nav-number">7.</span> <span class="nav-text">第10章 Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">Spark运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">7.1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.1.2.</span> <span class="nav-text">架构设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spark%E8%BF%90%E8%A1%8C%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="nav-number">7.1.3.</span> <span class="nav-text">Spark运行基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RDD%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">7.1.4.</span> <span class="nav-text">RDD运行原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC11%E7%AB%A0-%E6%B5%81%E8%AE%A1%E7%AE%97"><span class="nav-number">8.</span> <span class="nav-text">第11章 流计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6"><span class="nav-number">8.1.</span> <span class="nav-text">流计算框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E8%AE%A1%E7%AE%97%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">8.2.</span> <span class="nav-text">流计算处理流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Storm"><span class="nav-number">8.3.</span> <span class="nav-text">Storm</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">187</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">149</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="大数据期末复习 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大数据期末复习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-18 10:51:00" itemprop="dateCreated datePublished" datetime="2022-11-18T10:51:00+08:00">2022-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-20 19:04:04" itemprop="dateModified" datetime="2022-11-20T19:04:04+08:00">2022-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%80%83%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">考试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>记录考点 突击考试</p>
+<span id="more"></span>
+
+
+
+<h2 id="第1章-大数据与云计算概述"><a href="#第1章-大数据与云计算概述" class="headerlink" title="第1章 大数据与云计算概述"></a>第1章 大数据与云计算概述</h2><p>大数据具有 <strong>数据量大</strong>、<strong>数据类型繁多</strong>、处理速度快、<strong>价值密度低</strong>等特点，统称“4V”</p>
+<p>大数据并非单一的数据或技术，而是数据和大数据技术的综合体。大数据技术主要包括<strong>数据采集</strong>、<strong>数据存储和管理</strong>、<strong>数据处理与分析</strong>、<strong>数据安全和隐私保护</strong>等几个层面的 内容</p>
+<p>大数据产业包括<strong>IT基础设施层</strong>、<strong>数据源层</strong>、<strong>数据管理层</strong>、<strong>数据分析层</strong>、<strong>数据平台层和数据应用层</strong>，在不同层面，都已经形成了一批引领市场的技术和企业</p>
+<p>阐述了<strong>大数据</strong>、<strong>云计算和物联网</strong>三者之间的区别与联系</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118105509707.png" alt="image-20221118105509707"></p>
+<p>在三层模型中，云计算常常被分为 基础设施作为服务（IaaS），平台作为服务（PaaS<br>），软件作为服务 （SaaS）</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118105922646.png" alt="image-20221118105922646"></p>
+<p>大数据计算模式 </p>
+<ul>
+<li>批处理计算</li>
+<li>流计算</li>
+<li>图计算</li>
+<li>查询分析计算</li>
+</ul>
+<h2 id="第2章-大数据处理架构"><a href="#第2章-大数据处理架构" class="headerlink" title="第2章 大数据处理架构"></a>第2章 大数据处理架构</h2><p>Hadoop是一个能够对大量数据进行分布式处理的软件框架，并且是以一种可靠、高效、可伸缩的方式进行处理的，它具有以下几个 方面的特性： </p>
+<ul>
+<li>高可靠性 </li>
+<li>高效性 </li>
+<li>高可扩展性 </li>
+<li>高容错性 </li>
+<li>成本低 </li>
+<li>运行在Linux平台上 </li>
+<li>支持多种编程语言</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118111516474.png" alt="image-20221118111516474"></p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118111705410.png" alt="image-20221118111705410"></p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118111739106.png" alt="image-20221118111739106"></p>
+<h2 id="第3章-分布式文件系统HDFS"><a href="#第3章-分布式文件系统HDFS" class="headerlink" title="第3章 分布式文件系统HDFS"></a>第3章 分布式文件系统HDFS</h2><ul>
+<li><p>分布式文件系统把文件分布存储到多个计算机节点上，成千上万的计算 机节点构成计算机集群</p>
+</li>
+<li><p>与之前使用多个处理器和专用高级硬件的并行化处理装置不同的是，目前的分布式文件系统所采用的计算机集群，都是由普通硬件构成的，这就 大大降低了硬件上的开销</p>
+</li>
+</ul>
+<p>分布式文件系统在物理结构上是由计算机集群中的多个节点构成的，这些节点分为 两类，一类叫“主节点”(Master Node)或者也被称为“名称结点”(NameNode)， 另一类叫“从节点”（Slave Node）或者也被称为“数据节点”(DataNode)</p>
+<p>HDFS要实现以下目标</p>
+<ul>
+<li>兼容廉价的硬件设备 </li>
+<li>流数据读写 </li>
+<li>大数据集 </li>
+<li>简单的文件模型 </li>
+<li>强大的跨平台兼容性</li>
+</ul>
+<p>自身具有一些应用 局限性</p>
+<ul>
+<li><p>不适合低延迟数据访问</p>
+</li>
+<li><p>无法高效存储大量小文件 </p>
+</li>
+<li><p>不支持多用户写入及任意修改文件</p>
+</li>
+</ul>
+<p>HDFS默认一个块<strong>64MB</strong>，一个文件被分成多个块，以块作为存储单位块的大小远远大于普通文件系统，可以最小化寻址开销</p>
+<ul>
+<li><strong>支持大规模文件存储</strong>：文件以块为单位进行存储，一个大规模文 件可以被分拆成若干个文件块，不同的文件块可以被分发到不同的节点 上，因此，一个文件的大小不会受到单个节点的存储容量的限制，可以 远远大于网络中任意节点的存储容量 </li>
+<li><strong>简化系统设计</strong>：首先，大大简化了存储管理，因为文件块大小是 固定的，这样就可以很容易计算出一个节点可以存储多少文件块；其次 ，方便了元数据的管理，元数据不需要和文件块一起存储，可以由其他 系统负责管理元数据 </li>
+<li><strong>适合数据备份</strong>：每个文件块都可以冗余存储到多个节点上，大大 提高了系统的容错性和可用性</li>
+</ul>
+<ul>
+<li>在HDFS中，名称节点（NameNode）负责管理分布式文件系统的命名空间 （Namespace），保存了两个核心的数据结构，即FsImage和EditLog </li>
+<li>FsImage用于维护文件系统树以及文件树中所有的文件和文件夹的元数据 </li>
+<li>操作日志文件EditLog中记录了所有针对文件的创建、删除、重命名等操作 </li>
+<li>名称节点记录了每个文件中各个块所在的数据节点的位置信息</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221118113053580.png" alt="image-20221118113053580"></p>
+<ul>
+<li><p>FsImage文件包含文件系统中所有目录和文件inode的序列化形式 。每个inode是一个文件或目录的元数据的内部表示，并包含此类信 息：文件的复制等级、修改和访问时间、访问权限、块大小以及组 成文件的块。对于目录，则存储修改时间、权限和配额元数据</p>
+</li>
+<li><p>FsImage文件没有记录每个块存储在哪个数据节点。而是由名称节 点把这些映射信息保留在内存中，当数据节点加入HDFS集群时， 数据节点会把自己所包含的块列表告知给名称节点，此后会定期执 行这种告知操作，以确保名称节点的块映射是最新的。</p>
+</li>
+</ul>
+<p><strong>名称节点的启动</strong></p>
+<ul>
+<li>在名称节点启动的时候，它会将FsImage文件中的内容加载到内存中，之后再执行EditLog文件中的各项操作，使得内存中的元数据和实际的同步，存在内存 中的元数据支持客户端的读操作</li>
+<li>一旦在内存中成功建立文件系统元数据的映射，则创建一个新的FsImage文件和一个空的EditLog文件</li>
+<li>名称节点起来之后，HDFS中的更新操作会重新写到EditLog文件中，因为 FsImage文件一般都很大（GB级别的很常见），如果所有的更新操作都往 FsImage文件中添加，这样会导致系统运行的十分缓慢，但是，如果往EditLog 文件里面写就不会这样，因为EditLog 要小很多。每次执行写操作之后，且在 向客户端发送成功代码之前，edits文件都需要同步更新</li>
+</ul>
+<p><strong>名称节点运行期间EditLog不断变大的问题</strong></p>
+<p>如何解决？答案是：SecondaryNameNode第二名称节点</p>
+<p>第二名称节点是HDFS架构中的一个组成部分，它是用来保存名称节点中对HDFS 元数据信息的备份，并减少名称节点重启的时间。SecondaryNameNode一般是单独运行在一台机器上</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119110207804.png" alt="image-20221119110207804"></p>
+<p><strong>数据节点（DataNode）</strong></p>
+<ul>
+<li>数据节点是分布式文件系统HDFS的工作节点，负责数据的存储和读取，会根据客户端或者是名称节点的调度来进行数据的存储和检索，并且向名称节点定期发送自己所存储的块的列表</li>
+<li>每个数据节点中的数据会被保存在各自节点的本地Linux文件系统中</li>
+</ul>
+<p>HDFS体系结构概述</p>
+<p>HDFS采用了主从（<strong>Master/Slave</strong>）结构模型，一个HDFS集群包括<strong>一个名称节点</strong>（NameNode）和<strong>若干个数据节点</strong>（DataNode）（如图3-4所 示）。<strong>名称节点作为中心服务器，负责管理文件系统的命名空间及客户端对文件的访问。</strong>集群中的数据节点一般是一个节点运行一个数据节点进程 ，负责处理文件系统客户端的读/写请求，<strong>在名称节点的统一调度下进行数 据块的创建、删除和复制等操</strong>作。每个数据节点的数据实际上是保存在本地Linux文件系统中的</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119110842365.png" alt="image-20221119110842365"></p>
+<ul>
+<li>HDFS的命名空间包含目录、文件和块 </li>
+<li>在HDFS1.0体系结构中，在整个HDFS集群中只有一个命名空间，并 且只有唯一一个名称节点，该节点负责对这个命名空间进行管理 </li>
+<li>HDFS使用的是传统的分级文件体系，因此，用户可以像使用普通 文件系统一样，创建、删除目录和文件，在目录间转移文件，重命 名文件等</li>
+</ul>
+<ul>
+<li>所有的HDFS通信协议都是构建在<strong>TCP/IP协议</strong>基础之上的</li>
+<li>客户端通过一个可配置的端口向名称节点主动发起TCP连接，并使 用客户端协议与名称节点进行交互</li>
+<li>名称节点和数据节点之间则使用<strong>数据节点协议</strong>进行交互</li>
+<li>客户端与数据节点的交互是通过<strong>RPC（Remote Procedure Call）</strong>来 实现的。在设计上，名称节点不会主动发起RPC，而是响应来自客户端和数据节点的RPC请求</li>
+</ul>
+<p>HDFS只设置唯一一个名称节点，这样做虽然大大简化了系统设计，但 也带来了一些明显的局限性，具体如下： </p>
+<ol>
+<li><strong>命名空间的限制</strong>：名称节点是保存在内存中的，因此，名称节 点能够容纳的对象（文件、块）的个数会受到内存空间大小的限制。 </li>
+<li><strong>性能的瓶颈</strong>：整个分布式文件系统的吞吐量，受限于单个名称节点的吞吐量。 </li>
+<li><strong>隔离问题</strong>：由于集群中只有一个名称节点，只有一个命名空间， 因此，无法对不同应用程序进行隔离。 </li>
+<li><strong>集群的可用性</strong>：一旦这个唯一的名称节点发生故障，会导致整个集群变得不可用。</li>
+</ol>
+<p>为了保证系统的容错性和可用性，HDFS采用了<strong>多副本方式</strong>对数据进行冗余存储</p>
+<p>通常一个数据块的多个副本会被分布到不同的数据节点上</p>
+<p>这种多副本方式具有以下几个优点</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119111543987.png" alt="image-20221119111543987"></p>
+<h3 id="数据存取策略"><a href="#数据存取策略" class="headerlink" title="数据存取策略"></a>数据存取策略</h3><p><strong>数据存放</strong></p>
+<p>第一个副本：放置在上传文件的数据节点；如果是集群外提交，则随机挑 选一台磁盘不太满、CPU不太忙的节点 </p>
+<p>第二个副本：放置在与第一个副本不同的机架的节点上 </p>
+<p>第三个副本：与第一个副本相同机架的其他节点上</p>
+<p>更多副本：随机节点</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119111802809.png" alt="image-20221119111802809"></p>
+<p><strong>数据读取</strong></p>
+<ul>
+<li>HDFS提供了一个API可以确定一个数据节点所属的机架ID，客户端也 可以调用API获取自己所属的机架ID</li>
+<li>当客户端读取数据时，从名称节点获得数据块不同副本的存放位置列表， 列表中包含了副本所在的数据节点，可以调用API来确定客户端和这些 数据节点所属的机架ID，当发现某个数据块副本对应的机架ID和客户端 对应的机架ID相同时，就优先选择该副本读取数据，如果没有发现，就 随机选择一个副本读取数据</li>
+</ul>
+<h3 id="数据错误与恢复数据错误与恢复"><a href="#数据错误与恢复数据错误与恢复" class="headerlink" title="数据错误与恢复数据错误与恢复"></a>数据错误与恢复数据错误与恢复</h3><p>HDFS具有较高的容错性，可以兼容廉价的硬件，它把硬件出错 看作一种常态，而不是异常，并设计了相应的机制检测数据错误和进 行自动恢复，主要包括以下几种情形：<strong>名称节点出错</strong>、<strong>数据节点出错</strong> 和<strong>数据出错</strong></p>
+<p><strong>名称节点出错</strong></p>
+<p>HDFS设置了备份机制，把这些核心文件 同步复制到备份服务器SecondaryNameNode上。当名称节点出错时， 就可以根据备份服务器SecondaryNameNode中的FsImage和Editlog 数据进行恢复。</p>
+<p><strong>数据节点出错</strong></p>
+<ul>
+<li>每个数据节点会定期向名称节点发送“心跳”信息，向名称节点报告自 己的状态 </li>
+<li>当数据节点发生故障，或者网络发生断网时，名称节点就无法收到来自 一些数据节点的心跳信息，这时，这些数据节点就会被标记为“宕机”， 节点上面的所有数据都会被标记为“不可读”，名称节点不会再给它们 发送任何I/O请求 </li>
+<li>这时，有可能出现一种情形，即由于一些数据节点的不可用，会导致一 些数据块的副本数量小于冗余因子 •名称节点会定期检查这种情况，一旦发现某个数据块的副本数量小于冗 余因子，就会启动数据冗余复制，为它生成新的副本 </li>
+<li>HDFS和其它分布式文件系统的最大区别就是可以调整冗余数据的位置</li>
+</ul>
+<p><strong>数据出错</strong></p>
+<ul>
+<li>网络传输和磁盘错误等因素，都会造成数据错误 </li>
+<li>客户端在读取到数据后，会采用md5和sha1对数据块进行校验，以确定读取到正确的数据 </li>
+<li>在文件被创建时，客户端就会对每一个文件块进行信息摘录，并把这些信息 写入到同一个路径的隐藏文件里面 </li>
+<li>当客户端读取文件的时候，会先读取该信息文件，然后，利用该信息文件对 每个读取的数据块进行校验，如果校验出错，客户端就会请求到另外一个数 据节点读取该文件块，并且向名称节点报告这个文件块有错误，名称节点会 定期检查并且重新复制这个块</li>
+</ul>
+<h3 id="HDFS数据读写过程"><a href="#HDFS数据读写过程" class="headerlink" title="HDFS数据读写过程"></a>HDFS数据读写过程</h3><ul>
+<li><strong>FileSystem</strong>是一个通用文件系统的抽象基类，可以被分布式文件系统继承， 所有可能使用Hadoop文件系统的代码，都要使用这个类</li>
+<li>DistributedFileSystem就是FileSystem在HDFS文件系统中的具体实现</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119113129710.png" alt="image-20221119113129710"></p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119113212355.png" alt="image-20221119113212355"></p>
+<h2 id="第4章-分布式数据库HBase"><a href="#第4章-分布式数据库HBase" class="headerlink" title="第4章 分布式数据库HBase"></a>第4章 分布式数据库HBase</h2><p>BigTable</p>
+<ul>
+<li>BigTable是一个<strong>分布式存储系统</strong> </li>
+<li>利用谷歌提出的MapReduce分布式并行计算模型来处理海量数据 </li>
+<li>使用谷歌分布式文件系统GFS作为底层数据存储 </li>
+<li>采用Chubby提供协同服务管理 •可以扩展到PB级别的数据和上千台机器，具备广泛应用性、可扩展性、 高性能和高可用性等特点 </li>
+<li>谷歌的许多项目都存储在BigTable中，包括搜索、地图、财经、打印、 社交网站Orkut、视频共享网站YouTube和博客网站Blogger等</li>
+</ul>
+<h3 id="HBase简介"><a href="#HBase简介" class="headerlink" title="HBase简介"></a>HBase简介</h3><p>HBase是一个高可靠、高性能、面向列、可伸缩的分布式数据库，是谷歌<strong>BigTable</strong>的开源实现，<strong>主要用来存储非结构化和半结构化的松散数据</strong>。HBase的<strong>目标是处理非常庞大的表</strong>，可以通过水平扩展的方式，利用廉价计算机集群处理由超过10亿行数据和数百万列元素组成的数据表</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119113925636.png" alt="image-20221119113925636"></p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119114006392.png" alt="image-20221119114006392"></p>
+<p><strong>关系数据库已经流行很多年，并且Hadoop已经有了HDFS和MapReduce， 为什么需要HBase?</strong></p>
+<ul>
+<li>Hadoop可以很好地解决大规模数据的离线批量处理问题，但是， 受限于Hadoop MapReduce编程框架的<strong>高延迟数据处理机制</strong>，使得<strong>Hadoop无法满足大规模数据实时处理应用的需求</strong></li>
+<li>HDFS面向批量访问模式，不是随机访问模式</li>
+<li><strong>传统的通用关系型数据库无法应对在数据规模剧增时导致的系统扩展性和性能问题</strong>（分库分表也不能很好解决）</li>
+<li>传统关系数据库在数据结构变化时一般需要<strong>停机维护</strong>；<strong>空列浪费存储空间</strong></li>
+<li>业界出现了一类<strong>面向半结构化数据存储和处理的高可扩展、 低写入/查询延迟的系统</strong>，例如，键值数据库、文档数据库和列族 数据库（如BigTable和HBase等）</li>
+</ul>
+<p><strong>HBase与传统的关系数据库的区别主要体现在以下几个方面</strong></p>
+<ol>
+<li><strong>数据类型</strong>：关系数据库采用关系模型，具有丰富的数据类型和 存储方式，HBase则采用了更加简单的数据模型，它把数据存储为未 经解释的字符串</li>
+<li><strong>数据操作</strong>：关系数据库中包含了丰富的操作，其中会涉及复杂 的多表连接。HBase操作则不存在复杂的表与表之间的关系，只有简 单的插入、查询、删除、清空等，因为HBase在设计上就避免了复杂 的表和表之间的关系</li>
+<li><strong>存储模式</strong>：关系数据库是基于行模式存储的。HBase是基于列存储的，每个列族都由几个文件保存，不同列族的文件是分离的</li>
+<li><strong>数据索引</strong>：关系数据库通常可以针对不同列构建复杂的多个索 引，以提高数据访问性能。HBase只有一个索引——行键，通过巧妙 的设计，HBase中的所有访问方法，或者通过行键访问，或者通过行 键扫描，从而使得整个系统不会慢下来</li>
+<li><strong>数据维护</strong>：在关系数据库中，更新操作会用最新的当前值去替 换记录中原来的旧值，旧值被覆盖后就不会存在。而在HBase中执行 更新操作时，并不会删除数据旧的版本，而是生成一个新的版本，旧有的版本仍然保留</li>
+<li><strong>可伸缩性</strong>：关系数据库很难实现横向扩展，纵向扩展的空间也 比较有限。相反，HBase和BigTable这些分布式数据库就是为了实现 灵活的水平扩展而开发的，能够轻易地通过在集群中增加或者减少硬 件数量来实现性能的伸缩</li>
+</ol>
+<h3 id="HBase数据模型"><a href="#HBase数据模型" class="headerlink" title="HBase数据模型"></a>HBase数据模型</h3><ul>
+<li>HBase是一个稀疏、多维度、排序的映射表，这张表的索引是行键、 列族、列限定符和时间戳 • 每个值是一个未经解释的字符串，没有数据类型 </li>
+<li>用户在表中存储数据，每一行都有一个可排序的行键和任意多的列 </li>
+<li>表在水平方向由一个或者多个列族组成，一个列族中可以包含任意多个列，同一个列族里面的数据存储在一起 </li>
+<li>列族支持动态扩展，可以很轻松地添加一个列族或列，无需预先定义列的数量以及类型，所有列均以字符串形式存储，用户需要自行进行 数据类型转换 </li>
+<li>HBase中执行更新操作时，并不会删除数据旧的版本，而是生成一个 新的版本，旧有的版本仍然保留（这是和HDFS只允许追加不允许修 改的特性相关的）</li>
+</ul>
+<p>HBase中需要根据行键、列族、列限定符和时间戳来确定一个单元格，因此 ，可以视为一个“四维坐标”，即[行键, 列族, 列限定符, 时间戳]</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119115729908.png" alt="image-20221119115729908"></p>
+<h3 id="HBase功能组件"><a href="#HBase功能组件" class="headerlink" title="HBase功能组件"></a>HBase功能组件</h3><p>HBase的实现包括三个主要的功能组件：</p>
+<p>– （1）库函数：链接到每个客户端 </p>
+<p>– （2）一个Master主服务器 </p>
+<p>– （3）许多个Region服务器</p>
+<ul>
+<li>主服务器Master负责管理和维护HBase表的分区信息，维护Region服 务器列表，分配Region，负载均衡</li>
+<li>Region服务器负责存储和维护分配给自己的Region，处理来自客户端的读写请求</li>
+<li>客户端并不是直接从Master主服务器上读取数据，而是在获得Region 的存储位置信息后，直接从Region服务器上读取数据</li>
+<li>客户端并不依赖Master，而是通过Zookeeper来获得Region位置信息 ，大多数客户端甚至从来不和Master通信，这种设计方式使得Master 负载很小</li>
+</ul>
+<h2 id="第5章-NoSQL数据库"><a href="#第5章-NoSQL数据库" class="headerlink" title="第5章 NoSQL数据库"></a>第5章 NoSQL数据库</h2><p>试述关系型数据库在哪些方面无法满足web2.0应用的需求</p>
+<ul>
+<li>无法处理海量数据</li>
+<li>可拓展性和可用性</li>
+<li>数据迁移问题</li>
+</ul>
+<ul>
+<li>无法满足海量数据的管理需求 </li>
+<li>无法满足数据高并发的需求 </li>
+<li>无法满足高可扩展性和高可用性的需求</li>
+</ul>
+<p>请比较NoSQL数据库和关系数据库的优缺点</p>
+<p>有点多啊</p>
+<p>试述NoSQL数据库的四大类型</p>
+<p>键值数据库、列族数据库、文档数据库和图数据库</p>
+<p>CAP </p>
+<p>C - Consistency  一致性</p>
+<p>A - Availability 可用性</p>
+<p>P - Partition Tolerance 分区容忍性</p>
+<p>ACID四性</p>
+<p>Atomicity 原子性</p>
+<p>Consistency 一致性</p>
+<p>Isolation 隔离性</p>
+<p>Durable 持久性</p>
+<p>BASE的基本含义</p>
+<p>Basically Available 基本可用</p>
+<p>Soft-state  软状态</p>
+<p>Eventual consistency 最终一致性</p>
+<p>NoSQL三大基石</p>
+<ul>
+<li>CAP</li>
+<li>BASE</li>
+<li>最终一致性 </li>
+</ul>
+<p>什么是最终一致性？</p>
+<p>一致性的类型包括强一致性和弱一致性，二者的主要区别在于高并发的数据访问操作下，后续操作是否能够获取最新的数据。</p>
+<p>对于分布式数据系统： </p>
+<ul>
+<li>N — 数据复制的份数 </li>
+<li>W — 更新数据是需要保证写完成的节点数 </li>
+<li>R — 读取数据的时候需要读取的节点数</li>
+</ul>
+<p>如果W+R&gt;N，写的节点和读的节点重叠，则是强一致性</p>
+<p>如果W+R&lt;=N，则是弱一致性</p>
+<h2 id="第6章-云数据库"><a href="#第6章-云数据库" class="headerlink" title="第6章 云数据库"></a>第6章 云数据库</h2><p><strong>云计算概念</strong></p>
+<p>通过整合、管理、调配分布在网络各处的计算资源，通过 互联网以统一界面，同时向大 量的用户提供服务</p>
+<p>云数据库是<strong>部署和虚拟化</strong>在云计算环境中的数据库。云数据库是在云计算的大背景 下发展起来的一种新兴的共享基础架构的方法，它极大地增强了数据库的存储能力 ，消除了人员、硬件、软件的重复配置，让软、硬件升级变得更加容易。云数据库 具有高可扩展性、高可用性、采用多租形式和支持资源有效分发等特点。</p>
+<p><strong>云数据库具有以下特性</strong></p>
+<p>（1）动态可扩展 （2）高可用性 （3）较低的使用代价 （4）易用性 （5）高性能 （6）免维护 （7）安全</p>
+<p>UMP系统架构</p>
+<ul>
+<li>保持单一的系统对外入口，并且为系统内部维护单一的资源池 </li>
+<li>消除单点故障，保证服务的高可用性 </li>
+<li>保证系统具有良好的可伸缩，能够动态地增加、删减计算与存储节点 </li>
+<li>保证分配给用户的资源也是弹性可伸缩的，资源之间相互隔离，确保应用和数据安全</li>
+</ul>
+<h3 id="UMP系统架构"><a href="#UMP系统架构" class="headerlink" title="UMP系统架构"></a>UMP系统架构</h3><p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119153614875.png" alt="image-20221119153614875"></p>
+<p>UMP系统是构建在一个大的集群之上的，通过多个组件的 协同作业，整个系统实现了对用户透明的各种功能：</p>
+<ul>
+<li>容灾 </li>
+<li>读写分离 </li>
+<li>分库分表 </li>
+<li>资源管理 </li>
+<li>资源调度 </li>
+<li>资源隔离 </li>
+<li>数据安全</li>
+</ul>
+<h2 id="第10章-Spark"><a href="#第10章-Spark" class="headerlink" title="第10章 Spark"></a>第10章 Spark</h2><ul>
+<li>运行速度快：使用DAG执行引擎以支持循环数据流与内存计算 </li>
+<li>容易使用：支持使用Scala、Java、Python和R语言进行编程，可以通过 Spark Shell进行交互式编程 </li>
+<li>通用性：Spark提供了完整而强大的技术栈，包括SQL查询、流式计算 、机器学习和图算法组件 </li>
+<li>运行模式多样：可运行于独立的集群模式中，可运行于Hadoop中，也 可运行于Amazon EC2等云环境中，并且可以访问HDFS、Cassandra、 HBase、Hive等多种数据源</li>
+</ul>
+<p>相比于Hadoop MapReduce，Spark主要具有如下优点</p>
+<ul>
+<li>Spark的计算模式也属于MapReduce，但不局限于Map和Reduce操作 ，还提供了多种数据集操作类型，编程模型比Hadoop MapReduce更灵活</li>
+<li>Spark提供了内存计算，可将中间结果放到内存中，对于迭代运算效率更高</li>
+<li>Spark基于DAG的任务调度执行机制，要优于Hadoop MapReduce的 迭代执行机制</li>
+</ul>
+<p><strong>Spark与Hadoop的对比</strong></p>
+<ul>
+<li>使用Hadoop进行迭代计算非常耗资源 </li>
+<li>Spark将数据载入内存后，之后的迭代计算都可以直接使用内存中的中间 结果作运算，避免了从磁盘中频繁读取数据</li>
+</ul>
+<h3 id="Spark运行架构"><a href="#Spark运行架构" class="headerlink" title="Spark运行架构"></a>Spark运行架构</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>RDD：是Resillient Distributed Dataset（弹性分布式数据集）的简称，是分布 式内存的一个抽象概念，提供了一种高度受限的共享内存模型 </li>
+<li>DAG：是Directed Acyclic Graph（有向无环图）的简称，反映RDD之间的依赖关系</li>
+<li>Executor：是运行在工作节点（WorkerNode）的一个进程，负责运行Task </li>
+<li>Application：用户编写的Spark应用程序 </li>
+<li>Task：运行在Executor上的工作单元 </li>
+<li>Job：一个Job包含多个RDD及作用于相应RDD上的各种操作 </li>
+<li>Stage：是Job的基本调度单位，一个Job会分为多组Task，每组Task被称为 Stage，或者也被称为TaskSet，代表了一组关联的、相互之间没有Shuffle依 赖关系的任务组成的任务集</li>
+</ul>
+<h4 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h4><ul>
+<li>Spark运行架构包括集群资源管理器（Cluster Manager）、运行作业任务的工作节点（Worker Node）、每个应用的任务控制节点（Driver）和每个工 作节点上负责具体任务的执行进程（Executor） •资源管理器可以自带或Mesos或YARN</li>
+</ul>
+<p>与Hadoop MapReduce计算框架相比，Spark所采用的Executor有两个优点：</p>
+<ul>
+<li>一是利用多线程来执行具体的任务，减少任务的启动开销 </li>
+<li>二是Executor中有一个BlockManager存储模块，会将内存和磁盘共同作为存</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119165721164.png" alt="image-20221119165721164"></p>
+<ul>
+<li>一个Application由一个Driver和若干个Job构成，一个Job由多个Stage构成， 一个Stage由多个没有Shuffle关系的Task组成</li>
+<li>当执行一个Application时，Driver会向集群管理器申请资源，启动Executor， 并向Executor发送应用程序代码和文件，然后在Executor上执行Task，运 行结束后，执行结果会返回给Driver，或者写到HDFS或者其他数据库中</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119170155867.png" alt="image-20221119170155867"></p>
+<h4 id="Spark运行基本流程"><a href="#Spark运行基本流程" class="headerlink" title="Spark运行基本流程"></a>Spark运行基本流程</h4><p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119170224154.png" alt="image-20221119170224154"></p>
+<p>总体而言，Spark运行架构具有以下特点： </p>
+<ol>
+<li>每个Application都有自己专属的Executor进程，并且该进程在Application运行期间一直驻留。Executor进程以多线程的方式运行Task </li>
+<li>Spark运行过程与资源管理器无关，只要能够获取 Executor进程并保持通信即可 </li>
+<li>Task采用了数据本地性和推测执行等优化机制</li>
+</ol>
+<h4 id="RDD运行原理"><a href="#RDD运行原理" class="headerlink" title="RDD运行原理"></a>RDD运行原理</h4><p>1.设计背景</p>
+<ul>
+<li>许多迭代式算法（比如机器学习、图算法等）和交互式数据挖掘工具，共同之处是，不同计算阶段之间会重用中间 结果 </li>
+<li>目前的MapReduce框架都是把中间结果写入到HDFS中， 带来了大量的数据复制、磁盘IO和序列化开销 </li>
+<li>RDD就是为了满足这种需求而出现的，它提供了一个抽象的数据架构，我们不必担心底层数据的分布式特性，只需将具体的应用逻辑表达为一系列转换处理，不同RDD之间的转换操作形成依赖关系，可以实现管道化，避免中间数据存储</li>
+</ul>
+<p>2.RDD概念</p>
+<ul>
+<li>一个RDD就是一个分布式对象集合，本质上是一个只读的分  区记录集合，每个RDD可分成多个分区，每个分区就是一个 数据集片段，并且一个RDD的不同分区可以被保存到集群中 不同的节点上，从而可以在集群中的不同节点上进行并行计 算 </li>
+<li>RDD提供了一种高度受限的共享内存模型，即RDD是只读的记录分区的集合，不能直接修改，只能基于稳定的物理存 储中的数据集创建RDD，或者通过在其他RDD上执行确定的 转换操作（如map、join和group by）而创建得到新的RDD</li>
+</ul>
+<h2 id="第11章-流计算"><a href="#第11章-流计算" class="headerlink" title="第11章 流计算"></a>第11章 流计算</h2><p><strong>很多企业为了支持决策分析而构建的数据仓库系统，其中存放的大量历史数据</strong>就是静态数据</p>
+<p>近年来，在Web应用、网络监控、传感监测等领域，兴起了一种新 的数据密集型应用——流数据，<strong>即数据以大量、快速、时变的流形式持续到达</strong></p>
+<p>对静态数据和流数据的处理，对应着两种截然不同的计算模式：<strong>批量计算</strong>和<strong>实时计算</strong></p>
+<p>批量计算：充裕时间处理静态数据， 如Hadoop</p>
+<p>流数据不适合采用批量计算，因为流 数据不适合用传统的关系模型建模</p>
+<p>流数据必须采用实时计算，响应时间为秒级</p>
+<p>数据量少时，不是问题，但是，在大数据时代，数据格式复杂、来源众多 、数据量巨大，对实时计算提出了很大的挑战。因此，针对流数据的实时计算——流计算，应运而生</p>
+<p>流计算秉承一个基本理念，<strong>即数据的价值随着时间的流逝而降低</strong></p>
+<p>对于一个流计算系统来说，它应达到如下需求</p>
+<ul>
+<li>高性能：处理大数据的基本要求，如每秒处理几十万条数据 </li>
+<li>海量式：支持TB级甚至是PB级的数据规模 </li>
+<li>实时性：保证较低的延迟时间，达到秒级别，甚至是毫秒级别 </li>
+<li>分布式：支持大数据的基本架构，必须能够平滑扩展 </li>
+<li>易用性：能够快速进行开发和部署 </li>
+<li>可靠性：能可靠地处理流数据</li>
+</ul>
+<p><strong>Hadoop擅长批处理，不适合流计算</strong></p>
+<h3 id="流计算框架"><a href="#流计算框架" class="headerlink" title="流计算框架"></a>流计算框架</h3><p>目前有三类常见的流计算框架和平台：商业级的流计算平台、开源流 计算框架、公司为支持自身业务开发的流计算框架</p>
+<p>商业级：IBM InfoSphere Streams和IBM StreamBase</p>
+<p>较为常见的是开源流计算框架</p>
+<ul>
+<li>Twitter Storm：免费、开源的分布式实时计算系统，可简单、高效、可靠地处理大量的流数据 </li>
+<li>Yahoo! S4（Simple Scalable Streaming System）：开源流计算平台，是通用的、分布式的、可扩展的、分区容错的、可插拔的流式系统</li>
+</ul>
+<p>公司为支持自身业务开发的流计算框架</p>
+<ul>
+<li>Facebook Puma </li>
+<li>Dstream（百度） </li>
+<li>银河流数据处理平台（淘宝）</li>
+</ul>
+<h3 id="流计算处理流程"><a href="#流计算处理流程" class="headerlink" title="流计算处理流程"></a>流计算处理流程</h3><p>流计算的处理流程一般包含三个阶段：<strong>数据实时采集</strong>、<strong>数据实时计算</strong> 、<strong>实时查询服务</strong></p>
+<p>数据采集系统的基本架构一般有以下三个部分</p>
+<ul>
+<li>Agent：主动采集数据，并把数据推送到Collector部分 </li>
+<li>Collector：接收多个Agent的数据，并实现有序、可靠、高性能 的转发 </li>
+<li>Store：存储Collector转发过来的数据（对于流计算不存储数据）</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119160521500.png" alt="image-20221119160521500"></p>
+<h3 id="Storm"><a href="#Storm" class="headerlink" title="Storm"></a>Storm</h3><p>Storm可用于许多领域中，如实时分析、在线机器学习、持续计算、 远程RPC、数据提取加载转换等</p>
+<p>Storm具有以下主要特点： </p>
+<p>– 整合性：Storm可方便地与队列系统和数据库系统进行整合 </p>
+<p>– 简易的API：Storm的API在使用上即简单又方便 </p>
+<p>– 可扩展性：Storm的并行特性使其可以运行在分布式集群中 </p>
+<p>– 容错性：Storm可自动进行故障节点的重启、任务的重新分配 </p>
+<p>– 可靠的消息处理：Storm保证每个消息都能完整处理 </p>
+<p>– 支持各种编程语言：Storm支持使用各种编程语言来定义任务 </p>
+<p>– 快速部署：Storm可以快速进行部署和使用 </p>
+<p>– 免费、开源：Storm是一款开源框架，可以免费使用</p>
+<p><strong>Storm设计思想</strong></p>
+<p>Storm主要术语包括Streams、Spouts、Bolts、Topology和Stream  Groupings</p>
+<p><strong>Streams</strong>：Storm将流数据Stream描述成一个无限的Tuple序列，这 些Tuple序列会以分布式的方式并行地创建和处理</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119161825596.png" alt="image-20221119161825596"></p>
+<ul>
+<li>每个tuple是一堆值，每个值有一个名字，并且每个值可以是任何类型</li>
+<li>Tuple本来应该是一个Key-Value的Map，由于各个组件间传递的tuple 的字段名称已经事先定义好了，所以Tuple只需要按序填入各个Value ，所以就是一个Value List（值列表）</li>
+</ul>
+<p><strong>Spout</strong>：Storm认为每个Stream都有一个源头，并把这个源头抽象为 Spout</p>
+<ul>
+<li>通常Spout会从外部数据源（队列、数据库等）读取数据，然后封装 成Tuple形式，发送到Stream中。Spout是一个主动的角色，在接口 内部有个nextTuple函数，Storm框架会不停的调用该函数</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119162321849.png" alt="image-20221119162321849"></p>
+<p><strong>Bolt</strong>：Storm将Streams的状态转换过程抽象为Bolt。Bolt即可以处理 Tuple，也可以将处理后的Tuple作为新的Streams发送给其他Bolt</p>
+<ul>
+<li><p>Bolt可以执行过滤、函数操作、Join、操作数据库等任何操作</p>
+</li>
+<li><p>Bolt是一个被动的角色，其接口中有一个execute(Tuple input)方法， 在接收到消息之后会调用此函数，用户可以在此方法中执行自己的处理逻辑</p>
+</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119162559853.png" alt="image-20221119162559853"></p>
+<p><strong>Topology</strong>：Storm将Spouts和Bolts组成的网络抽象成Topology，它可以被提交到Storm集群执行。Topology可视为流转换图，图中节点 是一个Spout或Bolt，边则表示Bolt订阅了哪个Stream。当Spout或者 Bolt发送元组时，它会把元组发送到每个订阅了该Stream的Bolt上进行处理。</p>
+<ul>
+<li><p>Topology里面的每个处理组件（Spout或Bolt）都包含处理逻辑， 而组件之间的连接则表示数据流动的方向</p>
+</li>
+<li><p>Topology里面的每一个组件都是并行运行的</p>
+</li>
+<li><p>在Topology里面可以指定每个组件 的并行度， Storm会在集群里面分配 那么多的线程来同时计算</p>
+</li>
+<li><p>在Topology的具体实现上，Storm中 的Topology定义仅仅是一些Thrift结 构体（二进制高性能的通信中间件） ，支持各种编程语言进行定义</p>
+</li>
+</ul>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119163230179.png" alt="image-20221119163230179"></p>
+<p><strong>Stream Groupings</strong>：Storm中的Stream Groupings用于告知 Topology如何在两个组件间（如Spout和Bolt之间，或者不同的Bolt 之间）进行Tuple的传送。每一个Spout和Bolt都可以有多个分布式任务，一个任务在什么时候、以什么方式发送Tuple就是由Stream  Groupings来决定的</p>
+<p><img src="/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20221119163337967.png" alt="image-20221119163337967"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/11/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="大数据期末复习">http://example.com/2022/11/18/大数据期末复习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%80%83%E8%AF%95/" rel="tag"># 考试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/12/SECCONCTF2022-writeup/" rel="prev" title="SECCONCTF2022-writeup">
+                  <i class="fa fa-chevron-left"></i> SECCONCTF2022-writeup
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/21/%E6%9C%80%E8%BF%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" rel="next" title="最近的一些想法">
+                  最近的一些想法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"d84ed89e76d70f5754034bd4bf1adec5"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

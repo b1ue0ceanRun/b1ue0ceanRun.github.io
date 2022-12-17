@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近开了门嵌入式的选修课 知识很碎 挑些重点的来cancan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式零碎知识整理">
+<meta property="og:url" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="最近开了门嵌入式的选修课 知识很碎 挑些重点的来cancan">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122195052579.png">
+<meta property="og:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122195854641.png">
+<meta property="og:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122200937228.png">
+<meta property="og:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122200954349.png">
+<meta property="og:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221125131851218.png">
+<meta property="og:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221125133450083.png">
+<meta property="article:published_time" content="2022-11-22T08:02:33.000Z">
+<meta property="article:modified_time" content="2022-11-25T07:59:54.692Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="IOT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122195052579.png">
+
+
+<link rel="canonical" href="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/","path":"2022/11/22/嵌入式零碎知识整理/","title":"嵌入式零碎知识整理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>嵌入式零碎知识整理 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">149</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">47</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">187</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ARM9%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">ARM9基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARM920T-CPU%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">ARM920T CPU结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">7种模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BootLoader"><span class="nav-number">2.</span> <span class="nav-text">BootLoader</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">187</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">149</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="嵌入式零碎知识整理 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          嵌入式零碎知识整理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-22 16:02:33" itemprop="dateCreated datePublished" datetime="2022-11-22T16:02:33+08:00">2022-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-25 15:59:54" itemprop="dateModified" datetime="2022-11-25T15:59:54+08:00">2022-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IOT/" itemprop="url" rel="index"><span itemprop="name">IOT</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近开了门嵌入式的选修课 知识很碎 挑些重点的来cancan</p>
+<span id="more"></span>
+
+
+
+<p><a target="_blank" rel="noopener" href="http://download.hqyj.com/download/ebooks/Farsight10-ARMNozzle-02.pdf">Microsoft Word - 第2章 ARM技术概述.docx (hqyj.com)</a></p>
+<h2 id="ARM9基础知识"><a href="#ARM9基础知识" class="headerlink" title="ARM9基础知识"></a>ARM9基础知识</h2><p>ps: 摘自10年前的ppt</p>
+<p>ARM9系列微处理器是低功耗的<strong>32位RISC结构</strong>，最适合要求低成本、低功耗的消费类应用产品。国际许多著名的IT芯片制造公司，基于ARM9处理器核生产了多种微控制器芯片，如三星公司的S3C2410、Atmel公司的AT91RM9200、Intel公司的PXA255、Motorola公司的MC9328、Cirrus Logic公司的EP93XX系列、等等。 </p>
+<h3 id="ARM920T-CPU结构"><a href="#ARM920T-CPU结构" class="headerlink" title="ARM920T CPU结构"></a>ARM920T CPU结构</h3><p><img src="/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122195052579.png" alt="image-20221122195052579"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhiyuan2021/article/details/111707927">(247条消息) arm920t架构cpu详解_静思心远的博客-CSDN博客_arm920t</a></p>
+<p>建议阅读</p>
+<p>ARM920T微处理器的指令流水采用了典型的<strong>RISC五级流水线结构</strong>，将指令执行过程分为取指、译码、执行、访存和写回5个步骤。五级流水线结构采用分离指令cache和数据cache，将每一个指令处理分配到5个时钟周期内，在每一个时钟周期内同时可能有5个指令在执行，消除了指令执行的性能瓶颈，加快了指令执行速度。 </p>
+<p>ARM9 系列微处理器在高性能和低功耗特性方面提供最佳的性能。具有以下特点：</p>
+<ul>
+<li>5 级整数流水线，指令执行效率更高</li>
+<li>提供 1.1MIPS/MHz 的哈佛结构</li>
+<li>支持 32 位 ARM 指令集和 16 位 Thumb 指令集</li>
+<li>支持 32 位的高速 AMBA总线接口</li>
+<li>全性能的 MMU，支持 Windows CE、Linux、Palm OS等多种主流嵌入式操作系统</li>
+<li>MPU支持实时操作系统</li>
+<li>支持数据 Cache 和指令Cache，具有更高的指令和数据处理能力。</li>
+</ul>
+<h3 id="7种模式"><a href="#7种模式" class="headerlink" title="7种模式"></a>7种模式</h3><p><img src="/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122195854641.png" alt="image-20221122195854641"></p>
+<p>大端模式：就是高位字节排放在内存的低地址端，低位字节排放在内存的高地址端。</p>
+<p>（其实，大端模式才是我们直观上认为的模式，但实际并不是这样）</p>
+<p>数据 0x0102030405</p>
+<p><img src="/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122200937228.png" alt="image-20221122200937228"></p>
+<p>小端模式：就是低字节排放在内存的低地址端，高位字节排放在内存的高地址端。</p>
+<p><img src="/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221122200954349.png" alt="image-20221122200954349"></p>
+<p><strong>小端存储模式是ARM9处理器的默认模式</strong>。ARM9汇编指令集中，没有相应的指令来选择是采用大端存储系统还是小端存储系统，但可以<strong>通过硬件输入引脚来配置它</strong></p>
+<p>分支指令</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmphhh/article/details/100150806">https://blog.csdn.net/mmphhh/article/details/100150806</a></p>
+<blockquote>
+<p><strong>目的地址=当前执行的指令地址+8+偏移量</strong></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38365495/article/details/80537000">https://blog.csdn.net/qq_38365495/article/details/80537000</a></p>
+<p>ARM指令集</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dddxxxx/article/details/47130545">https://blog.csdn.net/dddxxxx/article/details/47130545</a></p>
+<p>ARM9处理器的内部总共有<strong>37个32位的寄存器</strong>，<strong>其中31个用作通用寄存器，6个用作状态寄存器</strong>，每个状态寄存器<strong>只使用了其中的12</strong>位。这37个寄存器根据处理器的状态及其工作模式的不同而被安排成不同的组。程序代码运行时涉及的工作寄存器组是由ARM9微处理器的工作模式确定的。 </p>
+<p><img src="/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221125131851218.png" alt="image-20221125131851218"></p>
+<ul>
+<li>R0 ~ R15称为通用寄存器，其中，R0 ~ R7是不分组的寄存器；R8 ~ R14是根据工作模式进行分组的寄存器；R15是程序计数器，也是不分组的</li>
+<li>R0 ~ R7寄存器是不分组的，在所有的工作模式下，它们物理上是同一个寄存器。</li>
+<li>R8 ~ R14是分组寄存器，它们中的每一个寄存器根据当前工作模式的不同，所访问的寄存器实际可能不是同一个物理寄存器。</li>
+<li>R13寄存器的作用通常是堆栈指针，又称为SP。每种异常模式都有对应于该模式下的R13物理寄存器。</li>
+<li>R14寄存器可用作子程序链接寄存器，又称为LR（Link Register）。当ARM9处理器执行带链接的分枝指令（如：BL指令）时，R14保存R15的值。当异常发生时，相应的寄存器分组R14_svc、R14_abt、R14_und、R14_irq和R14_fiq用来保存R15的返回值</li>
+<li>wR15寄存器的功能是程序计数器，又称为PC。在ARM状态下，R15寄存器的[1：0]位为0b00，[31：2]位是PC的值；</li>
+<li>CPSR寄存器称为当前程序状态寄存器，又称为R16。在所有处理器模式下，CPSR都是同一个物理寄存器，它保存了程序运行的当前状态。在各种异常模式下，均有一个称为SPSR的寄存器用于保存进入异常模式前的程序状态，即当异常出现时，SPSR中保留CPSR的值。CPSR和SPSR均为32位的寄存器，其格式如下</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/david_luyang/article/details/6276533">https://blog.csdn.net/david_luyang/article/details/6276533</a></p>
+<p>异常</p>
+<p>只要正常的程序流程被暂时停止，则异常发生。或者说，异常是由内部或外部产生一个引起处理器处理的事件，例如，外部中断或处理器执行一个未定义的指令都会引起异常。在处理异常之前，处理器状态必须保留，以便在异常处理程序完成后，原来的程序能够重新执行。同一时刻可能会出现多个异常</p>
+<p>ARM支持7种类型的异常处理，如下表。异常出现后处理器强制从异常类型所对应的固定存储器地址开始执行程序，这些存储器地址称为异常向量（exception vectors）</p>
+<p><img src="/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20221125133450083.png" alt="image-20221125133450083"></p>
+<h2 id="BootLoader"><a href="#BootLoader" class="headerlink" title="BootLoader"></a>BootLoader</h2><p>讲了一个 “S3C2410芯片的嵌入式系统引导（启动）程序Startup.s文件中的汇编源程序”</p>
+<p>不说不知道 一搜才知道 这玩意是三星的</p>
+<p>这特么能教我们点更早的东西吗 找的文章都是十年前的了。。。</p>
+<p>国内搜的都是一堆乱七八糟的东西 最后在github上找到了源代码</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;;</span></span><br><span class="line"><span class="comment">;;; Copyright (c) 2004-2007 threewater@up-tech.com, All	rights reserved.</span></span><br><span class="line"><span class="comment">;;; </span></span><br><span class="line"><span class="comment">;;; Startup Code for</span></span><br><span class="line"><span class="comment">;;;	   S3C2410 : Startup.s</span></span><br><span class="line"><span class="comment">;;;; by	threewater	2005.2.22</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"></span><br><span class="line">	GET <span class="number">2410</span>addr.s</span><br><span class="line"></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;; Some ARM920	CPSR bit discriptions</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;Pre-defined constants</span></span><br><span class="line">USERMODE    EQU	<span class="number">0x10</span></span><br><span class="line">FIQMODE	    EQU	<span class="number">0x11</span></span><br><span class="line">IRQMODE	    EQU	<span class="number">0x12</span></span><br><span class="line">SVCMODE	    EQU	<span class="number">0x13</span></span><br><span class="line">ABORTMODE   EQU	<span class="number">0x17</span></span><br><span class="line">UNDEFMODE   EQU	<span class="number">0x1b</span></span><br><span class="line">MODEMASK    EQU	<span class="number">0x1f</span></span><br><span class="line">NOINT	    EQU	<span class="number">0xc0</span></span><br><span class="line"></span><br><span class="line">I_Bit			*	<span class="number">0x80</span></span><br><span class="line">F_Bit			*	<span class="number">0x40</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;; MMU	Register discription</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;p15	CP	15</span></span><br><span class="line"><span class="comment">;c0	CN	0</span></span><br><span class="line"><span class="comment">;c1	CN	1</span></span><br><span class="line"><span class="comment">;c2	CN	2</span></span><br><span class="line"><span class="comment">;c3	CN	3</span></span><br><span class="line"></span><br><span class="line">CtrlMMU			*	<span class="number">1</span></span><br><span class="line">CtrlAlign		*	<span class="number">2</span></span><br><span class="line">CtrlCache		*	<span class="number">4</span></span><br><span class="line">CtrlWBuff		*	<span class="number">8</span></span><br><span class="line">CtrlBigEnd		*	<span class="number">128</span></span><br><span class="line">CtrlSystem		*	<span class="number">256</span></span><br><span class="line">CtrlROM			*	<span class="number">512</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;initialization	L0 is MMU FULL_ACCESS, DOMAIN, SECTION</span></span><br><span class="line">TLB_L0_INIT		*	<span class="number">0x0C02</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;; Start here</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"></span><br><span class="line">			AREA	Init,CODE,READONLY</span><br><span class="line">			IMPORT __use_no_semihosting_swi</span><br><span class="line"></span><br><span class="line">			IMPORT	Enter_UNDEF</span><br><span class="line">			IMPORT	Enter_SWI</span><br><span class="line">			IMPORT	Enter_PABORT</span><br><span class="line">			IMPORT	Enter_DABORT</span><br><span class="line">			IMPORT	Enter_FIQ</span><br><span class="line"></span><br><span class="line">			ENTRY</span><br><span class="line"></span><br><span class="line">			<span class="keyword">b	</span>ColdReset</span><br><span class="line">			<span class="keyword">b	</span>Enter_UNDEF	<span class="comment">;UndefinedInstruction</span></span><br><span class="line">			<span class="keyword">b	</span>Enter_SWI	<span class="comment">;syscall_handler or SWI</span></span><br><span class="line">			<span class="keyword">b	</span>Enter_PABORT	<span class="comment">;PrefetchAbort</span></span><br><span class="line">			<span class="keyword">b	</span>Enter_DABORT	<span class="comment">;DataAbort</span></span><br><span class="line">			<span class="keyword">b	</span>.		<span class="comment">;ReservedHandler</span></span><br><span class="line">			<span class="keyword">b	</span>IRQ_Handler	<span class="comment">;IRQHandler</span></span><br><span class="line">			<span class="keyword">b	</span>Enter_FIQ	<span class="comment">;FIQHandler</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;deal with IRQ interrupt</span></span><br><span class="line">	EXPORT	IRQ_Handler</span><br><span class="line">IRQ_Handler</span><br><span class="line">	IMPORT	ISR_IrqHandler</span><br><span class="line">	STMFD	<span class="built_in">sp</span>!, &#123;r0-r12, lr&#125;</span><br><span class="line">	<span class="keyword">BL	</span>ISR_IrqHandler</span><br><span class="line">	LDMFD	<span class="built_in">sp</span>!, &#123;r0-r12, lr&#125;</span><br><span class="line">	<span class="keyword">SUBS	</span>pc, lr,	<span class="comment">#4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;=======</span></span><br><span class="line"><span class="comment">; ENTRY	 </span></span><br><span class="line"><span class="comment">;=======</span></span><br><span class="line">	EXPORT ColdReset</span><br><span class="line">ColdReset</span><br><span class="line">	ldr	r0,=WTCON	<span class="comment">;watch dog disable </span></span><br><span class="line">	ldr	r1,=<span class="number">0x0</span>		</span><br><span class="line">	str	r1,[r0]</span><br><span class="line"></span><br><span class="line">	ldr	r0,=INTMSK</span><br><span class="line">	ldr	r1,=<span class="number">0xffffffff</span>	<span class="comment">;all interrupt disable</span></span><br><span class="line">	str	r1,[r0]</span><br><span class="line"></span><br><span class="line">	ldr	r0,=INTSUBMSK</span><br><span class="line">	ldr	r1,=<span class="number">0x7ff</span>		<span class="comment">;all sub interrupt disable, 2002/04/10</span></span><br><span class="line">	str	r1,[r0]</span><br><span class="line"></span><br><span class="line"><span class="comment">;****************************************************</span></span><br><span class="line"><span class="comment">;*	Initialize stacks			    * </span></span><br><span class="line"><span class="comment">;****************************************************</span></span><br><span class="line">			<span class="keyword">bl	</span>InitStacks	<span class="comment">; Stack	Setup for each MODE</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;;;; copy excption table to sram at 0x0</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line">		IMPORT	<span class="title">|Load$$EXCEPTION_EXEC$$Base|</span></span><br><span class="line">		IMPORT	<span class="title">|Image$$EXCEPTION_EXEC$$Base|</span></span><br><span class="line">		IMPORT	<span class="title">|Image$$EXCEPTION_EXEC$$Length|</span></span><br><span class="line">			</span><br><span class="line">		ldr	r0,	=<span class="title">|Load$$EXCEPTION_EXEC$$Base|</span>	<span class="comment">;source	data</span></span><br><span class="line">		ldr	r1,	=<span class="title">|Image$$EXCEPTION_EXEC$$Base|</span>	<span class="comment">;place exception talbe at 0x0</span></span><br><span class="line">		ldr	r2,	=<span class="title">|Image$$EXCEPTION_EXEC$$Length|</span></span><br><span class="line"></span><br><span class="line">exception_cploop</span><br><span class="line">		<span class="keyword">sub	</span>r2,	r2,	<span class="comment">#4</span></span><br><span class="line">		ldmia	r0!,	&#123;r3&#125;</span><br><span class="line">		stmia	r1!,	&#123;r3&#125;</span><br><span class="line">		cmp	r2, <span class="comment">#0</span></span><br><span class="line">		<span class="keyword">bge </span>exception_cploop</span><br><span class="line"></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;;;; start main function in C language</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line">			IMPORT __main</span><br><span class="line"></span><br><span class="line">			<span class="keyword">BL	</span>__main	    <span class="comment">;Don&#x27;t use main() because ......</span></span><br><span class="line">			<span class="keyword">B	</span>.</span><br><span class="line"></span><br><span class="line"><span class="comment">;****************************************************</span></span><br><span class="line"><span class="comment">;*	The function for initializing stack	    *</span></span><br><span class="line"><span class="comment">;****************************************************</span></span><br><span class="line">	IMPORT UserStack</span><br><span class="line">	IMPORT SVCStack</span><br><span class="line">	IMPORT UndefStack</span><br><span class="line">	IMPORT IRQStack</span><br><span class="line">	IMPORT AbortStack</span><br><span class="line">	IMPORT FIQStack</span><br><span class="line"></span><br><span class="line">InitStacks</span><br><span class="line">	<span class="comment">;Don&#x27;t use DRAM,such as	stmfd,ldmfd......</span></span><br><span class="line">	<span class="comment">;SVCstack is initialized before</span></span><br><span class="line">	<span class="comment">;Under toolkit ver 2.50, &#x27;msr cpsr,r1&#x27; can be used instead of &#x27;msr cpsr_cxsf,r1&#x27;</span></span><br><span class="line"></span><br><span class="line">	mrs	r0,cpsr</span><br><span class="line">	<span class="keyword">bic	</span>r0,r0,<span class="comment">#MODEMASK</span></span><br><span class="line">	<span class="keyword">orr	</span>r1,r0,<span class="comment">#UNDEFMODE|NOINT</span></span><br><span class="line">	msr	cpsr_cxsf,r1		<span class="comment">;UndefMode</span></span><br><span class="line">	ldr	<span class="built_in">sp</span>,=UndefStack</span><br><span class="line">				</span><br><span class="line">	<span class="keyword">orr	</span>r1,r0,<span class="comment">#ABORTMODE|NOINT</span></span><br><span class="line">	msr	cpsr_cxsf,r1		<span class="comment">;AbortMode</span></span><br><span class="line">	ldr	<span class="built_in">sp</span>,=AbortStack</span><br><span class="line">			</span><br><span class="line">	<span class="keyword">orr	</span>r1,r0,<span class="comment">#IRQMODE|NOINT</span></span><br><span class="line">	msr	cpsr_cxsf,r1		<span class="comment">;IRQMode</span></span><br><span class="line">	ldr	<span class="built_in">sp</span>,=IRQStack</span><br><span class="line">				</span><br><span class="line">	<span class="keyword">orr	</span>r1,r0,<span class="comment">#FIQMODE|NOINT</span></span><br><span class="line">	msr	cpsr_cxsf,r1		<span class="comment">;FIQMode</span></span><br><span class="line">	ldr	<span class="built_in">sp</span>,=FIQStack</span><br><span class="line">			</span><br><span class="line">	<span class="comment">;bic	r0,r0,#MODEMASK|NOINT</span></span><br><span class="line">	<span class="keyword">orr	</span>r1,r0,<span class="comment">#SVCMODE|NOINT</span></span><br><span class="line">	msr	cpsr_cxsf,r1		<span class="comment">;SVCMode</span></span><br><span class="line">	ldr	<span class="built_in">sp</span>,=SVCStack</span><br><span class="line">			</span><br><span class="line">	<span class="comment">;USER mode is not initialized.</span></span><br><span class="line">	mov	pc,lr <span class="comment">;The LR register may be not valid for	the mode changes.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">;;;;; End of Startup.c</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"></span><br><span class="line">			END</span><br></pre></td></tr></table></figure>
+
+
+
+<p>网上找了半天 也没找到什么合适的解读（甄会选教学资料 看来只能自己啃了</p>
+<p>老师的课件就是从十年前一个不知名的blog上随便抄下来的 真特么负责任</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2022/11/22/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="嵌入式零碎知识整理">http://example.com/2022/11/22/嵌入式零碎知识整理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/IOT/" rel="tag"># IOT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/21/%E6%9C%80%E8%BF%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" rel="prev" title="最近的一些想法">
+                  <i class="fa fa-chevron-left"></i> 最近的一些想法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/12/12/Java%E5%9F%BA%E7%A1%80/" rel="next" title="Java基础">
+                  Java基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"c9502eeebd47da2c09b132e6253e6f2e"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
