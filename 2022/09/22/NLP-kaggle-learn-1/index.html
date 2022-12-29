@@ -28,7 +28,7 @@
 <meta property="og:description" content="learn every day">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-22T08:16:31.000Z">
-<meta property="article:modified_time" content="2022-09-22T08:18:16.644Z">
+<meta property="article:modified_time" content="2022-12-22T10:58:50.210Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="NLP">
 <meta property="article:tag" content="kaggle">
@@ -92,9 +92,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">149</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">47</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">186</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">153</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">191</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -138,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -151,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset"><span class="nav-number">1.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-cleaning"><span class="nav-number">2.</span> <span class="nav-text">Data cleaning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-urls"><span class="nav-number">2.1.</span> <span class="nav-text">Removing urls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-HTML-tags"><span class="nav-number">2.2.</span> <span class="nav-text">Removing HTML tags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Romoving-Emojis"><span class="nav-number">2.3.</span> <span class="nav-text">Romoving Emojis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-punctuations"><span class="nav-number">2.4.</span> <span class="nav-text">Removing punctuations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spelling-Correction"><span class="nav-number">2.5.</span> <span class="nav-text">Spelling Correction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-Glove"><span class="nav-number">3.</span> <span class="nav-text">Use Glove</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,18 +166,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">149</span>
+        <span class="site-state-item-count">153</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -260,9 +261,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-22 16:16:31 / Modified: 16:18:16" itemprop="dateCreated datePublished" datetime="2022-09-22T16:16:31+08:00">2022-09-22</time>
+      <time title="Created: 2022-09-22 16:16:31" itemprop="dateCreated datePublished" datetime="2022-09-22T16:16:31+08:00">2022-09-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-22 18:58:50" itemprop="dateModified" datetime="2022-12-22T18:58:50+08:00">2022-12-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,6 +293,39 @@
     <div class="post-body" itemprop="articleBody">
         <p>learn every day</p>
 <span id="more"></span>
+
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>数据集 <a target="_blank" rel="noopener" href="https://www.kaggle.com/competitions/nlp-getting-started/data">https://www.kaggle.com/competitions/nlp-getting-started/data</a></p>
+<p>学习的话 跟着这个notebook学的</p>
+<p><a target="_blank" rel="noopener" href="https://www.kaggle.com/code/airundatago/basic-eda-cleaning-and-glove/edit">https://www.kaggle.com/code/airundatago/basic-eda-cleaning-and-glove/edit</a></p>
+<h2 id="Data-cleaning"><a href="#Data-cleaning" class="headerlink" title="Data cleaning"></a>Data cleaning</h2><p>直接开始看data cleaning 看看都做了哪些事？</p>
+<blockquote>
+<p>spelling correction,removing punctuations,removing html tags and emojis etc</p>
+</blockquote>
+<p>要针对这些方面进行处理 o.o</p>
+<p>感觉挺经典的可以记录学习一下</p>
+<h3 id="Removing-urls"><a href="#Removing-urls" class="headerlink" title="Removing urls"></a>Removing urls</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">example=<span class="string">&quot;New competition launched :https://www.kaggle.com/c/nlp-getting-started&quot;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">remove_URL</span>(<span class="params">text</span>):</span><br><span class="line">    url = re.<span class="built_in">compile</span>(<span class="string">r&#x27;https?://\S+|www\.\S+&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> url.sub(<span class="string">r&#x27;&#x27;</span>,text)</span><br><span class="line"></span><br><span class="line">remove_URL(example)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;text&#x27;</span>]=df[<span class="string">&#x27;text&#x27;</span>].apply(<span class="keyword">lambda</span> x : remove_URL(x))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Removing-HTML-tags"><a href="#Removing-HTML-tags" class="headerlink" title="Removing HTML tags"></a>Removing HTML tags</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">example = <span class="string">&quot;&quot;&quot;&lt;div&gt;</span></span><br><span class="line"><span class="string">&lt;h1&gt;Real or Fake&lt;/h1&gt;</span></span><br><span class="line"><span class="string">&lt;p&gt;Kaggle &lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;a href=&quot;https://www.kaggle.com/c/nlp-getting-started&quot;&gt;getting started&lt;/a&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">remove_html</span>(<span class="params">text</span>):</span><br><span class="line">    html=re.<span class="built_in">compile</span>(<span class="string">r&#x27;&lt;.*?&gt;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> html.sub(<span class="string">r&#x27;&#x27;</span>,text)</span><br><span class="line"><span class="built_in">print</span>(remove_html(example))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Romoving-Emojis"><a href="#Romoving-Emojis" class="headerlink" title="Romoving Emojis"></a>Romoving Emojis</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Reference : https://gist.github.com/slowkow/7a7f61f495e3dbb7e3d767f97bd7304b</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">remove_emoji</span>(<span class="params">text</span>):</span><br><span class="line">    emoji_pattern = re.<span class="built_in">compile</span>(<span class="string">&quot;[&quot;</span></span><br><span class="line">                           <span class="string">u&quot;\U0001F600-\U0001F64F&quot;</span>  <span class="comment"># emoticons</span></span><br><span class="line">                           <span class="string">u&quot;\U0001F300-\U0001F5FF&quot;</span>  <span class="comment"># symbols &amp; pictographs</span></span><br><span class="line">                           <span class="string">u&quot;\U0001F680-\U0001F6FF&quot;</span>  <span class="comment"># transport &amp; map symbols</span></span><br><span class="line">                           <span class="string">u&quot;\U0001F1E0-\U0001F1FF&quot;</span>  <span class="comment"># flags (iOS)</span></span><br><span class="line">                           <span class="string">u&quot;\U00002702-\U000027B0&quot;</span></span><br><span class="line">                           <span class="string">u&quot;\U000024C2-\U0001F251&quot;</span></span><br><span class="line">                           <span class="string">&quot;]+&quot;</span>, flags=re.UNICODE)</span><br><span class="line">    <span class="keyword">return</span> emoji_pattern.sub(<span class="string">r&#x27;&#x27;</span>, text)</span><br><span class="line"></span><br><span class="line">remove_emoji(<span class="string">&quot;Omg another Earthquake 😔😔&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Removing-punctuations"><a href="#Removing-punctuations" class="headerlink" title="Removing punctuations"></a>Removing punctuations</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">remove_punct</span>(<span class="params">text</span>):</span><br><span class="line">    table=<span class="built_in">str</span>.maketrans(<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>,string.punctuation)</span><br><span class="line">    <span class="keyword">return</span> text.translate(table)</span><br><span class="line"></span><br><span class="line">example=<span class="string">&quot;I am a #king&quot;</span></span><br><span class="line"><span class="built_in">print</span>(remove_punct(example))</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spelling-Correction"><a href="#Spelling-Correction" class="headerlink" title="Spelling Correction"></a>Spelling Correction</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install pyspellchecker</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">correct_spellings</span>(<span class="params">text</span>):</span><br><span class="line">    corrected_text = []</span><br><span class="line">    misspelled_words = spell.unknown(text.split())</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> text.split():</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> misspelled_words:</span><br><span class="line">            corrected_text.append(spell.correction(word))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            corrected_text.append(word)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot; &quot;</span>.join(corrected_text)</span><br><span class="line">        </span><br><span class="line">text = <span class="string">&quot;corect me plese&quot;</span></span><br><span class="line">correct_spellings(text)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Use-Glove"><a href="#Use-Glove" class="headerlink" title="Use Glove"></a>Use Glove</h2><blockquote>
+<p>use GloVe pretrained corpus model to represent our words</p>
+</blockquote>
 
     </div>
 
