@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="内存马持续学习inghttps:&#x2F;&#x2F;su18.org&#x2F;post&#x2F;memory-shell Servlet API 提供的动态注册机制https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_42025798&#x2F;article&#x2F;details&#x2F;120778094 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1252599548343744&#x2F;1304265949708322 一个HTT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java内存马">
+<meta property="og:url" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="内存马持续学习inghttps:&#x2F;&#x2F;su18.org&#x2F;post&#x2F;memory-shell Servlet API 提供的动态注册机制https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_42025798&#x2F;article&#x2F;details&#x2F;120778094 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1252599548343744&#x2F;1304265949708322 一个HTT">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/167717481383011.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138241.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138242.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138253.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138254.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138255.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138256.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138257.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138258.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138259.png">
+<meta property="og:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/167717481382510.png">
+<meta property="article:published_time" content="2023-02-20T18:23:22.000Z">
+<meta property="article:modified_time" content="2023-02-23T17:54:47.853Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="Java内存马">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/167717481383011.png">
+
+
+<link rel="canonical" href="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/","path":"2023/02/21/Java内存马/","title":"Java内存马"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java内存马 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">154</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">52</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">197</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%A9%AC%E6%8C%81%E7%BB%AD%E5%AD%A6%E4%B9%A0ing"><span class="nav-number">1.</span> <span class="nav-text">内存马持续学习ing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet-API-%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">Servlet API 提供的动态注册机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.1.</span> <span class="nav-text">Servlet版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">动态注册特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%A9%AC%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.3.</span> <span class="nav-text">内存马实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Filter%E5%86%85%E5%AD%98%E9%A9%AC"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Filter内存马</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#servlet%E5%86%85%E5%AD%98%E9%A9%AC"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">servlet内存马</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Listener%E5%86%85%E5%AD%98%E9%A9%AC"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Listener内存马</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">197</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">154</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java内存马 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java内存马
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-21 02:23:22" itemprop="dateCreated datePublished" datetime="2023-02-21T02:23:22+08:00">2023-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-02-24 01:54:47" itemprop="dateModified" datetime="2023-02-24T01:54:47+08:00">2023-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JAVASEC/" itemprop="url" rel="index"><span itemprop="name">JAVASEC</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <span id="more"></span>
+
+<h1 id="内存马持续学习ing"><a href="#内存马持续学习ing" class="headerlink" title="内存马持续学习ing"></a>内存马持续学习ing</h1><p><a target="_blank" rel="noopener" href="https://su18.org/post/memory-shell">https://su18.org/post/memory-shell</a></p>
+<h2 id="Servlet-API-提供的动态注册机制"><a href="#Servlet-API-提供的动态注册机制" class="headerlink" title="Servlet API 提供的动态注册机制"></a><strong>Servlet API 提供的动态注册机制</strong></h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42025798/article/details/120778094">https://blog.csdn.net/qq_42025798/article/details/120778094</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304265949708322">https://www.liaoxuefeng.com/wiki/1252599548343744/1304265949708322</a></p>
+<p>一个HTTP Server本质上是一个TCP服务器</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/167717481383011.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WebServlet注解表示这是一个Servlet，并映射到地址/:@WebServlet(urlPatterns = &quot;/&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">// 设置响应类型:</span></span><br><span class="line">        resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">        <span class="comment">// 获取输出流:</span></span><br><span class="line">        <span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> resp.getWriter();</span><br><span class="line">        <span class="comment">// 写入响应:</span></span><br><span class="line">        pw.write(<span class="string">&quot;&lt;h1&gt;Hello, world!&lt;/h1&gt;&quot;</span>);</span><br><span class="line">        <span class="comment">// 最后不要忘记flush强制输出:</span></span><br><span class="line">        pw.flush();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>版本问题</p>
+<h3 id="Servlet版本"><a href="#Servlet版本" class="headerlink" title="Servlet版本"></a>Servlet版本</h3><p>要务必注意<code>servlet-api</code>的版本。4.0及之前的<code>servlet-api</code>由Oracle官方维护，引入的依赖项是<code>javax.servlet:javax.servlet-api</code>，编写代码时引入的包名为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import javax.servlet.*;</span><br></pre></td></tr></table></figure>
+
+<p>而5.0及以后的<code>servlet-api</code>由Eclipse开源社区维护，引入的依赖项是<code>jakarta.servlet:jakarta.servlet-api</code>，编写代码时引入的包名为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import jakarta.servlet.*;</span><br></pre></td></tr></table></figure>
+
+<p>教程采用最新的<code>jakarta.servlet:5.0.0</code>版本，但对于很多仅支持Servlet 4.0版本的框架来说，例如Spring 5，我们就只能使用<code>javax.servlet:4.0.0</code>版本，这一点针对不同项目要特别注意。</p>
+<table>
+<thead>
+<tr>
+<th>Servlet Spec</th>
+<th>JSP Spec</th>
+<th>EL Spec</th>
+<th>WebSocket Spec</th>
+<th>JASPIC Spec</th>
+<th>Apache Tomcat version</th>
+<th>Actual release revision</th>
+<th>Supported Java Versions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4</td>
+<td>TBD (2.4?)</td>
+<td>TBD (3.1?)</td>
+<td>TBD (1.2?)</td>
+<td>1.1</td>
+<td>9.0.x</td>
+<td>9.0.0.M9 (alpha)</td>
+<td>8 and later</td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>2.3</td>
+<td>3</td>
+<td>1.1</td>
+<td>1.1</td>
+<td>8.5.x</td>
+<td>8.5.4</td>
+<td>7 and later</td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>2.3</td>
+<td>3</td>
+<td>1.1</td>
+<td>N/A</td>
+<td>8.0.x (superseded)</td>
+<td>8.0.35 (superseded)</td>
+<td>7 and later</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.2</td>
+<td>2.2</td>
+<td>1.1</td>
+<td>N/A</td>
+<td>7.0.x</td>
+<td>7.0.70</td>
+<td>6 and later (7 and later for WebSocket)</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>2.1</td>
+<td>2.1</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>6.0.x</td>
+<td>6.0.45</td>
+<td>5 and later</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>2</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>5.5.x (archived)</td>
+<td>5.5.36 (archived)</td>
+<td>1.4 and later</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>1.2</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>4.1.x (archived)</td>
+<td>4.1.40 (archived)</td>
+<td>1.3 and later</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>1.1</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>3.3.x (archived)</td>
+<td>3.3.2 (archived)</td>
+<td>1.1 and later</td>
+</tr>
+</tbody></table>
+<h3 id="动态注册特性"><a href="#动态注册特性" class="headerlink" title="动态注册特性"></a>动态注册特性</h3><p>这时候 有了几个疑问</p>
+<ol>
+<li>什么是动态注册</li>
+<li>3.0有，那以后是没有了吗</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/servlet2/filter.html">http://c.biancheng.net/servlet2/filter.html</a></p>
+<p>只能在初始化时进行注册。在运行时为了安全原因，无法完成注册。</p>
+<p>tomcat9 已经使用 servlet 4.0 了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;T <span class="keyword">extends</span> <span class="title class_">Filter</span>&gt;createFilter(Java.lang.Class&lt;T&gt; clazz)↳</span><br><span class="line">&lt;T <span class="keyword">extends</span> <span class="title class_">java</span>.util.EventListener&gt; createListener(java.lang.Class&lt;T&gt; clazz)</span><br><span class="line">&lt;T <span class="keyword">extends</span> <span class="title class_">Servlet</span>&gt; createServlet(java.lang.Class&lt;T&gt; clazz)</span><br></pre></td></tr></table></figure>
+
+<p>Servlet、Listener、Filter 由 <code>javax.servlet.ServletContext</code> 去加载，无论是使用 xml 配置文件还是使用 Annotation 注解配置，均由 Web 容器进行初始化，读取其中的配置属性，然后向容器中进行注册。</p>
+<p>Servlet 3.0 API 允许使 ServletContext 用动态进行注册，在 Web 容器初始化的时候（即建立ServletContext 对象的时候）进行动态注册。</p>
+<p>先来看一个例子 我先创建一个 servlet 但是并没有注解或者去写入web.xml 进行映射</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138241.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.run.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FirstServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">        <span class="type">PrintWriter</span> <span class="variable">writer</span> <span class="operator">=</span> response.getWriter();</span><br><span class="line">        writer.println(<span class="string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;First servlet&quot;</span> +</span><br><span class="line">                <span class="string">&quot;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&quot;</span> + name);</span><br><span class="line">        writer.println(<span class="string">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们用listener来注册这个 servlet</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.run.listener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebListener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.run.servlet.FirstServlet;</span><br><span class="line"><span class="meta">@WebListener</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DynRegListener</span> <span class="keyword">implements</span> <span class="title class_">ServletContextListener</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">contextDestroyed</span><span class="params">(ServletContextEvent arg0)</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">contextInitialized</span><span class="params">(ServletContextEvent sce)</span> &#123;</span><br><span class="line">        <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> sce.getServletContext() ;</span><br><span class="line">        <span class="type">Servlet</span> <span class="variable">firstServlet</span> <span class="operator">=</span> <span class="literal">null</span> ;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            firstServlet = servletContext.createServlet(FirstServlet.class) ;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ServletException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(firstServlet != <span class="literal">null</span> &amp;&amp; firstServlet <span class="keyword">instanceof</span> FirstServlet)&#123;</span><br><span class="line">            ((FirstServlet) firstServlet).setName(<span class="string">&quot;Dynamically registered servlet&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ServletRegistration.<span class="type">Dynamic</span> <span class="variable">dynamic</span> <span class="operator">=</span> servletContext.addServlet(<span class="string">&quot;firstServlet&quot;</span>, firstServlet) ;</span><br><span class="line">        System.out.println(<span class="string">&quot;creating mapping.....&quot;</span>);</span><br><span class="line">        dynamic.addMapping(<span class="string">&quot;/create&quot;</span>) ;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后访问 /create 就可以发现 servlet 注册成功了</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138242.png" alt="img"></p>
+<h3 id="内存马实现"><a href="#内存马实现" class="headerlink" title="内存马实现"></a>内存马实现</h3><h4 id="Filter内存马"><a href="#Filter内存马" class="headerlink" title="Filter内存马"></a>Filter内存马</h4><p>正常filter创建</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">filterDemo</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Filter 初始化创建&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行过滤操作&quot;</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注册一下</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138253.png" alt="img"></p>
+<p>可以看出 初始化在容器start的时候</p>
+<p>之后便会对访问执行过滤</p>
+<p>那么怎么实现内存马呢</p>
+<p><a target="_blank" rel="noopener" href="http://wjlshare.com/archives/1529">http://wjlshare.com/archives/1529</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/YhiOHWnqXVqvLNH7XSxC9w">https://mp.weixin.qq.com/s/YhiOHWnqXVqvLNH7XSxC9w</a></p>
+<p>跟一下源码看一看如何添加一个filter</p>
+<p>打一下断点</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138254.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">doFilter:<span class="number">17</span>, filterDemo (com.run.filter)</span><br><span class="line">internalDoFilter:<span class="number">193</span>, ApplicationFilterChain (org.apache.catalina.core)</span><br><span class="line">doFilter:<span class="number">166</span>, ApplicationFilterChain (org.apache.catalina.core)</span><br><span class="line">invoke:<span class="number">177</span>, StandardWrapperValve (org.apache.catalina.core)</span><br><span class="line">invoke:<span class="number">97</span>, StandardContextValve (org.apache.catalina.core)</span><br><span class="line">invoke:<span class="number">543</span>, AuthenticatorBase (org.apache.catalina.authenticator)</span><br><span class="line">invoke:<span class="number">135</span>, StandardHostValve (org.apache.catalina.core)</span><br><span class="line">invoke:<span class="number">92</span>, ErrorReportValve (org.apache.catalina.valves)</span><br><span class="line">invoke:<span class="number">698</span>, AbstractAccessLogValve (org.apache.catalina.valves)</span><br><span class="line">invoke:<span class="number">78</span>, StandardEngineValve (org.apache.catalina.core)</span><br><span class="line">service:<span class="number">367</span>, CoyoteAdapter (org.apache.catalina.connector)</span><br><span class="line">service:<span class="number">639</span>, Http11Processor (org.apache.coyote.http11)</span><br><span class="line">process:<span class="number">65</span>, AbstractProcessorLight (org.apache.coyote)</span><br><span class="line">process:<span class="number">885</span>, AbstractProtocol$ConnectionHandler (org.apache.coyote)</span><br><span class="line">doRun:<span class="number">1688</span>, NioEndpoint$SocketProcessor (org.apache.tomcat.util.net)</span><br><span class="line">run:<span class="number">49</span>, SocketProcessorBase (org.apache.tomcat.util.net)</span><br><span class="line">runWorker:<span class="number">1191</span>, ThreadPoolExecutor (org.apache.tomcat.util.threads)</span><br><span class="line">run:<span class="number">659</span>, ThreadPoolExecutor$Worker (org.apache.tomcat.util.threads)</span><br><span class="line">run:<span class="number">61</span>, TaskThread$WrappingRunnable (org.apache.tomcat.util.threads)</span><br><span class="line">run:<span class="number">750</span>, Thread (java.lang)</span><br></pre></td></tr></table></figure>
+
+<p>但是调试时发现进不去源码</p>
+<blockquote>
+<p>使用idea开发工具调试代码的时候，如果是java的web项目，使用的是tomcat作为web容器，打断点debug调试跟踪，当跟踪到org.apache.catalina包下的时候，则无法进入，这是因为idea运行的tomcat是通过插件的方式集成的，tomcat里面的lib包不再项目的依赖路径中，所以不能跟踪进去</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/196087.htm">https://www.jb51.net/article/196087.htm</a></p>
+<p>我用的tomcat是 8.5.85 </p>
+<p>这里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span></span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-catalina<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span></span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;<span class="name">version</span>&gt;</span>8.5.85<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span></span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span></span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后重新打包后就可以开心地调试了</p>
+<p>直接来看这个 StanardWrapperValue</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138255.png" alt="img"></p>
+<p>看看其中的 filterChain   跳到源码看一下怎么调用的</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138256.png" alt="img"></p>
+<p>查看createFilterChain 源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> ApplicationFilterChain <span class="title function_">createFilterChain</span><span class="params">(ServletRequest request, Wrapper wrapper, Servlet servlet)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (servlet == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">ApplicationFilterChain</span> <span class="variable">filterChain</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (request <span class="keyword">instanceof</span> Request) &#123;</span><br><span class="line">            <span class="type">Request</span> <span class="variable">req</span> <span class="operator">=</span> (Request)request;</span><br><span class="line">            <span class="keyword">if</span> (Globals.IS_SECURITY_ENABLED) &#123;</span><br><span class="line">                filterChain = <span class="keyword">new</span> <span class="title class_">ApplicationFilterChain</span>();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                filterChain = (ApplicationFilterChain)req.getFilterChain();</span><br><span class="line">                <span class="keyword">if</span> (filterChain == <span class="literal">null</span>) &#123;</span><br><span class="line">                    filterChain = <span class="keyword">new</span> <span class="title class_">ApplicationFilterChain</span>();</span><br><span class="line">                    req.setFilterChain(filterChain);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            filterChain = <span class="keyword">new</span> <span class="title class_">ApplicationFilterChain</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        filterChain.setServlet(servlet);</span><br><span class="line">        filterChain.setServletSupportsAsync(wrapper.isAsyncSupported());</span><br><span class="line">        <span class="type">StandardContext</span> <span class="variable">context</span> <span class="operator">=</span> (StandardContext)wrapper.getParent();</span><br><span class="line">        FilterMap[] filterMaps = context.findFilterMaps();</span><br><span class="line">        <span class="keyword">if</span> (filterMaps != <span class="literal">null</span> &amp;&amp; filterMaps.length != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">DispatcherType</span> <span class="variable">dispatcher</span> <span class="operator">=</span> (DispatcherType)request.getAttribute(<span class="string">&quot;org.apache.catalina.core.DISPATCHER_TYPE&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">requestPath</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="type">Object</span> <span class="variable">attribute</span> <span class="operator">=</span> request.getAttribute(<span class="string">&quot;org.apache.catalina.core.DISPATCHER_REQUEST_PATH&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (attribute != <span class="literal">null</span>) &#123;</span><br><span class="line">                requestPath = attribute.toString();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">servletName</span> <span class="operator">=</span> wrapper.getName();</span><br><span class="line">            FilterMap[] var10 = filterMaps;</span><br><span class="line">            <span class="type">int</span> <span class="variable">var11</span> <span class="operator">=</span> filterMaps.length;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> var12;</span><br><span class="line">            FilterMap filterMap;</span><br><span class="line">            ApplicationFilterConfig filterConfig;</span><br><span class="line">            <span class="keyword">for</span>(var12 = <span class="number">0</span>; var12 &lt; var11; ++var12) &#123;</span><br><span class="line">                filterMap = var10[var12];</span><br><span class="line">                <span class="keyword">if</span> (matchDispatcher(filterMap, dispatcher) &amp;&amp; matchFiltersURL(filterMap, requestPath)) &#123;</span><br><span class="line">                    filterConfig = (ApplicationFilterConfig)context.findFilterConfig(filterMap.getFilterName());</span><br><span class="line">                    <span class="keyword">if</span> (filterConfig != <span class="literal">null</span>) &#123;</span><br><span class="line">                        filterChain.addFilter(filterConfig);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var10 = filterMaps;</span><br><span class="line">            var11 = filterMaps.length;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(var12 = <span class="number">0</span>; var12 &lt; var11; ++var12) &#123;</span><br><span class="line">                filterMap = var10[var12];</span><br><span class="line">                <span class="keyword">if</span> (matchDispatcher(filterMap, dispatcher) &amp;&amp; matchFiltersServlet(filterMap, servletName)) &#123;</span><br><span class="line">                    filterConfig = (ApplicationFilterConfig)context.findFilterConfig(filterMap.getFilterName());</span><br><span class="line">                    <span class="keyword">if</span> (filterConfig != <span class="literal">null</span>) &#123;</span><br><span class="line">                        filterChain.addFilter(filterConfig);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> filterChain;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> filterChain;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>filterConfig、filterMaps、filterDefs 的关系理一下</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138257.png" alt="img"></p>
+<p>上面的代码很明显是要把 filterMaps 塞到 filterChain里边去</p>
+<p>看看 filterMaps 都有啥 FilterMaps则对应了web.xml中配置的<code>&lt;filter-mapping&gt;</code>，里面代表了各个filter之间的调用顺序。</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138258.png" alt="img"></p>
+<p>搜一下filterChain 就可以看到 其实就是里面具体的东西</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/16771748138259.png" alt="img"></p>
+<p>注入内存马实际上是模拟了在web.xml中写配置的过程，两者是一一对应的。其中filterDefs存放了filter的定义，比如名称跟对应的类，对应web.xml中如下的内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;    </span><br><span class="line">&lt;filter-name&gt;filterDemo&lt;/filter-name&gt;    </span><br><span class="line">&lt;filter-class&gt;com.run.filterDemo&lt;/filter-class&gt;</span><br><span class="line">&lt;/filter&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Okk 那要去看一下 filterDefs</p>
+<p>综上所述，如果要实现filter型内存马要经过如下步骤： </p>
+<ul>
+<li>创建恶意filter </li>
+<li>用filterDef对filter进行封装 </li>
+<li>将filterDef添加到filterDefs跟filterConfigs中 </li>
+<li>创建一个新的filterMap将URL跟filter进行绑定，并添加到filterMaps中 要注意的是，因为filter生效会有一个先后顺序，所以一般来讲我们还需要把我们的filter给移动到FilterChain的第一位去。</li>
+</ul>
+<p>结果有个地方卡了半天 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44575680/article/details/89449581">https://blog.csdn.net/qq_44575680/article/details/89449581</a></p>
+<p>乌鱼子</p>
+<p>Nice ~~~</p>
+<p><img src="/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/167717481382510.png" alt="img"></p>
+<p>现在是2月24日1点52 终于实现人生第一个内存马</p>
+<h4 id="servlet内存马"><a href="#servlet内存马" class="headerlink" title="servlet内存马"></a>servlet内存马</h4><h4 id="Listener内存马"><a href="#Listener内存马" class="headerlink" title="Listener内存马"></a>Listener内存马</h4>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2023/02/21/Java%E5%86%85%E5%AD%98%E9%A9%AC/" title="Java内存马">http://example.com/2023/02/21/Java内存马/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java%E5%86%85%E5%AD%98%E9%A9%AC/" rel="tag"># Java内存马</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/30/workDayDayup/" rel="prev" title="workDayDayup">
+                  <i class="fa fa-chevron-left"></i> workDayDayup
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/02/22/JSONP%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" rel="next" title="JSONP相关知识学习">
+                  JSONP相关知识学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"ceaae437a6a877100bd34b8a2430200d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
