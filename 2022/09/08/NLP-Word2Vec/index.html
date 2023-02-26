@@ -29,8 +29,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/08/NLP-Word2Vec/image-20220915173131282.png">
 <meta property="og:image" content="http://example.com/2022/09/08/NLP-Word2Vec/image-20220915173513382.png">
+<meta property="og:image" content="http://example.com/2022/09/08/NLP-Word2Vec/image-20230226140226049.png">
+<meta property="og:image" content="http://example.com/2022/09/08/NLP-Word2Vec/image-20230227012711191.png">
 <meta property="article:published_time" content="2022-09-08T08:31:57.000Z">
-<meta property="article:modified_time" content="2022-12-22T10:25:34.020Z">
+<meta property="article:modified_time" content="2023-02-26T18:07:21.345Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="word2vec">
 <meta property="article:tag" content="NLP">
@@ -95,9 +97,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">154</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">52</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">197</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">156</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">54</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">200</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -154,7 +156,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">发展进程</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">发展进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#word-2-index-index-2-word-word-2-onehot"><span class="nav-number">2.1.1.</span> <span class="nav-text">word_2_index,index_2_word,word_2_onehot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBOW-amp-skip-gram"><span class="nav-number">2.1.2.</span> <span class="nav-text">CBOW &amp; skip-gram</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code"><span class="nav-number">2.2.</span> <span class="nav-text">code</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -169,18 +171,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">197</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">154</span>
+        <span class="site-state-item-count">156</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -272,7 +274,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-22 18:25:34" itemprop="dateModified" datetime="2022-12-22T18:25:34+08:00">2022-12-22</time>
+      <time title="Modified: 2023-02-27 02:07:21" itemprop="dateModified" datetime="2023-02-27T02:07:21+08:00">2023-02-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -306,6 +308,28 @@
 <p>时间线  在2013年  计算速度得到了极大地提升 所以变得流行</p>
 <p><img src="/2022/09/08/NLP-Word2Vec/image-20220915173513382.png" alt="image-20220915173513382"></p>
 <p>这里直接上代码了</p>
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><p><a target="_blank" rel="noopener" href="https://github.com/shouxieai/word_2_vec">https://github.com/shouxieai/word_2_vec</a></p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="word-2-index-index-2-word-word-2-onehot"><a href="#word-2-index-index-2-word-word-2-onehot" class="headerlink" title="word_2_index,index_2_word,word_2_onehot"></a>word_2_index,index_2_word,word_2_onehot</h4><p>来区别一下几个概念</p>
+<p><img src="/2022/09/08/NLP-Word2Vec/image-20230226140226049.png" alt="image-20230226140226049"></p>
+<h4 id="CBOW-amp-skip-gram"><a href="#CBOW-amp-skip-gram" class="headerlink" title="CBOW &amp; skip-gram"></a>CBOW &amp; skip-gram</h4><p>简单简介看这个link <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37477611">https://zhuanlan.zhihu.com/p/37477611</a></p>
+<p><img src="/2022/09/08/NLP-Word2Vec/image-20230227012711191.png" alt="image-20230227012711191"></p>
+<p>skip-gram 就是<strong>用中心词来预测周围的词</strong>。</p>
+<p>word-size 就是统计出来总共不重复的词向量个数 embedding-num 就是选择用多少维向量来表示一个词</p>
+<p>比如今天天气真好这句话  用天气去预测真好</p>
+<p>word –&gt; vec 的核心思想 一个高维的onehot x 一个矩阵 –&gt; 得到低纬的矩阵，实现降维</p>
+<p>w1，w2随机生成 通过损失函数迭代优化</p>
+<p>通过softmax归一化 得到预测值</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><p>首先切词  用jeiba切一下然后删除停用词 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_stop_words</span>(<span class="params">file=<span class="string">&quot;stopwords.txt&quot;</span></span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file,<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">return</span> f.read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cut_words</span>(<span class="params">file=<span class="string">&quot;数学原始数据.csv&quot;</span></span>):</span><br><span class="line">    stop_words = load_stop_words()</span><br><span class="line"></span><br><span class="line">    result = []</span><br><span class="line">    all_data = pd.read_csv(file,encoding=<span class="string">&quot;gbk&quot;</span>,names=[<span class="string">&quot;data&quot;</span>])[<span class="string">&quot;data&quot;</span>]</span><br><span class="line">    <span class="keyword">for</span> words <span class="keyword">in</span> all_data:</span><br><span class="line">        c_words = jieba.lcut(words)</span><br><span class="line">        result.append([word <span class="keyword">for</span> word <span class="keyword">in</span> c_words <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stop_words])</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+
+
+<p>获取上面三个值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_dict</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="comment"># 重复词过滤</span></span><br><span class="line">    index_2_word = []</span><br><span class="line">    <span class="keyword">for</span> words <span class="keyword">in</span> data:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> index_2_word:</span><br><span class="line">                index_2_word.append(word)</span><br><span class="line"></span><br><span class="line">    word_2_index = &#123;word:index <span class="keyword">for</span> index,word <span class="keyword">in</span> <span class="built_in">enumerate</span>(index_2_word)&#125;</span><br><span class="line">    word_size = <span class="built_in">len</span>(word_2_index)</span><br><span class="line"></span><br><span class="line">    word_2_onehot = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> word,index <span class="keyword">in</span> word_2_index.items():</span><br><span class="line">        one_hot = np.zeros((<span class="number">1</span>,word_size))</span><br><span class="line">        one_hot[<span class="number">0</span>,index] = <span class="number">1</span></span><br><span class="line">        word_2_onehot[word] = one_hot</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> word_2_index,index_2_word,word_2_onehot</span><br></pre></td></tr></table></figure>
+
+<p>训练过程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    data = cut_words()</span><br><span class="line">    word_2_index, index_2_word, word_2_onehot = get_dict(data)</span><br><span class="line">    </span><br><span class="line">    word_size = <span class="built_in">len</span>(word_2_index)</span><br><span class="line">    embedding_num = <span class="number">100</span></span><br><span class="line">    lr = <span class="number">0.01</span></span><br><span class="line">    epoch = <span class="number">10</span></span><br><span class="line">    n_gram = <span class="number">3</span> <span class="comment"># 相关词</span></span><br><span class="line">    </span><br><span class="line">    w1 = np.random.normal(-<span class="number">1</span>,<span class="number">1</span>,size=(word_size,embedding_num))</span><br><span class="line">    w2 = np.random.normal(-<span class="number">1</span>,<span class="number">1</span>,size=(embedding_num,word_size))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(epoch):</span><br><span class="line">        <span class="keyword">for</span> words <span class="keyword">in</span> data:</span><br><span class="line">            <span class="keyword">for</span> n_index, now_word <span class="keyword">in</span> <span class="built_in">enumerate</span>(words):</span><br><span class="line">                now_word_onehot = word_2_onehot[now_word]</span><br><span class="line">                other_words = words[<span class="built_in">max</span>(n_index-n_gram,<span class="number">0</span>):n_index] + words[n_index+<span class="number">1</span>:n_index+n_gram+<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">for</span> other_word <span class="keyword">in</span> other_words:</span><br><span class="line">                    other_word_onehot = word_2_onehot[other_word]</span><br><span class="line">                    </span><br><span class="line">                    hidden = now_word_onehot @ w1</span><br><span class="line">                    p = hidden @ w2</span><br><span class="line">                    pre = softmax(p)</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># loss = -np.sum(other_word_onehot * np.log(pre))</span></span><br><span class="line">                    </span><br><span class="line">                    G2 = pre -other_word_onehot</span><br><span class="line">                    delta_w2 = hidden.T @ G2</span><br><span class="line">                    G1 = G2 @ w2.T</span><br><span class="line">                    delta_w1 = now_word_onehot.T @ G1</span><br><span class="line">                    </span><br><span class="line">                    w1 -= lr * delta_w1</span><br><span class="line">                    w2 -= lr * delta_w2</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
