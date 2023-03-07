@@ -28,8 +28,13 @@
 <meta property="og:description" content="目前在实习中 平时也想整点花活 比如 当然不是 哈哈 这篇文章源于面试时 被问到的几个问题  平时有没有做过一些ai和web相结合的尝试 比如webshell检测 如果让你进行webshell检测 你会怎么做 从NLP方面 说一些简单的NLP算法 如何从特征工程上进行webshell的检测  ok 来次够">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230226124713488.png">
+<meta property="og:image" content="http://example.com/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228001241925.png">
+<meta property="og:image" content="http://example.com/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228001704913.png">
+<meta property="og:image" content="http://example.com/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228003111332.png">
+<meta property="og:image" content="http://example.com/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228003309209.png">
+<meta property="og:image" content="http://example.com/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228005515143.png">
 <meta property="article:published_time" content="2023-02-26T04:28:18.000Z">
-<meta property="article:modified_time" content="2023-02-26T05:11:01.561Z">
+<meta property="article:modified_time" content="2023-02-27T16:56:51.538Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -93,9 +98,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">156</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">54</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">200</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">161</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">58</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">204</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -152,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number"></span> <span class="nav-text">学习笔记</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -167,18 +172,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">200</span>
+          <span class="site-state-item-count">204</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">156</span>
+        <span class="site-state-item-count">161</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -262,9 +267,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-02-26 12:28:18 / Modified: 13:11:01" itemprop="dateCreated datePublished" datetime="2023-02-26T12:28:18+08:00">2023-02-26</time>
+      <time title="Created: 2023-02-26 12:28:18" itemprop="dateCreated datePublished" datetime="2023-02-26T12:28:18+08:00">2023-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-02-28 00:56:51" itemprop="dateModified" datetime="2023-02-28T00:56:51+08:00">2023-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,10 +310,39 @@
 <span id="more"></span>
 
 <p>首先想要学习 肯定要整点资源</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>cloud.tencent.com<span class="regexp">/developer/</span>article/<span class="number">2145902</span></span><br><span class="line">https:<span class="regexp">//gi</span>thub.com<span class="regexp">/inspiringz/</span>XDet</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>cloud.tencent.com<span class="regexp">/developer/</span>article/<span class="number">2145902</span></span><br><span class="line">https:<span class="regexp">//gi</span>thub.com<span class="regexp">/inspiringz/</span>XDet</span><br><span class="line">https:<span class="regexp">//</span>security.tencent.com<span class="regexp">/index.php/</span>blog<span class="regexp">/msg/</span><span class="number">152</span></span><br></pre></td></tr></table></figure>
 
-<p>然后 从哪入手呢 O.O</p>
-<p>还是先从xss入手吧 emmm</p>
+
+
+<h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><blockquote>
+<p>今天在路上 同事liang少送我回公寓 我简单咨询了一下waf方面的问题  突然想到之前看的一个腾讯的视频收益很深 这里重新看一遍 记记笔记</p>
+</blockquote>
+<p>首先，谈到的是webshell的数量 根据腾讯云的统计</p>
+<p><strong>最多的还是php 73%，然后才是jsp 15%  ， 然后asp 4%</strong></p>
+<p>传统检测方案</p>
+<ul>
+<li>规则特征 php脚本无需编译，容易不断修改绕过特征</li>
+<li>机器学习 线上误报不可控，对抗难度低</li>
+<li>情报云查 检测能力滞后，脚本变化容易</li>
+</ul>
+<p>提出腾讯自己的tav模型</p>
+<p>静态分析+虚拟执行+动态分析</p>
+<ol>
+<li>静态污点分析 （代码词法语法解析，转化为IR，静态污点分析</li>
+<li>虚拟执行  （实现php代码虚拟执行，还原混淆代码，脱壳解密</li>
+<li>动态污点分析 （虚拟执行，动态污点技术，将类RASP带入污点扫描</li>
+</ol>
+<img src="/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228001241925.png" alt="image-20230228001241925" style="zoom:80%;">
+
+
+
+<p>这块可能涉及到编译原理 俺妹学过 寄</p>
+<p><img src="/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228001704913.png" alt="image-20230228001704913"></p>
+<p>他说他能实现毫秒级的检测</p>
+<p><img src="/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228003111332.png" alt="image-20230228003111332"></p>
+<p><img src="/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228003309209.png" alt="image-20230228003309209"></p>
+<p>总的</p>
+<p><img src="/2023/02/26/webshell%E6%A3%80%E6%B5%8B-1/image-20230228005515143.png" alt="image-20230228005515143"></p>
 
     </div>
 
@@ -368,8 +408,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/16/codeql/" rel="next" title="codeql">
-                  codeql <i class="fa fa-chevron-right"></i>
+                <a href="/2023/03/05/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="next" title="JDBC反序列化">
+                  JDBC反序列化 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
