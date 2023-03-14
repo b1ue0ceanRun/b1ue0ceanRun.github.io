@@ -28,7 +28,7 @@
 <meta property="og:description" content="实习过程中玩玩好玩的(下班后 别引起误会 2333) Automatic Generation of Injection Codes using Genetic Algorithm | MBSD Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-07T18:08:02.000Z">
-<meta property="article:modified_time" content="2023-03-14T15:21:52.867Z">
+<meta property="article:modified_time" content="2023-03-14T15:45:27.859Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="机器学习与xss攻击结合">
 <meta name="twitter:card" content="summary">
@@ -92,8 +92,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">154</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">56</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">193</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">57</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">192</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88%E6%95%B4%E4%B8%80%E4%B8%8B%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">先整一下思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E4%BB%94%E7%BB%86%E7%A0%94%E7%A9%B6%E6%96%87%E7%AB%A0%E4%B9%8B%E5%89%8D%E6%83%B3%E6%83%B3%E5%A4%A7%E6%A6%82%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">没仔细研究文章之前想想大概是什么样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E5%9B%9E%E5%BF%86%E4%B8%80%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text">小回忆一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">阅读笔记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88%E6%95%B4%E4%B8%80%E4%B8%8B%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">先整一下思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E4%BB%94%E7%BB%86%E7%A0%94%E7%A9%B6%E6%96%87%E7%AB%A0%E4%B9%8B%E5%89%8D%E6%83%B3%E6%83%B3%E5%A4%A7%E6%A6%82%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">没仔细研究文章之前想想大概是什么样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E5%9B%9E%E5%BF%86%E4%B8%80%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text">小回忆一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">阅读笔记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E6%83%B3%E6%B3%95%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">新的想法？</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,13 +165,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -268,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-14 23:21:52" itemprop="dateModified" datetime="2023-03-14T23:21:52+08:00">2023-03-14</time>
+      <time title="Modified: 2023-03-14 23:45:27" itemprop="dateModified" datetime="2023-03-14T23:45:27+08:00">2023-03-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -326,9 +326,9 @@
 <blockquote>
 <p> 在本次验证中，我们将评价函数设计为以下三个评价标准的组合。</p>
 <ul>
-<li>HTML语法的正确性<br>使用HTML检查工具来评估个人是否具有正确的HTML语法，<br>根据检查结果中警告和错误的数量计算分数。</li>
-<li>脚本的可执行性<br>观察个人（脚本）在浏览器上的可执行性。记住，有一些脚本是在鼠标和键盘事件上执行的。<br>根据脚本是否可以执行来计算分数。</li>
-<li>被WAF阻止或允许<br>在虚拟Web应用程序前部署一个WAF。<br>将包含个人（脚本）的HTTP请求发送到虚拟Web应用程序并观察它们是否被WAF阻止或允许。<br>根据请求是否被允许来计算分数是否被阻止。</li>
+<li>HTML语法的正确性<br>使用HTML检查工具来评估个人是否具有正确的HTML语法，<br> 根据检查结果中警告和错误的数量计算分数。</li>
+<li>脚本的可执行性<br>观察个人（脚本）在浏览器上的可执行性。记住，有一些脚本是在鼠标和键盘事件上执行的。<br> 根据脚本是否可以执行来计算分数。</li>
+<li>被WAF阻止或允许<br>在虚拟Web应用程序前部署一个WAF。<br> 将包含个人（脚本）的HTTP请求发送到虚拟Web应用程序并观察它们是否被WAF阻止或允许。<br> 根据请求是否被允许来计算分数是否被阻止。</li>
 </ul>
 </blockquote>
 <p>好家伙 这第三点真的有用吗 emmmmmmm 我要辣么多payload干什么</p>
@@ -336,6 +336,7 @@
 <p>不过可能在模型神奇的正则过滤下会有奇效？？？</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>emmmmm 总之 并不认为这项研究有太大的意义</p>
 <p>反观上面的手动爆破也许更合适</p>
+<h3 id="新的想法？"><a href="#新的想法？" class="headerlink" title="新的想法？"></a>新的想法？</h3><p>暂时没有 这玩意想深挖感觉不能靠fuzz 还是要靠手活</p>
 
     </div>
 
