@@ -183,12 +183,12 @@
     <link href="http://example.com/2023/03/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8Exss%E6%94%BB%E5%87%BB%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/"/>
     <id>http://example.com/2023/03/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8Exss%E6%94%BB%E5%87%BB%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/</id>
     <published>2023-03-07T18:08:02.000Z</published>
-    <updated>2023-03-13T14:33:22.487Z</updated>
+    <updated>2023-03-14T15:21:52.867Z</updated>
     
-    <content type="html"><![CDATA[<p>实习过程中玩玩好玩的</p><p><a href="https://www.mbsd.jp/blog/20170921.html">Automatic Generation of Injection Codes using Genetic Algorithm | MBSD Blog</a></p><span id="more"></span><p>再开始之前先提几个事</p><ol><li></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>实习过程中玩玩好玩的(下班后 别引起误会 2333)</p><p><a href="https://www.mbsd.jp/blog/20170921.html">Automatic Generation of Injection Codes using Genetic Algorithm | MBSD Blog</a></p><span id="more"></span><h3 id="先整一下思路"><a href="#先整一下思路" class="headerlink" title="先整一下思路"></a>先整一下思路</h3><p>再开始之前先提几个事</p><ol><li>总的来说是训练模型 像人一样思考</li><li>反射 和 DOM 在设计上需要做出什么区别吗</li><li>除了遗传算法 还可以替换成啥更好地 毕竟文章很老了 可以finetune gpt3吗 2333</li></ol><p>遗传算法可以看鄙人以前大作业整的一些花里胡哨的东西</p><p><a href="https://b1ue0ceanrun.github.io/2022/06/22/zhinengkongzhiyuanli-HW/">https://b1ue0ceanrun.github.io/2022/06/22/zhinengkongzhiyuanli-HW/</a></p><h3 id="没仔细研究文章之前想想大概是什么样的"><a href="#没仔细研究文章之前想想大概是什么样的" class="headerlink" title="没仔细研究文章之前想想大概是什么样的"></a>没仔细研究文章之前想想大概是什么样的</h3><p>把xss给拆了 </p><p>特征肯定就是这些拆出来的东西</p><p>怎么进化？？</p><p>x失败 -&gt;   淘汰更新  淘汰哪些？？</p><p>x成功 -&gt;  害进化个毛线</p><p>适应性函数怎么定义？？？</p><p>联系起下面的小回忆  特征应该是event 这些乱七八糟的</p><p>害是上面的问题 怎么打分</p><h3 id="小回忆一下"><a href="#小回忆一下" class="headerlink" title="小回忆一下"></a>小回忆一下</h3><p>看看过去是怎么做xss的 先大概回想一下</p><p>当时是portswigger 有个list清单 </p><p>然后分别爆破 event 和 其他的啥 记不太清了</p><p>看看 <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></p><p>先爆破 tags 然后是 event 然后是</p><p>但是如何能超过一般的人(先超过一般的)</p><h3 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h3><p>基因？ – xss payload中的最小组件</p><p>作者说如果只用之前有的payload 不能够创造新的</p><p>于是用 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">https://developer.mozilla.org/en-US/docs/Web/HTML</a> 上来找了一些</p><p>emmmm 直接用 portswigger 的是不是也行 也学 他也不全 hh 还是文档来的全些</p><p>才 220种 是不是有点少了 <a href="https://github.com/13o-bbr-bbq/machine_learning_security/blob/master/Generator/gene/gene_list.csv">作者用的</a></p><p>come on 到了我们最关心的点了</p><p>如何打分</p><blockquote><p> 在本次验证中，我们将评价函数设计为以下三个评价标准的组合。</p><ul><li>HTML语法的正确性<br>使用HTML检查工具来评估个人是否具有正确的HTML语法，<br>根据检查结果中警告和错误的数量计算分数。</li><li>脚本的可执行性<br>观察个人（脚本）在浏览器上的可执行性。记住，有一些脚本是在鼠标和键盘事件上执行的。<br>根据脚本是否可以执行来计算分数。</li><li>被WAF阻止或允许<br>在虚拟Web应用程序前部署一个WAF。<br>将包含个人（脚本）的HTTP请求发送到虚拟Web应用程序并观察它们是否被WAF阻止或允许。<br>根据请求是否被允许来计算分数是否被阻止。</li></ul></blockquote><p>好家伙 这第三点真的有用吗 emmmmmmm 我要辣么多payload干什么</p><p>emmm 所以这真的不是不同fuzz吗 这么做真的有意义吗 怀疑</p><p>不过可能在模型神奇的正则过滤下会有奇效？？？</p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>emmmmm 总之 并不认为这项研究有太大的意义</p><p>反观上面的手动爆破也许更合适</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;实习过程中玩玩好玩的&lt;/p&gt;
+    <summary type="html">&lt;p&gt;实习过程中玩玩好玩的(下班后 别引起误会 2333)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.mbsd.jp/blog/20170921.html&quot;&gt;Automatic Generation of Injection Codes using Genetic Algorithm | MBSD Blog&lt;/a&gt;&lt;/p&gt;</summary>
     
     
@@ -336,28 +336,6 @@
   </entry>
   
   <entry>
-    <title>DataCon数据集玩玩</title>
-    <link href="http://example.com/2023/02/24/DataCon%E6%95%B0%E6%8D%AE%E9%9B%86%E7%8E%A9%E7%8E%A9/"/>
-    <id>http://example.com/2023/02/24/DataCon%E6%95%B0%E6%8D%AE%E9%9B%86%E7%8E%A9%E7%8E%A9/</id>
-    <published>2023-02-23T17:56:44.000Z</published>
-    <updated>2023-02-23T17:57:31.790Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近玩一下 整好准备下春招O.O</p><p><a href="https://datacon.qianxin.com/training/home">竞赛训练营-首页 - DataCon (qianxin.com)</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;最近玩一下 整好准备下春招O.O&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://datacon.qianxin.com/training/home&quot;&gt;竞赛训练营-首页 - DataCon (qianxin.com)&lt;/a&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>JSONP相关知识学习</title>
     <link href="http://example.com/2023/02/22/JSONP%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"/>
     <id>http://example.com/2023/02/22/JSONP%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/</id>
@@ -442,6 +420,19 @@
     
     
     <category term="dirary" scheme="http://example.com/tags/dirary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IELTS-writing</title>
+    <link href="http://example.com/2023/01/26/IELTS-writing/"/>
+    <id>http://example.com/2023/01/26/IELTS-writing/</id>
+    <published>2023-01-26T02:43:03.000Z</published>
+    <updated>2023-01-26T05:53:41.666Z</updated>
+    
+    
+    
+    
     
   </entry>
   
