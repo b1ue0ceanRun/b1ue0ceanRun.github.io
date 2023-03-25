@@ -20,18 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+    <meta name="description" content="学学 温故而知新 于2023.3.25 修改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="attention-learn">
 <meta property="og:url" content="http://example.com/2022/05/23/attention-learn/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="学学 温故而知新 于2023.3.25 修改">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKs0YxBGpVMg6r9R%252Fencoder-decoder.jpg">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKs385IS1AJ5IPg7%252Frnn-vanishing-gradient.png">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKsAyK8cPrMaMvjC%252Ftransformer-model-architecture-16532939390647.jpg">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKsDCuRYrW-ALVcm%252Ftransformer-encoder-decoder.jpg">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/image-20220523201500251.png">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/image-20220523202311592.png">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/image-20220523202419140.png">
+<meta property="og:image" content="http://example.com/2022/05/23/attention-learn/image-20220523202602648.png">
 <meta property="article:published_time" content="2022-05-23T04:54:46.000Z">
-<meta property="article:modified_time" content="2022-05-26T11:06:49.629Z">
+<meta property="article:modified_time" content="2023-03-25T03:23:42.887Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="attention">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKs0YxBGpVMg6r9R%252Fencoder-decoder.jpg">
 
 
 <link rel="canonical" href="http://example.com/2022/05/23/attention-learn/">
@@ -91,8 +100,8 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">151</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">55</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">150</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">56</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">191</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
@@ -137,7 +146,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -150,6 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A3%E7%9A%84model"><span class="nav-number">1.</span> <span class="nav-text">要详细了解的model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention-Mechanism"><span class="nav-number"></span> <span class="nav-text">Attention Mechanism</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="nav-number">1.</span> <span class="nav-text">RNN的缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformer%E4%B8%BA%E4%BD%95%E4%BC%98%E4%BA%8ERNN"><span class="nav-number">2.</span> <span class="nav-text">Transformer为何优于RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformer%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">Transformer模型架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#self-attention"><span class="nav-number">4.</span> <span class="nav-text">self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-headed-Attention"><span class="nav-number">5.</span> <span class="nav-text">multi-headed Attention</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%84%9F%E6%82%9F"><span class="nav-number"></span> <span class="nav-text">一些感悟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pytorch%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">pytorch实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number"></span> <span class="nav-text">reference</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -170,12 +180,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">151</span>
+        <span class="site-state-item-count">150</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -267,7 +277,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-05-26 19:06:49" itemprop="dateModified" datetime="2022-05-26T19:06:49+08:00">2022-05-26</time>
+      <time title="Modified: 2023-03-25 11:23:42" itemprop="dateModified" datetime="2023-03-25T11:23:42+08:00">2023-03-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -289,18 +299,83 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="5ea695c21900059e1c78b75f3469a7b030c48de41818a49f6169a3497727e1e8">991ab7d2bd03f4d5f10ea7e59fdd190b4b1c2e09c97d7817a247a318744bb38c0be42c06e5982544df2fdcb3e540727cd2535bd7e253f3bda193923ab568589dd360f30ff9a50e21a6a26a0162ed81ed84d5405d3c264c87cfd56aa398d45786e5f024a0f6989fe649483ad33d512359c31aaf058ec61e7d51ed3aa1b12c5bb5b0664203a9c788502db3983999cc6a6cb2033a81b1c4f45c971ee1b28398bd391ee8f566acfcac087faaa059867bae54fc2f33de3dd34622da84b8c060428562fa1497992dde29ccc0c9cf1be437980ab2a89c97219f03f36c7bf59d8e1dd81eadcefc30a770c0b2b9d230c24bfa9b27f649d0c26f089d65a52e3a4b1b7f12e11370289f0149f087d96ffd1ad59e009887b8a49ce9799932467796d4006ac833f97c5856d589b128e74d34e68ddd428f022a2d9f6afb954732dd9603f3f183f63496ab2d6fe6119e098fe4933f48fa88a00b6236e576cbc232dab19f5367d04730f8812f758eca2b63ba07582d220cf0e85329f2020b7d8bec6ea49b8422bb327ac22988bc660725c8bc2d3ef46bae9dcf2c88fde7c87ac7f73c27b8ecee2812a1f1f6a8c181e2156f33c34213d7b57675774fb43057b218d0fffdc02400827d1d19220ae5c5c721e163b05e8230426ca48f3211b51cf784e9288030e04711d0e1d62c09652ed9280a8d195107bd2b8f5d0704403b3c51206d912de4cd60ba4d7f005befb29b6d6211c056d1f1a06c818cb526e85f3b4c00de4600be742b10afd945f8dd0595a2dbf7fe0a595e2cf77091d51e7cc1abe7f8e1c7a02383376e2541b079eb30837026a4a322a81154d03d4287def22320683a6985ce31d05217c0643776c1d17035c5dece2d9b5acd7d351c6e29e53daeff4ba25ae94d3cb52df043d514ffc70c8e4cb9485ce206a15509af5dff6bf04a4554f10c176c41a781a8408a939e913d1c454c89b8b0a213a0223dc1799629175df391f4f2000455d57d0f5263cfa69a973e88a4c40949200dcd058eac68521509b4f9f55e214648d63aace90518532691331107f4f0aa9d186ff49866ceb97a60d5274bdff56385a35853aa26f7bdeb53ff9f07c4875bfd1b3b25950c5dfd1b2b1c14227965f5868d20beb7844a5c64f3a37d455b7d1e648c8447fb658bbbd3b71f069e89c3e09f8f5bef611600937badd55413fe3acd29765c1db63f46b9f0a59f22d41d88e792e3c1a23e77f29a0ae4186b36fc0b2d06fe83b5809d48d79203df57d125d197d08428b2458317fabf8c0e9d78c2feef36390bd236a74b7fe1c74cc3e9c169f0e1b8d077d73e81026217c5dd2c007ac06fad54244e363ef374409a6c870141dcdda5446361c83eb3c66619a9caea300d82de7c9fd4e234858c8aca892cea17e4c439fc302ecbf927a065ddf04f616f13b96432fa0a0ff3f6b854be72c6d043619a51dc6a2a8eddfb025acdfd4be8437c9dab37b0d8d0158eb332c8ca3b6aca8145e1e1d8af7b5dc1c0374a3b3c99e62d8df533f920fc60b207f3262740d7775326fdc623b4781ea1c1afb57862afd160ff7f7c9ffdbc81b6cf1080bdfac4986bc504a4413c70f63b6deffad73be9f9398e177c53ed9fc3294da204cbd1e67e98eee00cdc6220838d65f4c6001586de60e1cc474fff51a62ceee51d497fb0f3edc3278f44c1962d4dbe1ca0e2cdd1515bb74b4216ae621cf77c928a64677f768f5fa821104f35c92a7c36d07f81649a23fcfce500572b05c1b4896a566a5ad5f805de38bac56aeb41a3356673f07584f98795b4adad7527a84b9d613cde753e27c708d39c45c28d589de8ea83e77701f1afc572c78ad6bc08a61dbd860ed935f0545f36e135546bfbc2e8d62e0b9d6ecd42a7b3318aa63ee0a3b2a1f0681c8ba7ea3cb62b5e8842fc72ed745955b7961b725c95f892b04f44a5c01fa42af6917e2e929666196cad115d17feaa397cc6b7aee8527f617e19ebcdba23a0442c4cc7210b57af3ab71c9f4dfc3d5b6de56f66e8c3326a34994f00436818f950ded51741d5c4c25d1d4a65d071dbc8f6858e461d9850f6e8fa0c2fcac93a5be9d1a2c076e5d5e71965b3f2c18d010941a7749c138de12a144d52ca66deef63fd2951e10c9d22110cd90746c82e3a66f144662d2e8a9358f3ac59c3e7b74bc51ec9594d8cf21566cef805daba249f43410600f52074245566feb6e511b9d4c03bf3696a7490c8522ae2e3dd9be346b0be00ae1862c59a5dad632db37642c1354dc9fa4894f58403e607f56154e1102373c806f21e2011ce89001dd7c1f2dbd728d432db12311b1e7b1eff7bccb0e936d4196c67de13af0b5b0f7d2a49b73f575a0287e93d2061a707b1e39d0e14bcb1448e9cfec844e4e6e67e54b743862c803b0f52168f06f1879d976d419372527079bfc4a9d544e3454c724e7b0858fc973a7c8a9d93a4a35a2a5be2adae009a022b17a79cddf9e427980aab3351be5da41fd9fa2db26134395ade75fb1dc364a2f65ac2b8e1d6dd207b7ec8bcd98972bd9cff93810cf580b61532344db10b73eb7ed79849d7893040175a19f1ddca8aca48da3d071d07e1e0d398f070dba20d73f9b883f8738f1b65a3368f539f7265bd386c6107adaa87a2d6a9b9726a6504586e9c05681eb7bd89bfaf7745d847b52f6453b5cde9194b2c4f825701d49b4d90b926de8aebd6a45be29f1dfbc74021449121131708ea83c3c6229f90c67133d473fb62c466a3898231b0cfb883c160c721f44e4a9550983d85e765bdb32045068470922e40186a08f11539db14b2a0c811c4eb8c6a8c5fa2795353ecef2e31c3c31196e87d209dd891584f19cda000047394b8c66f3b528104f709134394d20bef08518053d975262b643d71ee0d3b6a33b19ef777b072651d666367a2fd23c29b4a5fef94c81e96041c487c705e4813d8a4a7327db0d853bbaeadb0c4541405950857acca317bd6450acf330c1b33feaab979c5f20e773433e0ac348d8bc3c269881049b8c1defc5b46793b432b4d8469878ba38146547f0b5cf7b581f65095ed22c2b835c4f4d58673afcb235857987eb9ebd16af69bffc82a7a779e99978c260459147342fc1f6a2192d58218076632103585f7270c970c29e16196d9df3905813c5bd90c1b1ad2f647c07c970ab8b1a838221832ef3f037ed07964e3b26940cf51106e52d77a3e03d6c77615c23df98bf18525a9da01c67b849c1d1ce267f6f2e361c76a3cc1dbb7acbe22689232b2b1fcf70e758dbaa658cfde826ab1c08cb9e5fb60d43698dd2098ebc50b975fb66ebf037946d5eec7543910014d9ac31d2cf3fb26190007a3f09fda2c70ff2928641e987f9986fd2afaa8b487c5da8495a65a8c901185c0afcd7f34ffa90617921161c269d37526ff328efc8f87cb9983055a307aee755a4eba3aff30671c221f28c10f2d38edaf579b2743a7cbc8f489990551875554e9f5e21869b7744df751a294c2ea0bfb1f1ae2435c73f02ca80d44d62f53dfd940a6f0001349e5aac97427a6e91016c240ae4b9f5608219142ac72b625ff2a265014db351c34f446c62ba32cf2186c4f46ad951bd3a0d4f807272ade6a645ecb33c960f8acbe8dca6799697deffdb13853d59e0788919db80ae70f5369ebecb75ddd08ec6c03bc51fa9ed4e208d9ec5fe0504f51e7d7e65d18efb77e4f926da8dbe325974af8224a30501c6b50dd3f79eebd19814e35fae3db65c8f9821017f5f949cf7daad85e123f31a66db6454f32d9bc6534dcc2ca9825d3ee11985bce4c9fd2fb23d43e9c2166beb0fdd5400b0b34c79c46834aff987152005ec8435bb518fbc52d4f25629958d6257a2eb11d5d14366ef52d57c3b43aec2e3debfcb0574bcb7044ff66075ac1607269ed23e149543fa8ecd4e7359fef674bd1409333d1b7ed6580ccf5538c72ac5f5d06bc39b24017cd01bbec403500c974522d4bc021c678201a07905c29be45b043048f8669cdb2c0eaf6d657b94eb16a820a7ac36e2bc15f3756fb0fe6d7bfc9dcb8345fab4ed1555e3a50a5848c681359eba5878b6c95290ff527afee1b32ab015429e2a185316a8d8f90838b1353ef2dd620402764eb9577c72456649a0870a0a956222c72c90e4b8442697c897f6625030d34addf58f33c331ee6e1201d16e624e8171a048dd9ecf795980eae19aad6f2af45dc9fbb47b9ace07b997ea621202488ce106ae2d41841cba167ca4ecebc81d37f1b505812b65d5184a5a73a4ec8a96c4fbe793c750694a23e8ad474cb36c160549445ac7be19fe9bd8fc14514118688ecbf9ee41bda86b35ce3705c3349f5c59238a308fad13b60b816fad91a65e6cda3552ab96abd718c8085030afc0376f4c3f93a23b75f612b806c920a5014e78f2a2f81be7e7f590e4d29181576e7d3317584019454424379075d74ebd0ef719bc9c4a2771d158607e8267fadd049245cb1f2c540a0e530f9ec7efa426fdf7b1069f0fd8c5dd528982906b3590829ae35a212975bc495c2d709c377b8b1d0bb32af980be7c7f5e3ebe1a35f337c8d5d419d9b42d6f526b4a2d4ac78f15c1e513e82a0ada1ea2fceef3b10d03ac755a3685d14e37c61955f4a55b0c1c2cb2dc2c353315ead114403cbffdde72a0d5d192a081ffc231f57f8a9986c3596f870c5a412bb3a5a63ff677b0526f17227c6d3c6e9aa230df3c4d1958fdd823efdbac3520d08c5b4e98d1410263e3dbcf2206b5f547986af25baf92b88fc5751986f10032d1ebe52e02f04c01575af300cc3c80e5e9e94c66e228962692b2c3e3d3cf56aa6ac731d29c0acfcf385d672b8e3acb3b2e0ac172a9d50a80854b574642a6b6d554b62f9d52134cdbf887e97af0f727a6f005eee200591771edbc4316a13859c3019fa838898931341c525fde7dcdc0377fb8f3c4782e6bb93d2e181442e35586df36d7593985ee82ba5bf8d0fd4686adb8b6ae7c74b23a539a472efbc433c8cac05c182f260dab0e4ae0fedc7c90dbc06c7f9dde8107f7d7640116f947f5a3c0c8e20687b7ac4b7fc8bb76481247a709dd05e94f701334a1c515b4376447ac03a885da380300595c5accc142d04af8191c348a1fb58a07dc4961edfdd63240fcc1d815768d5c798b8341d3c69d32e2c35c7dbacad9d11d48cf77dbbff9ba25f3e3eaa64190165b90b1c870a5a53cca1911a7273c5387ae2cfa5eac5d7267cc9231f3ba74725d47f45b9cdb4a3a573d757f726056a3f14f43b5c5002e377710397aac223e31d9b2825bcf717d9b1a6976b1f6cd2109e7e6a79e0557652f267b1484314d0c5ee990f30a4cfbb2192a32feca6ab3608cf4cbabb523c9d161ea823ebc766890c215e2c2e13a7a08310688179efe2e8c8a2ca66149d0feba4dfb9d3c37a29c728b66fd163106346e7ee9b25689e08bdfba0e7e9707f90d5979a376a3d1cc77fbfc745abed37ef1aae234051449a6f4d437e15a04c1508b1d64fffa8502ac4f13b9c1c031f3b4060ff2ed6a5ad0877620bb0e37a3fac000bc457d146e1ec8c38bc84b82274528c57d3c45ccdc47623d4bc291cd37fcfe61193c60ada9355115ee66282d6d30b9b2a146a97506c573317eb98a1c6a68415809dc2a81331305deafdffda2b773c3a7ca2a1ec488c95bc12661df5fa76d660a3af24efbfcbbfd2219533ade459398b39e52a96e8590fc3c24cba9ebf681d9e31191c4fba368abc098960a1553996c49d62d609e7e781283ed972717ed0ead1ea3fa5ae28781690f1ecc34ffffd4ccc2cf63db8c54c3e1c08bd5f2264625955d5f0907bb7f831f09de129f44dc29c8012980adde21fa562e75f44da760bbe46bbb4567f7466b605397218e833f3901e6f9a1f44251899d415c8602c40a417ebb83d2e008fc54fea5564f7efff4c659a1d437ccbc4bca4d01e3bad511a610732a040288aa7fdb47355c771e5b087c69aab8b079c269af32fd28afd4b4cdbf2a31f2819d4c95cab9739e7b0574257c88d50ea3d917f54a1fde7a7124ccb4d4a9800565ccf96bde69091baf3610ccb926b01e6925657f52dd1d05219fd29f3f7c6ea3ca1a9d0c49973b2de576fde7047f25859d21b9a1333472c2d94b41bef3966f5825472564c61a05b08476dc4cf9af1c11b1d4ed2991373b6a47c13c247be0c3d5c2dbb65d877b9d97ad90b6b097003857b0257bfe65d13ea1e9e8c29d80df9319c0a91f9db6e849ea09f2e8a0a840f0be45adc21f8d0ceffbea4c1fb47b96ddb1cdf86aeeb4a070f289549437ff527ab36b80de607d82f2dd0e0d22536c4fee70f880aafa7b876ce3db5ac9623ec1b73ddadc435ee10391e7ac0dbf810c1728064f67eb8b4f073c1b98113a86835489350be1845ed920c2931044f300344f91b05839a7efa1a89e671eb87607a1cc6453f364bd495f7beca5aaea84eeff7342b8d615b0bbd033b5be662a73da12a881047f30ed27be7d470ab32435924473976259d2c7d52a98fd9f75b4bc73505ef7895976079c5561636820bad3cd955df669128e94277a8c34432640a432c322bf4292799f9cb72b9130283bf0094b577838770076655b39ddb7539a7905cd113908a1b2e5ae3c30d5e2a1364d5effb5ca9e48459c5024c28d8a7355c8e79a1063e7bf9559ce34e6f146eaaaeab34dfdbe87ec4e2d68f91917c730a908afacf9259f3db8838c31b4fb32a382bfe22b25d91122967b1aed20df616f533828962990532fa93d39de4b8dcfd77d98506dbc2b0ab150f2d23820d12ad7190235554317afa1d19e76a1601ae77b1edd5e6a5a6032b4cc9b45fd1cac306a6519a82080c4a6a9556bdaf3733e4704de42ebef9f816b3e002e210bdfd7d20c6de6eda72462f08c1e43eab8e1be2e2c85abc914929039c12e2944aa8df69dc84b696ead6b79aacdf651d106919613729261678fa0badf9abedde301ebd30ee2bdc81050a1270496b07569fc7fe29252f477d273c37d7c8839cd12b27245ee52f111ac4c612b13c16f8be5cfaec077a455235b816c3499df9e067e22bcb0b24bc7e31a45516306665ebef2f02f080bae46c07b80b34e4b09e9b286f33f7e1d75204f4de66840f107cbc397dd8e102c5e285e68b58fd0acfe7def77538a6ae8b64aa57c6dd9e7e4fddf1a50d049e51d793c6dc870603672a149e0d3b807b2dffa127f8b51a248307493933bd7caa143d9ef9e43f8e4d777182a89cee67b701fb66ff8fce6f76f0db5f566c4223eabb3db27a6e5a2f0076546bcb3535f209d0994c5b96a6745e3a9de3fe2d98039169420469f8925d1520a01c5f1d88119111c6f384eecce308f0a0384b0deb345c0b79f61b847a73a69628c0d1e302bb38b366ac281a4441603749945d46b954443d79d7eafb3e1733e50eb4cbf37ecc334d9422b1a3c480850ef4cd3e6d7c39556b230bdf531ca142203f0267308a772a72578c5424e95ec8bbd22d95017dc52e86f34c20f3d919d73e4dfa34b9e607b5a8a8feeb3f742783dfc094ee8c41e2ecc53405e3d2bb4275b69340a9348b729d2048a27aca89e36c086811ccf368a6fa25a2bf67a046f541668ed03ec6cd83dce82b52e5e5cc68634424160c8e1a85e90ff33f287d518de29aa0e44f3d413bd90d025fd9299457713aad68805c52b255f5618502c8cf5ede4bb1153f38b53f95d6d4e76f09c9a752084b05358df5a66239e914f72fd362bf362c7ad11c84acddb9c5cb5a9c045d1bad92a8809bcafa4a4cbaf4752d0e565fbf109ed0e3a57f42915b4473f332f0999817f585d09089cd9236896a14c79e482d4eeca4705f9d6eabedbeba3e4d35a49367284ea026f48c4718399f2be6a967e0fd41105a254aec1514f74ee23f92c1759b2c95df965327cd9f213605607dc4c13a7579f1f976db9ac663d961cdb27b0e79d743ee27d31eb53bf2a9de02e9920117b3d2e30b58e9f98551662dcda5a80de0aa9bf2eb4c30ba98e3fe183cdf99db94d402cc8da229134c619a4982fc4bb8d212845f690a8f8abda618fee63f910b84885bda7a2234e210a27619354a39d15201b286e148f12f364f647eb740cc6fe36f5d57e4c5075c672b084cd9f7e3e78537207eb62b390fe0e7ff8d742e2b2315822774dff1b78a4c9360e8e8e214a30e9661a63234a3a9f3f85bac22acb757e52f4f5744eaf27dc00351e0e37a0a1f6b26e6d0c2145134904013d7855cbc87000dfde9a8ebfa0addb6537feaf7d01ac2a98f7391818d8a940399b466a752f953682439e8271545c05fc273237db66ee0ca498dff5d9579cb379e09c4ef7ef64df3af24b6f1d78ede13920dd2fe1d8d14a841f1d89fe191cab099ddda264c8b88557d2c5180a0a8fe6202effb6e8d899a372e8553c151e07a01ce70ede6550c8322033a3b8b97e971f53d6723ba7b82cac9d51019232d4858114f9201a1e3ac055c4e87d7767370302bd27fbd8554dc4498835c0d3e49c1e48d858b0e6d189cede20622eda232c856525c2386054717e147f4d14c2010566b01b10db689f5077e004102858b225b7b5a00887954d2852e047e23c90a6fee904cc5097c0f50a77fc01cdacd84c370876deb5d64579cb2f767466d12106f5f19a9cc2ca1f1fd72eea2822bfd1b8d4ab3364831023ad4d9299dc2b9e536ffd0e31119e78982f5dc3969889d22940835c246c63ce7be3ff9770927e1611da7359d56f6f845a7a1841bff7651a6be3d0d066b8003b70ea528f6c081943a81acb89b613e7a432e0573097d615e40698b58750c4992fffe81c14dfa4dc72dfc0b78bcdb501400091f19bd59dcefb2a7e034a8bdeae3e23aac60cc9d8279f35bc00e775dbf3b370aa14a5a912dc5d527c6642f81ff1fbbe3f2083c4208e8f1e394aabb245e0ab675c8add33c3632f38b2c8d434f264e43f7fcfa5ee47ddcee6a9cf9f5031c8f0853a052ad0ade87ecc64dba78854a7f72592c8761f295abf2521e8d04646f71bb3527fc0befcdd194337e812c394e6adb7f69bb912c8ae8210ed3a23e036b6e59bdd138ecd847b14f06df9a0ea81960b7e3880b71f0053cdd1b774f4a74eb1b7b8adbc8b41bd737fe4b8dc326b23352099fed36482002aa74e48bea6d8cad1107ea41ad01ad2014bb8199e43f5b5f649c4eff78c050a019be81155c4257c766ac105d3480f4529bdd75544a58c9b25ed435dc58fe6355abbe5af0029cdea902652a4d882de3e3d7bd42ffb9139356dde33f7e52fe193d96ddb550edcacc1f371eeb492999ceda1284589851387dbe768bae6dd5bc78aaf1506ef42b85d3a8ef6c415b5c15495bf14d0bbb8ff8da13586d4b08cbe80b90c623ea8088c8e4481b2b7748df51f0311b618c2ed9fdb93170b2ceb358aed61881c51673d1fbda379c3051d40f5ac2e829d2b5ba865457dc8e7d4a36d322abf2870df07af6071b331ffb2c342c2d35f712195241d896c456c804ec54a2e3a3c497ef9a0d8398a498eac90d40bcde8acd4a62bd662f74b823da3ee6a35bdc40aa56ae2b5e6cb4af62d15f0a4eebd36c58c94e5030a6df381609a24274b5eecf8ccb4ee6c976ad6722a6c47164a8c34e2bc94f8ebbe55fdbbe5e5abcb5b8fc757746df8eaf0052f036fc18332d0c85d3760f230f5af8efa03aedae3068385119326388270142bac3f65f45b2005d5ab0da65eed3b8b54ed5ad4feb27a31b4f82308037d230582e458e3443975c7761f09b3288e4f9780abf4f90e19379f2c1c23eae02b0eb866a7a88882a81d1f85e9c015fcf71fe96e3394f4731bf12971bf22c98fe74b5b66b6bda5938fd6382f8b0ce3a34c1c174fb31a7185ecd326ea2663dddb84c096b3e5c0583f8fa88c08e4cd06729eead22c3f925d69cccf6df6a8ce983361820819e17bb12457fe8a5f4f120bbf0a7cb4991a68034a83ce425c5d1dc72f06a6f683b164ca13213f79742304b2d2efb278e466a0d7aae2492a130b630ce36982f95c9529fb99fb253d8fbd6c4f7aad7b4ad0224cf0d5c8ce28ea4227ce452c7d575995e2fbfe1260e2dbe45e52f03a8dfad3dc5ef817d45083ab19bd30539c8a721b32142a14740aab0a5574f0e11b586e19b71599d556963d1141729da85ad9ffb9271ab539e246710aa4ecfba05fee6701784976f8c737ab7f46155098309a0e5c30a222e27208a36decff149cf1670ac5ae33c248ac5031cebd117e2672d3004696924cf2efa86fdaabd437db1140b3de8ed34ca54056fdd7e833977491ada7d771e3d30d736500ca1b597639d7099ba05e45b31ec178a118f9b7edef1709d369d6bf26190e51ef759723b907f2ca8f3ec610de6e6d2cc1add565c9d03b9168604e1337a96b253b32ade1a5f1a3b46f3f224d73068f2f205570b82058065aa0d2cc313c201b7d91d8208187aa69168bfee4d3d0a7542782654d15f8f78b97b32dd186636784858b892116970a49c708e019a631a0b553afaaf90e4a576f13c02e5eb25bc22f0834ae97b7eb368e1be17a0e35eaca7213518b00e7494a3c82cd76f142f608036f14bb42b0d7836d4349a50fa6631d7616c077d5b10e0bfe2995464e98aa5d48b11da2704cab2524c3655ac352c2d077fd48258a791d62a015c9a7d49e6563b5a602a04cdfb9aae10bdeb5837d589bd65563371cfc65a2e635865525129743be38caf243b79583fa83d38a039c962e3d131da3e5401d8d7690c79d3394af7ad8084f56edc191cc79ba0346e6e077ddcf159d68389b701512ae92b4cfc14664e7c6d5d89fb9f9038c1917156a8290e765fa74116eaa3300d9e6fd8992adaf039032742083933db04d201f0b176e412e6ce7d006c5452ffa04aef08e6d355fc3b74e151f954659a38b56d95afc92ea30695e968fb0284a423bb4d02e907a1e7df4e8a2d53fa98df325014d20b19c3f40c4a6b6c68f210e9701d40e1b06045e8dd30c8e599de5e8bf539c93d49a5e861c5fc055d1528d4e645acb2b0e5099dfc348604f5276125eb41355d844c4f1e9472423ba836dd93f52f40481fcce0b1efca71d26bd0048eac8582c72f270a619532b0315333cf6962d891e2ca05252cdbff85b3d0d577940fcc8900b32c6f53ada6b94c3526bb65422b69dce86d17fdc55a3ca9baed96006052ded5e9be45708bded54d3601b063ea4ad6afe051ef19a5b2e514d29b5ab59b6b369e49caa1bdcfda938660d14cc093e3868c15899c7a163265d13c75eab5b8024a377098b5899448104aff42ec136fc9a189c27c9a97324863e28406c5975ff4e746864c36a1594afad54192d54ea8f1f20dfd2ecb818f008a81eadd9a4a5bac291f5ac2e72341e55125ea0be1aa8c3bf08196539b778f1f1644aea5080b6687f4713a3ffc2c69b4a233c84fb03f89bc9eb100598e51239077c5a22da607814276ec560f1591c61741bb3778986af9e9bfa7a4a0f37870140f2592caaddeaed11ed3a9e092ebec21b044b70eaf9e9acc0e1e7bdc4fff4983423d6be15b9d633af6bc938b92b1d48a1146267f5ac2014f0f431615bd34a0fdf50fbbc15e838528d4a0cd81986603d10998450670ff531d2b5273788830b9dd02d80670f4d349d278897b73aae1fc2f62aece219dfb9f5eec133c21aaff5a681c8cae3f04020e0790bcf2ece495f09f9544cad618aae31e0dd00581187d4dbc4aac84e396a709c149aed273a3199f2afbf2ff942f173b270e54e20588b32d12d623f8286bea600f79a4eb869dd0fb80c7bbf9f45827eb23e5dcc42ac4139ff144c4b402109345908e681d6dfe883efec66f1bf1e61bb3e36de2d8f936c2b8a531b1f626e368364a97edd1414c87d3e35ac1fa0d4b90a81b7c18924163d208a486e66a1d0ca2825d1425262abcd5ba0f08704d33a03a335fe07d113e621d43c586618ed42e4b49ca6e5c4ecf471cfeaa0efed97e3d1fb4790186c59efddcdb78a84103cba4704d0ec88176304cb53311987314bf1b5add6a50</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>学学 温故而知新 于2023.3.25 修改</p>
+<span id="more"></span>
+
+<h2 id="要详细了解的model"><a href="#要详细了解的model" class="headerlink" title="要详细了解的model"></a>要详细了解的model</h2><table>
+<thead>
+<tr>
+<th>model</th>
+<th>achieved</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TCN</td>
+<td></td>
+</tr>
+<tr>
+<td>attention Mechanism</td>
+<td></td>
+</tr>
+<tr>
+<td>dynamic graph attention networks</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="Attention-Mechanism"><a href="#Attention-Mechanism" class="headerlink" title="Attention Mechanism"></a>Attention Mechanism</h1><h2 id="RNN的缺陷"><a href="#RNN的缺陷" class="headerlink" title="RNN的缺陷"></a>RNN的缺陷</h2><p>在没有Transformer以前，大家做神经机器翻译用的最多的是基于RNN的Encoder-Decoder模型：</p>
+<p><img src="/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKs0YxBGpVMg6r9R%252Fencoder-decoder.jpg" alt="img"></p>
+<p>Encoder-Decoder模型当然很成功，在2018年以前用它是用的很多的。而且也有很强的能力。但是RNN天生有缺陷，只要是RNN，就会有梯度消失问题，核心原因是有递归的方式，作用在同一个权值矩阵上，使得如果这个矩阵满足条件的话，其最大的特征值要是小于1的话，那就一定会出现<strong>梯度消失问题</strong>。后来的LSTM和GRU也仅仅能缓解这个问题</p>
+<p><img src="/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKs385IS1AJ5IPg7%252Frnn-vanishing-gradient.png" alt="img"></p>
+<h2 id="Transformer为何优于RNN"><a href="#Transformer为何优于RNN" class="headerlink" title="Transformer为何优于RNN"></a>Transformer为何优于RNN</h2><p>Transformer中抛弃了传统的CNN和RNN，整个网络结构完全是由Attention机制组成。 作者采用Attention机制的原因是考虑到RNN（或者LSTM，GRU等）的计算限制为是顺序的，也就是说RNN相关算法只能从左向右依次计算或者从右向左依次计算，这种机制带来了两个问题：</p>
+<ol>
+<li>时间片 <code>t</code>的计算依赖 <code>t−1</code> 时刻的计算结果，这样限制了模型的并行能力</li>
+<li>顺序计算的过程中信息会丢失，尽管LSTM等门机制的结构一定程度上缓解了长期依赖的问题，但是对于特别<strong>长期的依赖现象，LSTM依旧无能为力</strong>。</li>
+</ol>
+<p>Transformer的提出解决了上面两个问题：</p>
+<ol>
+<li>首先它使用了<strong>Attention机制</strong>，将序列中的任意两个位置之间的距离缩小为一个常量；</li>
+<li>其次它不是类似RNN的顺序结构，因此具有<strong>更好的并行性，符合现有的GPU框架</strong>。</li>
+</ol>
+<p><strong>看到这里 question:什么是并行性？</strong></p>
+<p>可以参考一下下面这篇文章 一会回来补</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368592551">https://zhuanlan.zhihu.com/p/368592551</a></p>
+<h2 id="Transformer模型架构"><a href="#Transformer模型架构" class="headerlink" title="Transformer模型架构"></a>Transformer模型架构</h2><p>Transformer模型在论文《<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Attention Is All You Need</a>》中被提出，利用Attention，去掉RNN。这篇论文的题目想说的是：你只需要用到Attention机制，完全不需要再用到RNN，就能解决很多问题。Transformer没有用到RNN，而且它的效果很好。</p>
+<p>Transformer模型总体的样子如下图所示：总体来说，还是和Encoder-Decoder模型有些相似，左边是Encoder部分，右边是Decoder部分。</p>
+<p><img src="/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKsAyK8cPrMaMvjC%252Ftransformer-model-architecture-16532939390647.jpg" alt="img"></p>
+<p><strong>Encoder</strong>：输入是单词的Embedding，再加上位置编码，然后进入一个统一的结构，这个结构可以循环很多次（N次），也就是说有很多层（N层）。每一层又可以分成Attention层和全连接层，再额外加了一些处理，比如Skip Connection，做跳跃连接，然后还加了Normalization层。其实它本身的模型还是很简单的。</p>
+<p><strong>Decoder</strong>：第一次输入是前缀信息，之后的就是上一次产出的Embedding，加入位置编码，然后进入一个可以重复很多次的模块。该模块可以分成三块来看，第一块也是Attention层，第二块是cross Attention，不是Self-Attention，第三块是全连接层。也用了跳跃连接和Normalization。</p>
+<p><strong>输出</strong>：最后的输出要通过Linear层（全连接层），再通过<code>softmax</code>做预测。</p>
+<p>再换用另一种简单的方式来解释Transformer的网络结构。</p>
+<p><img src="/2022/05/23/attention-learn/assets%252F-LpO5sn2FY1C9esHFJmo%252F-M1uVIrSPBnanwyeV0ps%252F-M1uVKsDCuRYrW-ALVcm%252Ftransformer-encoder-decoder.jpg" alt="img"></p>
+<p>需要注意的上图的Decoder的第一个输入，就是output的前缀信息。</p>
+<h2 id="self-attention"><a href="#self-attention" class="headerlink" title="self-attention"></a>self-attention</h2><blockquote>
+<p>Attention和self-attention的区别</p>
+<p>以Encoder-Decoder框架为例，输入Source和输出Target内容是不一样的，比如对于英-中机器翻译来说，Source是英文句子，Target是对应的翻译出的中文句子，Attention发生在Target的元素Query和Source中的所有元素之间。</p>
+<p>Self Attention，指的不是Target和Source之间的Attention机制，而是Source内部元素之间或者Target内部元素之间发生的Attention机制，也可以理解为Target=Source这种特殊情况下的Attention。</p>
+<p>两者具体计算过程是一样的，只是计算对象发生了变化而已。</p>
+</blockquote>
+<p>下图是李宏毅老师的视频截图</p>
+<p><img src="/2022/05/23/attention-learn/image-20220523201500251.png" alt="image-20220523201500251"></p>
+<p><img src="/2022/05/23/attention-learn/image-20220523202311592.png" alt="image-20220523202311592"></p>
+<img src="/2022/05/23/attention-learn/image-20220523202419140.png" alt="image-20220523202419140" style="zoom: 200%;">
+
+
+
+
+
+<h2 id="multi-headed-Attention"><a href="#multi-headed-Attention" class="headerlink" title="multi-headed Attention"></a>multi-headed Attention</h2><p><img src="/2022/05/23/attention-learn/image-20220523202602648.png" alt="image-20220523202602648"></p>
+<h1 id="一些感悟"><a href="#一些感悟" class="headerlink" title="一些感悟"></a>一些感悟</h1><ul>
+<li>永远要善于分享自己的想法 并乐于让别人来给出评价 不能故步自封</li>
+</ul>
+<h2 id="pytorch实现"><a href="#pytorch实现" class="headerlink" title="pytorch实现"></a>pytorch实现</h2><p><a target="_blank" rel="noopener" href="https://wmathor.com/index.php/archives/1451/">https://wmathor.com/index.php/archives/1451/</a></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a target="_blank" rel="noopener" href="https://medium.com/%E6%99%82%E7%A9%BA%E5%9C%96%E6%8A%80%E8%A1%93%E8%88%87%E6%87%89%E7%94%A8/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98-graph-wavenet-for-deep-spatial-temporal-graph-modeling-14ec94033af3">https://medium.com/%E6%99%82%E7%A9%BA%E5%9C%96%E6%8A%80%E8%A1%93%E8%88%87%E6%87%89%E7%94%A8/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98-graph-wavenet-for-deep-spatial-temporal-graph-modeling-14ec94033af3</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=9_1cEtimRNE">https://www.youtube.com/watch?v=9_1cEtimRNE</a> (有空看看)</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/186987950">https://zhuanlan.zhihu.com/p/186987950</a> 动态图注意力机制</p>
+<p><a target="_blank" rel="noopener" href="https://blog.floydhub.com/attention-mechanism/">https://blog.floydhub.com/attention-mechanism/</a></p>
+<p><a target="_blank" rel="noopener" href="http://xtf615.com/2019/01/06/attention/">http://xtf615.com/2019/01/06/attention/</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lUqpCae3TPkZlgT7gUatpg">https://mp.weixin.qq.com/s/lUqpCae3TPkZlgT7gUatpg</a></p>
+<p><a target="_blank" rel="noopener" href="https://nlp.seas.harvard.edu/2018/04/03/attention.html#encoder">https://nlp.seas.harvard.edu/2018/04/03/attention.html#encoder</a></p>
+
     </div>
 
     
