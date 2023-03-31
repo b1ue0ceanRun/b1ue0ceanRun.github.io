@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+    <meta name="description" content="这东西需要一点规划 短期可能会咕咕咕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WAF-DEVELOP-from021">
+<meta property="og:title" content="WAF DEVELOP from 0 to 0.1">
 <meta property="og:url" content="http://example.com/2023/03/17/WAF-DEVELOP-from021/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="这东西需要一点规划 短期可能会咕咕咕">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-17T15:54:40.000Z">
-<meta property="article:modified_time" content="2023-03-17T16:10:40.824Z">
+<meta property="article:modified_time" content="2023-03-28T07:17:16.477Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="WAF">
 <meta name="twitter:card" content="summary">
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/03/17/WAF-DEVELOP-from021/","path":"2023/03/17/WAF-DEVELOP-from021/","title":"WAF-DEVELOP-from021"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/03/17/WAF-DEVELOP-from021/","path":"2023/03/17/WAF-DEVELOP-from021/","title":"WAF DEVELOP from 0 to 0.1"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>WAF-DEVELOP-from021 | b1ue0cean's   blog</title>
+<title>WAF DEVELOP from 0 to 0.1 | b1ue0cean's   blog</title>
   
 
 
@@ -91,9 +91,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">149</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">56</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">189</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">150</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">57</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">190</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -137,7 +137,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -150,6 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,18 +165,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">189</span>
+          <span class="site-state-item-count">190</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">149</span>
+        <span class="site-state-item-count">150</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -244,12 +245,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="WAF-DEVELOP-from021 | b1ue0cean's   blog">
+      <meta itemprop="name" content="WAF DEVELOP from 0 to 0.1 | b1ue0cean's   blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          WAF-DEVELOP-from021
+          WAF DEVELOP from 0 to 0.1
         </h1>
 
         <div class="post-meta-container">
@@ -267,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-18 00:10:40" itemprop="dateModified" datetime="2023-03-18T00:10:40+08:00">2023-03-18</time>
+      <time title="Modified: 2023-03-28 15:17:16" itemprop="dateModified" datetime="2023-03-28T15:17:16+08:00">2023-03-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -289,18 +290,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="6e269770566778a1baf284db338c70de53510339d0a545836db9ef91da0dac8e">cb320da6677537a61c4c8a60c50f744c2e78d71ce2f927d55a87957050e4e431f278b6fa7891fda579c0cf5dd38251415128ff20153608d28fc987c603949b45a9fe49f669f665f40ce02764a7f7403afcc28f713916bd098d4b4aa5065ed7f8e05d814f20dff8d7dc080e14b9d97053e86b0238efac95d8ae732c7b98fa81464be2d202ff1cb9641281720ca8a9500c5cf34c5a88bc5aeafed226c9a4c52121452b3d7c7ce3cfa0fa62d8b3d4a7b6f2eff0f73659c7db82834d5fcb161ada11e46a4133eeb15dc01fa2f3670e0f8c62f90793cc405a7a9bf39429bc2c48ea9f5b13568d013fd461880fc2005124e50b49edffa4148d10e8d23117bf9a27ae271745f74c55213205c9632c765ae4f2ff200890795c5f6c7e15c1c3ca38fe382fa49b96323e423cb0f79641d469ed460c318dc35a64708da9e9fc1a2f0897fa4470a1eb376983e91bd390b51424aeda356711dcc4e2ce6250cd2e49e5b59020d678275a551763ff1428a2b118941de565b94a3a8855ebd6cdd5e4ee6299a92e92b81283a40d1891b62637d75ea81b1451afdc4eb983d0c035ef3b2ed729bf60b693af890e5189be4368d87a74c9acd6fb1c0ec2717c809688d671addfad99dac96f00a5dd1cf86cecaf44a31b8884c8d99d65103f8224b4bdf7224d9cbc5c740f3c9fce2eb415d7d323c9351473450172d2f29e34ba7de5a2144351ff72b43606baf2fd229c04b9677880b4c9070c6c036045a84a150b2248d916165877651c1e21eeefcfb9999758c0cce94e39d234f0c0e9ea2314bdcfe48332c48a9506a6c267195fe8ca915fbf0485801ab4dfe204fd74603998e712e2b59fc924b36e40a4f75fba5a455cd279f41a1584493f36e82c30b3799ed8bb838636686b276eb84a6b8db889e5467400373a9d03819acef5e39aab8bb8762beab60d243da166d4f491fb92e6fa534bbf2244c608e9de47962d258ea015964987376dd332bf485817746f9a15fb511b1a7ca2a3d57f2a8f1877099534db5c277e38fc75387a385f58fd152c9eae2b3631813b64fa335ffa4156cbd40334dd3b1e613f08c86d24c57d15e96b2c8dc4b3334371344174ed7ebc2fdbffb425031812246cf7541f84495a243978ee9b79d5bb4c89ca5d49632de9a907aad2134cc4b5bde03512379eb76d6257418d5d75ffbe89f29567d61a2290ac0bdbf4354f9ecb3c554a26178f6bff094561d1448909ec4eadb5eaa0b54b4ba541bf564c7374274ec2db465224127f98daf1f54603363df345bf3f0a847817ad78dc1a533606896dbd399a4e9829ce3609543c92d48349352efbdd29f77069a2134e7b0428d25a7a4c915d14f85ff13eb09cffafd772df809c4acb6b7267d19a28edb98dfa5ae94ebcddd5aebc207e80a48663137d1cf0dcee28852e212f7627343e25a101c17d4e5b90b7bab54810a5b1e648f585c662b6ab92df04ee2763</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>这东西需要一点规划 短期可能会咕咕咕</p>
+<span id="more"></span> 
+
+<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>怎么说呢，之前相同事请教过waf开发相关，他让我去学学多模态匹配。</p>
+<p>今天正好leetcode上看到一道熟悉的题目，让我有了些想法。</p>
+<blockquote>
+<p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p>
+</blockquote>
+<p>貌似和“多模态”的问题有点像，（我上次只是随便看了看相关的内容，这次来学学</p>
+<p>先来看看这题</p>
+
     </div>
 
     
@@ -317,7 +317,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="http://example.com/2023/03/17/WAF-DEVELOP-from021/" title="WAF-DEVELOP-from021">http://example.com/2023/03/17/WAF-DEVELOP-from021/</a>
+      <a href="http://example.com/2023/03/17/WAF-DEVELOP-from021/" title="WAF DEVELOP from 0 to 0.1">http://example.com/2023/03/17/WAF-DEVELOP-from021/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -365,8 +365,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/16/codeql/" rel="next" title="codeql">
-                  codeql <i class="fa fa-chevron-right"></i>
+                <a href="/2023/03/29/%E6%99%BA%E8%83%BD%E4%BA%A4%E4%BA%92%E5%AE%9E%E8%AE%AD%E8%AE%B0%E5%BD%95/" rel="next" title="智能交互实训记录">
+                  智能交互实训记录 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
