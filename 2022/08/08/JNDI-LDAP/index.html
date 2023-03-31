@@ -20,19 +20,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+    <meta name="description" content="照着大师傅们的文章了解下JNDI打LDAP注入 最近打算走一遍y4er 的路 把他看过的 很有用的复现一遍">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JNDI打LDAP">
 <meta property="og:url" content="http://example.com/2022/08/08/JNDI-LDAP/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="照着大师傅们的文章了解下JNDI打LDAP注入 最近打算走一遍y4er 的路 把他看过的 很有用的复现一遍">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/08/JNDI-LDAP/1575516121000-18.png">
+<meta property="og:image" content="http://example.com/2022/08/08/JNDI-LDAP/image-20221006002419882.png">
 <meta property="article:published_time" content="2022-08-08T06:17:35.000Z">
-<meta property="article:modified_time" content="2022-10-06T03:50:14.225Z">
+<meta property="article:modified_time" content="2023-03-31T04:08:38.477Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="JNDI">
 <meta property="article:tag" content="LDAP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/08/JNDI-LDAP/1575516121000-18.png">
 
 
 <link rel="canonical" href="http://example.com/2022/08/08/JNDI-LDAP/">
@@ -138,7 +141,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -151,6 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#source"><span class="nav-number">1.</span> <span class="nav-text">source</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -268,7 +272,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-06 11:50:14" itemprop="dateModified" datetime="2022-10-06T11:50:14+08:00">2022-10-06</time>
+      <time title="Modified: 2023-03-31 12:08:38" itemprop="dateModified" datetime="2023-03-31T12:08:38+08:00">2023-03-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -290,18 +294,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="7992f002ea35f16b51934704a20b04543f6c1d479a4f184be0cfb0cd552e58b6">21f8e907b6ea59635716f91a3e5cdbabb1819899a818ef3ed064a34d5c8decf95888a0f223adfbb008a5319b447710f69aed7f97c706cc44534767928bb912628267672724066c2c538c0cb8a6e5e66c33308a23a3016e7308f391059a6ebc6c6ab8b889449e86ab7a3597caaa81b43907b82942b232d6781feda30b44fcf11a3c1380d300b8851315102d0192f52d626dd22dc54d8c99f8bbd9428b0c031b8646efe511ba5d4b6fe27ff5aed7496ecb9a289e624ec921f5277c788519fa803567c3da04662e391b1cdb9a5b17c43dad0a3162a8e80675615a6cee272fd62b3e783437fbf62aeae88d9575309bb4cd69ae4f10c54e76be44c77ed19734196b9285608ecded9e667cde37f4caadce36d68567935cc398841ec53ef79e74ead4015e22a851da0888f9dfc665d4d6c717ccdf0f4384b1417ae0a85a59e8380b879e6b6f46de98cbd5fbffed0737a308c07367ba09d4840b1538af4897ca23f781eccbaa154a5e3ee568dc37ba8267479f019f58d9dc7330cf078fdc61bf8726c6e74e7033b1b3becf08b420c3b969fae079793dde006dd974c5746eee92ff285fa74d4e780a63f476c5001eab3cc53691155bff1c185fcacca5d219c1cde49f867ce24794173e4e70d29a1e68fcad4cd00a6b0c04fd6bc460a7ff902c92403e821fafc725767697026b135cb23dfe6e7e9319ad1b8f30bd255f5d247fc7944e4555b9dc5e9276a10241e1e248346831d246f3e5fa7ea0c09d91e35664d0024d834367a40a6fcae7607316c3190653b229437afaa1a66e061537718643059800620f1d9614b8e08fa52f47690a3bb3c058ef6dff608b8ad21b458fe3adf28d2cd0b1ceb75bbc88623347b00ebc4c2a37f130000b48ae29eac64aeddc5d4a00d1ef86dcd51e68daf47d9fb6c8d29662eb34d3a6ffa145a00d4e3377e1bbb2c08c2d1265b82e5f0de37cd8e74fe1c63b939cadade147f036a27bd890895780155dc300140e5981d90736d5c8605b394c1fcf1b53ba415c9ddbcf7a237b05173c7c2491c3fcc991d97d3ae05e42d0e70bf0d81cdbf231404f3613cb5b1e4ca38cf465d5a59177a9145c12f1dd8030f1a2a564a4d37ea2c34c8ada57a4d3fe3e6130f3df538cd54d3ffdc57ac6a164dc9a9685ab2ae6c3939437871aa62dacca379154c9e11c95a0cf28ee55d62928ef8af5b1e347504d56e63ce19b931a49972f93bf3e67f366e35593fbda26463eaa50291d50a04887012665d4a4db448d0f926faf66092f29dd3a2c54b7f84dc8010c9aa3cc410c13135b6fb21ff2d13079252b2954b8933c509c91fa1297737473210aab754e7de39aaa39ea95dc950e2d4e0d79db4bfaa6685b56d6ae8556409631a98e4f763cefa79439b1ef46095c6b76f60f742ebb4dbb7a9c102afd9ee649227847d14b7f3e1ed109f79b8c762450450384ac97bdf68fff24d0078df44dae3e5db15cf3a5466d032760519607ac64b388e3366a4d1be0d0800ba0700c3942c6917d8457c981c9eeddc9a23357d2de53e445de82446968371826d5cff9c50a662c2293749026f89f4827a87bc9a815560a979af2071e84a070252a21400637809da975870889d249bb70d5d82f2f77295cd8002c727fddd4e3d1829d6a134254fb3eddc318d31cc27a1dbfc0da00b30c0abf946c7640625caa091bd6cf205b6c7cbbf162f924a9e70f5030a4d3595e13e2067ec850c7a15c99ee60f2bc39afdd65d57cfa0096f7b07a4ef0e624cf1d019b3a7499ea136b06ee66680e846b7492ffb6370a09b9e2849f6604c9510032f774711f0d0c14797932e2f6f7db882f9dd359e79364202f94feb89b67014a7a127e8369d337d6e1c3e9b1b004fe38b32c0298bfe9897a706db4fb5f2153e7d925dbad85aa1699366c136a359ed69d2bef1e02fa9791717d6ce409cfdbdfee6352124dd0906bcb5f0bdfc58b0924c53f1b86d6ae6d9fb1dfc864a7cba395a097558cc7fa3013643da38046b59420e0226622f252d5021ac11fe0b3a98417f00a68dc5ff8e6823d5f1e96e9442abc61ed0fecdc99cffdaef5486d529825b5f782fdd983dbfbb5c54ffbf1f6eef78f847a95bd2d651cdfb676035b72ccb92d5dbf891f913857a68e54e2b47f75bd53a0bbbc4a5c1a5fcad9819fb81cfc62961de9ae3ca646d3d7cab10f3d3237a14f3af1732f31b3fee7ae2ce6d302a9da84ae975f72f7a99dc34d3c559f36d4319fe3783adeaddb6e360e3d375c5553e8b8d0cc8101264900ea4fd4ed2bf84c1556a0b61b74796f8f7bd4d65b64c861b4d202e439e8c9b8c477b90fd8f09644374738e081de83b177adbf01e99bacb50ea2fe35ef94eab93559be125c21dd9407c2e65a52bb133518d6bbba8db5d98c687e3ae3798990da7c782ea7cebc381f3ea0deb20e70d2e494f5a194b4dc9ec94b038165f263566bbaa62477c86a09146719ddba0921525d181af0f3114c93042278cf888bc1e2acac19f0ee42c76d1a49bbd6bc0b9d483936cd114403dcc1c25454409356f8c7958e911f2e49b5644942469e4bae9b2119ab43de2286c38e878979de8fb7f4af75c4a4083598bd1ca0a3a621357f42b4a7c8213f8b935a81c2d559b6b702ced78cb988c5f850e36de6d59489f8f548b607947ed3867d183a31069ef98ebcb8fe51c0b3f062c42fdef9b738ccbc7e89ccf5b08e87dd2e99608cbb9a7a74c66c596d6835d6ee624beb8c912f9edb52bb94eb92296ed5a514b272d9605cd39f88ac88d7dcf4873f1c0aae870c1def9f2cd296e57ff3758a1eeedfa651442b28f7d4698ec5dcb6d229a3622b5cd22faf20540e5425fa01f33762a23ffc721d564a8a92cc7c56ec09e77a5bb1ed8bf6fbd3f34c3e9ccdbff4030fa8629e67513288d9cd5998dcdd3e8257d6160c5028af8dce8c21a7d3fdfbb904d3c448f06df52bc98cc80806c7db6e85b1ab6308c49b764f7866d10f3ec6b9f21b5e170385288569d97523467dbea7ec4a9108fed39b42a9e8228f6960f9826c90c8012e8f802b6cfbdf72a370c6d0b286cdb372c87034ed17d2a4b8a7682d6485470f473e74ef926b1dbd5f7cbe1f18ae6552eb3d032af4baaf575dd6f2e20acd96c249c44cdf8447ee7db043acda9c46f40fbe219a86024a92909293b5a4fb80afff8b39b70ee9b9ba63cb2fbaf127f8f7bd6dc3302d6e526c191f3fd2907bb05d228874a8af93e68c009ac7a065e5dbff6981f3377d97fba4e523c853211426d19c3c09e23289bec92c0bfd19c38df3b705f64adfe339f232ca15bdb9f1dd1a783bc7d80fda65544211b1b51006122fdb715eb8399d7e76fbd936da3e016051336fc4b3c6e45bb7e8144e011f56e4723c5ea098dd665ea1634780529b5b0a3b77f316da449df6da38feb9466ad618c2260b1f0cf2ada58f2d443eabf3da2b8fae2936c57000f9f3dcb906b0a5b7b25ff16a96a22f61598c157b2ceb85805f768461aa19873bda204a5c503f39138066e96f6e0caf5c0f4660639ed227c94acfff1da0782d6a913eb17f9655ecb46b102dddb8a3be38eb692832d3de1ea39c7c62fe9f4d74ede3c6b757bf14812fad51f45fd81b0a7810918453f2e73ad8909d6146ded3d053ccae65c2f8cdebdb99c2d803d4b839db215e37e22ad5022068aa0527d4fda3d750595ddf215de4de46eb097cd650b4d81f26762c107adc0736250f9aa586db7b7061303877d82c715f9f6a782ef23604e8744772533179b52330bae397046ffd70d129c96d66ca3d595671402046f5e47c08d7bba9022c819a0c645c428d8f30de06f0dcfdf177bda906ae21458b375b8d04f2baf0060d2d4f29f3d4b9076f2a8fcf64a6b81788e88241d16a2adfbf31fbfba832ce9c9f3e6d4c4f5a4c2716b357433174c3847d4dab370d4da71c22c56f97770eacbc98e853722324f6ab4e3e684b86deca078f46a6d8fba9b3521df77ff3c3ec96107a52e8c72bc45f713d617a5ed146c6de0ae7a6b16d9a2b5d4f37a263ff68099d1bfa0e7b88f95196e6b8774f902aa9f92a0e9ad7df9d00cfb63187f17801d850d1bb6e93b47e658ec36e5dac2be5587f4bb491649214013a005e6ef0b8b07792f3274ebdbdbe477743f88891af6681b2a7ca1866ede086b38846f3dc8b7651b9036ddf6e3f116fbf1beaad49c977d077b376f9064280e6e601268b798c12fa699dc6dd4662f6a618f2980d06632216b31d00b370ba5e45920dcfb8ca6741ea2767f3e82c7238a7e8e2669f6e0002bb40da7ecc7d35806031e6342d96820d0f2f8e578556ec13dab550bcadff93e7b908ba88599346d06f3a3c432d360fd201c11fb1e6bac4ecd266ee69126119f977633c3232e4f026ca028d072f7da19a58399f849ea36598953b7ffcbe1ecd7c9cd017574a4b6a3ac76975c0ba1a624b131cc13db0c70fcc1bedc523eebb2ff455d1a516122216f87e5e44e978f241f57b688e56683ec665932e571006cb52a1cde427a1667ed592db25a7f1c6ea81990453273a50be88930250919c5f846fbef561294eed8303e73a857e28e80d228b59e748c31d286e23147ecef682c59469199e7398157db0b83ea057e5a70ec843d6be8ee59c4333dacfe48e3f80a41bb48306920a64aaabba3da25160d8add6f92da4fc54b25ae79cc7767c6b1f548c1e0d6bf0dc6f6302fa796fef65aa0e3254ca7f59376360d04cbe344817deaface3b37ae960e5a3cf86e52166993c23aa788d27cb630b8d2e9de92d29db32c9763e1a53619d802ca8d5d7f0bbacf959</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>照着大师傅们的文章了解下JNDI打LDAP注入</p>
+<p>最近打算走一遍y4er 的路 把他看过的 很有用的复现一遍</p>
+<span id="more"></span>
+
+
+
+<p>攻击过程如下：</p>
+<ol>
+<li>攻击者为易受攻击的JNDI查找方法提供了一个绝对的LDAP URL</li>
+<li>服务器连接到由攻击者控制的LDAP服务器，该服务器返回恶意JNDI 引用</li>
+<li>服务器解码JNDI引用</li>
+<li>服务器从攻击者控制的服务器获取Factory类</li>
+<li>服务器实例化Factory类</li>
+<li>有效载荷得到执行</li>
+</ol>
+<p><img src="/2022/08/08/JNDI-LDAP/1575516121000-18.png" alt="img"></p>
+<p>JNDI也可以用于与LDAP目录服务进行交互。通过使用几个特殊的Java属性，如上面提到的javaCodeBase、objectClass、javaFactory、javaSerializedData、javaRemoteLocation属性等，使用这些属性可以使用LDAP来存储Java对象，在LDAP目录中存储属性至少有以下几种方式：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/jndi/tutorial/objects/storing/serial.html">https://docs.oracle.com/javase/jndi/tutorial/objects/storing/serial.html</a></p>
+<p>这种方式在具体在哪个版本开始需要开启<code>com.sun.jndi.ldap.object.trustURLCodebase</code>属性默认为true才允许远程加载类还不清楚，不过在jdk1.8.0_102上测试需要设置这个属性为true。</p>
+<p>这里右键jar包 有个add as moudle 点一下 就引入了</p>
+<p>变成这样</p>
+<p><img src="/2022/08/08/JNDI-LDAP/image-20221006002419882.png" alt="image-20221006002419882"></p>
+<p>然后就可以乱杀了</p>
+<p>完整代码在<a target="_blank" rel="noopener" href="https://github.com/longofo/rmi-jndi-ldap-jrmp-jmx-jms">github</a>上，先启动<code>remote-class/src/main/java/com/longofo/remoteclass/HttpServer</code>，接着启动<code>rmi-jndi-ldap-jrmp/ldap/src/main/java/com/longofo/LDAPRefServer</code>，运行<code>rmi-jndi-ldap-jrmp/ldap/src/main/java/com/longofo/LDAPServer2</code>添加JNDI引用，在运行客户端<code>rmi-jndi-ldap-jrmp/jndi/src/main/java/com/longofo/jndi/LDAPClient2</code>即可复现。</p>
+<p>还有利用本地class绕过高版本JDK限制的，可以参考<a target="_blank" rel="noopener" href="https://kingx.me/Restrictions-and-Bypass-of-JNDI-Manipulations-RCE.html[11]%E7%9A%84&quot;%E7%BB%95%E8%BF%87%E9%AB%98%E7%89%88%E6%9C%ACJDK%E9%99%90%E5%88%B6%EF%BC%9A%E5%88%A9%E7%94%A8LDAP%E8%BF%94%E5%9B%9E%E5%BA%8F%E5%88%97%E5%8C%96%E6%95%B0%E6%8D%AE%EF%BC%8C%E8%A7%A6%E5%8F%91%E6%9C%AC%E5%9C%B0Gadget&quot;%E9%83%A8%E5%88%86">https://kingx.me/Restrictions-and-Bypass-of-JNDI-Manipulations-RCE.html[11]的&quot;绕过高版本JDK限制：利用LDAP返回序列化数据，触发本地Gadget&quot;部分</a></p>
+<h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/253545.html">JNDI之初探LDAP - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/5689">从一次漏洞挖掘入门Ldap注入 - 先知社区 (aliyun.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/199046.html">从RCE到LDAP信息泄漏 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/321801.html">JNDI与RMI、LDAP一二事 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://paper.seebug.org/1091/#ldap_1">https://paper.seebug.org/1091/#ldap_1</a></p>
+
     </div>
 
     
