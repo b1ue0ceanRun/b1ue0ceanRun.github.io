@@ -20,27 +20,36 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+    <meta name="description" content="learn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异常检测">
+<meta property="og:title" content="异常检测实践">
 <meta property="og:url" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="learn">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021024.png">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021011.png">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021022.png">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021023.png">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/image-20230408110216039.png">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/image-20230408110527155.png">
+<meta property="og:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/image-20230408110805538.png">
 <meta property="article:published_time" content="2023-03-16T13:15:10.000Z">
-<meta property="article:modified_time" content="2023-03-16T18:43:43.631Z">
+<meta property="article:modified_time" content="2023-04-08T03:12:56.180Z">
 <meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="异常检测">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021024.png">
 
 
 <link rel="canonical" href="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/","path":"2023/03/16/异常检测/","title":"异常检测"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/","path":"2023/03/16/异常检测/","title":"异常检测实践"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>异常检测 | b1ue0cean's   blog</title>
+<title>异常检测实践 | b1ue0cean's   blog</title>
   
 
 
@@ -91,7 +100,7 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">148</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">57</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">59</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">185</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
@@ -136,7 +145,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -149,6 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">时间序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E6%AC%BA%E8%AF%88"><span class="nav-number">2.</span> <span class="nav-text">反欺诈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%9F%A5%E8%AF%86"><span class="nav-number">2.1.</span> <span class="nav-text">异常检测知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%AF%87%E4%B8%8D%E9%94%99%E7%9A%84%E6%96%87%E7%AB%A0"><span class="nav-number">2.2.</span> <span class="nav-text">一篇不错的文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5"><span class="nav-number">2.3.</span> <span class="nav-text">实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#source"><span class="nav-number">2.4.</span> <span class="nav-text">source</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -169,7 +179,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -243,12 +253,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="异常检测 | b1ue0cean's   blog">
+      <meta itemprop="name" content="异常检测实践 | b1ue0cean's   blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          异常检测
+          异常检测实践
         </h1>
 
         <div class="post-meta-container">
@@ -266,7 +276,16 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-17 02:43:43" itemprop="dateModified" datetime="2023-03-17T02:43:43+08:00">2023-03-17</time>
+      <time title="Modified: 2023-04-08 11:12:56" itemprop="dateModified" datetime="2023-04-08T11:12:56+08:00">2023-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" itemprop="url" rel="index"><span itemprop="name">异常检测</span></a>
+        </span>
     </span>
 
   
@@ -279,18 +298,103 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="11b1adf8204bf859ad56b70f7677c8d4752662994c15a9c23c0b7df4c12150c1">cb320da6677537a61c4c8a60c50f744c482ff6da6ed0aadc6be741b7df5f88e8</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>learn</p>
+<span id="more"></span>
+
+<h1 id="时间序列"><a href="#时间序列" class="headerlink" title="时间序列"></a>时间序列</h1><p><a target="_blank" rel="noopener" href="https://blog.rexking6.top/2018/11/05/%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/">https://blog.rexking6.top/2018/11/05/%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1670322">https://cloud.tencent.com/developer/article/1670322</a></p>
+<h1 id="反欺诈"><a href="#反欺诈" class="headerlink" title="反欺诈"></a>反欺诈</h1><p>主要是想借鉴一下 看看有没有什么可以拿来用的</p>
+<p><a target="_blank" rel="noopener" href="https://www.cs.sjtu.edu.cn/~linghe.kong/AI007/Download/%E7%AC%AC9%E8%AF%BE.pdf">https://www.cs.sjtu.edu.cn/~linghe.kong/AI007/Download/%E7%AC%AC9%E8%AF%BE.pdf</a></p>
+<p><a target="_blank" rel="noopener" href="https://welts.xyz/2022/06/23/anomaly_dec/">https://welts.xyz/2022/06/23/anomaly_dec/</a></p>
+<p>但要找一个合适的数据集先</p>
+<p><strong>目前业界相关场景检测的主要方法为基于规则策略检测</strong>。规则策略的基本内容为设定指定时间段内的传输数据阈值，这些阈值和时间段通常是人为设定的常数。规则检测的优点是检测快速，不需要对数据做处理，但是缺点也是显而易见的：</p>
+<ul>
+<li>规则策略为单纯地进行阈值设定，无法结合历史数据进行分析，容易产生大量的误报，需要运营人员进行排查，造成资源人力浪费。</li>
+<li>规则策略阈值设定较大时，数据汇集总量较小但异于历史行为的操作会被漏检，从而带来更高的风险。</li>
+</ul>
+<p><strong>S-H-ESD算法</strong></p>
+<h2 id="异常检测知识"><a href="#异常检测知识" class="headerlink" title="异常检测知识"></a>异常检测知识</h2><p>异常检测 （Anomaly Detection ） 针对的是少数、不可预测或 不确定、不符合预期模式的件的识别。</p>
+<p>应用场景：</p>
+<p>设备运维：黑客攻击监测、服务器运行监测、电力设备发电能力监测</p>
+<p>社交网络：利用社交网络数据，发现异常行为的用户（如发帖机器人）或者谣言散播行为</p>
+<p>金融欺诈：信用卡欺诈、反洗钱、电信诈骗等</p>
+<p>医学场景：异常体征识别、病变区域识别、基因序列异常识别</p>
+<p>智慧城市：利用公交卡轨迹数据，识别盗窃行为；利用共享单车骑行轨迹数据，识别违章停车</p>
+<p>视频监控：视频场景中的异常事件</p>
+<p>数据清洗：一些异常数据可能会导致数据的期望或者方差等严重偏离正常，利用异常检测方法检测出数据中的噪 声通常是数据预处理中很重要的一步</p>
+<p>异常的类别</p>
+<p>点异常 point anomalies </p>
+<ul>
+<li>少数个体实例是异常的，大多数个体实例是正常的 </li>
+<li>例：正常人与病人的健康指标 </li>
+</ul>
+<p>条件异常 conditional anomalies 又称上下文异常 </p>
+<ul>
+<li>在特定情境下个体实例是异常的，在其他情境下都是正常的 </li>
+<li>例：在特定时间下的温度突然上升或下降 </li>
+</ul>
+<p>群体异常 group anomalies </p>
+<ul>
+<li>在群体集合中的个体实例出现异常的情况，而该个体实例自身可能不是异常，在入侵或欺诈检测等应用中， 离群点对应于多个数据点的序列，而不是单个数据点 </li>
+<li>例：信用卡突然短时间内不停地消费50元的记录集合作为群体异常子集，但子集中的个体可能与真实消费 记录一样正常</li>
+</ul>
+<p>异常检测面临的挑战</p>
+<p>未知性 </p>
+<p>异常与许多未知因素有关，例如，具有未知的突发行为、数据结构和分布的实例。它们直到真正发生时才为 人所知，比如恐怖袭击、诈骗和网络入侵等应用 </p>
+<p>异常类的异构性 </p>
+<p>异常是不规则的，一类异常可能表现出与另一类异常完全不同的异常特征。例如，在视频监控中，抢劫、交 通事故和盗窃等异常事件在视觉上有很大差异 </p>
+<p>类别不均衡 </p>
+<p>异常通常是罕见的数据实例，而正常实例通常占数据的绝大部分。因此，收集大量标了标签的异常实例是困 难的，甚至是不可能的。这导致在大多数应用程序中无法获得大规模的标记数据</p>
+<p><img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021024.png" alt="img"></p>
+<p>异常检测算法分类 </p>
+<p>异常检测基于标签的可获得性划分 </p>
+<p><strong>有监督异常检测</strong> </p>
+<p>在训练集中的正常实例和异常实例都有标签，这类方法的缺点在于数据标签难以获得或数据不均衡（正常样 本数量远大于异常样本数量） </p>
+<p><strong>半监督异常检测</strong> </p>
+<p>在训练集中只有单一类别（正常实例）的实例，没有异常实例参与训练 </p>
+<p><strong>无监督异常检测</strong> </p>
+<p>在训练集中既有正常实例也可能存在异常实例，但假设数据的比例是正常实例远大于异常实例，模型训练过 程中没有标签进行校正 </p>
+<p><strong>弱监督异常检测</strong> </p>
+<p>主要是针对异常实例不完全、粗粒度标签、部分实例标签错误等情况进行算法设计</p>
+<h2 id="一篇不错的文章"><a href="#一篇不错的文章" class="headerlink" title="一篇不错的文章"></a>一篇不错的文章</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79940809">https://zhuanlan.zhihu.com/p/79940809</a></p>
+<p>一个低风险用户的正常业务活动通常没什么可关注的，但是一些高风险人群的正常活动或者低风险账号进行的高危操作则足以值得调查人员关注，更近一步，如果一个高风险用户做了一些<strong>高危并且不常出现</strong>的动作，那就绝对需要安全人员介入调查了。这里有一个问题，我们如何知道一个用户风险等级是高还是低？这便是UBA及其算法要解决的核心问题，通过建立动态行为基线发现用户偏离正常模式的行为，并根据风险累计的数值判断用户风险级别。综上，构建用户的特征行为矩阵是第一步，也即User-Profile，特征行为矩阵的构建方法五花八门，考虑到HBase支持数据量大，列式存储等特点，我们选择将特征矩阵保存在HBase里。</p>
+<p>张三，像其他特权用户一样，利用其账号的权限登录到某一台主机或者服务器，主机登录算法用以检测每个用户经常使用的主机或者服务，DBA通常倾向于登录固定的几台机器，并且都是使用相似的命令，同时销售人员都是使用天兔或者某个XX系统的服务，两者使用方式完全不同。这里张三登录的是一台保存销售数据的服务器，而显然，这与他之前的模式或者与他所在的Peer-Group都是格格不入的。这里我们<strong>使用KMeans算法</strong>根据用户行为数据的特征矩阵对用户<strong>划分Peer-Group</strong>，行为模式类似的人群会划分到一个动态群组。</p>
+<p>除了动态群组，根据现有的系统权限组进行风险评估同样是一种有效方式，我们从LDAP或者AD获取用户组以及组的成员数，通常规模较小的组比成千上万用户的组风险系数更高。当张三的账号被黑客从普通管理员组提升到超级管理员组的时候，他的账号瞬间进入了一个人烟罕至的群组，这时候他的风险值会瞬间提升。</p>
+<p>除了用户登录的机器，登录时间也是行为特征中非常重要的一个环节，基于时间序列的分析方法有很多，这里我们使用<strong>KDE(核心概率密度估计)算法</strong>来统计和预测用户在某个时间段登录的概率，这种方法可以有效的克服离散数据在模式匹配过程中容易过耦合的问题。比如张三作为一个系统管理员，通常的登录时间是上班时间以及晚饭以后的时间，早上7:30属于正常登录时间，而凌晨0点登录就会被标记为高度反常和可疑。KDE曲线如下图：</p>
+<p><img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021011.png" alt="img"></p>
+<p>张三登录系统以后进行了一系列的操作，通常一个用户在一段时间内能够产生的操作个数也是一个人的典型特征，User-Profile聚合一个用户在一段时间内产生的所有行为数据的数量，使用KDE重新组织统计数据，并检测这个模式是否发生明显改变。如果这里张三在一小时内接连登录了30+台服务器，而他通常也就登录2、3台，那么这里就与正常的行为有明显的偏移。</p>
+<p><img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021022.png" alt="img"></p>
+<p>基于频繁项集的聚类算法(如Aprior/FP-Growth)在零售行业很早以前就有广泛应用，比如沃尔玛对顾客购买商品的模式发掘发现啤酒和尿布经常一起出售。基于频繁项集的机器学习算法在UBA领域也有广泛应用，比如，张三通常在周末的时候通过SSH协议登录，而在工作日通过RDP协议登录，那么有一天他在周末通过RDP登录就是一个行为模式的偏移。</p>
+<p>主成分分析(PCA)是一种应用广泛的降维算法，其在行为数据异常检测的过程中有很好的效果，首先用户行为的特征矩阵往往都有成千上万个维度，如果我们想从海量数据的特征矩阵中找出异常也即离群的点，计算难度会比较大，我们采用PCA对特征进行降维并结合KMeans等聚类算法找出离群点。比如，张三通常会长时间使用前台的服务器，而运维后台服务器的时候比较短，如果他长时间停留在后台服务器上我们的算法会将其潜在的风险值提高。</p>
+<p><img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/16808699021023.png" alt="img"></p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>当时实习的最后阶段有随便跑了跑公司的数据</p>
+<p>这里简单介绍一下大致的场景，我们公司&lt;200人 数据不完善，加上我们自己是开发者，经常有测试人员会故意测试DLP，外发敏感文件，导致训练基本上是没意义。这里仅仅做一个Demo， 理解一下相关基础算法，已做脱敏处理。</p>
+<p>先是读入数据，大概张这样：</p>
+<p><img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/image-20230408110216039.png" alt="image-20230408110216039"></p>
+<p>最后我考虑了很久， 决定先用文件登记(敏感登记)来做</p>
+<p>对每个文件，我自定义了一套打分规则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scores = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> data[<span class="string">&quot;文件等级&quot;</span>]:</span><br><span class="line">  <span class="keyword">if</span> i == <span class="string">&quot;-&quot;</span>:</span><br><span class="line">    scores.append(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">elif</span> i == <span class="string">&quot;s1&quot;</span>:</span><br><span class="line">    scores.append(<span class="number">4</span>)</span><br><span class="line">  <span class="keyword">elif</span> i == <span class="string">&quot;s2&quot;</span>:</span><br><span class="line">    scores.append(<span class="number">8</span>)</span><br><span class="line">  <span class="keyword">elif</span> i == <span class="string">&quot;s3&quot;</span>:</span><br><span class="line">    scores.append(<span class="number">16</span>)</span><br><span class="line">  <span class="keyword">elif</span> i == <span class="string">&quot;s4&quot;</span>:</span><br><span class="line">    scores.append(<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+
+<p>同一时间间隔，以小时为单位</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">data_hourly</span> = <span class="class"><span class="keyword">data</span>.resample(&#x27;1H&#x27;).sum()</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/image-20230408110527155.png" alt="image-20230408110527155" style="zoom:50%;">
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> sesd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib.patches <span class="keyword">as</span> mpatches</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> plotly.express <span class="keyword">as</span> px</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objects <span class="keyword">as</span> go</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df = data_hourly[<span class="string">&quot;scores&quot;</span>]</span><br><span class="line">outliers_indices = sesd.seasonal_esd(df, <span class="attribute">hybrid</span>=<span class="literal">True</span>, <span class="attribute">max_anomalies</span>=20)</span><br><span class="line"></span><br><span class="line">df_dot = df[outliers_indices]</span><br><span class="line">fig = px.line(df, <span class="attribute">x</span>=df.index, <span class="attribute">y</span>=<span class="string">&#x27;scores&#x27;</span>)</span><br><span class="line">fig.add_trace(go.Scatter(x = df_dot.index, y = df_dot ,<span class="attribute">mode</span>=<span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">                         <span class="attribute">marker</span>=dict(color=&#x27;red&#x27;, <span class="attribute">size</span>=6)))</span><br></pre></td></tr></table></figure>
+
+<p>最后可视化结果如下</p>
+<p><img src="/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/image-20230408110805538.png" alt="image-20230408110805538"></p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>这里用了<strong>S-H-ESD算法</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265085034">https://zhuanlan.zhihu.com/p/265085034</a></p>
+<h2 id="source"><a href="#source" class="headerlink" title="source"></a><strong>source</strong></h2><p>PCA</p>
+<p><a target="_blank" rel="noopener" href="https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71">https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71</a></p>
+<p>GAN</p>
+<p><a target="_blank" rel="noopener" href="https://chih-sheng-huang821.medium.com/pytorch%E6%89%8B%E6%8A%8A%E6%89%8B%E5%AF%A6%E4%BD%9C-generative-adversarial-network-8adae9a3092b">https://chih-sheng-huang821.medium.com/pytorch%E6%89%8B%E6%8A%8A%E6%89%8B%E5%AF%A6%E4%BD%9C-generative-adversarial-network-8adae9a3092b</a></p>
+
     </div>
 
     
@@ -307,7 +411,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" title="异常检测">http://example.com/2023/03/16/异常检测/</a>
+      <a href="http://example.com/2023/03/16/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" title="异常检测实践">http://example.com/2023/03/16/异常检测/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -342,6 +446,9 @@
   </div>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag"># 异常检测</a>
+          </div>
 
         
 
