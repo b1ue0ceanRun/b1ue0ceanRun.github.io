@@ -28,7 +28,7 @@
 <meta property="og:description" content="xss检测">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-26T04:28:07.000Z">
-<meta property="article:modified_time" content="2023-03-13T13:49:12.463Z">
+<meta property="article:modified_time" content="2023-04-08T09:24:26.049Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="xss检测">
 <meta name="twitter:card" content="summary">
@@ -91,9 +91,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">148</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">149</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">59</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">185</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">187</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -165,7 +165,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">185</span>
+          <span class="site-state-item-count">187</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -176,7 +176,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">148</span>
+        <span class="site-state-item-count">149</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -268,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-13 21:49:12" itemprop="dateModified" datetime="2023-03-13T21:49:12+08:00">2023-03-13</time>
+      <time title="Modified: 2023-04-08 17:24:26" itemprop="dateModified" datetime="2023-04-08T17:24:26+08:00">2023-04-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +299,7 @@
 <p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/74179.html">https://www.secpulse.com/archives/74179.html</a></p>
 </blockquote>
 <h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><p>从哪里入手好呢 其实国内没几个人公开自己的研究 找到的资料相当匮乏 但这也表明了机会 这边还没那么卷</p>
-<p>首先 完善一下 这个 <a target="_blank" rel="noopener" href="https://godrun666.github.io/2022/09/08/NLP-Word2Vec/">NLP系列之run哥带你手撕Word2Vec</a> </p>
+<p>首先 完善一下 这个 <a target="_blank" rel="noopener" href="https://b1ue0ceanrun.github.io/2022/09/08/NLP-Word2Vec/">NLP系列之run哥带你手撕Word2Vec</a> </p>
 <p>完善了 这个以后 就去 看看webber师傅的文章</p>
 <p>首先入门的话 现从kaggle上的数据集开始做吧</p>
 <p>NLP肯定要先考虑分词</p>
@@ -329,7 +329,7 @@
 </blockquote>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">GeneSeg</span>(<span class="params">payload</span>):</span><br><span class="line">    payload=payload.lower()</span><br><span class="line">    payload=unquote(unquote(payload))</span><br><span class="line">    payload,num=re.subn(<span class="string">r&#x27;\d+&#x27;</span>,<span class="string">&quot;0&quot;</span>,payload)</span><br><span class="line">    payload,num=re.subn(<span class="string">r&#x27;(http|https)://[a-zA-Z0-9\.@&amp;/#!#\?]+&#x27;</span>, <span class="string">&quot;http://u&quot;</span>, payload)</span><br><span class="line">    r = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        (?x)[\w\.]+?\(</span></span><br><span class="line"><span class="string">        |\)</span></span><br><span class="line"><span class="string">        |&quot;\w+?&quot;</span></span><br><span class="line"><span class="string">        |&#x27;\w+?&#x27;</span></span><br><span class="line"><span class="string">        |http://\w</span></span><br><span class="line"><span class="string">        |&lt;/\w+&gt;</span></span><br><span class="line"><span class="string">        |&lt;\w+&gt;</span></span><br><span class="line"><span class="string">        |&lt;\w+</span></span><br><span class="line"><span class="string">        |\w+=</span></span><br><span class="line"><span class="string">        |&gt;</span></span><br><span class="line"><span class="string">        |[\w\.]+</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> nltk.regexp_tokenize(payload, r)</span><br></pre></td></tr></table></figure>
 
-<p>ok 然后我们之后就要把这些玩意给变成 one-hot 形式  <a target="_blank" rel="noopener" href="https://godrun666.github.io/2022/09/08/NLP-Word2Vec/">NLP系列之run哥带你手撕Word2Vec</a>  讲的很清楚了</p>
+<p>ok 然后我们之后就要把这些玩意给变成 one-hot 形式  <a target="_blank" rel="noopener" href="https://b1ue0ceanrun.github.io/2022/09/08/NLP-Word2Vec/">NLP系列之run哥带你手撕Word2Vec</a>  讲的很清楚了</p>
 <p>这里为了方便 我们选择直接导包</p>
 <p><a target="_blank" rel="noopener" href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p>
 <p>小学一手 作者是选择了</p>
