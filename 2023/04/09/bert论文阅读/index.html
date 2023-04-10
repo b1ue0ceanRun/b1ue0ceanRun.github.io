@@ -20,17 +20,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="论文阅读https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1810.04805.pdf Abstract首先解释一下bert是啥 Bidirectional Encoder Representations from Transformers 假如你已经了解了 transformers 模型， 那么仅凭这几个单词，你能想到什么？ 首先肯定是这个 Encoder ，因为 transformers 中使用了">
+    <meta name="description" content="之前听的李老师的课，现在来重新读一遍论文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bert论文阅读">
 <meta property="og:url" content="http://example.com/2023/04/09/bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="论文阅读https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1810.04805.pdf Abstract首先解释一下bert是啥 Bidirectional Encoder Representations from Transformers 假如你已经了解了 transformers 模型， 那么仅凭这几个单词，你能想到什么？ 首先肯定是这个 Encoder ，因为 transformers 中使用了">
+<meta property="og:description" content="之前听的李老师的课，现在来重新读一遍论文">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/04/09/bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230409110819586.png">
 <meta property="og:image" content="http://example.com/2023/04/09/bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230409122001930.png">
 <meta property="article:published_time" content="2023-04-09T02:56:52.000Z">
-<meta property="article:modified_time" content="2023-04-09T07:41:34.912Z">
+<meta property="article:modified_time" content="2023-04-10T08:23:49.225Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="bert">
 <meta name="twitter:card" content="summary">
@@ -263,9 +263,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-04-09 10:56:52 / Modified: 15:41:34" itemprop="dateCreated datePublished" datetime="2023-04-09T10:56:52+08:00">2023-04-09</time>
+      <time title="Created: 2023-04-09 10:56:52" itemprop="dateCreated datePublished" datetime="2023-04-09T10:56:52+08:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-10 16:23:49" itemprop="dateModified" datetime="2023-04-10T16:23:49+08:00">2023-04-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -287,7 +293,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1810.04805.pdf">https://arxiv.org/pdf/1810.04805.pdf</a></p>
+        <p>之前听的李老师的课，现在来重新读一遍论文</p>
+<span id="more"></span>
+
+<h2 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1810.04805.pdf">https://arxiv.org/pdf/1810.04805.pdf</a></p>
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>首先解释一下bert是啥 Bidirectional Encoder Representations from Transformers</p>
 <p>假如你已经了解了 transformers 模型， 那么仅凭这几个单词，你能想到什么？</p>
 <p>首先肯定是这个 Encoder ，因为 transformers 中使用了 Encoder-Decoder 的架构，那么是不是可以推断，这里做了某些改进？Bidirectional –双向的。</p>
@@ -406,8 +415,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/04/09/GCN%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="next" title="GCN论文阅读">
-                  GCN论文阅读 <i class="fa fa-chevron-right"></i>
+                <a href="/2023/08/16/codeql/" rel="next" title="codeql">
+                  codeql <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

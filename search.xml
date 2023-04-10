@@ -11617,17 +11617,18 @@
   <entry>
     <title>WAF DEVELOP from 0 to 0.1</title>
     <url>/2023/03/17/WAF-DEVELOP-from021/</url>
-    <content><![CDATA[<p>这东西需要一点规划 短期可能会咕咕咕</p>
-<span id="more"></span> 
-
-<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>怎么说呢，之前相同事请教过waf开发相关，他让我去学学多模态匹配。</p>
-<p>今天正好leetcode上看到一道熟悉的题目，让我有了些想法。</p>
-<blockquote>
-<p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p>
-</blockquote>
-<p>貌似和“多模态”的问题有点像，（我上次只是随便看了看相关的内容，这次来学学</p>
-<p>先来看看这题</p>
-]]></content>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="9463cfd698e725b9f888c8c29dd91ecbc4e9cc526f6a01d58c7f8bbda0551576">cb320da6677537a61c4c8a60c50f744c2e78d71ce2f927d55a87957050e4e431f278b6fa7891fda579c0cf5dd38251415ef4f537235fd360a37219dcc771ff687b102d2281c4b55f3fb63e43ecad4c52b3ff3568e7e3efaff15b07d6e214598525105e9759214f9f38b9bdccce320dcacb4166af1003298d47e9f3a8074ba523e951bd3689f9572c8ae266b8145960bdf1f6ad121888e3d9f1deac790f8daea9d2476d3b1971c9a73f07fa7488dce6e8c5141838e91dcc447cdfe15288b49ec5aa9e1c38479a5f4c7880f60ff340f2c464f6e7372106a0b947c9793588512069d943399a5d051a94cee5b4935e72b379efa85e50a260c07c60dd1a4cc3b367c3cec2d535598e288847402a4a6b6a9c8e0b9ca0243ad7e9b3cfc7f351d88dd4393d5102aef5bcbf90245eafa404cf61cae58c24e300a1b0cb9eb32ae0f26f62db59c3b47b7687a55240bfec08729211cdb9e9b44c117a74e7e22b2b1cd8f320fcd5c389bcfadb22d799cd4a6513aecc5b0e9da2aa49b50c5a42943d311e14df11c2167cca6b99b5f6c2bd1b64bb1022076f8fa18e1f5089f89ca7a5d48a149b03ae026c03d5784a8c67161c40b35d78f8f66f5220103ebf960fc7b4aaf9a25f1ea2f568a8dc9c4e165f0036015b1d9bc9409af1f5df73c61eeca7f265799b0f003c64ca1505765f9fc6a8b60d70938f0e37f3e7c89b10b66874a10202722b7eb8738e3cec699ad800c665f5e938c337384052c1cea64518737d3e793673229c5dc139774ebd5ab128278f8a1213b6148b0b9e5ec6cd9ab7b7844044d9b5dff6a27c2a1a8fa907fec0880af7996f28517ff414d9ee775ab0cde7e24c8cd17d8659d3a1b7bbee779889b8fc98726755bf8c639c390cb587fce8c413867d76f3f9b616a893d4ebee366a6f40104a73a76ea07d815dbdddd13352d52a035148ee4ca436a97bb17763e5452f430069b6109be719f6bc755e38d5335f7388c460e74fb2</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>WAF</category>
       </categories>
@@ -11890,13 +11891,27 @@
   </entry>
   <entry>
     <title>GCN论文阅读</title>
-    <url>/2023/04/09/GCN%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</url>
-    <content><![CDATA[]]></content>
+    <url>/2022/04/09/GCN%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="11b1adf8204bf859ad56b70f7677c8d4752662994c15a9c23c0b7df4c12150c1">cb320da6677537a61c4c8a60c50f744c482ff6da6ed0aadc6be741b7df5f88e8</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>bert论文阅读</title>
     <url>/2023/04/09/bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</url>
-    <content><![CDATA[<h2 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h2><p><a href="https://arxiv.org/pdf/1810.04805.pdf">https://arxiv.org/pdf/1810.04805.pdf</a></p>
+    <content><![CDATA[<p>之前听的李老师的课，现在来重新读一遍论文</p>
+<span id="more"></span>
+
+<h2 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h2><p><a href="https://arxiv.org/pdf/1810.04805.pdf">https://arxiv.org/pdf/1810.04805.pdf</a></p>
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>首先解释一下bert是啥 Bidirectional Encoder Representations from Transformers</p>
 <p>假如你已经了解了 transformers 模型， 那么仅凭这几个单词，你能想到什么？</p>
 <p>首先肯定是这个 Encoder ，因为 transformers 中使用了 Encoder-Decoder 的架构，那么是不是可以推断，这里做了某些改进？Bidirectional –双向的。</p>
