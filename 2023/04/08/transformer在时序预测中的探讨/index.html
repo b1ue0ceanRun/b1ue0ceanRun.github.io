@@ -20,28 +20,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下">
+    <meta name="description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下 AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com) 论文地址： https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2205.13504.pdf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="transformer在时序预测中的探讨">
+<meta property="og:title" content="transformer在时序预测中的有效性探讨">
 <meta property="og:url" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下">
+<meta property="og:description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下 AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com) 论文地址： https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2205.13504.pdf">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411133602967.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411121335571.png">
 <meta property="article:published_time" content="2023-04-08T09:17:04.000Z">
-<meta property="article:modified_time" content="2023-04-08T10:06:50.396Z">
+<meta property="article:modified_time" content="2023-04-11T05:36:04.954Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="transformer">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411133602967.png">
 
 
 <link rel="canonical" href="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/","path":"2023/04/08/transformer在时序预测中的探讨/","title":"transformer在时序预测中的探讨"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/","path":"2023/04/08/transformer在时序预测中的探讨/","title":"transformer在时序预测中的有效性探讨"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>transformer在时序预测中的探讨 | b1ue0cean's   blog</title>
+<title>transformer在时序预测中的有效性探讨 | b1ue0cean's   blog</title>
   
 
 
@@ -137,7 +140,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -150,6 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%88%E8%81%8A%E4%B8%80%E4%B8%8B"><span class="nav-number">1.</span> <span class="nav-text">先聊一下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transformer%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">transformer的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E9%97%AE"><span class="nav-number">1.3.</span> <span class="nav-text">7问</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -244,12 +248,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="transformer在时序预测中的探讨 | b1ue0cean's   blog">
+      <meta itemprop="name" content="transformer在时序预测中的有效性探讨 | b1ue0cean's   blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          transformer在时序预测中的探讨
+          transformer在时序预测中的有效性探讨
         </h1>
 
         <div class="post-meta-container">
@@ -259,9 +263,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-04-08 17:17:04 / Modified: 18:06:50" itemprop="dateCreated datePublished" datetime="2023-04-08T17:17:04+08:00">2023-04-08</time>
+      <time title="Created: 2023-04-08 17:17:04" itemprop="dateCreated datePublished" datetime="2023-04-08T17:17:04+08:00">2023-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-11 13:36:04" itemprop="dateModified" datetime="2023-04-11T13:36:04+08:00">2023-04-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,9 +294,39 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>偶然读到一篇令我机器感兴趣的文章，来分享一下</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mtJjHvxm516xirMr0ymurA">AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com)</a></p>
+<p>论文地址： <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.13504.pdf">https://arxiv.org/pdf/2205.13504.pdf</a></p>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mtJjHvxm516xirMr0ymurA">AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com)</a></p>
+<h1 id="先聊一下"><a href="#先聊一下" class="headerlink" title="先聊一下"></a>先聊一下</h1><p>我们印象中的transformer，有哪些优点 –&gt; 并行性，基于注意力机制，学习的更全面。</p>
+<p>那么，它对时序预测真的会起到很好的效果吗？</p>
+<p>果然，质疑，才能检验真知。</p>
+<p>我们继续看一看。</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>LTSF – long-term time series forecasting 长期时间序列预测</p>
+<p>说近期针对LSTF任务，提出了很多基于transformer的解决方案。虽然说，在近几年内表现是越来越好，但是他们团队先质疑。</p>
+<p>意思是 transformer 没能从一组组有序的连续点中提取时间上的关系，</p>
+<p>作者说 transoformer 主要的能力来源于多头注意力机制，来提取出长序列中的语义相关性。但是 self-attention 是</p>
+<p><code>permutation-invariant and “anti-order” </code>to some extent. 虽然在各种位置编码技术可以一定程度上保留顺序上的信息，但是在这些技术上运用 self-attention ，仍然不可避免的会造成信息的丢失。我们主要是对在一系列连续的点中的时间上的变化进行建模感兴趣，也就是说，顺序本身起着最关键的作用。</p>
+<h2 id="transformer的过程"><a href="#transformer的过程" class="headerlink" title="transformer的过程"></a>transformer的过程</h2><p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411133602967.png" alt="image-20230411133602967"></p>
+<h2 id="7问"><a href="#7问" class="headerlink" title="7问"></a>7问</h2><ul>
+<li><strong>Can existing LTSF-Transformers extract temporal relations well from longer input sequences?</strong></li>
+</ul>
+<p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411121335571.png" alt="image-20230411121335571"></p>
+<p>咱就是说，随着step的增加，和 transformer 相关的 mse 并没有下降，反而还有增加的</p>
+<ul>
+<li><p><strong>What can be learned for long-term forecasting?</strong></p>
+</li>
+<li><p><strong>Are the self-attention scheme effective for LTSF?</strong> </p>
+</li>
+<li><p><strong>Can existing LTSF-Transformers preserve temporal order well?</strong></p>
+</li>
+<li><p><strong>How effective are different embedding strategies?</strong></p>
+</li>
+<li><p><strong>Is training data size a limiting factor for existing LTSFTransformers?</strong></p>
+</li>
+<li><p><strong>Is efficiency really a top-level priority?</strong> </p>
+</li>
+</ul>
 
     </div>
 
@@ -304,7 +344,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/" title="transformer在时序预测中的探讨">http://example.com/2023/04/08/transformer在时序预测中的探讨/</a>
+      <a href="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/" title="transformer在时序预测中的有效性探讨">http://example.com/2023/04/08/transformer在时序预测中的探讨/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
