@@ -11839,8 +11839,18 @@
   <entry>
     <title>gpt系列学习</title>
     <url>/2023/04/08/gpt%E7%B3%BB%E5%88%97%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV1AF411b7xQ/?spm_id_from=333.788.recommend_more_video.1">https://www.bilibili.com/video/BV1AF411b7xQ/?spm_id_from=333.788.recommend_more_video.1</a></p>
-]]></content>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="564140401ffcd469be48ae1ffc27253b66c6d88b3d2280d856520559877596f0">cb320da6677537a61c4c8a60c50f744c01d6fa01b183a14fb06895c9dca86826dec80353676ada745c818a4ba2fe216ef37d0174dee233463d9bb504957297baca0fc751bc66a6364a4c37a4319f866eb769ee2d94e0a5ebd69fe4883f93d8b5a26d307d7fb95a2ac08debd8ff387eae2f78a240d73daa0bccb0db34cd3a44a54b3c8e87ec3102463d83e65001bbbee704dab76adcdc1bfd548ea5361ed522f748fc4ebf318738d88095781095437169e2c0af416b20c8e9e001bc43c2c127347c00df94cd6cc6e8b86f0f97c6efa9932a80b83b4d49f2472ff957c10ee10f56</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>transformer在时序预测中的有效性探讨</title>
