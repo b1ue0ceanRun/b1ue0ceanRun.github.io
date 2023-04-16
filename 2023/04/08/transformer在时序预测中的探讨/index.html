@@ -20,17 +20,24 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下 AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com) 论文地址： https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2205.13504.pdf">
+    <meta name="description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下 论文地址： https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2205.13504.pdf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="transformer在时序预测中的有效性探讨">
 <meta property="og:url" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下 AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com) 论文地址： https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2205.13504.pdf">
+<meta property="og:description" content="偶然读到一篇令我机器感兴趣的文章，来分享一下 论文地址： https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2205.13504.pdf">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411133602967.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416154937572.png">
 <meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411121335571.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416162428183.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416162818058.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416163410422.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416163939546.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416163806731.png">
+<meta property="og:image" content="http://example.com/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416164107151.png">
 <meta property="article:published_time" content="2023-04-08T09:17:04.000Z">
-<meta property="article:modified_time" content="2023-04-11T05:36:04.954Z">
+<meta property="article:modified_time" content="2023-04-16T08:41:31.831Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="transformer">
 <meta name="twitter:card" content="summary">
@@ -94,9 +101,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">151</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">150</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">61</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">191</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">188</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -168,7 +175,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">188</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -179,7 +186,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">151</span>
+        <span class="site-state-item-count">150</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -271,7 +278,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-11 13:36:04" itemprop="dateModified" datetime="2023-04-11T13:36:04+08:00">2023-04-11</time>
+      <time title="Modified: 2023-04-16 16:41:31" itemprop="dateModified" datetime="2023-04-16T16:41:31+08:00">2023-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,7 +301,6 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>偶然读到一篇令我机器感兴趣的文章，来分享一下</p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mtJjHvxm516xirMr0ymurA">AAAI 2023 | Transformer 对时序预测真的有效吗？ (qq.com)</a></p>
 <p>论文地址： <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.13504.pdf">https://arxiv.org/pdf/2205.13504.pdf</a></p>
 <span id="more"></span>
 
@@ -309,24 +315,54 @@
 <p><code>permutation-invariant and “anti-order” </code>to some extent. 虽然在各种位置编码技术可以一定程度上保留顺序上的信息，但是在这些技术上运用 self-attention ，仍然不可避免的会造成信息的丢失。我们主要是对在一系列连续的点中的时间上的变化进行建模感兴趣，也就是说，顺序本身起着最关键的作用。</p>
 <h2 id="transformer的过程"><a href="#transformer的过程" class="headerlink" title="transformer的过程"></a>transformer的过程</h2><p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411133602967.png" alt="image-20230411133602967"></p>
 <h2 id="7问"><a href="#7问" class="headerlink" title="7问"></a>7问</h2><ul>
-<li><strong>Can existing LTSF-Transformers extract temporal relations well from longer input sequences?</strong></li>
+<li><p><strong>Can existing LTSF-Transformers extract temporal relations well from longer input sequences?</strong></p>
+<p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416154937572.png" alt="image-20230416154937572"></p>
+</li>
 </ul>
-<p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411121335571.png" alt="image-20230411121335571"></p>
+<p>图肯定是最直观的。我来根据我的经验解释一下上面的图，就是你训练完模型后，扔进去几个步长的数据，预测接下来某些步长的数据。</p>
+<p>红线前面是历史数据，后面则是预测的数据。</p>
+<img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230411121335571.png" alt="image-20230411121335571" style="zoom:67%;">
+
 <p>咱就是说，随着step的增加，和 transformer 相关的 mse 并没有下降，反而还有增加的</p>
 <ul>
-<li><p><strong>What can be learned for long-term forecasting?</strong></p>
-</li>
-<li><p><strong>Are the self-attention scheme effective for LTSF?</strong> </p>
-</li>
-<li><p><strong>Can existing LTSF-Transformers preserve temporal order well?</strong></p>
-</li>
-<li><p><strong>How effective are different embedding strategies?</strong></p>
-</li>
-<li><p><strong>Is training data size a limiting factor for existing LTSFTransformers?</strong></p>
-</li>
-<li><p><strong>Is efficiency really a top-level priority?</strong> </p>
-</li>
+<li><strong>What can be learned for long-term forecasting?</strong></li>
 </ul>
+<p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416162428183.png" alt="image-20230416162428183"></p>
+<p>Table 3. Comparison of different input sequences under the MSE metric to explore what LTSF-Transformers depend on. If the input is Close, we use the 96th, …, 191th time steps as the input sequence. If the input is Far, we use the 0th, …, 95th time steps. Both of them forecast the 192th, …,(192 + 720)th time steps.</p>
+<p>简单说就是对比，后96个步长和再后96个步长的MSE</p>
+<p>历史窗口中的时间信息会显著影响短期时序预测的精度，而长期预测仅取决于模型是否能很好地捕捉趋势和周期性。也就是说，预测范围越远，历史窗口的影响就越小。从实验结果来看，Transformer模型的表现略有下降，这表明这些模型只能从相邻的时间序列中捕获相似的时间信息。</p>
+<p><strong>但这个我自己感觉的话说的比较牵强，下降是肯定会下降的，这么解释感觉有点不是很有道理。</strong></p>
+<ul>
+<li><strong>Are the self-attention scheme effective for LTSF?</strong> </li>
+</ul>
+<img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416162818058.png" alt="image-20230416162818058" style="zoom: 67%;">
+
+<p>Att.-Linear – 用 linear 层换掉注意力机制</p>
+<p>最后发现竟然是仅用线性的mse最小</p>
+<ul>
+<li><strong>Can existing LTSF-Transformers preserve temporal order well?</strong></li>
+</ul>
+<p>作者打乱了数据集，使其不具有时序性，可以看到transformer其实预测结果差别不大，用以证明其提取时序性的能力并不理想</p>
+<p><img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416163410422.png" alt="image-20230416163410422"></p>
+<ul>
+<li><strong>How effective are different embedding strategies?</strong></li>
+</ul>
+<img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416163939546.png" alt="image-20230416163939546" style="zoom:67%;">
+
+<blockquote>
+<p>该问题也是问<strong>位置编码和时间戳嵌入</strong>技术对模型结果影响有多大？从图中的结果可知，如果没有位置嵌入(wo/Pos.)，Informer 的预测误差将大幅增加。随着预测长度的增加，无时间戳嵌入(wo/Temp.)将逐渐损害Informer的性能。<strong>那是因为Informer对每个标记使用单个时间步长。</strong>FEDformer 和 Autoformer 不是在每个元素中使用单个时间步长，而是输入一系列时间戳来嵌入时间信息。然而，在没有时间戳嵌入的情况下，由于全局时间信息的丢失，Autoformer 的性能急剧下降。相反，由于 FEDformer 中提出的频率增强模块引入了时间归纳偏差，它在删除任何位置/时间戳嵌入方面受到的影响较小。</p>
+</blockquote>
+<ul>
+<li><p><strong>Is training data size a limiting factor for existing LTSFTransformers?</strong></p>
+<img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416163806731.png" alt="image-20230416163806731" style="zoom:50%;"></li>
+</ul>
+<p>去不同规模的数据集来进行对比，发现相同步长下差别不大就是了</p>
+<ul>
+<li><strong>Is efficiency really a top-level priority?</strong> </li>
+</ul>
+<img src="/2023/04/08/transformer%E5%9C%A8%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E6%8E%A2%E8%AE%A8/image-20230416164107151.png" alt="image-20230416164107151" style="zoom:50%;">
+
+<p>在实践中，大多数 Transformer 变体会造成更多的推理时间和更多的参数。这会引入了更多额外的设计元素，使得实际成本更高。此外，常规的 Transformer 的内存成本实际上是可以接受的，这削弱了设计内存高效的 Transformer 的重要性，至少对现有基准来说是这样。</p>
 
     </div>
 
