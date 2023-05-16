@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一切的一切都要从一个课设说起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yolov7 and DeepSort解读&amp;智能多媒体通信及其产业化技术课设">
+<meta property="og:url" content="http://example.com/2023/05/08/DeepSort/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="一切的一切都要从一个课设说起">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161700072.png">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161718506.png">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161745723.png">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161920777.png">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161932207.png">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161941982.png">
+<meta property="og:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161951627.png">
+<meta property="article:published_time" content="2023-05-08T08:45:00.000Z">
+<meta property="article:modified_time" content="2023-05-16T08:20:28.231Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/05/08/DeepSort/image-20230516161700072.png">
+
+
+<link rel="canonical" href="http://example.com/2023/05/08/DeepSort/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/05/08/DeepSort/","path":"2023/05/08/DeepSort/","title":"yolov7 and DeepSort解读&智能多媒体通信及其产业化技术课设"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>yolov7 and DeepSort解读&智能多媒体通信及其产业化技术课设 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">155</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">66</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">199</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#target"><span class="nav-number">1.</span> <span class="nav-text">target</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text">solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPT"><span class="nav-number">3.</span> <span class="nav-text">PPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-YOLOv7%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">Why YOLOv7？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-Deep-Sort%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">Why Deep Sort？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-Sort%E5%8E%9F%E7%90%86"><span class="nav-number">3.3.</span> <span class="nav-text">Deep Sort原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-Sort%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.3.1.</span> <span class="nav-text">Deep Sort的步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B8%AA%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.3.2.</span> <span class="nav-text">追踪的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.3.3.</span> <span class="nav-text">匹配的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E7%BA%A7%E8%81%94"><span class="nav-number">3.3.4.</span> <span class="nav-text">匹配级联</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">155</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/DeepSort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="yolov7 and DeepSort解读&智能多媒体通信及其产业化技术课设 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          yolov7 and DeepSort解读&智能多媒体通信及其产业化技术课设
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-05-08 16:45:00" itemprop="dateCreated datePublished" datetime="2023-05-08T16:45:00+08:00">2023-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-05-16 16:20:28" itemprop="dateModified" datetime="2023-05-16T16:20:28+08:00">2023-05-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>一切的一切都要从一个课设说起</p>
+<span id="more"></span>
+
+<h2 id="target"><a href="#target" class="headerlink" title="target"></a>target</h2><blockquote>
+<p>多目标跟踪算法研究</p>
+<p>（1）原始数据：原始数据为一段路端或车端的视频序列，视频序列中包括多个车辆目标和行人目标。</p>
+<p>（2）功能描述：可利用现有的跟踪算法，对该视频图像序列的车辆进行跟踪，输出并显示每帧目标在图像中的位置信息（左上角坐标和右下角坐标）、类别（目标是行人还是车辆）和对应的ID号。</p>
+<p>（3）编程语言：Matlab， C/C++，或Python。</p>
+<p>（4）难度：难</p>
+<p>（5）环境：CPU或GPU</p>
+<p>参考和对比文献：Wojke N, Bewley A, Paulus D. Simple online and realtime tracking with a deep association metric[C]//2017 IEEE International Conference on Image Processing (ICIP). IEEE, 2017: 3645-3649.</p>
+</blockquote>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>直接github上找个colab跑一下就行了，但但但但但是，害是要去了解一下原理滴</p>
+<p>这里copy一下答辩的ppt（没错</p>
+<h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><h3 id="Why-YOLOv7？"><a href="#Why-YOLOv7？" class="headerlink" title="Why YOLOv7？"></a>Why YOLOv7？</h3><img src="/2023/05/08/DeepSort/image-20230516161700072.png" alt="image-20230516161700072" style="zoom:67%;">
+
+<p>YOLOv7 同时在速度和正确率上超过了所有已知的目标检测器。</p>
+<p>与性能最好的 SWIN-L Cascade-Mask R-CNN模型相比，YOLOv7 以显著提高的速度（快 509%）实现了 2% 的准确度提升</p>
+<img src="/2023/05/08/DeepSort/image-20230516161718506.png" alt="image-20230516161718506" style="zoom:67%;">
+
+
+
+<p>YOLOv7 在速度和准确率方面通杀了YOLOR、YOLOX、Scaled-YOLOv4、YOLOv5等目标检测算法。</p>
+<h3 id="Why-Deep-Sort？"><a href="#Why-Deep-Sort？" class="headerlink" title="Why Deep Sort？"></a>Why Deep Sort？</h3><p><img src="/2023/05/08/DeepSort/image-20230516161745723.png" alt="image-20230516161745723"></p>
+<p>Deep SORT算法是对SORT的多目标追踪算法的扩展，它利用appearance信息来提高追踪性能，尤其是在目标被遮挡时。实验结果表明，该算法扩展可以将身份切换数量减少45%，并在高帧率下实现了总体竞争性能。</p>
+<h3 id="Deep-Sort原理"><a href="#Deep-Sort原理" class="headerlink" title="Deep Sort原理"></a>Deep Sort原理</h3><h4 id="Deep-Sort的步骤"><a href="#Deep-Sort的步骤" class="headerlink" title="Deep Sort的步骤"></a>Deep Sort的步骤</h4><p>1.检测器得到 t 时间的 detection bbox，更新track set</p>
+<p>2.经过卡尔曼滤波器预测 t + 1 时的prediction bbox</p>
+<p>3.检测器得到 t + 1的detection</p>
+<p>4.使用匈牙利算法配对 t + 1的detection和prediction的bbox，更新track set</p>
+<p>总结为：</p>
+<p>1.目标检测器</p>
+<p>2.追踪</p>
+<p>3.匹配</p>
+<h4 id="追踪的原理"><a href="#追踪的原理" class="headerlink" title="追踪的原理"></a>追踪的原理</h4><p><img src="/2023/05/08/DeepSort/image-20230516161920777.png" alt="image-20230516161920777"></p>
+<h4 id="匹配的原理"><a href="#匹配的原理" class="headerlink" title="匹配的原理"></a>匹配的原理</h4><p><img src="/2023/05/08/DeepSort/image-20230516161932207.png" alt="image-20230516161932207"></p>
+<p><img src="/2023/05/08/DeepSort/image-20230516161941982.png" alt="image-20230516161941982"></p>
+<h4 id="匹配级联"><a href="#匹配级联" class="headerlink" title="匹配级联"></a>匹配级联</h4><p><img src="/2023/05/08/DeepSort/image-20230516161951627.png" alt="image-20230516161951627"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2023/05/08/DeepSort/" title="yolov7 and DeepSort解读&amp;智能多媒体通信及其产业化技术课设">http://example.com/2023/05/08/DeepSort/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/08/%E8%A7%86%E9%A2%91%E6%81%A2%E5%A4%8D%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2/" rel="prev" title="Leveraging Bitstream Metadata for Fast, Accurate, Generalized Compressed Video Quality Enhancement 论文阅读">
+                  <i class="fa fa-chevron-left"></i> Leveraging Bitstream Metadata for Fast, Accurate, Generalized Compressed Video Quality Enhancement 论文阅读
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/05/08/%E5%8C%85%E7%AE%A1%E7%90%86%E5%8F%8D%E5%90%91%E4%BE%9D%E8%B5%96%E6%9F%A5%E8%AF%A2%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%9D%82%E8%B0%88/" rel="next" title="包管理反向依赖查询相关知识杂谈">
+                  包管理反向依赖查询相关知识杂谈 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"3b32e7cbf45517f917d8dcca2881a78d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

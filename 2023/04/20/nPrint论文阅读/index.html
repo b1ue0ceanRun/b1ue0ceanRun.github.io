@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="nPrint介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="New Directions in Automated Traffic Analysis 论文阅读">
+<meta property="og:url" content="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html">
+<meta property="og:site_name" content="b1ue0cean&#39;s   blog">
+<meta property="og:description" content="nPrint介绍">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230420221525588.png">
+<meta property="og:image" content="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230421124245670.png">
+<meta property="og:image" content="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230421124312048.png">
+<meta property="article:published_time" content="2023-04-20T12:53:33.000Z">
+<meta property="article:modified_time" content="2023-04-22T04:26:14.610Z">
+<meta property="article:author" content="b1ue0cean">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230420221525588.png">
+
+
+<link rel="canonical" href="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/","path":"2023/04/20/nPrint论文阅读/","title":"New Directions in Automated Traffic Analysis 论文阅读"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>New Directions in Automated Traffic Analysis 论文阅读 | b1ue0cean's   blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="b1ue0cean's   blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">b1ue0cean's   blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">welcome to my world -- sharing CTF & ML skills</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">155</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">66</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">199</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">论文阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ABSTRACT"><span class="nav-number">1.1.</span> <span class="nav-text">ABSTRACT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INTRODUCTION"><span class="nav-number">1.2.</span> <span class="nav-text">INTRODUCTION</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%A1%A8%E7%A4%BA%EF%BC%9F"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据如何表示？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Semantic-Representation"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Semantic Representation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Naive-Binary-Representation"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Naive Binary Representation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hybrid-%E4%BD%9C%E8%80%85%E6%8F%90%E5%87%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Hybrid(作者提出的解决方案)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="b1ue0cean"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">b1ue0cean</p>
+  <div class="site-description" itemprop="description">我就是我，人间不一样的烟火</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">155</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godrun666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godrun666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1019076587@qq.com" title="E-Mail → mailto:1019076587@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/b1ue0cean7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;b1ue0cean7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_53755216" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53755216" rel="noopener" target="_blank">CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="b1ue0cean">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="b1ue0cean's   blog">
+      <meta itemprop="description" content="我就是我，人间不一样的烟火">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="New Directions in Automated Traffic Analysis 论文阅读 | b1ue0cean's   blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          New Directions in Automated Traffic Analysis 论文阅读
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-20 20:53:33" itemprop="dateCreated datePublished" datetime="2023-04-20T20:53:33+08:00">2023-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-22 12:26:14" itemprop="dateModified" datetime="2023-04-22T12:26:14+08:00">2023-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>nPrint介绍</p>
+<span id="more"></span>
+
+<h1 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h1><h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>提出了nPrint这么一个东西，极大消除特征提取和模型调优。</p>
+<h2 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h2><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>看看效果</p>
+<ul>
+<li> 在 nPrint 上训练的模型可以执行细粒度的操作系统检测，在设备指纹识别方面比 Nmap 获得更高的精度，并且可以通过重传自动识别流量中的应用程序</li>
+<li>在 netML(一个公开比赛) 上优于针对提取特征训练的性能最好的手工调优模型</li>
+</ul>
+<h3 id="数据如何表示？"><a href="#数据如何表示？" class="headerlink" title="数据如何表示？"></a>数据如何表示？</h3><p><img src="/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230420221525588.png" alt="image-20230420221525588"></p>
+<p>作者提出了三种表示方式</p>
+<p>在应用机器学习方法时，对数据进行编码是非常重要的一环。为了实现上述提出的目标，数据编码需要满足以下要求：</p>
+<ul>
+<li>完整性（Complete）：我们的目的是找到一种统一的数据编码，而不依赖于专家知识，所以该编码方式需要包含数据包的所有信息。</li>
+<li>不变性（Constant size per problem）：机器学习模型要求输入的数据保持同样大小。因此，对于不同的数据包，也应该有相同的数据表征。</li>
+<li>归一性（Inherently normalized）：归一化可以减少模型的训练时间并提高模型的稳定性，因此数据表征应该是经过归一化的。</li>
+<li>一致性（Aligned）：不同数据包头的同一部分在编码后应该位于同样的位置。</li>
+</ul>
+<h4 id="Semantic-Representation"><a href="#Semantic-Representation" class="headerlink" title="Semantic Representation"></a>Semantic Representation</h4><p>缺点：该表示不保留选项字段的顺序</p>
+<h4 id="Naive-Binary-Representation"><a href="#Naive-Binary-Representation" class="headerlink" title="Naive Binary Representation"></a>Naive Binary Representation</h4><p>可以通过 raw bitmap 的表示来保留顺序。但这样会忽略许多细节，如不同的size和协议。如下图，具有相同 IP 报头的 TCP 包和 UDP 包具有完全不同的信息，但却被表示为相同的特征。</p>
+<p>而且会导致错位，会产生一下影响：</p>
+<ul>
+<li>模型性能下降，因为在模型中可能存在重要特征的地方引入噪声</li>
+<li>不可解释性，缺乏对应关系</li>
+</ul>
+<p><img src="/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230421124245670.png" alt="image-20230421124245670"></p>
+<h4 id="Hybrid-作者提出的解决方案"><a href="#Hybrid-作者提出的解决方案" class="headerlink" title="Hybrid(作者提出的解决方案)"></a>Hybrid(作者提出的解决方案)</h4><p><img src="/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20230421124312048.png" alt="image-20230421124312048"></p>
+<p>NPrint 是完整的、对齐的，每个问题的大小不变，并且本质上是规范化的。NPrint 完成了: 任何数据包都可以在不丢失信息的情况下表示。</p>
+<ul>
+<li>对齐: 使用内部填充并为每个头类型包含空间，而不管这个头是否实际存在于给定的数据包中，都可以确保每个数据包以相同数量的特性表示，并且每个特性具有相同的含义。对齐使 nPrint 比许多网络表示具有明显的优势，因为它可以在位级进行解释。这允许研究人员和从业人员将 nPrint 映射回语义领域，以便更好地理解驱动给定模型性能的特性。并非所有的模型都是可解释的，但是通过具有可解释的表示形式，我们可以更好地理解可解释的模型。</li>
+<li>规范化: 通过直接使用数据包的位并用 -1填充不存在的头，每个特性采用三个值中的一个: -1、0或1，消除了解析和表示每个数据包中每个字段的值的需要。此外，用 -1填充不存在的头值可以让我们区分设置为0的位和包中不存在的头。</li>
+<li>大小不变: 每个数据包用相同数量的特性表示。对于给定的问题，我们将有效负载设置为可选的字节数: 随着越来越多的网络流量被加密，对于许多流量分类问题，有效负载将无法使用。</li>
+<li>NPrint 是模块化和可扩展的。首先，可以将其他协议(例如 ICMP)添加到表示中。其次，nPrint 是一种单包表示形式，可以用作需要数据包集的分类问题的构建块，正如我们在几个案例中所展示的那样。如果我们将每个 nPrint 指纹看作一个1xM 矩阵，其中 M 是指纹中的特征数，我们可以通过连接它们来构建多包 nPrint 指纹。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>该文章提出了一种很好的规范化数据包的手段，但是从作者的实验来看，也仅仅规范了数据包的头部，但是在一些识别中，对数据包的内容如何处理，仍然是个问题。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>b1ue0cean
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://example.com/2023/04/20/nPrint%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" title="New Directions in Automated Traffic Analysis 论文阅读">http://example.com/2023/04/20/nPrint论文阅读/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/b1ue0cean7">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/18/%E6%81%B6%E6%84%8F%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1/" rel="prev" title="恶意流量检测论文阅读1">
+                  <i class="fa fa-chevron-left"></i> 恶意流量检测论文阅读1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/22/5%E6%9C%88%E4%BB%BD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" rel="next" title="5月份学习计划">
+                  5月份学习计划 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"godrun666","repo":"godrun666.github.io","client_id":"7f8a0f5a5c88a0fea952","client_secret":"57250fa3a3b4cb1d0e0dad43bb1fffe7355d61a8","admin_user":"godrun666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"39c976a6b84572687a966a419a125c18"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

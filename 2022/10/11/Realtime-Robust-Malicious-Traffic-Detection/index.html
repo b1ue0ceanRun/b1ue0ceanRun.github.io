@@ -20,18 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+    <meta name="description" content="读！学！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Realtime Robust Malicious Traffic Detection论文阅读笔记">
 <meta property="og:url" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/index.html">
 <meta property="og:site_name" content="b1ue0cean&#39;s   blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="读！学！">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230422124350709.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20221011172128073.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230422124718014.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423165511928.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423165832299.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423170101034.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423170435477.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423171035582.png">
+<meta property="og:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423171049223.png">
 <meta property="article:published_time" content="2022-10-11T05:56:48.000Z">
-<meta property="article:modified_time" content="2022-10-11T09:58:16.702Z">
+<meta property="article:modified_time" content="2023-04-23T12:27:29.559Z">
 <meta property="article:author" content="b1ue0cean">
 <meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230422124350709.png">
 
 
 <link rel="canonical" href="http://example.com/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/">
@@ -91,9 +101,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">151</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">62</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">188</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">155</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">66</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">199</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -137,7 +147,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -150,6 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E7%9D%80%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98%E6%9D%A5%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">带着几个问题来读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Frequency-Feature-Extraction-Module"><span class="nav-number">3.1.</span> <span class="nav-text">Frequency Feature Extraction Module</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,18 +175,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">188</span>
+          <span class="site-state-item-count">199</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">151</span>
+        <span class="site-state-item-count">155</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -259,9 +270,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-10-11 13:56:48 / Modified: 17:58:16" itemprop="dateCreated datePublished" datetime="2022-10-11T13:56:48+08:00">2022-10-11</time>
+      <time title="Created: 2022-10-11 13:56:48" itemprop="dateCreated datePublished" datetime="2022-10-11T13:56:48+08:00">2022-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-23 20:27:29" itemprop="dateModified" datetime="2023-04-23T20:27:29+08:00">2023-04-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -283,18 +300,55 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="573fde2881092be5d668de309913eec02163de0aff2044d129a40092e337b63e">cb320da6677537a61c4c8a60c50f744c16f92314e258d97cf8881ad85784423e73ee03d5d66bd9470fbf37a855d60d176ba149302f52f844da9d72192f1da33766b22814182c5e806a688c257e93bd4709d814fd18f6cfb814481202dd695f9c32488ed088e7d556a3d2b48759980deee5c17be97323cb9aa55f014fc1af150f04c3c989b7c9ed68566696ccf178da8a92907f1c384707de46afae0ab8db10e37a0599496b054d00043cc7fd8e181b0704977349ea0753c425bd4eb1195573bf2b6e0f90b617206f11676c2dddd6252d1b9ae5294fe4bcdabc58ce136515b8d33df02c2f71a2767930e671079536cb415d1c8c8e94284557b81a92d7a3ac971f8f52997699422e0e7365bab301810804429bb625757790329b9f7eb95b91ac58664815746fbc6def3057a733db0a59b113a9495b3bc63392f10f1b0155e835dc1a33394c0850958a66617c17fc0b412fa6705ac7c015b87363d592283d59c2f6fd56b646a57d8e65f773f046b7ec7c94aaa4ecbf5750e2ae4c8ab0bba81704612ac496d4a98a3568a0f26d2b792ddbbe66e0537ff0bcb67be64c75c6cb8e530569101cf3964b1e7bf8f27ec307f20fc9016740790f67a73954691a9f44ca46ab557855c2ff605fcfbc0c85cd1d10439df43465702d63c76b14c7e91dd870fb60e9547e898de6ba241ef24900ee6e5b461fbc5292ae9b4deace3255e98d085022df8ae9211a113423a008b17f56db80fecdb29e9314de28e0b0a16af8553b0630f3c41b6e4682881b77881699a88b24efdf0239480dc02c6b1ac144b50b99cfb4bb2bf69fd03cb168fbd63dfe2d57ca80623edcc79596a8ef4389225c523e23a029e867030446455dbf80c047ee7b940b22ec2ba12fb89f488731625475c90b87800f705bc9dc751842fa56a6d9458a62d16a80009e0a66b0b22b0f33adaff9b86134ad238be8ff5e6cd3ae281c732a8e29b25ac71622ad94526f6cddef9fff94cacac4647fba4da547d063944dbf8199f36d8f7b7e972bac709137101c8ae0d96214cdbd3d4f5f5661fee05e0b8e8a80a8411bbd4f2404190f46c648a967b797e89d683592e53baa065d185763f8acaf406231dc1a2a165575ebf605bbc81cada11f0523ae618ad7e5bea802c0a74e1d280e70916692c1991108e225555428f56fc7a97f7c5cb6eca8d61540cd1cdf2642497486ea406ee276aa9c17213951c6175aed8ce6598a9167628f092e6ebb8ab41b1aefd45320477acead1d3a9b8b6d6f63a67780588c847cdd034d8b196c529c57ac4a52a87e2b72e21b6f184a21ef12ed12459be452a45a10c4702f21a490738ceae78af35f85f2ed234cd31c66a773de6c9cc2089b91d2701a9352bbda36aaa0fe76e978824ba4132d0639630cb570a40f64178250e5690fb9589dfef591cb202717f645273b409f82633282bf0b92d307e9f613ad67336835c392fe4ab4af717ea866f6f5c28ed8103a1c1fdb55e31d90589a28de874e4a2c48d156a5ec6ecffe42aed138db0bf77e04961a83eab4b52a3a8934ab7f67c024e3f2a516119844d2ff55b4d3b954c6a65028bb8041f0629fa32c53e2d47bc42883d9f36b1d8d0548983caa6db8f933fff2d2df8227af33b4e82313c36523c4c029e10295e62c4f52a529d222de1577ebdc963d746241d2649a5e2f3b9c97d0847fb395f00e841924dc7d9412aa6a4a2e1e8229ab2f668edda05f77decb0f89e9b4bde4409260fc488223b7cef14b95702cd55a9c875645bad65dc8c5a602ca10a38118f7b584f07c5451bd2173d764af05c315285c233083de8c01b6af0c2d2500a166a761670bda672518bcdcb16c767155371ecfa991c6f502e2ab2c689fe47f73b1fa9db33fa9e42a152941508ffd23817be79bfe032e1bbf7b4a4aad3906837b04062aafc26053ee4ca9d5277697460f5b6299d879aee6deda63e1f82dd2be65ddf253ab4daa92a00b5f9fa30b119ff298b2236e64abb7b558c7fbd50558fe586ad11ce7bc90aef17bfac46aac17ef7647bf7c6ff738cd5a6c4dab4ff03fbd9da8918114afcf221ad23b63c85323503bfb6540671600be6d4a03458c41a60e658b02b818038b2e8e90bc1a4c41884b8b853f966f90674f906c1b1bb060e6438f7274bae49dde5039ce69ddda9c989ee059e6e8c70b80255d757736350b4e2077bebe9e8fd7320ccf26edd4aab0f994af981d51b4f7b7b513b824517fb001213cf4cffedc388fece60e7f7936337ccf460d55c47d772a36ae11a6b09bd9a922f1126e96521c9612a9f1aaa79ec4e3c810c17954492999bfd01999f71a43f6af95350e2a55da5c132124fb11201ee87caeac04985c9037bf4affaf8a60eae21e34b4d7c15b8480e0ac631a3949e985a267e3f3c43610f4ecf71b49dbd67f3f07f2ebaca22e409060ef9f5e2816fcf137001b408bc687b7cd25c54d5f22f091e562c8a800f43f1dd67f8e56fe2a9946ca749c6b5f651559b006971065ab9c0e1be28c037c908e0eea0d240da209016299b3a558f8c3ce4224c9039d1b2f7919b971be2b51f5b0f5f903c89d3216b57fcd307b341c163d3d5064d6fd318206aa8feb52e0da3bf677825813fa66c6067f69adce656b6ed276f6e77061ba2e0850b93884afc630f940cc4bfd5cc4cada6f6b762b12b9f0da7cb52059dab25091155c55b7db1fc5457972311ec06b8a85f5d7f541a8105975bafc25a456db6551cb6fdc55e1ac486267ba94b1fe0c8313bde5c09fb58c13ae89e645107b067b4bab56b7400bee1b62db44365ba8ab4e35ccb5e3cb31b5713534d00c8319acc8c74bbdcb6f4519cf1d5aa4c6eb1d230fc75ea30a602cf2c96687813c4597d1acf3c6ec9da3df034a523b8e6a81eeee177e5f767c973fe1075c92b5c322509a466795ca5bcae16ce2f6284ede9564ef4f9198056345b67283da9dd30cd8ca64528660422266314966ff5334d3c155d515d37f15d4079a84</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>读！学！</p>
+<span id="more"></span>
+
+<h2 id="带着几个问题来读"><a href="#带着几个问题来读" class="headerlink" title="带着几个问题来读"></a>带着几个问题来读</h2><ul>
+<li>如何做特征提取的？</li>
+<li>训练时用了啥</li>
+</ul>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230422124350709.png" alt="image-20230422124350709" style="zoom: 50%;">
+
+
+
+
+
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>简单看一下这个模型实现了什么</p>
+<p><img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20221011172128073.png" alt="image-20221011172128073"></p>
+<ul>
+<li>本文提出了一种新的基于频域分析的恶意流量检测系统 Whisper，它是第一个能够在高吞吐量网络中实现实时和鲁棒的检测的机器学习系统。</li>
+<li>我们为 Whisper 开发了自动编码向量选择功能，以减少人工选择参数的工作量，从而确保检测的准确性，同时避免人工设置参数。</li>
+<li>我们建立了一个理论分析框架来证明低语者的性质。</li>
+<li>我们用 Intel DPDK 做了 Whisper 的原型，并用不同类型的重放攻击流量来验证 Whisper 的性能。</li>
+</ul>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p><img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230422124718014.png" alt="image-20230422124718014"></p>
+<h3 id="Frequency-Feature-Extraction-Module"><a href="#Frequency-Feature-Extraction-Module" class="headerlink" title="Frequency Feature Extraction Module"></a>Frequency Feature Extraction Module</h3><p>矩阵 S 表示了所有数据包中每个数据包的特征。Sik表示 第i个包的第k个特征。</p>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423165511928.png" alt="image-20230423165511928" style="zoom:67%;">
+
+<p><strong>Packet Feature Encoding</strong> (对数据包进行特征编码)</p>
+<p>乘一个  w，做线性映射，</p>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423165832299.png" alt="image-20230423165832299" style="zoom:67%;">
+
+<p>特征编码降低了特征的维度，从而大大降低了 Whisper 的处理开销</p>
+<p><strong>Vector Framing</strong></p>
+<p>Nf 表示帧的数量</p>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423170101034.png" alt="image-20230423170101034" style="zoom:67%;">
+
+<p><strong>Discrete Fourier Transformation</strong>（离散傅立叶变换）</p>
+<p>在接下来，对每个帧fi进行离散傅里叶变换(DFT) ，提取频域序列信息并减少flow-level methods带来的信息损失</p>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423170435477.png" alt="image-20230423170435477" style="zoom:67%;">
+
+<p><strong>Calculating the Modulus of Complex Numbers</strong>（复数模的计算）</p>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423171035582.png" alt="image-20230423171035582" style="zoom:50%;">
+
+<p><strong>Logarithmic Transformation</strong> </p>
+<p>使频域特征在数值上稳定，并在机器学习模型训练期间防止浮点溢出，我们对 Pi 进行对数变换</p>
+<img src="/2022/10/11/Realtime-Robust-Malicious-Traffic-Detection/image-20230423171049223.png" alt="image-20230423171049223" style="zoom:67%;">
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>主要提取了频域上的特性，但具体实现以后有空还要去看看代码</p>
+
     </div>
 
     
