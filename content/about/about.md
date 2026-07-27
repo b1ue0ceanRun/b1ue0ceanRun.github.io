@@ -4,31 +4,19 @@ date: 2025-12-21T18:37:28+08:00
 ---
 ## WHOAMI
 
-I spent four rewarding years at Fuzhou University majoring in Artificial Intelligence. I interned at the Institute of Software, Chinese Academy of Sciences, under Prof. Xiang Ling (https://ryderling.github.io/). I am now pursuing an M.S. in Computer Engineering at Aarhus University, working with Prof. Anders Møller (https://cs.au.dk/~amoeller/) on taint analysis, and will spend Spring 2025 on exchange at TUM. I am deeply interested in the intersection of AI and security and plan to pursue a Ph.D. in this area.
-
-
-## Personal skills:
-- Pinter Analysis & Taint Analysis 
-- Software Fuzzing
-- LLM Security
-- Web Security
-- Deep Learning & Machine Learning
-
+- I spent four rewarding years at Fuzhou University, majoring in Artificial Intelligence.
+- I interned at the Institute of Software, Chinese Academy of Sciences, under Prof. Xiang Ling ([https://ryderling.github.io/](https://ryderling.github.io/)).
+- I am currently pursuing an M.S. in Computer Engineering at Aarhus University.
+- I worked with Prof. Anders Møller ([https://cs.au.dk/~amoeller/](https://cs.au.dk/~amoeller/)) on taint analysis.
+- I am currently an exchange student at the Technical University of Munich (TUM).
+- I will conduct my master’s thesis at CISPA Helmholtz Center for Information Security in collaboration with [Ruijie Meng](https://mengrj.github.io/).
+- I am deeply interested in the intersection of artificial intelligence and cybersecurity and plan to pursue a Ph.D. in this area.
 ## Internship experiences
 1. Yigeyun (Jan 2023 - Mar 2023)
 2. ISCAS (Jul 2023 - Mar 2025)
 
 ## Research experiences:
-### Published
-1. [Capturing spatial–temporal correlations with Attention based Graph Convolutional Network for network traffic prediction](https://www.sciencedirect.com/science/article/pii/S1084804523001650)
-
-2. [Network Traffic Prediction with Attention-based Spatial-Temporal Graph Network](https://ieeexplore.ieee.org/document/10148029)
-
-### Unpublished
-1. Bachelor thesis: Advanced Robust Algorithm for Detecting Encrypted Malicious Network Traffic
-
-
-
+[Google Scholar](https://scholar.google.com/citations?hl=zh-TW&user=F3-nuQkAAAAJ)
 
 ## Some awards
 ### AI competition
@@ -45,7 +33,6 @@ I spent four rewarding years at Fuzhou University majoring in Artificial Intelli
 ### CTF
 
 Previously competed in several CTFs with ROIS and r3kapig teams.
-
 
 | Rank          | Event/Competition                                                                      | Date     |
 |---------------|----------------------------------------------------------------------------------------|----------|
