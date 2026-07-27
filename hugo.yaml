@@ -1,0 +1,95 @@
+languageCode: "en-us"
+baseUrl: "https://b1ue0ceanrun.github.io/BestRun.github.io/"
+title: "b1ue0cean's world"
+theme: "anubis"
+paginate: 10
+googleAnalytics: "G-12345"
+enableRobotsTXT: true
+
+menu:
+  main:
+  - identifier: about
+    name: About
+    title: About
+    url: /about/about/
+    weight: 1
+  - identifier: archive
+    name: Archive
+    title: Archive
+    url: /posts/
+    weight: 1
+  - identifier: life
+    name: Life
+    title: Life
+    url: /life/
+    weight: 1
+
+taxonomies:
+  category: categories
+  tag: tags
+
+params:
+  author: "b1ue0cean"
+  email: 1019076587@qq.com 
+  avatar: "/images/avatar.jpg" # used for microformats
+  description: ""
+  # Uncomment if you need this
+  # images:
+  #   - images/og-featured.png # relative path to "static" directory
+  # customCSS:
+  #   - css/my.css # relative path to "assets" directory (don't use main.css filename)
+  # customJS:
+  #   - js/main.js # relative path to "assets" directory
+  dateFormat: "2006-01-02"
+  paginationSinglePost: true
+  style: light
+  mainSections: [ "posts" ] # which sections should be on index/main page
+  sectionsWithFullContentOnListPage: [ "notes" ] # for which sections content should be displayed on list pages
+  readMore: true # show read more button
+  readNextPosts: 0  # show 5 related posts, 0 by default
+  disableSummary: false
+  toc: true # display Table of Contents
+  tocWordCount: 0 # ...when a post is longer than 300 words
+  copyCodeButton: true # true by default
+  rssAsSocialIcon: true
+  mathjax: true # https://www.mathjax.org/
+  # utteranc.es support
+  utterancesRepo: ""  # mandatory
+  utterancesTheme: "" # optional
+  utterancesIssue: "" # optional
+  utterancesLabel: "" # optional
+  # isso support
+  isso:
+    enabled: false # mandatory
+    data: "https://comments.example.com/" # mandatory
+    jsLocation: "https://comments.example.com/js/embed.min.js" # mandatory
+    css: true # optional
+    lang: "de" # optional
+    replyToSelf: true # mandatory
+    requireAuthor: true # mandatory
+    requireEmail: true # mandatory
+    id: "thread-id" # optional
+    avatar: true # optional
+    avatar-bg: "#f0f0f0" # optional
+    feed: false # optional
+  UmamiAnalytics:
+    enabled: false # mandatory
+    dnt: true # optional
+    id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # mandatory
+    datacache: false # optional
+    url: "https://abc.example.com/umami.js" # mandatory
+  graphcommentId: ""
+  social:
+  - id: github
+    name: b1ue0cean
+    url: "https://github.com/b1ue0ceanRun"
+  - id: twitter
+    name: b1ue0cean7
+  - id: email
+    name: 1019076587@qq.com
+
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # enable raw HTML in Markdown
