@@ -224,6 +224,7 @@
     .opening .wax-seal { opacity: 0; transform: translate(-50%, -50%) scale(.72); }
     .opening .open-hint { opacity: 0; }
     .opening .letter-gate { opacity: 0; visibility: hidden; }
+    .is-open .letter-gate { display: none; }
 
     .story-shell {
       position: relative;
@@ -507,6 +508,7 @@
           document.body.classList.remove("is-sealed", "opening");
           document.body.classList.add("is-open");
           gate.setAttribute("aria-hidden", "true");
+          gate.hidden = true;
           title.focus({ preventScroll: true });
         }, reducedMotion ? 30 : 1800);
       });
