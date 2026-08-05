@@ -43,7 +43,203 @@
       mask-image: linear-gradient(to bottom, #000 8%, #000 55%, transparent 82%);
     }
 
-    .story-shell { position: relative; isolation: isolate; }
+    body.is-sealed,
+    body.opening { overflow: hidden; }
+
+    .letter-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.25rem;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(55, 75, 98, .34), transparent 23rem),
+        linear-gradient(160deg, #050b14, #0a1727 68%, #111d2a);
+      transition: opacity .7s 1.05s ease, visibility 0s 1.75s;
+    }
+
+    .letter-gate::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      pointer-events: none;
+      opacity: .28;
+      background: repeating-linear-gradient(108deg, transparent 0 24px, rgba(188, 210, 226, .19) 25px, transparent 26px 54px);
+      animation: rain-drift 10s linear infinite;
+    }
+
+    .letter-gate::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 18vh;
+      background: linear-gradient(transparent, rgba(215, 180, 119, .72));
+    }
+
+    .envelope-stage {
+      position: relative;
+      z-index: 1;
+      width: min(88vw, 23rem);
+      padding: 4.8rem 0 0;
+      border: 0;
+      color: inherit;
+      background: none;
+      cursor: pointer;
+      perspective: 80rem;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .envelope-stage:focus-visible {
+      outline: 1px solid var(--gold);
+      outline-offset: 1.2rem;
+    }
+
+    .envelope {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 1.58;
+      filter: drop-shadow(0 2.2rem 2rem rgba(0, 0, 0, .4));
+      transform-style: preserve-3d;
+      transition: transform .8s ease;
+    }
+
+    .envelope-back {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: #a8916c;
+      box-shadow: inset 0 0 3rem rgba(63, 43, 22, .14);
+    }
+
+    .letter-sheet {
+      position: absolute;
+      z-index: 2;
+      right: 8%;
+      bottom: 5%;
+      left: 8%;
+      height: 86%;
+      display: grid;
+      place-items: center;
+      color: #4b4033;
+      background:
+        linear-gradient(rgba(255, 255, 255, .42), rgba(255, 255, 255, 0)),
+        #e4d8c2;
+      box-shadow: 0 .4rem 1rem rgba(45, 32, 19, .18);
+      transform: translateY(0);
+      transition: transform .85s .32s cubic-bezier(.22, .8, .22, 1);
+    }
+
+    .letter-sheet span {
+      opacity: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      letter-spacing: .08em;
+      transition: opacity .45s .65s ease;
+    }
+
+    .envelope-front {
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(32deg, #bda781 50%, transparent 50%) 0 100% / 51% 100% no-repeat,
+        linear-gradient(-32deg, #c5af89 50%, transparent 50%) 100% 100% / 51% 100% no-repeat;
+      pointer-events: none;
+    }
+
+    .envelope-front::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 46%;
+      background: #b49d77;
+      clip-path: polygon(0 100%, 50% 15%, 100% 100%);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      z-index: 4;
+      inset: 0 0 auto;
+      height: 66%;
+      display: grid;
+      place-items: start center;
+      padding-top: 2.4rem;
+      color: #4e402f;
+      background: linear-gradient(170deg, #d2bf9b, #bba47e);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: 50% 0;
+      backface-visibility: hidden;
+      transition: transform .75s cubic-bezier(.6, .05, .35, 1);
+    }
+
+    .recipient {
+      margin: 0;
+      font-size: clamp(1.3rem, 5vw, 1.75rem);
+      font-style: italic;
+      letter-spacing: .06em;
+      text-shadow: 0 1px rgba(255, 255, 255, .34);
+    }
+
+    .wax-seal {
+      position: absolute;
+      z-index: 5;
+      top: 55%;
+      left: 50%;
+      width: 3.4rem;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 218, 181, .22);
+      border-radius: 50%;
+      color: #d6ad8e;
+      background: radial-gradient(circle at 35% 28%, #9c4c42, #672c2d 72%);
+      box-shadow: 0 .3rem .5rem rgba(60, 26, 25, .34), inset 0 0 0 .25rem rgba(73, 27, 28, .16);
+      font: 500 1rem/1 Georgia, serif;
+      transform: translate(-50%, -50%);
+      transition: opacity .3s .2s ease, transform .45s ease;
+    }
+
+    .open-hint {
+      display: inline-block;
+      margin-top: 3.4rem;
+      color: #8fa0af;
+      font: 500 .66rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      transition: opacity .3s ease;
+    }
+
+    .opening .envelope { transform: translateY(1.6rem); }
+    .opening .envelope-flap { transform: rotateX(180deg); }
+    .opening .letter-sheet { transform: translateY(-58%); }
+    .opening .letter-sheet span { opacity: 1; }
+    .opening .wax-seal { opacity: 0; transform: translate(-50%, -50%) scale(.72); }
+    .opening .open-hint { opacity: 0; }
+    .opening .letter-gate { opacity: 0; visibility: hidden; }
+
+    .story-shell {
+      position: relative;
+      isolation: isolate;
+      opacity: 1;
+      transition: opacity .8s 1.02s ease;
+    }
+
+    .is-sealed .story-shell { opacity: 0; }
+    .opening .story-shell { opacity: 1; }
+    .is-sealed .skip-link,
+    .opening .skip-link { display: none; }
+
+    @keyframes rain-drift {
+      to { transform: translate3d(4rem, 7rem, 0); }
+    }
 
     .story-cover {
       min-height: 100svh;
@@ -81,6 +277,8 @@
       letter-spacing: .09em;
       text-wrap: balance;
     }
+
+    h1:focus { outline: none; }
 
     .cover-lead {
       margin: 2rem 0 0;
@@ -232,6 +430,9 @@
 
     @media (max-width: 600px) {
       body { font-size: 16px; }
+      .envelope-stage { width: min(86vw, 21rem); }
+      .envelope-flap { padding-top: 1.9rem; }
+      .open-hint { margin-top: 2.8rem; }
       .story-content { width: min(100% - 2.25rem, 43rem); }
       .story-content > h2 { margin-top: 8rem; }
       blockquote { margin-right: -.5rem; margin-left: -.5rem; }
@@ -240,16 +441,46 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .letter-gate::before { animation: none; }
+      .letter-gate,
+      .story-shell,
+      .envelope,
+      .envelope-flap,
+      .letter-sheet,
+      .letter-sheet span,
+      .wax-seal,
+      .open-hint { transition-duration: .01ms !important; transition-delay: 0s !important; }
     }
   </style>
+  <noscript>
+    <style>
+      .letter-gate { display: none; }
+      body.is-sealed { overflow: auto; }
+      .is-sealed .story-shell { opacity: 1; }
+    </style>
+  </noscript>
 </head>
-<body>
+<body class="is-sealed">
+  <div class="letter-gate" id="letter-gate" aria-label="一封写给 Vivien 的信">
+    <button class="envelope-stage" id="open-letter" type="button" aria-label="打开写给 Vivien 的信">
+      <span class="envelope" aria-hidden="true">
+        <span class="envelope-back"></span>
+        <span class="letter-sheet"><span>For Vivien</span></span>
+        <span class="envelope-front"></span>
+        <span class="envelope-flap">
+          <span class="recipient">To Vivien</span>
+        </span>
+        <span class="wax-seal">M</span>
+      </span>
+      <span class="open-hint">Click to open · 轻触拆开</span>
+    </button>
+  </div>
   <a class="skip-link" href="#story">跳到正文</a>
   <main class="story-shell">
     <header class="story-cover" aria-labelledby="story-title">
       <div class="cover-inner">
         <p class="coordinates">48.137° N · 11.575° E</p>
-        <h1 id="story-title">慕尼黑<br>天亮以前</h1>
+        <h1 id="story-title" tabindex="-1">慕尼黑<br>天亮以前</h1>
         <p class="cover-lead">讲一个故事吧。</p>
         <p class="cover-time">A night from 02:00 to 06:00</p>
       </div>
@@ -259,5 +490,27 @@
     </article>
     <footer class="story-footer">München · Ein Sommer</footer>
   </main>
+  <script>
+    (() => {
+      const button = document.querySelector("#open-letter");
+      const gate = document.querySelector("#letter-gate");
+      const title = document.querySelector("#story-title");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      button.addEventListener("click", () => {
+        if (document.body.classList.contains("opening")) return;
+
+        button.disabled = true;
+        document.body.classList.add("opening");
+
+        window.setTimeout(() => {
+          document.body.classList.remove("is-sealed", "opening");
+          document.body.classList.add("is-open");
+          gate.setAttribute("aria-hidden", "true");
+          title.focus({ preventScroll: true });
+        }, reducedMotion ? 30 : 1800);
+      });
+    })();
+  </script>
 </body>
 </html>
