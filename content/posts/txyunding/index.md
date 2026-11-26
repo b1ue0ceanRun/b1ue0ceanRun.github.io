@@ -61,7 +61,7 @@ draft: false
 <img src="images/image-6.png" alt="Trace2Skill 分层合并示意图" width="580" style="display: block; max-width: 100%; height: auto; margin: 1.25em auto;">
 
 
-### 解题框架设计
+## 解题框架设计
 从我目前的实践经验来看，渗透测试 Agent 更适合中心化规划、去中心化执行的架构。
 
 我们的架构设计如下：
